@@ -1,26 +1,21 @@
 #include <Arduino.h>
-#include "variables.h"
+#include <variables.h>
+#include <segments.h>
 
 void setup() {
     Serial.begin(9600);
-    pinMode(X_AXIS_PIN, INPUT);
-    pinMode(Y_AXIS_PIN, INPUT);
-    pinMode(Z_AXIS_PIN, INPUT);
+    appelVariables();
 
-    pinMode(JOY_GD_PIN, INPUT);
-    pinMode(JOY_HB_PIN, INPUT);
-    
-    pinMode(BOU_A_PIN, INPUT);
-    pinMode(BOU_B_PIN, INPUT);
-    pinMode(BOU_M_PIN, INPUT);
-    pinMode(BOU_S_PIN, INPUT);
-    pinMode(BOU_ARG_PIN, INPUT);
-    pinMode(BOU_ARD_PIN, INPUT);
 
-    pinMode(LED_1, OUTPUT);
-    pinMode(LED_2, OUTPUT);
-    pinMode(LED_3, OUTPUT);
-    pinMode(LED_4, OUTPUT);
+
+  //7-Segment Display Init
+  digitalWrite(OE,LOW);        //Enables SR Operation
+  initializeSRData();          //Prepares SR and clears data on serial line
+
+  //Test
+  setDigit(0,0,4,true);
+  setDigit(0,1,5,true);
+  setDigit(0,2,6,true);
 }
 
 void loop() {
@@ -65,5 +60,6 @@ void loop() {
     Serial.println();
   }
 
+  refreshDisplay(); 
 
 }
