@@ -1,0 +1,31 @@
+/*
+    Date : 26 janvier 2023
+    Description : Structure pour les batiments Commercial
+*/
+
+#ifndef COMMERCIAL_H
+#define COMMERCIAL_H
+
+#include "Batiment.h"
+
+class Commercial : public Batiment {
+private:
+    /* data */
+public:
+    Commercial();
+    Commercial(Ressources RessourcesDp, Coordonnee CoordonneeDp);
+    ~Commercial();
+};
+
+Commercial::Commercial(){}
+
+Commercial::Commercial(Ressources RessourcesDp, Coordonnee CoordonneeDp){
+    coordonnee = CoordonneeDp;
+    ressources = RessourcesDp;
+}
+
+Commercial::~Commercial()
+{
+}
+
+#endif
