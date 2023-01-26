@@ -8,6 +8,7 @@ class Eau : public Terrain {
     public :
         Eau(bool c = false);
         ~Eau();
+        /** @brief permet de set un terrain est constructible ou pas*/
         void setPeuConstruire(bool c);  
 };
 #endif
