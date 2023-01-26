@@ -13,24 +13,11 @@ private:
     /* data */
 public:
     Commercial();
-    Commercial(Coordonnee CoordonneeDp);
-    Commercial(Ressources RessourcesDp, Coordonnee CoordonneeDp);
     ~Commercial();
 };
 
 Commercial::Commercial(){}
 
-Commercial::Commercial(Coordonnee CoordonneeDp) {
-    coordonnee = CoordonneeDp;
-}
-
-Commercial::Commercial(Ressources RessourcesDp, Coordonnee CoordonneeDp){
-    coordonnee = CoordonneeDp;
-    ressources = RessourcesDp;
-}
-
-Commercial::~Commercial()
-{
-}
+Commercial::~Commercial(){}
 
 #endif

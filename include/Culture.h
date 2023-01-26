@@ -14,21 +14,10 @@ private:
     /* data */
 public:
     Culture();
-    Culture(Coordonnee CoordonneeDp);
-    Culture(Ressources RessourcesDp, Coordonnee CoordonneeDp);
     ~Culture();
 };
 
 Culture::Culture(){}
-
-Culture::Culture(Coordonnee CoordonneeDp) {
-    coordonnee = CoordonneeDp;
-}
-
-Culture::Culture(Ressources RessourcesDp, Coordonnee CoordonneeDp) {
-    coordonnee = CoordonneeDp;
-    ressources = RessourcesDp;
-}
 
 Culture::~Culture(){}
 

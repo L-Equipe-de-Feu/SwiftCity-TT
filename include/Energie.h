@@ -14,21 +14,10 @@ private:
     /* data */
 public:
     Energie();
-    Energie(Coordonnee CoordonneeDp);
-    Energie(Ressources RessourcesDp, Coordonnee CoordonneeDp);
     ~Energie();
 };
 
 Energie::Energie(){}
-
-Energie::Energie(Coordonnee CoordonneeDp) {
-    coordonnee = CoordonneeDp;
-}
-
-Energie::Energie(Ressources RessourcesDp, Coordonnee CoordonneeDp) {
-    ressources = RessourcesDp;
-    coordonnee = CoordonneeDp;
-}
 
 Energie::~Energie(){}
 

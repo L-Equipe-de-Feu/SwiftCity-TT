@@ -13,7 +13,6 @@ typedef struct {
     int materiaux = 0;
     int argent = 0;
     int habitant = 0;
-    int habitantTotal = 0;
     int mainDoeuvre = 0;
 } Ressources;
 

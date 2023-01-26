@@ -14,21 +14,10 @@ private:
     /* data */
 public:
     Service();
-    Service(Coordonnee CoordonneeDp);
-    Service(Ressources RessourcesDp, Coordonnee CoordonneeDp);
     ~Service();
 };
 
 Service::Service(){}
-
-Service::Service(Coordonnee CoordonneeDp){
-    coordonnee = CoordonneeDp;
-}
-
-Service::Service(Ressources RessourcesDp, Coordonnee CoordonneeDp) {
-    ressources = RessourcesDp;
-    coordonnee = CoordonneeDp;
-}
 
 Service::~Service(){}
 

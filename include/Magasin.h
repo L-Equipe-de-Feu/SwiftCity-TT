@@ -13,21 +13,10 @@ private:
     /* data */
 public:
     Magasin();
-    Magasin(Coordonnee CoordonneeDp);
-    Magasin(Ressources RessourcesDp, Coordonnee CoordonneeDp);
     ~Magasin();
 };
 
 Magasin::Magasin(){}
-
-Magasin::Magasin(Coordonnee CoordonneeDp){
-    coordonnee = CoordonneeDp;
-}
-
-Magasin::Magasin(Ressources RessourcesDp, Coordonnee CoordonneeDp){
-    ressources = RessourcesDp;
-    coordonnee = CoordonneeDp;
-}
 
 Magasin::~Magasin(){}
 

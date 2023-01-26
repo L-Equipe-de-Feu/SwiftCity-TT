@@ -14,21 +14,10 @@ private:
     /* data */
 public:
     Pompier();
-    Pompier(Coordonnee CoordonneeDp);
-    Pompier(Ressources RessourcesDp, Coordonnee Coordonnee);
     ~Pompier();
 };
 
 Pompier::Pompier(){}
-
-Pompier::Pompier(Coordonnee CoordonneeDp) {
-    coordonnee = CoordonneeDp;
-}
-
-Pompier::Pompier(Ressources RessourcesDp, Coordonnee CoordonneeDp) {
-    coordonnee = CoordonneeDp;
-    ressources = RessourcesDp;
-}
 
 Pompier::~Pompier(){}
 

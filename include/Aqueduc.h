@@ -14,21 +14,10 @@ private:
     /* data */
 public:
     Aqueduc();
-    Aqueduc(Coordonnee CoordonneeDp);
-    Aqueduc(Ressources Ressources, Coordonnee CoordonneeDp);
     ~Aqueduc();
 };
 
 Aqueduc::Aqueduc(){}
-
-Aqueduc::Aqueduc(Coordonnee CoordonneeDp){
-    coordonnee = CoordonneeDp;
-}
-
-Aqueduc::Aqueduc(Ressources RessourcesDp, Coordonnee CoordonneeDp){
-    coordonnee = CoordonneeDp;
-    ressources = RessourcesDp;
-}
 
 Aqueduc::~Aqueduc(){}
 

@@ -13,21 +13,10 @@ private:
     /* data */
 public:
     Bureau();
-    Bureau(Coordonnee CoordonneeDp);
-    Bureau(Ressources RessourcesDp, Coordonnee CoordonneeDp);
     ~Bureau();
 };
 
 Bureau::Bureau(){}
-
-Bureau::Bureau(Coordonnee CoordonneeDp) {
-    coordonnee = CoordonneeDp;
-}
-
-Bureau::Bureau(Ressources RessourcesDp, Coordonnee CoordonneeDp) {
-    ressources = RessourcesDp;
-    coordonnee = CoordonneeDp;
-}
 
 Bureau::~Bureau(){}
 
