@@ -16,7 +16,14 @@ public:
     ~MultiLogement();
 };
 
-MultiLogement::MultiLogement(){}
+MultiLogement::MultiLogement(){
+    ressources.energie = -10;
+    ressources.eau = -5;
+    ressources.bonheur = 0;
+    ressources.materiaux = 0;
+    ressources.argent = -200;
+    ressources.habitant = 15;
+}
 
 MultiLogement::~MultiLogement(){}
 

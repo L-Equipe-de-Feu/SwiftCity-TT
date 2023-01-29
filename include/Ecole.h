@@ -17,7 +17,14 @@ public:
     ~Ecole();
 };
 
-Ecole::Ecole(){}
+Ecole::Ecole(){
+    ressources.energie = -2;
+    ressources.eau = -1;
+    ressources.bonheur = 10;
+    ressources.materiaux = 0;
+    ressources.argent = -250;
+    ressources.habitant = -5;
+}
 
 Ecole::~Ecole(){}
 

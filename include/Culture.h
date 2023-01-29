@@ -17,7 +17,14 @@ public:
     ~Culture();
 };
 
-Culture::Culture(){}
+Culture::Culture(){
+    ressources.energie = -10;
+    ressources.eau = -5;
+    ressources.bonheur = 20;
+    ressources.materiaux = 0;
+    ressources.argent = -250;
+    ressources.habitant = -8;
+}
 
 Culture::~Culture(){}
 

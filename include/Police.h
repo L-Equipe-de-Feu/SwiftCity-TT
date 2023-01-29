@@ -17,6 +17,12 @@ public:
 };
 
 Police::Police() {
+    ressources.energie = -5;
+    ressources.eau = -2;
+    ressources.bonheur = 10;
+    ressources.materiaux = 0;
+    ressources.argent = -100;
+    ressources.habitant = -4;
 }
 
 Police::~Police() {

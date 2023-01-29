@@ -16,7 +16,14 @@ public:
     ~Industriel();
 };
 
-Industriel::Industriel(){}
+Industriel::Industriel(){
+    ressources.energie = -1;
+    ressources.eau = -1;
+    ressources.bonheur = -1;
+    ressources.materiaux = 1;
+    ressources.argent = -1;
+    ressources.habitant = -1;
+}
 
 Industriel::~Industriel(){}
 

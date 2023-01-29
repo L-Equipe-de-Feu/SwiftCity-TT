@@ -16,7 +16,14 @@ public:
     ~Commercial();
 };
 
-Commercial::Commercial(){}
+Commercial::Commercial(){
+    ressources.energie = -1;
+    ressources.eau = -1;
+    ressources.bonheur = 0;
+    ressources.materiaux = -1;
+    ressources.argent = -1;
+    ressources.habitant = -1;
+}
 
 Commercial::~Commercial(){}
 

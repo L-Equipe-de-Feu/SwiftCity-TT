@@ -16,7 +16,14 @@ public:
     ~Magasin();
 };
 
-Magasin::Magasin(){}
+Magasin::Magasin(){
+    ressources.energie = -1;
+    ressources.eau = -1;
+    ressources.bonheur = 0;
+    ressources.materiaux = -5;
+    ressources.argent = -100;
+    ressources.habitant = -2;
+}
 
 Magasin::~Magasin(){}
 

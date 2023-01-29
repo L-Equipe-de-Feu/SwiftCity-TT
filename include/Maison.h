@@ -16,7 +16,14 @@ public:
     ~Maison();
 };
 
-Maison::Maison(){}
+Maison::Maison(){
+    ressources.energie = -2;
+    ressources.eau = -1;
+    ressources.bonheur = 0;
+    ressources.materiaux = 0;
+    ressources.argent = -100;
+    ressources.habitant = 3;
+}
 
 Maison::~Maison(){}
 

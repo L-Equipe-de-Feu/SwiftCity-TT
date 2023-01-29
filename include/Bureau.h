@@ -16,7 +16,14 @@ public:
     ~Bureau();
 };
 
-Bureau::Bureau(){}
+Bureau::Bureau(){
+    ressources.energie = -2;
+    ressources.eau = -1;
+    ressources.bonheur = 0;
+    ressources.materiaux = -10;
+    ressources.argent = -10;
+    ressources.habitant = -5;
+}
 
 Bureau::~Bureau(){}
 

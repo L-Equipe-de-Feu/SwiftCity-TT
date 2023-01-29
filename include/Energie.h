@@ -17,7 +17,14 @@ public:
     ~Energie();
 };
 
-Energie::Energie(){}
+Energie::Energie(){
+    ressources.energie = 20;
+    ressources.eau = 0;
+    ressources.bonheur = 1;
+    ressources.materiaux = 0;
+    ressources.argent = -250;
+    ressources.habitant = -1;
+}
 
 Energie::~Energie(){}
 

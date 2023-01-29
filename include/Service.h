@@ -17,7 +17,14 @@ public:
     ~Service();
 };
 
-Service::Service(){}
+Service::Service(){
+    ressources.energie = -1;
+    ressources.eau = -1;
+    ressources.bonheur = 1;
+    ressources.materiaux = 0;
+    ressources.argent = -1;
+    ressources.habitant = -1;
+}
 
 Service::~Service(){}
 

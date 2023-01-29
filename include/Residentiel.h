@@ -17,7 +17,14 @@ public:
     ~Residentiel();
 };
 
-Residentiel::Residentiel(){}
+Residentiel::Residentiel(){
+    ressources.energie = -1;
+    ressources.eau = -1;
+    ressources.bonheur = 0;
+    ressources.materiaux = 0;
+    ressources.argent = -1;
+    ressources.habitant = 1;
+}
 
 Residentiel::~Residentiel(){}
 
