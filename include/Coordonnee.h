@@ -2,7 +2,6 @@
     Date : 26 janvier 2023
     Description : Declaration de la structure Coordonnee
     Exemple de declaration : Coordonnee my coordonnee
-    INUTILE
 */
 
 
