@@ -33,10 +33,5 @@ void appelVariables(){
     pinMode(SEG_EN_PIN, OUTPUT);
     pinMode(SEG_A4_PIN, OUTPUT);  
 
-//Pin pour fonction 7 segments
-    pinMode(CLK, OUTPUT);
-    pinMode(LATCH, OUTPUT);
-    pinMode(DOUT, OUTPUT);
-    pinMode(OE, OUTPUT);  
 
 }

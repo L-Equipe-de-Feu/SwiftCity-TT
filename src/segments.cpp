@@ -1,145 +1,868 @@
 #include <Arduino.h>
+#include "variables.h"
 #include "segments.h"
 
-//==========BEGIN SR Functions==========
-void initializeSRData()
-{
-  //Display Scanner (Iterates through each display module)
-  digitalWrite(LATCH,LOW);      //Tells all SRs that uController is sending data
+void zero(int a){
+//tous sauf 22-23-24-25-26-27 -- 15-16-17-18-19-20 -- 8-9-10-11-12-13 -- 1-2-3-4-5-6
 
-  for(int dispID = 0; dispID < maxDisplays; dispID++)
-  {    
-    //Digit Scanner (Iterates through each SR (digit) in a display module)
-    for(int digit = 0; digit < maxDigits; digit++)
-    {
-      //Clears any garbage on the serial line
-      shiftOut(DOUT,CLK,LSBFIRST,0);          //Shift out 0s to all displays
-      SRData[dispID][digit] = 0;              //Stores a 0 for each digit so its completely off
-    }
-  }
-  digitalWrite(LATCH,HIGH);      //Tells all SRs that uController is done sending data
+if(a == 1){
+    seg22();
+    segoff();
+    seg23();
+    segoff();
+    seg24();
+    segoff();
+    seg25();
+    segoff();
+    seg26();
+    segoff();
+    seg27();
+    segoff();
+
+  //22-23-24-2;5-26-27-28 
+}
+if(a == 2){
+    seg15();
+    segoff();
+    seg16();
+    segoff();
+    seg17();
+    segoff();
+    seg18();
+    segoff();
+    seg19();
+    segoff();
+    seg20();
+    segoff();
+
+  //15-16-17-18-19-20-21
+}
+if(a == 3){
+    seg8();
+    segoff();
+    seg9();
+    segoff();
+    seg10();
+    segoff();
+    seg11();
+    segoff();
+    seg12();
+  segoff();
+    seg13();
+    segoff();
+
+  //8-9-10-11-12-13-14
+}
+if(a == 4){
+  
+  //1-2-3-4-5-6-7
 }
 
-void printSRData()
-{
-  if(!debug)
-    return;
 
-  Serial.println("Printing SR Data...");
-
-  //Display Scanner
-  for(int dispID = 0; dispID < maxDisplays; dispID++)
-  {    
-    Serial.print("Display # ");
-    Serial.println(dispID);
-
-    //Digit Scanner
-    for(int digit = 0; digit < maxDigits; digit++)
-    {
-      Serial.print("Digit ");
-      Serial.print(digit);
-      Serial.print(": ");
-      Serial.println(SRData[dispID][digit],BIN);
-    }
-    Serial.println();
-  }
+//1111 1100
 }
 
-void setDigit(int dispID, int digit, int value, boolean dp)
-{
-  //Parameter checker
-  if(dispID < 0 || dispID >= numDevices)
-  {
-    Serial.println("dispID OoB!");         //OoB = Out of bounds
-    return;
-  }
+void un(int a){
+//juste 23-24 -- 16-17 -- 9-10 -- 2-3
 
-  if(digit < 0 || digit > maxDigits)
-  {
-    Serial.println("digit OoB!"); 
-    return;
-  }
-
-  if(value < 0 || value > 9)
-  {
-    Serial.println("Invalid value!"); 
-    return;
-  }
-
-  value = numTable[value];
-
-  //Toggle dp if needed
-  if(dp)
-    value |= B00000001;          //Turns on the first binary digit (segment) using an OR bitmask
-
-  //Store the digit
-  SRData[dispID][digit] = value;
-
-  if(debug)
-    printSRData();
+if(a == 1){
+    seg23();
+    segoff();
+    seg24();
+    segoff();
+  
+  //22-23-24-25-26-27-28 
+}
+if(a == 2){
+    seg16();
+    segoff();
+    seg17();
+    segoff();
+  
+  //15-16-17-18-19-20-21
+}
+if(a == 3){
+    seg9();
+    segoff();
+    seg10();
+    segoff();
+  
+  //8-9-10-11-12-13-14
+}
+if(a == 4){
+  seg2();
+  segoff();
+  seg3();
+  segoff();
+  //1-2-3-4-5-6-7
 }
 
-void setSegments(int dispID, int digit, byte value)
-{
-  //Parameter checker
-  if(dispID < 0 || dispID >= numDevices)
-  {
-    Serial.println("dispID OoB!"); 
-    return;
-  }
 
-  if(digit < 0 || digit > maxDigits)
-  {
-    Serial.println("digit OoB!"); 
-    return;
-  }
-
-  if(value < 0 || value > 255)
-  {
-    Serial.println("Invalid byte!"); 
-    return;
-  }
-
-  //Store the digit
-  SRData[dispID][digit] = value;
-
-  if(debug)
-    printSRData();
+//0110 0000
 }
 
-void clearDisplay(int dispID)
-{
-  initializeSRData();
-  refreshDisplay();
+void deux(int a){
+//22-23-25-26-28 -- 15-16-18-19-21 -- 8-9-11-12-14 -- 1-2-4-5-7
+
+if(a == 1){
+    seg22();
+    segoff();
+    seg23();
+    segoff();
+    seg25();
+    segoff();
+    seg26();
+    segoff();
+    seg28();
+    segoff();
+  //22-23-24-25-26-27-28 
+}
+if(a == 2){
+    seg15();
+    segoff();
+    seg16();
+    segoff();
+    seg18();
+    segoff();
+    seg19();
+    segoff();
+    seg21();
+    segoff();
+  //15-16-17-18-19-20-21
+}
+if(a == 3){
+    seg8();
+    segoff();
+    seg9();
+    segoff();
+    seg11();
+    segoff();
+    seg12();
+    segoff();
+    seg14();
+    segoff();
+  //8-9-10-11-12-13-14
+}
+if(a == 4){
+  seg1();
+  segoff();
+  seg2();
+  segoff();
+  seg4();
+  segoff();
+  seg5();
+  segoff();
+  seg7();
+  segoff();
+  //1-2-3-4-5-6-7
 }
 
-void refreshDisplay()
-{
-  //Digit Scanner
-  for(int digit = 0; digit < maxDigits; digit++)
-  {   
-    //Display Scanner
-    digitalWrite(LATCH,LOW);
-    for(int dispID = numDevices -  1; dispID >= 0; dispID--)
-    {
-      //Pre-Digit blanker (shifts out 0s to correct digits before sending segment data to desired digit)
-      for(int blanks = (maxDigits - 1 - digit); blanks > 0; blanks--)
-        shiftOut(DOUT,CLK,LSBFIRST,0);
 
-      shiftOut(DOUT,CLK,LSBFIRST,SRData[dispID][digit]);
-
-      //Post-Digit blanker (shifts out 0s to remaining digits)
-      for(int blanks = digit; blanks > 0; blanks--)
-        shiftOut(DOUT,CLK,LSBFIRST,0);
-    }
-    digitalWrite(LATCH,HIGH);
-
-    //Demonstrates multiplexing operation
-    delay(delayTime);
-    delayTime -= 10;
-    if(delayTime <= 0)
-      delayTime = 0;
-  }
+//1101 1010
 }
 
-//==========END SR Functions==========
+void trois(int a){
+//22-23-24-25-28 -- 15-16-17-18-21 -- 8-9-10-11-14 -- 1-2-3-4-7
+if(a == 1){
+    seg22();
+    segoff();
+    seg23();
+    segoff();
+    seg24();
+    segoff();
+    seg25();
+    segoff();
+    seg28();
+    segoff();
+  //22-23-24-25-26-27-28 
+}
+if(a == 2){
+    seg15();
+    segoff();
+    seg16();
+    segoff();
+    seg17();
+    segoff();
+    seg18();
+    segoff();
+    seg21();
+    segoff();
+  //15-16-17-18-19-20-21
+}
+if(a == 3){
+    seg8();
+    segoff();
+    seg9();
+    segoff();
+    seg10();
+    segoff();
+    seg11();
+    segoff();
+    seg14();
+    segoff();
+  //8-9-10-11-12-13-14
+}
+if(a == 4){
+  seg1();
+  segoff();
+  seg2();
+  segoff();
+  seg3();
+  segoff();
+  seg4();
+  segoff();
+  seg7();
+  segoff();
+  //1-2-3-4-5-6-7
+}
+
+
+//1111 0010
+}
+
+void quatre(int a){
+//23-24-27-28 -- 16-17-20-21 -- 9-10-13-14 -- 2-3-6-7
+if(a == 1){
+    seg23();
+    segoff();
+    seg24();
+    segoff();
+    seg27();
+    segoff();
+    seg28();
+    segoff();
+  //22-23-24-25-26-27-28 
+}
+if(a == 2){
+    seg16();
+    segoff();
+    seg17();
+    segoff();
+    seg20();
+    segoff();
+    seg21();
+    segoff();
+  //15-16-17-18-19-20-21
+}
+if(a == 3){
+    seg9();
+    segoff();
+    seg10();
+    segoff();
+    seg13();
+    segoff();
+    seg14();
+    segoff();
+  //8-9-10-11-12-13-14
+}
+if(a == 4){
+  seg2();
+  segoff();
+  seg3();
+  segoff();
+  seg6();
+  segoff();
+  seg7();
+  segoff();
+  //1-2-3-4-5-6-7
+}
+
+
+//0110 0110
+}
+
+void cinq(int a){
+//22-24-25-26-28 -- 15-17-18-19-21 -- 8-10-11-13-14 -- 1-3-4-5-7
+if(a == 1){
+    seg22();
+    segoff();
+    seg24();
+    segoff();
+    seg25();
+    segoff();
+    seg26();
+    segoff();
+    seg28();
+    segoff();
+  //22-23-24-25-26-27-28 
+}
+if(a == 2){
+    seg15();
+    segoff();
+    seg17();
+    segoff();
+    seg18();
+    segoff();
+    seg19();
+    segoff();
+    seg21();
+    segoff();
+  //15-16-17-18-19-20-21
+}
+if(a == 3){
+    seg8();
+    segoff();
+    seg10();
+    segoff();
+    seg11();
+    segoff();
+    seg13();
+    segoff();
+    seg14();
+    segoff();
+  //8-9-10-11-12-13-14
+}
+if(a == 4){
+  seg1();
+  segoff();
+  seg3();
+  segoff();
+  seg4();
+  segoff();
+  seg5();
+  segoff();
+  seg7();
+  segoff();
+  //1-2-3-4-5-6-7
+}
+
+
+//1011 0110
+}
+
+void six(int a){
+//22-24-25-26-27-28 -- 15-17-18-19-20-21 -- 8-10-11-12-13-14 -- 1-3-4-5-6-7
+if(a == 1){
+    seg22();
+    segoff();
+    seg24();
+    segoff();
+    seg25();
+    segoff();
+    seg26();
+    segoff();
+    seg27();
+    segoff();
+    seg28();
+    segoff();
+  //22-23-24-25-26-27-28 
+}
+if(a == 2){
+    seg15();
+    segoff();
+    seg17();
+    segoff();
+    seg18();
+    segoff();
+    seg19();
+    segoff();
+    seg20();
+    segoff();
+    seg21();
+    segoff();
+  //15-16-17-18-19-20-21
+}
+if(a == 3){
+    seg8();
+    segoff();
+    seg10();
+    segoff();
+    seg11();
+    segoff();
+    seg12();
+    segoff();
+    seg13();
+    segoff();
+    seg14();
+    segoff();
+  //8-9-10-11-12-13-14
+}
+if(a == 4){
+  seg1();
+  segoff();
+  seg3();
+  segoff();
+  seg4();
+  segoff();
+  seg5();
+  segoff();
+  seg6();
+  segoff();
+  seg7();
+  segoff();
+  //1-2-3-4-5-6-7
+}
+
+
+//1011 1110
+}
+
+void sept(int a){
+//22-23-24 -- 15-16-17 -- 8-9-10 -- 1-2-3
+if(a == 1){
+    seg22();
+    segoff();
+    seg23();
+    segoff();
+    seg24();
+    segoff();
+  
+  //22-23-24-25-26-27-28 
+}
+if(a == 2){
+    seg15();
+    segoff();
+    seg16();
+    segoff();
+    seg17();
+    segoff();
+  
+  //15-16-17-18-19-20-21
+}
+if(a == 3){
+    seg8();
+    segoff();
+    seg9();
+    segoff();
+    seg10();
+    segoff();
+  
+  //8-9-10-11-12-13-14
+}
+if(a == 4){
+  seg1();
+  segoff();
+  seg2();
+  segoff();
+  seg3();
+  segoff();
+  
+  //1-2-3-4-5-6-7
+}
+
+
+//1110 0000
+}
+
+void huit(int a){
+//Tous ouvert
+if(a == 1){
+    seg22();
+    segoff();
+    seg23();
+    segoff();
+    seg24();
+    segoff();
+    seg25();
+    segoff();
+    seg26();
+    segoff();
+    seg27();
+    segoff();
+    seg28();
+    segoff();
+  
+  //22-23-24-25-26-27-28 
+}
+if(a == 2){
+    seg15();
+    segoff();
+    seg16();
+    segoff();
+    seg17();
+    segoff();
+    seg18();
+    segoff();
+    seg19();
+    segoff();
+    seg20();
+    segoff();
+    seg21();
+    segoff();
+
+  //15-16-17-18-19-20-21
+}
+if(a == 3){
+    seg8();
+    segoff();
+    seg9();
+    segoff();
+    seg10();
+    segoff();
+    seg11();
+    segoff();
+    seg12();
+    segoff();
+    seg13();
+    segoff();
+    seg14();
+    segoff();
+
+  //8-9-10-11-12-13-14
+}
+if(a == 4){
+  seg1();
+  segoff();
+  seg2();
+  segoff();
+  seg3();
+  segoff();
+  seg4();
+  segoff();
+  seg5();
+  segoff();
+  seg6();
+  segoff();
+  seg7();
+  segoff();
+  //1-2-3-4-5-6-7
+}
+
+
+//1111 1110
+}
+
+void neuf(int a){
+//22-23-24-27-28 -- 15-16-17-20-21 -- 8-9-10-13-14 -- 1-2-3-6-7
+if(a == 1){
+    seg22();
+    segoff();
+    seg23();
+    segoff();
+    seg24();
+    segoff();
+    seg27();
+    segoff();
+    seg28();
+    segoff();
+
+  //22-23-24-25-26-27-28 
+}
+if(a == 2){
+    seg15();
+    segoff();
+    seg16();
+    segoff();
+    seg17();
+    segoff();
+    seg20();
+    segoff();
+    seg21();
+    segoff();
+  //15-16-17-18-19-20-21
+}
+if(a == 3){
+    seg8();
+    segoff();
+    seg9();
+    segoff();
+    seg10();
+    segoff();
+    seg13();
+    segoff();
+    seg14();
+    segoff();
+  //8-9-10-11-12-13-14
+}
+if(a == 4){
+  seg1();
+  segoff();
+  seg2();
+  segoff();
+  seg3();
+  segoff();
+  seg6();
+  segoff();
+  seg7();
+  segoff();
+  //1-2-3-4-5-6-7
+}
+
+
+//1110 0110
+}
+
+void seg1(){
+digitalWrite(SEG_A0_PIN, LOW);
+digitalWrite(SEG_A1_PIN, LOW);
+digitalWrite(SEG_A2_PIN, LOW);
+digitalWrite(SEG_A3_PIN, LOW);
+digitalWrite(SEG_A4_PIN, LOW);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg2(){
+digitalWrite(SEG_A0_PIN, HIGH);
+digitalWrite(SEG_A1_PIN, LOW);
+digitalWrite(SEG_A2_PIN, LOW);
+digitalWrite(SEG_A3_PIN, LOW);
+digitalWrite(SEG_A4_PIN, LOW);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg3(){
+digitalWrite(SEG_A0_PIN, LOW);
+digitalWrite(SEG_A1_PIN, HIGH);
+digitalWrite(SEG_A2_PIN, LOW);
+digitalWrite(SEG_A3_PIN, LOW);
+digitalWrite(SEG_A4_PIN, LOW);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg4(){
+digitalWrite(SEG_A0_PIN, HIGH);
+digitalWrite(SEG_A1_PIN, HIGH);
+digitalWrite(SEG_A2_PIN, LOW);
+digitalWrite(SEG_A3_PIN, LOW);
+digitalWrite(SEG_A4_PIN, LOW);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg5(){
+digitalWrite(SEG_A0_PIN, LOW);
+digitalWrite(SEG_A1_PIN, LOW);
+digitalWrite(SEG_A2_PIN, HIGH);
+digitalWrite(SEG_A3_PIN, LOW);
+digitalWrite(SEG_A4_PIN, LOW);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg6(){
+digitalWrite(SEG_A0_PIN, HIGH);
+digitalWrite(SEG_A1_PIN, LOW);
+digitalWrite(SEG_A2_PIN, HIGH);
+digitalWrite(SEG_A3_PIN, LOW);
+digitalWrite(SEG_A4_PIN, LOW);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg7(){
+digitalWrite(SEG_A0_PIN, LOW);
+digitalWrite(SEG_A1_PIN, HIGH);
+digitalWrite(SEG_A2_PIN, HIGH);
+digitalWrite(SEG_A3_PIN, LOW);
+digitalWrite(SEG_A4_PIN, LOW);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg8(){
+digitalWrite(SEG_A0_PIN, HIGH);
+digitalWrite(SEG_A1_PIN, HIGH);
+digitalWrite(SEG_A2_PIN, HIGH);
+digitalWrite(SEG_A3_PIN, LOW);
+digitalWrite(SEG_A4_PIN, LOW);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg9(){
+digitalWrite(SEG_A0_PIN, LOW);
+digitalWrite(SEG_A1_PIN, LOW);
+digitalWrite(SEG_A2_PIN, LOW);
+digitalWrite(SEG_A3_PIN, HIGH);
+digitalWrite(SEG_A4_PIN, LOW);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg10(){
+digitalWrite(SEG_A0_PIN, HIGH);
+digitalWrite(SEG_A1_PIN, LOW);
+digitalWrite(SEG_A2_PIN, LOW);
+digitalWrite(SEG_A3_PIN, HIGH);
+digitalWrite(SEG_A4_PIN, LOW);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg11(){
+digitalWrite(SEG_A0_PIN, LOW);
+digitalWrite(SEG_A1_PIN, HIGH);
+digitalWrite(SEG_A2_PIN, LOW);
+digitalWrite(SEG_A3_PIN, HIGH);
+digitalWrite(SEG_A4_PIN, LOW);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg12(){
+digitalWrite(SEG_A0_PIN, HIGH);
+digitalWrite(SEG_A1_PIN, HIGH);
+digitalWrite(SEG_A2_PIN, LOW);
+digitalWrite(SEG_A3_PIN, HIGH);
+digitalWrite(SEG_A4_PIN, LOW);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg13(){
+digitalWrite(SEG_A0_PIN, LOW);
+digitalWrite(SEG_A1_PIN, LOW);
+digitalWrite(SEG_A2_PIN, HIGH);
+digitalWrite(SEG_A3_PIN, HIGH);
+digitalWrite(SEG_A4_PIN, LOW);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg14(){
+digitalWrite(SEG_A0_PIN, HIGH);
+digitalWrite(SEG_A1_PIN, LOW);
+digitalWrite(SEG_A2_PIN, HIGH);
+digitalWrite(SEG_A3_PIN, HIGH);
+digitalWrite(SEG_A4_PIN, LOW);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg15(){
+digitalWrite(SEG_A0_PIN, LOW);
+digitalWrite(SEG_A1_PIN, HIGH);
+digitalWrite(SEG_A2_PIN, HIGH);
+digitalWrite(SEG_A3_PIN, HIGH);
+digitalWrite(SEG_A4_PIN, LOW);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg16(){
+digitalWrite(SEG_A0_PIN, HIGH);
+digitalWrite(SEG_A1_PIN, HIGH);
+digitalWrite(SEG_A2_PIN, HIGH);
+digitalWrite(SEG_A3_PIN, HIGH);
+digitalWrite(SEG_A4_PIN, LOW);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg17(){
+digitalWrite(SEG_A0_PIN, LOW);
+digitalWrite(SEG_A1_PIN, LOW);
+digitalWrite(SEG_A2_PIN, LOW);
+digitalWrite(SEG_A3_PIN, LOW);
+digitalWrite(SEG_A4_PIN, HIGH);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg18(){
+digitalWrite(SEG_A0_PIN, HIGH);
+digitalWrite(SEG_A1_PIN, LOW);
+digitalWrite(SEG_A2_PIN, LOW);
+digitalWrite(SEG_A3_PIN, LOW);
+digitalWrite(SEG_A4_PIN, HIGH);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg19(){
+digitalWrite(SEG_A0_PIN, LOW);
+digitalWrite(SEG_A1_PIN, HIGH);
+digitalWrite(SEG_A2_PIN, LOW);
+digitalWrite(SEG_A3_PIN, LOW);
+digitalWrite(SEG_A4_PIN, HIGH);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg20(){
+digitalWrite(SEG_A0_PIN, HIGH);
+digitalWrite(SEG_A1_PIN, HIGH);
+digitalWrite(SEG_A2_PIN, LOW);
+digitalWrite(SEG_A3_PIN, LOW);
+digitalWrite(SEG_A4_PIN, HIGH);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg21(){
+digitalWrite(SEG_A0_PIN, LOW);
+digitalWrite(SEG_A1_PIN, LOW);
+digitalWrite(SEG_A2_PIN, HIGH);
+digitalWrite(SEG_A3_PIN, LOW);
+digitalWrite(SEG_A4_PIN, HIGH);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg22(){
+digitalWrite(SEG_A0_PIN, HIGH);
+digitalWrite(SEG_A1_PIN, LOW);
+digitalWrite(SEG_A2_PIN, HIGH);
+digitalWrite(SEG_A3_PIN, LOW);
+digitalWrite(SEG_A4_PIN, HIGH);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg23(){
+digitalWrite(SEG_A0_PIN, LOW);
+digitalWrite(SEG_A1_PIN, HIGH);
+digitalWrite(SEG_A2_PIN, HIGH);
+digitalWrite(SEG_A3_PIN, LOW);
+digitalWrite(SEG_A4_PIN, HIGH);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg24(){
+digitalWrite(SEG_A0_PIN, HIGH);
+digitalWrite(SEG_A1_PIN, HIGH);
+digitalWrite(SEG_A2_PIN, HIGH);
+digitalWrite(SEG_A3_PIN, LOW);
+digitalWrite(SEG_A4_PIN, HIGH);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg25(){
+digitalWrite(SEG_A0_PIN, LOW);
+digitalWrite(SEG_A1_PIN, LOW);
+digitalWrite(SEG_A2_PIN, LOW);
+digitalWrite(SEG_A3_PIN, HIGH);
+digitalWrite(SEG_A4_PIN, HIGH);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg26(){
+digitalWrite(SEG_A0_PIN, HIGH);
+digitalWrite(SEG_A1_PIN, LOW);
+digitalWrite(SEG_A2_PIN, LOW);
+digitalWrite(SEG_A3_PIN, HIGH);
+digitalWrite(SEG_A4_PIN, HIGH);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg27(){
+digitalWrite(SEG_A0_PIN, LOW);
+digitalWrite(SEG_A1_PIN, HIGH);
+digitalWrite(SEG_A2_PIN, LOW);
+digitalWrite(SEG_A3_PIN, HIGH);
+digitalWrite(SEG_A4_PIN, HIGH);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, LOW);
+}
+
+void seg28(){
+digitalWrite(SEG_A0_PIN, HIGH);
+digitalWrite(SEG_A1_PIN, HIGH);
+digitalWrite(SEG_A2_PIN, LOW);
+digitalWrite(SEG_A3_PIN, HIGH);
+digitalWrite(SEG_A4_PIN, HIGH);
+digitalWrite(SEG_EN_PIN, LOW);
+digitalWrite(SEG_CS_PIN, HIGH);
+}
+
+void segoff(){
+digitalWrite(SEG_EN_PIN, HIGH);
+}
+

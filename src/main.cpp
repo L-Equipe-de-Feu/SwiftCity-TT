@@ -7,15 +7,6 @@ void setup() {
     appelVariables();
 
 
-
-  //7-Segment Display Init
-  digitalWrite(OE,LOW);        //Enables SR Operation
-  initializeSRData();          //Prepares SR and clears data on serial line
-
-  //Test
-  setDigit(0,0,4,true);
-  setDigit(0,1,5,true);
-  setDigit(0,2,6,true);
 }
 
 void loop() {
@@ -59,7 +50,5 @@ void loop() {
     Serial.print(digitalRead(JOY_HB_PIN));
     Serial.println();
   }
-
-  refreshDisplay(); 
 
 }
