@@ -44,6 +44,8 @@ void seg27();
 void seg28();
 void segsave();
 void segoff();
+void segon();
+void appel();
 
 void testaffichage(int i);
 
