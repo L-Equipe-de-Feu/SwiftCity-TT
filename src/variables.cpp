@@ -2,7 +2,8 @@
 #include "variables.h"
 #include "segments.h"
 
-void appelVariables(){
+void appelVariables()
+{
 
     pinMode(X_AXIS_PIN, INPUT);
     pinMode(Y_AXIS_PIN, INPUT);
@@ -10,7 +11,7 @@ void appelVariables(){
 
     pinMode(JOY_GD_PIN, INPUT);
     pinMode(JOY_HB_PIN, INPUT);
-    
+
     pinMode(BOU_A_PIN, INPUT);
     pinMode(BOU_B_PIN, INPUT);
     pinMode(BOU_M_PIN, INPUT);
@@ -31,7 +32,5 @@ void appelVariables(){
     pinMode(SEG_D_PIN, OUTPUT);
     pinMode(SEG_A3_PIN, OUTPUT);
     pinMode(SEG_EN_PIN, OUTPUT);
-    pinMode(SEG_A4_PIN, OUTPUT);  
-
-
+    pinMode(SEG_A4_PIN, OUTPUT);
 }

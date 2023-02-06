@@ -3,16 +3,16 @@
 
 #include <Arduino.h>
 
-void zero(int a);
-void un(int a);
-void deux(int a);
-void trois(int a);
-void quatre(int a);
-void cinq(int a);
-void six(int a);
-void sept(int a);
-void huit(int a);
-void neuf(int a);
+int zero(int a);
+int un(int a);
+int deux(int a);
+int trois(int a);
+int quatre(int a);
+int cinq(int a);
+int six(int a);
+int sept(int a);
+int huit(int a);
+int neuf(int a);
 
 void seg1();
 void seg2();
@@ -42,9 +42,10 @@ void seg25();
 void seg26();
 void seg27();
 void seg28();
+void segsave();
 void segoff();
 
-void testaffichage();
+void testaffichage(int i);
 
 
 

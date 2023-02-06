@@ -2,629 +2,624 @@
 #include "variables.h"
 #include "segments.h"
 
-void zero(int a)
+// Pour les pins
+// 1 = 22-23-24-25-26-27-28
+// 2 = 15-16-17-18-19-20-21
+// 3 = 8-9-10-11-12-13-14
+// 4 = 1-2-3-4-5-6-7
+
+int zero(int a)
 {
-  // tous sauf 22-23-24-25-26-27 -- 15-16-17-18-19-20 -- 8-9-10-11-12-13 -- 1-2-3-4-5-6
+  // 22-23-24-25-26-27 -- 15-16-17-18-19-20 -- 8-9-10-11-12-13 -- 1-2-3-4-5-6
+  // 1111 1100
   if (a == 1)
   {
     seg22();
-    segoff();
+    segsave();
     seg23();
-    segoff();
+    segsave();
     seg24();
-    segoff();
+    segsave();
     seg25();
-    segoff();
+    segsave();
     seg26();
-    segoff();
+    segsave();
     seg27();
-    segoff();
-
-    // 22-23-24-2;5-26-27-28
+    segsave();
+    return 0;
   }
   if (a == 2)
   {
     seg15();
-    segoff();
+    segsave();
     seg16();
-    segoff();
+    segsave();
     seg17();
-    segoff();
+    segsave();
     seg18();
-    segoff();
+    segsave();
     seg19();
-    segoff();
+    segsave();
     seg20();
-    segoff();
-
-    // 15-16-17-18-19-20-21
+    segsave();
+    return 0;
   }
   if (a == 3)
   {
     seg8();
-    segoff();
+    segsave();
     seg9();
-    segoff();
+    segsave();
     seg10();
-    segoff();
+    segsave();
     seg11();
-    segoff();
+    segsave();
     seg12();
-    segoff();
+    segsave();
     seg13();
-    segoff();
-
-    // 8-9-10-11-12-13-14
+    segsave();
+    return 0;
   }
   if (a == 4)
   {
     seg1();
-    segoff();
+    segsave();
     seg2();
-    segoff();
+    segsave();
     seg3();
-    segoff();
+    segsave();
     seg4();
-    segoff();
+    segsave();
     seg5();
-    segoff();
+    segsave();
     seg6();
-    segoff();
+    segsave();
+    return 0;
   }
+  return 1;
 }
 
-void un(int a)
+int un(int a)
 {
   // juste 23-24 -- 16-17 -- 9-10 -- 2-3
+  // 0110 0000
   if (a == 1)
   {
     seg23();
-    segoff();
+    segsave();
     seg24();
-    segoff();
-
-    // 22-23-24-25-26-27-28
+    segsave();
+    return 0;
   }
   if (a == 2)
   {
     seg16();
-    segoff();
+    segsave();
     seg17();
-    segoff();
-
-    // 15-16-17-18-19-20-21
+    segsave();
+    return 0;
   }
   if (a == 3)
   {
     seg9();
-    segoff();
+    segsave();
     seg10();
-    segoff();
-
-    // 8-9-10-11-12-13-14
+    segsave();
+    return 0;
   }
   if (a == 4)
   {
     seg2();
-    segoff();
+    segsave();
     seg3();
-    segoff();
-    // 1-2-3-4-5-6-7
+    segsave();
+    return 0;
   }
-
-  // 0110 0000
+  return 1;
 }
 
-void deux(int a)
+int deux(int a)
 {
   // 22-23-25-26-28 -- 15-16-18-19-21 -- 8-9-11-12-14 -- 1-2-4-5-7
+  // 1101 1010
   if (a == 1)
   {
     seg22();
-    segoff();
+    segsave();
     seg23();
-    segoff();
+    segsave();
     seg25();
-    segoff();
+    segsave();
     seg26();
-    segoff();
+    segsave();
     seg28();
-    segoff();
-    // 22-23-24-25-26-27-28
+    segsave();
+    return 0;
   }
   if (a == 2)
   {
     seg15();
-    segoff();
+    segsave();
     seg16();
-    segoff();
+    segsave();
     seg18();
-    segoff();
+    segsave();
     seg19();
-    segoff();
+    segsave();
     seg21();
-    segoff();
-    // 15-16-17-18-19-20-21
+    segsave();
+    return 0;
   }
   if (a == 3)
   {
     seg8();
-    segoff();
+    segsave();
     seg9();
-    segoff();
+    segsave();
     seg11();
-    segoff();
+    segsave();
     seg12();
-    segoff();
+    segsave();
     seg14();
-    segoff();
-    // 8-9-10-11-12-13-14
+    segsave();
+    return 0;
   }
   if (a == 4)
   {
     seg1();
-    segoff();
+    segsave();
     seg2();
-    segoff();
+    segsave();
     seg4();
-    segoff();
+    segsave();
     seg5();
-    segoff();
+    segsave();
     seg7();
-    segoff();
-    // 1-2-3-4-5-6-7
+    segsave();
+    return 0;
   }
-
-  // 1101 1010
+  return 1;
 }
 
-void trois(int a)
+int trois(int a)
 {
   // 22-23-24-25-28 -- 15-16-17-18-21 -- 8-9-10-11-14 -- 1-2-3-4-7
+  // 1111 0010
   if (a == 1)
   {
     seg22();
-    segoff();
+    segsave();
     seg23();
-    segoff();
+    segsave();
     seg24();
-    segoff();
+    segsave();
     seg25();
-    segoff();
+    segsave();
     seg28();
-    segoff();
-    // 22-23-24-25-26-27-28
+    segsave();
+    return 0;
   }
   if (a == 2)
   {
     seg15();
-    segoff();
+    segsave();
     seg16();
-    segoff();
+    segsave();
     seg17();
-    segoff();
+    segsave();
     seg18();
-    segoff();
+    segsave();
     seg21();
-    segoff();
-    // 15-16-17-18-19-20-21
+    segsave();
+    return 0;
   }
   if (a == 3)
   {
     seg8();
-    segoff();
+    segsave();
     seg9();
-    segoff();
+    segsave();
     seg10();
-    segoff();
+    segsave();
     seg11();
-    segoff();
+    segsave();
     seg14();
-    segoff();
-    // 8-9-10-11-12-13-14
+    segsave();
+    return 0;
   }
   if (a == 4)
   {
     seg1();
-    segoff();
+    segsave();
     seg2();
-    segoff();
+    segsave();
     seg3();
-    segoff();
+    segsave();
     seg4();
-    segoff();
+    segsave();
     seg7();
-    segoff();
-    // 1-2-3-4-5-6-7
+    segsave();
+    return 0;
   }
-
-  // 1111 0010
+  return 1;
 }
 
-void quatre(int a)
+int quatre(int a)
 {
   // 23-24-27-28 -- 16-17-20-21 -- 9-10-13-14 -- 2-3-6-7
+  // 0110 0110
   if (a == 1)
   {
     seg23();
-    segoff();
+    segsave();
     seg24();
-    segoff();
+    segsave();
     seg27();
-    segoff();
+    segsave();
     seg28();
-    segoff();
-    // 22-23-24-25-26-27-28
+    segsave();
+    return 0;
   }
   if (a == 2)
   {
     seg16();
-    segoff();
+    segsave();
     seg17();
-    segoff();
+    segsave();
     seg20();
-    segoff();
+    segsave();
     seg21();
-    segoff();
-    // 15-16-17-18-19-20-21
+    segsave();
+    return 0;
   }
   if (a == 3)
   {
     seg9();
-    segoff();
+    segsave();
     seg10();
-    segoff();
+    segsave();
     seg13();
-    segoff();
+    segsave();
     seg14();
-    segoff();
-    // 8-9-10-11-12-13-14
+    segsave();
+    return 0;
   }
   if (a == 4)
   {
     seg2();
-    segoff();
+    segsave();
     seg3();
-    segoff();
+    segsave();
     seg6();
-    segoff();
+    segsave();
     seg7();
-    segoff();
-    // 1-2-3-4-5-6-7
+    segsave();
+    return 0;
   }
-
-  // 0110 0110
+  return 1;
 }
 
-void cinq(int a)
+int cinq(int a)
 {
   // 22-24-25-26-28 -- 15-17-18-19-21 -- 8-10-11-13-14 -- 1-3-4-5-7
+  // 1011 0110
   if (a == 1)
   {
     seg22();
-    segoff();
+    segsave();
     seg24();
-    segoff();
+    segsave();
     seg25();
-    segoff();
+    segsave();
     seg26();
-    segoff();
+    segsave();
     seg28();
-    segoff();
-    // 22-23-24-25-26-27-28
+    segsave();
+    return 0;
   }
   if (a == 2)
   {
     seg15();
-    segoff();
+    segsave();
     seg17();
-    segoff();
+    segsave();
     seg18();
-    segoff();
+    segsave();
     seg19();
-    segoff();
+    segsave();
     seg21();
-    segoff();
-    // 15-16-17-18-19-20-21
+    segsave();
+    return 0;
   }
   if (a == 3)
   {
     seg8();
-    segoff();
+    segsave();
     seg10();
-    segoff();
+    segsave();
     seg11();
-    segoff();
+    segsave();
     seg13();
-    segoff();
+    segsave();
     seg14();
-    segoff();
-    // 8-9-10-11-12-13-14
+    segsave();
+    return 0;
   }
   if (a == 4)
   {
     seg1();
-    segoff();
+    segsave();
     seg3();
-    segoff();
+    segsave();
     seg4();
-    segoff();
+    segsave();
     seg5();
-    segoff();
+    segsave();
     seg7();
-    segoff();
-    // 1-2-3-4-5-6-7
+    segsave();
+    return 0;
   }
-
-  // 1011 0110
+  return 1;
 }
 
-void six(int a)
+int six(int a)
 {
   // 22-24-25-26-27-28 -- 15-17-18-19-20-21 -- 8-10-11-12-13-14 -- 1-3-4-5-6-7
+  // 1011 1110
   if (a == 1)
   {
     seg22();
-    segoff();
+    segsave();
     seg24();
-    segoff();
+    segsave();
     seg25();
-    segoff();
+    segsave();
     seg26();
-    segoff();
+    segsave();
     seg27();
-    segoff();
+    segsave();
     seg28();
-    segoff();
-    // 22-23-24-25-26-27-28
+    segsave();
+    return 0;
   }
   if (a == 2)
   {
     seg15();
-    segoff();
+    segsave();
     seg17();
-    segoff();
+    segsave();
     seg18();
-    segoff();
+    segsave();
     seg19();
-    segoff();
+    segsave();
     seg20();
-    segoff();
+    segsave();
     seg21();
-    segoff();
-    // 15-16-17-18-19-20-21
+    segsave();
+    return 0;
   }
   if (a == 3)
   {
     seg8();
-    segoff();
+    segsave();
     seg10();
-    segoff();
+    segsave();
     seg11();
-    segoff();
+    segsave();
     seg12();
-    segoff();
+    segsave();
     seg13();
-    segoff();
+    segsave();
     seg14();
-    segoff();
-    // 8-9-10-11-12-13-14
+    segsave();
+    return 0;
   }
   if (a == 4)
   {
     seg1();
-    segoff();
+    segsave();
     seg3();
-    segoff();
+    segsave();
     seg4();
-    segoff();
+    segsave();
     seg5();
-    segoff();
+    segsave();
     seg6();
-    segoff();
+    segsave();
     seg7();
-    segoff();
-    // 1-2-3-4-5-6-7
+    segsave();
+    return 0;
   }
-
-  // 1011 1110
+  return 1;
 }
 
-void sept(int a)
+int sept(int a)
 {
   // 22-23-24 -- 15-16-17 -- 8-9-10 -- 1-2-3
+  // 1110 0000
   if (a == 1)
   {
     seg22();
-    segoff();
+    segsave();
     seg23();
-    segoff();
+    segsave();
     seg24();
-    segoff();
-
-    // 22-23-24-25-26-27-28
+    segsave();
+    return 0;
   }
   if (a == 2)
   {
     seg15();
-    segoff();
+    segsave();
     seg16();
-    segoff();
+    segsave();
     seg17();
-    segoff();
-
-    // 15-16-17-18-19-20-21
+    segsave();
+    return 0;
   }
   if (a == 3)
   {
     seg8();
-    segoff();
+    segsave();
     seg9();
-    segoff();
+    segsave();
     seg10();
-    segoff();
-
-    // 8-9-10-11-12-13-14
+    segsave();
+    return 0;
   }
   if (a == 4)
   {
     seg1();
-    segoff();
+    segsave();
     seg2();
-    segoff();
+    segsave();
     seg3();
-    segoff();
-
-    // 1-2-3-4-5-6-7
+    segsave();
+    return 0;
   }
-
-  // 1110 0000
+  return 1;
 }
 
-void huit(int a)
+int huit(int a)
 {
   // Tous ouvert
+  // 1111 1110
   if (a == 1)
   {
     seg22();
-    segoff();
+    segsave();
     seg23();
-    segoff();
+    segsave();
     seg24();
-    segoff();
+    segsave();
     seg25();
-    segoff();
+    segsave();
     seg26();
-    segoff();
+    segsave();
     seg27();
-    segoff();
+    segsave();
     seg28();
-    segoff();
-
-    // 22-23-24-25-26-27-28
+    segsave();
+    return 0;
   }
   if (a == 2)
   {
     seg15();
-    segoff();
+    segsave();
     seg16();
-    segoff();
+    segsave();
     seg17();
-    segoff();
+    segsave();
     seg18();
-    segoff();
+    segsave();
     seg19();
-    segoff();
+    segsave();
     seg20();
-    segoff();
+    segsave();
     seg21();
-    segoff();
-
-    // 15-16-17-18-19-20-21
+    segsave();
+    return 0;
   }
   if (a == 3)
   {
     seg8();
-    segoff();
+    segsave();
     seg9();
-    segoff();
+    segsave();
     seg10();
-    segoff();
+    segsave();
     seg11();
-    segoff();
+    segsave();
     seg12();
-    segoff();
+    segsave();
     seg13();
-    segoff();
+    segsave();
     seg14();
-    segoff();
-
-    // 8-9-10-11-12-13-14
+    segsave();
+    return 0;
   }
   if (a == 4)
   {
     seg1();
-    segoff();
+    segsave();
     seg2();
-    segoff();
+    segsave();
     seg3();
-    segoff();
+    segsave();
     seg4();
-    segoff();
+    segsave();
     seg5();
-    segoff();
+    segsave();
     seg6();
-    segoff();
+    segsave();
     seg7();
-    segoff();
-    // 1-2-3-4-5-6-7
+    segsave();
+    return 0;
   }
-
-  // 1111 1110
+  return 1;
 }
 
-void neuf(int a)
+int neuf(int a)
 {
   // 22-23-24-27-28 -- 15-16-17-20-21 -- 8-9-10-13-14 -- 1-2-3-6-7
+  // 1110 0110
   if (a == 1)
   {
     seg22();
-    segoff();
+    segsave();
     seg23();
-    segoff();
+    segsave();
     seg24();
-    segoff();
+    segsave();
     seg27();
-    segoff();
+    segsave();
     seg28();
-    segoff();
-
-    // 22-23-24-25-26-27-28
+    segsave();
+    return 0;
   }
   if (a == 2)
   {
     seg15();
-    segoff();
+    segsave();
     seg16();
-    segoff();
+    segsave();
     seg17();
-    segoff();
+    segsave();
     seg20();
-    segoff();
+    segsave();
     seg21();
-    segoff();
-    // 15-16-17-18-19-20-21
+    segsave();
+    return 0;
   }
   if (a == 3)
   {
     seg8();
-    segoff();
+    segsave();
     seg9();
-    segoff();
+    segsave();
     seg10();
-    segoff();
+    segsave();
     seg13();
-    segoff();
+    segsave();
     seg14();
-    segoff();
-    // 8-9-10-11-12-13-14
+    segsave();
+    return 0;
   }
   if (a == 4)
   {
     seg1();
-    segoff();
+    segsave();
     seg2();
-    segoff();
+    segsave();
     seg3();
-    segoff();
+    segsave();
     seg6();
-    segoff();
+    segsave();
     seg7();
-    segoff();
-    // 1-2-3-4-5-6-7
+    segsave();
+    return 0;
   }
-
-  // 1110 0110
+  return 1;
 }
 
 void seg1()
@@ -636,6 +631,7 @@ void seg1()
   digitalWrite(SEG_A4_PIN, LOW);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg2()
@@ -647,6 +643,7 @@ void seg2()
   digitalWrite(SEG_A4_PIN, LOW);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg3()
@@ -658,6 +655,7 @@ void seg3()
   digitalWrite(SEG_A4_PIN, LOW);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg4()
@@ -669,6 +667,7 @@ void seg4()
   digitalWrite(SEG_A4_PIN, LOW);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg5()
@@ -680,6 +679,7 @@ void seg5()
   digitalWrite(SEG_A4_PIN, LOW);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg6()
@@ -691,6 +691,7 @@ void seg6()
   digitalWrite(SEG_A4_PIN, LOW);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg7()
@@ -702,6 +703,7 @@ void seg7()
   digitalWrite(SEG_A4_PIN, LOW);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg8()
@@ -713,6 +715,7 @@ void seg8()
   digitalWrite(SEG_A4_PIN, LOW);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg9()
@@ -724,6 +727,7 @@ void seg9()
   digitalWrite(SEG_A4_PIN, LOW);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg10()
@@ -735,6 +739,7 @@ void seg10()
   digitalWrite(SEG_A4_PIN, LOW);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg11()
@@ -746,6 +751,7 @@ void seg11()
   digitalWrite(SEG_A4_PIN, LOW);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg12()
@@ -757,6 +763,7 @@ void seg12()
   digitalWrite(SEG_A4_PIN, LOW);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg13()
@@ -768,6 +775,7 @@ void seg13()
   digitalWrite(SEG_A4_PIN, LOW);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg14()
@@ -779,6 +787,7 @@ void seg14()
   digitalWrite(SEG_A4_PIN, LOW);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg15()
@@ -790,6 +799,7 @@ void seg15()
   digitalWrite(SEG_A4_PIN, LOW);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg16()
@@ -801,6 +811,7 @@ void seg16()
   digitalWrite(SEG_A4_PIN, LOW);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg17()
@@ -812,6 +823,7 @@ void seg17()
   digitalWrite(SEG_A4_PIN, HIGH);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg18()
@@ -823,6 +835,7 @@ void seg18()
   digitalWrite(SEG_A4_PIN, HIGH);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg19()
@@ -834,6 +847,7 @@ void seg19()
   digitalWrite(SEG_A4_PIN, HIGH);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg20()
@@ -845,6 +859,7 @@ void seg20()
   digitalWrite(SEG_A4_PIN, HIGH);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg21()
@@ -856,6 +871,7 @@ void seg21()
   digitalWrite(SEG_A4_PIN, HIGH);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg22()
@@ -867,6 +883,7 @@ void seg22()
   digitalWrite(SEG_A4_PIN, HIGH);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg23()
@@ -878,6 +895,7 @@ void seg23()
   digitalWrite(SEG_A4_PIN, HIGH);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg24()
@@ -889,6 +907,7 @@ void seg24()
   digitalWrite(SEG_A4_PIN, HIGH);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg25()
@@ -900,6 +919,7 @@ void seg25()
   digitalWrite(SEG_A4_PIN, HIGH);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg26()
@@ -911,6 +931,7 @@ void seg26()
   digitalWrite(SEG_A4_PIN, HIGH);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg27()
@@ -922,6 +943,7 @@ void seg27()
   digitalWrite(SEG_A4_PIN, HIGH);
   digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
 }
 
 void seg28()
@@ -932,99 +954,52 @@ void seg28()
   digitalWrite(SEG_A3_PIN, HIGH);
   digitalWrite(SEG_A4_PIN, HIGH);
   digitalWrite(SEG_EN_PIN, LOW);
+  digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
+}
+
+void segsave()
+{
   digitalWrite(SEG_CS_PIN, HIGH);
+  digitalWrite(SEG_WR_PIN, HIGH);
+  digitalWrite(SEG_A0_PIN, LOW);
+  digitalWrite(SEG_A1_PIN, LOW);
+  digitalWrite(SEG_A2_PIN, LOW);
+  digitalWrite(SEG_A3_PIN, LOW);
+  digitalWrite(SEG_A4_PIN, LOW);
 }
 
 void segoff()
 {
+  digitalWrite(SEG_A0_PIN, LOW);
+  digitalWrite(SEG_A1_PIN, LOW);
+  digitalWrite(SEG_A2_PIN, LOW);
+  digitalWrite(SEG_A3_PIN, LOW);
+  digitalWrite(SEG_A4_PIN, LOW);
   digitalWrite(SEG_EN_PIN, HIGH);
 }
 
-void testaffichage(){
-  un(1);
+void testaffichage(int i)
+{
+  un(i);
   delay(500);
-  deux(1);
+  deux(i);
   delay(500);
-  trois(1);
+  trois(i);
   delay(500);
-  quatre(1);
+  quatre(i);
   delay(500);
-  cinq(1);
+  cinq(i);
   delay(500);
-  six(1);
+  six(i);
   delay(500);
-  sept(1);
+  sept(i);
   delay(500);
-  huit(1);
+  huit(i);
   delay(500);
-  neuf(1);
+  neuf(i);
   delay(500);
-  zero(1);
+  zero(i);
   delay(500);
-
-  un(2);
-  delay(500);
-  deux(2);
-  delay(500);
-  trois(2);
-  delay(500);
-  quatre(2);
-  delay(500);
-  cinq(2);
-  delay(500);
-  six(2);
-  delay(500);
-  sept(2);
-  delay(500);
-  huit(2);
-  delay(500);
-  neuf(2);
-  delay(500);
-  zero(2);
-  delay(500);
-
-  un(3);
-  delay(500);
-  deux(3);
-  delay(500);
-  trois(3);
-  delay(500);
-  quatre(3);
-  delay(500);
-  cinq(3);
-  delay(500);
-  six(3);
-  delay(500);
-  sept(3);
-  delay(500);
-  huit(3);
-  delay(500);
-  neuf(3);
-  delay(500);
-  zero(3);
-  delay(500);
-
-  un(4);
-  delay(500);
-  deux(4);
-  delay(500);
-  trois(4);
-  delay(500);
-  quatre(4);
-  delay(500);
-  cinq(4);
-  delay(500);
-  six(4);
-  delay(500);
-  sept(4);
-  delay(500);
-  huit(4);
-  delay(500);
-  neuf(4);
-  delay(500);
-  zero(4);
-  delay(500);
-
+  segoff();
 }
-
-
