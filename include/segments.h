@@ -44,6 +44,8 @@ void seg27();
 void seg28();
 void segoff();
 
+void testaffichage();
+
 
 
 #endif
