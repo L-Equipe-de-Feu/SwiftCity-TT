@@ -1,15 +1,18 @@
 #include <Arduino.h>
 #include <variables.h>
 #include <segments.h>
+#include <communication.h>
 
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(BAUD);
   appelVariables();
 }
 
 void loop()
 {
+
+
 
   if (digitalRead(BOU_A_PIN) == HIGH)
   {
@@ -64,3 +67,24 @@ void loop()
     Serial.println();
   }
 }
+
+/*---------------------------- Fonctions "Main" -----------------------------*/
+
+//void setup() {
+// Serial.begin(BAUD);               // Initialisation de la communication serielle
+//  pinMode(pinLED, OUTPUT);
+//  digitalWrite(pinLED, ledState);
+//}
+
+/* Boucle principale (infinie) */
+//void loop() {
+//
+//  if(shouldRead_){
+//    readMsg();
+//    sendMsg();
+//  }
+//
+//  potValue = analogRead(pinPOT);
+//  //Serial.println(potValue);          // debug
+//  delay(10);  // delais de 10 ms
+//}

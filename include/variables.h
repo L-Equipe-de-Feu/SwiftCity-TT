@@ -1,7 +1,8 @@
 #ifndef VARIABLES_H
 #define VARIABLES_H
 
-    #include <Arduino.h>
+#include <Arduino.h>
+#include <string.h>
 
 void appelVariables();
 
@@ -105,5 +106,19 @@ void appelVariables();
 #ifndef SEG_A4_PIN
 #define SEG_A4_PIN 46
 #endif
+
+#ifndef BAUD
+#define BAUD 9600        // Frequence de transmission serielle
+#endif
+
+String etatBoutonA;
+String etatBoutonB;
+String etatBoutonM;
+String etatBoutonP;
+String etatBoutonAD;
+String etatBoutonAG;
+String etatJoystick;
+String etatAcc;
+
 
 #endif
