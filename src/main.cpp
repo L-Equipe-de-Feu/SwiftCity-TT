@@ -26,11 +26,11 @@ void loop()
   if (digitalRead(BOU_B_PIN) == HIGH)
   {
     Serial.print("Boutton B cliquer \n");
-    Serial.print("Démarrage test de 7 segments \n");
-    for (int i = 1; i < 4; i++)
-    {
-      testaffichage(i);
-    }
+    //Serial.print("Démarrage test de 7 segments \n");
+    //for (int i = 1; i < 4; i++)
+    //{
+    //  testaffichage(i);
+    //}
   }
 
   if (digitalRead(BOU_M_PIN) == HIGH)
