@@ -1,78 +1,50 @@
 #include <communication.h>
-#include <variables.h>
 
-/*---------------------------- Variables globales ---------------------------*/
+  void Communication::serialReadReady() { shouldRead_ = true; }
+  void Communication::serialSendReady() { shouldSend_ = true; }
 
-volatile bool shouldSend_ = false;  // Drapeau prêt à envoyer un message
-volatile bool shouldRead_ = false;  // Drapeau prêt à lire un message
+  void Communication::sendMsg() {
+    StaticJsonDocument<500> doc;
+    // Elements du message
+    //doc["time"] = millis();
+    doc["Bouton A"] = etatBoutonA;
+    doc["Bouton B"] = etatBoutonB;
+    doc["Bouton Menu"] = etatBoutonM;
+    doc["Bouton Pause"] = etatBoutonP;
+    doc["Bouton Arriere Droit"] = etatBoutonARD;
+    doc["Bouton Arriere Gauche"] = etatBoutonARG;
+    doc["Joystick"] = etatJoystick;
+    doc["Accelerometre"] = etatAcc;
 
-/*---------------------------Definition de fonctions ------------------------*/
+    // Serialisation
+    serializeJson(doc, Serial);
 
-void serialEvent() { shouldRead_ = true; }
-
-
-String etatBoutonA;
-String etatBoutonB;
-String etatBoutonM;
-String etatBoutonP;
-String etatBoutonAD;
-String etatBoutonAG;
-String etatJoystick;
-String etatAcc;
-
-/*---------------------------Definition de fonctions ------------------------
-Fonction d'envoi
-Entrée : message
-Sortie : Aucun
-Traitement : Envoi du message
------------------------------------------------------------------------------*/
-void sendMsg() {
-  StaticJsonDocument<500> doc;
-  // Elements du message
-  //doc["time"] = millis();
-  doc["Bouton A"] = etatBoutonA;
-  doc["Bouton B"] = etatBoutonB;
-  doc["Bouton Menu"] = etatBoutonM;
-  doc["Bouton Pause"] = etatBoutonP;
-  doc["Bouton Arriere Droit"] = etatBoutonAD;
-  doc["Bouton Arriere Gauche"] = etatBoutonAG;
-  doc["Joystick"] = etatJoystick;
-  doc["Accelerometre"] = etatAcc;
-
-  // Serialisation
-  serializeJson(doc, Serial);
-
-  // Envoie
-  Serial.println();
-  shouldSend_ = false;
-}
-
-/*---------------------------Definition de fonctions ------------------------
-Fonction de reception
-Entrée : Aucun
-Sortie : message
-Traitement : Réception du message
------------------------------------------------------------------------------*/
-void readMsg(){
-  // Lecture du message Json
-  StaticJsonDocument<500> doc;
-  JsonVariant parse_time, parse_vitesse;
-
-  // Lecture sur le port Seriel
-  DeserializationError error = deserializeJson(doc, Serial);
-  shouldRead_ = false;
-
-  // Si erreur dans le message
-  if (error) {
-    Serial.print("deserialize() failed: ");
-    Serial.println(error.c_str());
-    return;
+    // Envoie
+    Serial.println();
+    //shouldSend_ = false;
   }
-  
-  // Analyse des éléments du message message
-  parse_time = doc["time"];
-  parse_vitesse = doc["vitesse"];
-  if (!parse_time.isNull() && !parse_vitesse.isNull()) {
+
+  void Communication::readMsg(){
+    // Lecture du message Json
+    StaticJsonDocument<500> doc;
+    JsonVariant parse_time, parse_vitesse;
+
+    // Lecture sur le port Seriel
+    DeserializationError error = deserializeJson(doc, Serial);
+    //shouldRead_ = false;
+
+    // Si erreur dans le message
+    if (error) {
+      Serial.print("deserialize() failed: ");
+      Serial.println(error.c_str());
+      return;
+    }
     
+    // Analyse des éléments du message message
+    parse_time = doc["time"];
+    parse_vitesse = doc["vitesse"];
+    if (!parse_time.isNull() && !parse_vitesse.isNull()) {
+      time = parse_time;
+      vitesse = parse_vitesse;
+    }
   }
-}

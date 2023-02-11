@@ -107,10 +107,58 @@ void appelVariables();
 #define SEG_A4_PIN 6
 #endif
 
-#ifndef BAUD
-#define BAUD 9600        // Frequence de transmission serielle
+//Etat bouton
+#ifndef BOU_A_ON
+#define BOU_A_ON "A1"
 #endif
 
+#ifndef BOU_A_OFF
+#define BOU_A_OFF "A0"
+#endif
 
+#ifndef BOU_B_ON
+#define BOU_B_ON "B1"
+#endif
+
+#ifndef BOU_B_OFF
+#define BOU_B_OFF "B0"
+#endif
+
+#ifndef BOU_M_ON
+#define BOU_M_ON "M1"
+#endif
+
+#ifndef BOU_M_OFF
+#define BOU_M_OFF "M0"
+#endif
+
+#ifndef BOU_P_ON
+#define BOU_P_ON "P1"
+#endif
+
+#ifndef BOU_P_OFF
+#define BOU_P_OFF "P0"
+#endif
+
+#ifndef BOU_ARD_ON
+#define BOU_ARD_ON "D1"
+#endif
+
+#ifndef BOU_ARD_OFF
+#define BOU_ARD_OFF "D0"
+#endif
+
+#ifndef BOU_ARG_ON
+#define BOU_ARG_ON "G1"
+#endif
+
+#ifndef BOU_ARG_OFF
+#define BOU_ARG_OFF "G0"
+#endif
+
+// Frequence de transmission serielle
+#ifndef BAUD
+#define BAUD 9600
+#endif
 
 #endif

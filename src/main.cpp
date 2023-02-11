@@ -70,21 +70,84 @@ void loop()
 
 /*---------------------------- Fonctions "Main" -----------------------------*/
 
-//void setup() {
-// Serial.begin(BAUD);               // Initialisation de la communication serielle
-//  pinMode(pinLED, OUTPUT);
-//  digitalWrite(pinLED, ledState);
-//}
+/*void loop() {
+  Communication com;
 
-/* Boucle principale (infinie) */
-//void loop() {
-//
-//  if(shouldRead_){
-//    readMsg();
-//    sendMsg();
-//  }
-//
-//  potValue = analogRead(pinPOT);
-//  //Serial.println(potValue);          // debug
-//  delay(10);  // delais de 10 ms
-//}
+  if (analogRead(JOY_GD_PIN) < 500 || analogRead(JOY_GD_PIN) > 524)
+  {
+    com.etatJoystick = "Jx" + String(analogRead(JOY_GD_PIN)) + "y" + String(analogRead(JOY_HB_PIN));
+  }
+  else
+  {
+    com.etatJoystick = "Jx0y0";
+  }
+
+  if (analogRead(JOY_GD_PIN) < 500 || analogRead(JOY_GD_PIN) > 524)
+  {
+    com.etatAcc = "Cx" + String(analogRead(X_AXIS_PIN)) + "y" + String(analogRead(Y_AXIS_PIN)) + "z" + String(analogRead(Z_AXIS_PIN));
+  }
+  else
+  {
+    com.etatAcc = "Cx0y0z0";
+  }
+  
+  if (digitalRead(BOU_A_PIN) == HIGH)
+  {
+    com.etatBoutonA = BOU_A_ON;
+  }
+  else
+  {
+    com.etatBoutonA = BOU_A_OFF;
+  }
+
+  if (digitalRead(BOU_B_PIN) == HIGH)
+  {
+    com.etatBoutonB = BOU_B_ON;
+  }
+  else
+  {
+    com.etatBoutonB = BOU_B_OFF;
+  }
+
+  if (digitalRead(BOU_M_PIN) == HIGH)
+  {
+    com.etatBoutonM = BOU_M_ON;
+  }
+  else
+  {
+    com.etatBoutonM = BOU_M_OFF;
+  }
+
+  if (digitalRead(BOU_S_PIN) == HIGH)
+  {
+    com.etatBoutonP = BOU_P_ON;
+  }
+  else
+  {
+    com.etatBoutonP = BOU_P_OFF;
+  }
+
+  if (digitalRead(BOU_ARD_PIN) == HIGH)
+  {
+    com.etatBoutonARD = BOU_ARD_ON;
+  }
+  else
+  {
+    com.etatBoutonARD = BOU_ARD_OFF;
+  }
+
+  if (digitalRead(BOU_ARG_PIN) == HIGH)
+  {
+    com.etatBoutonARG = BOU_ARG_ON;
+  }
+  else
+  {
+    com.etatBoutonARG = BOU_ARG_OFF;
+  }
+
+  if(com.shouldSend_)
+  {
+    com.sendMsg();
+  }
+
+}*/
