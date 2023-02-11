@@ -11,6 +11,15 @@ volatile bool shouldRead_ = false;  // Drapeau prêt à lire un message
 void serialEvent() { shouldRead_ = true; }
 
 
+String etatBoutonA;
+String etatBoutonB;
+String etatBoutonM;
+String etatBoutonP;
+String etatBoutonAD;
+String etatBoutonAG;
+String etatJoystick;
+String etatAcc;
+
 /*---------------------------Definition de fonctions ------------------------
 Fonction d'envoi
 Entrée : message

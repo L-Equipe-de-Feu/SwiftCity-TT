@@ -72,53 +72,45 @@ void appelVariables();
 
 //7 SEGMENTS
 #ifndef SEG_A0_PIN
-#define SEG_A0_PIN 38
+#define SEG_A0_PIN 2
 #endif
 
 #ifndef SEG_WR_PIN
-#define SEG_WR_PIN 39
+#define SEG_WR_PIN 46
 #endif
 
 #ifndef SEG_A1_PIN
-#define SEG_A1_PIN 40
+#define SEG_A1_PIN 3
 #endif
 
 #ifndef SEG_CS_PIN
-#define SEG_CS_PIN 41
+#define SEG_CS_PIN 48
 #endif
 
 #ifndef SEG_A2_PIN
-#define SEG_A2_PIN 42
+#define SEG_A2_PIN 4
 #endif
 
 #ifndef SEG_D_PIN
-#define SEG_D_PIN 43
+#define SEG_D_PIN 50
 #endif
 
 #ifndef SEG_A3_PIN
-#define SEG_A3_PIN 44
+#define SEG_A3_PIN 5
 #endif
 
 #ifndef SEG_EN_PIN
-#define SEG_EN_PIN 45
+#define SEG_EN_PIN 52
 #endif
 
 #ifndef SEG_A4_PIN
-#define SEG_A4_PIN 46
+#define SEG_A4_PIN 6
 #endif
 
 #ifndef BAUD
-#define BAUD 9600        // Frequence de transmission serielle
+#define BAUD 115200        // Frequence de transmission serielle
 #endif
 
-String etatBoutonA;
-String etatBoutonB;
-String etatBoutonM;
-String etatBoutonP;
-String etatBoutonAD;
-String etatBoutonAG;
-String etatJoystick;
-String etatAcc;
 
 
 #endif

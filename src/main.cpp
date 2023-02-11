@@ -2,6 +2,8 @@
 #include <variables.h>
 #include <segments.h>
 #include <communication.h>
+#include <string.h>
+#include <ArduinoJson.h>
 
 void setup()
 {
@@ -11,9 +13,7 @@ void setup()
 
 void loop()
 {
-
-
-
+  Serial.print("OK\n");
   if (digitalRead(BOU_A_PIN) == HIGH)
   {
     Serial.print("Boutton A cliquer \n");
