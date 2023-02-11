@@ -13,7 +13,7 @@ void setup()
 
 void loop()
 {
-  Serial.print("OK\n");
+  
   if (digitalRead(BOU_A_PIN) == HIGH)
   {
     Serial.print("Boutton A cliquer \n");
@@ -53,7 +53,7 @@ void loop()
     Serial.print("Boutton ARG cliquer \n");
   }
 
-  if (analogRead(JOY_GD_PIN > 1))
+  /*if (analogRead(JOY_GD_PIN > 1))
   {
     Serial.print("Valeur de joystick Gauche-Droit");
     Serial.print(digitalRead(JOY_GD_PIN));
@@ -65,7 +65,7 @@ void loop()
     Serial.print("Valeur de joystick Haut-Bas");
     Serial.print(digitalRead(JOY_HB_PIN));
     Serial.println();
-  }
+  }*/
 }
 
 /*---------------------------- Fonctions "Main" -----------------------------*/
