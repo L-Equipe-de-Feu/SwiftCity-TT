@@ -14,6 +14,9 @@ private:
 public:
     Police();
     ~Police();
+
+    void afficher();
+    char get_char();
 };
 
 Police::Police() {
@@ -25,8 +28,14 @@ Police::Police() {
     ressources.habitant = -4;
 }
 
-Police::~Police() {
+Police::~Police() {}
+
+void Police::afficher(){
+
 }
 
+char Police::get_char(){
+    return ' ';
+}
 
 #endif

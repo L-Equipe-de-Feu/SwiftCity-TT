@@ -15,6 +15,9 @@ private:
 public:
     Culture();
     ~Culture();
+
+    void afficher();
+    char get_char();
 };
 
 Culture::Culture(){
@@ -28,5 +31,12 @@ Culture::Culture(){
 
 Culture::~Culture(){}
 
+void Culture::afficher(){
+
+}
+
+char Culture::get_char(){
+    return ' ';
+}
 
 #endif

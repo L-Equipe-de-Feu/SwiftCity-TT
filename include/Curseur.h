@@ -24,6 +24,7 @@ class Curseur {
         void bougerBas();
         void bougerDroit();
         void bougerGauche();
+        Coordonnee get_Coordonnee();
         void afficher();
 };
 
@@ -37,27 +38,31 @@ Curseur::Curseur(int hauteurT, int largeurT){
 Curseur::~Curseur(){}
 
 void Curseur::bougerHaut(){
+    if(coordonnee.x != 0){
+        coordonnee.x -= 1;
+    }
+}
+
+void Curseur::bougerBas(){
+    if(coordonnee.x != hauteur-1){
+        coordonnee.x += 1;
+    }
+}
+
+void Curseur::bougerDroit(){
+    if(coordonnee.y != largeur-1){
+        coordonnee.y += 1;
+    }
+}
+        
+void Curseur::bougerGauche(){
     if(coordonnee.y != 0){
         coordonnee.y -= 1;
     }
 }
 
-void Curseur::bougerBas(){
-    if(coordonnee.y != hauteur-1){
-        coordonnee.y += 1;
-    }
-}
-
-void Curseur::bougerDroit(){
-    if(coordonnee.x != largeur-1){
-        coordonnee.x += 1;
-    }
-}
-        
-void Curseur::bougerGauche(){
-    if(coordonnee.x != 0){
-        coordonnee.x -= 1;
-    }
+Coordonnee Curseur::get_Coordonnee(){
+    return coordonnee;
 }
 
 

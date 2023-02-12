@@ -15,6 +15,9 @@ private:
 public:
     Pompier();
     ~Pompier();
+
+    void afficher();
+    char get_char();
 };
 
 Pompier::Pompier(){
@@ -28,5 +31,12 @@ Pompier::Pompier(){
 
 Pompier::~Pompier(){}
 
+void Pompier::afficher(){
+
+}
+
+char Pompier::get_char(){
+    return ' ';
+}
 
 #endif

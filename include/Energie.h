@@ -15,6 +15,9 @@ private:
 public:
     Energie();
     ~Energie();
+
+    void afficher();
+    char get_char();
 };
 
 Energie::Energie(){
@@ -28,5 +31,12 @@ Energie::Energie(){
 
 Energie::~Energie(){}
 
+void Energie::afficher(){
+
+}
+
+char Energie::get_char(){
+    return 'e';
+}
 
 #endif

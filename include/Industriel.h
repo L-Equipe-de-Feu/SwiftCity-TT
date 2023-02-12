@@ -14,6 +14,9 @@ private:
 public:
     Industriel();
     ~Industriel();
+
+    virtual void afficher()=0;
+    virtual char get_char()=0;
 };
 
 Industriel::Industriel(){

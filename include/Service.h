@@ -15,6 +15,9 @@ private:
 public:
     Service();
     ~Service();
+
+    virtual void afficher()=0;
+    virtual char get_char()=0;
 };
 
 Service::Service(){
