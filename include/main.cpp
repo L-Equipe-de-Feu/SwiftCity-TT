@@ -16,8 +16,7 @@ int main(int argc)
 {
 	ActionClavier clavier(menu, curseur, ville);
 
-	for(int i = 0; i<10; i++){
-		clavier.lireClavier();
+	while(clavier.lireClavier()){
 		ville->affiche(curseur);
 	}
 

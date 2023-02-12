@@ -26,7 +26,7 @@ class ActionClavier {
     public :
         ActionClavier(Menu* menuT, Curseur* curseurT, Ville* villeT);
         ~ActionClavier();
-        void lireClavier();
+        bool lireClavier();
 
 };
 
@@ -40,9 +40,12 @@ ActionClavier::ActionClavier(Menu* menuT, Curseur* curseurT,  Ville* villeT){
 ActionClavier::~ActionClavier(){}
 
     
-void ActionClavier::lireClavier(){
+bool ActionClavier::lireClavier(){
     char input;
     cin >> input;
+    cout << endl << endl << endl << endl << endl << endl << endl << endl;
+    //rajouter les calcule de monay ici pour les affichage
+
 
     switch (input)
     {
@@ -97,8 +100,11 @@ void ActionClavier::lireClavier(){
         break;
 
     default:
+        return false;
         break;
     }
+    return true;
+
 }
 
 #endif
