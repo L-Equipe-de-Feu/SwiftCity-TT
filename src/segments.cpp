@@ -15,61 +15,70 @@ int valeur4 = 0;
 
 void appel()
 {
-  segoff();
-  delay(100);
-  segon();
   // pour 1
   if (valeur1 == 1)
   {
     un(1);
+    Serial.print("1-1");
   }
   if (valeur2 == 1)
   {
     un(2);
+    Serial.print("2-1");
   }
   if (valeur3 == 1)
   {
     un(3);
+    Serial.print("3-1");
   }
   if (valeur4 == 1)
   {
     un(4);
+    Serial.print("4-1");
   }
 
   // pour 2
   if (valeur1 == 2)
   {
     deux(1);
+    Serial.print("1-2");
   }
   if (valeur2 == 2)
   {
     deux(2);
+    Serial.print("2-2");
   }
   if (valeur3 == 2)
   {
     deux(3);
+    Serial.print("3-2");
   }
   if (valeur4 == 2)
   {
     deux(4);
+    Serial.print("4-2");
   }
 
   // pour 3
   if (valeur1 == 3)
   {
     trois(1);
+    Serial.print("1-3");
   }
   if (valeur2 == 3)
   {
     trois(2);
+    Serial.print("2-3");
   }
   if (valeur3 == 3)
   {
     trois(3);
+    Serial.print("3-3");
   }
   if (valeur4 == 3)
   {
     trois(4);
+    Serial.print("4-3");
   }
 
   // pour 4

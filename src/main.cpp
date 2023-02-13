@@ -13,8 +13,8 @@ void setup()
 
 void loop()
 {
-  
-  if (digitalRead(BOU_A_PIN) == HIGH)
+
+  if (digitalRead(BOU_A_PIN) == LOW)
   {
     Serial.print("Boutton A cliquer \n");
     Serial.println("Allumange de la LED1");
@@ -23,32 +23,32 @@ void loop()
     digitalWrite(LED_1, LOW);
   }
 
-  if (digitalRead(BOU_B_PIN) == HIGH)
+  if (digitalRead(BOU_B_PIN) == LOW)
   {
     Serial.print("Boutton B cliquer \n");
-    //Serial.print("Démarrage test de 7 segments \n");
-    //for (int i = 1; i < 4; i++)
-    //{
-    //  testaffichage(i);
-    //}
+    Serial.print("Démarrage test de 7 segments \n");
+    for (int i = 1; i < 4; i++)
+    {
+      testaffichage(i);
+     }
   }
 
-  if (digitalRead(BOU_M_PIN) == HIGH)
+  if (digitalRead(BOU_M_PIN) == LOW)
   {
     Serial.print("Boutton M cliquer \n");
   }
 
-  if (digitalRead(BOU_S_PIN) == HIGH)
+  if (digitalRead(BOU_S_PIN) == LOW)
   {
     Serial.print("Boutton S cliquer \n");
   }
 
-  if (digitalRead(BOU_ARD_PIN) == HIGH)
+  if (digitalRead(BOU_ARD_PIN) == LOW)
   {
     Serial.print("Boutton ARD cliquer \n");
   }
 
-  if (digitalRead(BOU_ARG_PIN) == HIGH)
+  if (digitalRead(BOU_ARG_PIN) == LOW)
   {
     Serial.print("Boutton ARG cliquer \n");
   }
@@ -90,7 +90,7 @@ void loop()
   {
     com.etatAcc = "Cx0y0z0";
   }
-  
+
   if (digitalRead(BOU_A_PIN) == HIGH)
   {
     com.etatBoutonA = BOU_A_ON;
