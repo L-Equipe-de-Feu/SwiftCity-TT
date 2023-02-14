@@ -14,6 +14,9 @@ private:
 public:
     MultiLogement();
     ~MultiLogement();
+
+    void afficher();
+    char get_char();
 };
 
 MultiLogement::MultiLogement(){
@@ -27,5 +30,12 @@ MultiLogement::MultiLogement(){
 
 MultiLogement::~MultiLogement(){}
 
+void MultiLogement::afficher(){
+
+}
+
+char MultiLogement::get_char(){
+    return 'M'; 
+}
 
 #endif

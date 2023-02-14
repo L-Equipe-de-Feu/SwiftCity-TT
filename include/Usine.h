@@ -14,6 +14,9 @@ private:
 public:
     Usine();
     ~Usine();
+
+    void afficher();
+    char get_char();
 };
 
 Usine::Usine(){
@@ -27,5 +30,12 @@ Usine::Usine(){
 
 Usine::~Usine(){}
 
+void Usine::afficher(){
+
+}
+
+char Usine::get_char(){
+    return 'U';
+}
 
 #endif

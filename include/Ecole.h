@@ -15,6 +15,9 @@ private:
 public:
     Ecole();
     ~Ecole();
+
+    void afficher();
+    char get_char();
 };
 
 Ecole::Ecole(){
@@ -28,5 +31,12 @@ Ecole::Ecole(){
 
 Ecole::~Ecole(){}
 
+void Ecole::afficher(){
+
+}
+
+char Ecole::get_char(){
+    return ' ';
+}
 
 #endif

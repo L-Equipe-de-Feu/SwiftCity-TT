@@ -14,6 +14,9 @@ private:
 public:
     Magasin();
     ~Magasin();
+
+    void afficher();
+    char get_char();
 };
 
 Magasin::Magasin(){
@@ -26,5 +29,13 @@ Magasin::Magasin(){
 }
 
 Magasin::~Magasin(){}
+
+void Magasin::afficher(){
+
+}
+
+char Magasin::get_char(){ 
+    return 'C';
+}
 
 #endif

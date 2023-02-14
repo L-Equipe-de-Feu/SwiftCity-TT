@@ -14,6 +14,9 @@ private:
 public:
     Bureau();
     ~Bureau();
+
+    void afficher();
+    char get_char();
 };
 
 Bureau::Bureau(){
@@ -27,6 +30,12 @@ Bureau::Bureau(){
 
 Bureau::~Bureau(){}
 
+void Bureau::afficher(){
 
+}
+    
+char Bureau::get_char(){
+    return ' ';
+}
 
 #endif

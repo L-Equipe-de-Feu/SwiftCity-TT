@@ -14,6 +14,9 @@ private:
 public:
     Commercial();
     ~Commercial();
+
+    virtual void afficher()=0;
+    virtual char get_char()=0;
 };
 
 Commercial::Commercial(){

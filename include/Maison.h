@@ -14,6 +14,9 @@ private:
 public:
     Maison();
     ~Maison();
+
+    void afficher();
+    char get_char();
 };
 
 Maison::Maison(){
@@ -27,5 +30,12 @@ Maison::Maison(){
 
 Maison::~Maison(){}
 
+void Maison::afficher(){
+
+}
+
+char Maison::get_char(){
+    return 'M'; 
+}
 
 #endif

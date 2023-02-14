@@ -15,6 +15,9 @@ private:
 public:
     Residentiel();
     ~Residentiel();
+
+    virtual void afficher()=0;
+    virtual char get_char()=0;
 };
 
 Residentiel::Residentiel(){
