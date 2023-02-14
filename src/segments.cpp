@@ -15,7 +15,6 @@ int valeur4 = 0;
 
 void appel()
 {
-  segon();
   // pour 1
   if (valeur1 == 1)
   {

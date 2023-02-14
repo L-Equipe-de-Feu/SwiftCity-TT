@@ -33,6 +33,8 @@ void appelVariables()
     pinMode(SEG_A3_PIN, OUTPUT);
     pinMode(SEG_EN_PIN, OUTPUT);
     pinMode(SEG_A4_PIN, OUTPUT);
+
+    delay(1000);
 }
 
 void LOWSET()
@@ -51,4 +53,6 @@ void LOWSET()
     digitalWrite(SEG_A3_PIN, LOW);
     digitalWrite(SEG_EN_PIN, LOW);
     digitalWrite(SEG_A4_PIN, LOW);
+
+    segon();
 }

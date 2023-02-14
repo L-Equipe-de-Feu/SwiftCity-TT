@@ -24,7 +24,9 @@ long lastDebounceTime_M = 0;
 long lastDebounceTime_S = 0;
 long lastDebounceTime_ARD = 0;
 long lastDebounceTime_ARG = 0;
+long lastDebounceTime_SEND = 0;
 unsigned long debouceDelay = 20;
+unsigned long SendTime = 50;
 
 // Appel des variables pour le compteur et le debounce
 unsigned long previousMillis = 0;
@@ -47,15 +49,17 @@ void loop()
   // Appel des 7 segments avec le calcul de vitesse
   if (com.vitesse != VitesseSegments)
   {
-    VitesseSegments = com.vitesse;
+    // VitesseSegments = com.vitesse;
   }
 
+  VitesseEtAppel(VitesseSegments, &previousMillis, &currentMillis);
+
+  // Set manuellement les chiffre sur 7 segments
   if (com.time != ValeurSegments)
   {
     ValeurSegments = com.time;
     // SetTemp(ValeurSegments[0], ValeurSegments[1], ValeurSegments[2], ValeurSegments[3]);
   }
-  VitesseEtAppel(VitesseSegments, &previousMillis, &currentMillis);
 
   BOU_A = digitalRead(BOU_A_PIN);
   BOU_B = digitalRead(BOU_B_PIN);
@@ -74,19 +78,13 @@ void loop()
       STATE_BOU_A = -STATE_BOU_A;
 
       // Action
-      com.etatBoutonA = BOU_A_ON;
+      Serial.write("A;");
     }
     else if ((BOU_A == HIGH) && (STATE_BOU_A > 0))
     {
       // Debounce
       lastDebounceTime_A = millis();
       STATE_BOU_A = -STATE_BOU_A;
-
-      // Action
-      com.etatBoutonA = BOU_A_OFF;
-    }
-    else{
-      com.etatBoutonA = BOU_A_OFF;
     }
   }
 
@@ -100,16 +98,13 @@ void loop()
       STATE_BOU_B = -STATE_BOU_B;
 
       // Action
-      com.etatBoutonB = BOU_B_ON;
+      Serial.write("B;");
     }
     else if ((BOU_B == HIGH) && (STATE_BOU_B > 0))
     {
       // Debounce
       lastDebounceTime_B = millis();
       STATE_BOU_B = -STATE_BOU_B;
-
-      // Action
-      com.etatBoutonB = BOU_B_OFF;
     }
   }
 
@@ -123,16 +118,13 @@ void loop()
       STATE_BOU_M = -STATE_BOU_M;
 
       // Action
-      com.etatBoutonM = BOU_M_ON;
+      Serial.write("M;");
     }
     else if ((BOU_M == HIGH) && (STATE_BOU_M > 0))
     {
       // Debounce
       lastDebounceTime_M = millis();
       STATE_BOU_M = -STATE_BOU_M;
-
-      // Action
-      com.etatBoutonM = BOU_M_OFF;
     }
   }
 
@@ -146,16 +138,13 @@ void loop()
       STATE_BOU_S = -STATE_BOU_S;
 
       // Action
-      com.etatBoutonP = BOU_P_ON;
+      Serial.write("S;");
     }
     else if ((BOU_S == HIGH) && (STATE_BOU_S > 0))
     {
       // Debounce
       lastDebounceTime_S = millis();
       STATE_BOU_S = -STATE_BOU_S;
-
-      // Action
-      com.etatBoutonP = BOU_P_OFF;
     }
   }
 
@@ -169,16 +158,13 @@ void loop()
       STATE_BOU_ARD = -STATE_BOU_ARD;
 
       // Action
-      com.etatBoutonARD = BOU_ARD_ON;
+      Serial.write("ARD;");
     }
     else if ((BOU_ARD == HIGH) && (STATE_BOU_ARD > 0))
     {
       // Debounce
       lastDebounceTime_ARD = millis();
       STATE_BOU_ARD = -STATE_BOU_ARD;
-
-      // Action
-      com.etatBoutonARD = BOU_ARD_OFF;
     }
   }
 
@@ -192,16 +178,13 @@ void loop()
       STATE_BOU_ARG = -STATE_BOU_ARG;
 
       // Action
-      com.etatBoutonARG = BOU_ARG_ON;
+      Serial.write("ARG;");
     }
     else if ((BOU_ARG == HIGH) && (STATE_BOU_ARG > 0))
     {
       // Debounce
       lastDebounceTime_ARG = millis();
       STATE_BOU_ARG = -STATE_BOU_ARG;
-
-      // Action
-      com.etatBoutonARG = BOU_ARG_OFF;
     }
   }
 
@@ -215,7 +198,7 @@ void loop()
     com.etatAcc = "Jx0y0z0";
   }
 
-  //Code pour Acceleromètre
+  // Code pour Acceleromètre
   if (analogRead(X_AXIS_PIN) < 500 || analogRead(X_AXIS_PIN) > 524 || analogRead(Y_AXIS_PIN) < 500 || analogRead(Y_AXIS_PIN) > 524 || analogRead(Z_AXIS_PIN) < 500 || analogRead(Z_AXIS_PIN) > 524)
   {
     com.etatAcc = "Cx" + String(analogRead(X_AXIS_PIN)) + "y" + String(analogRead(Y_AXIS_PIN)) + "z" + String(analogRead(Z_AXIS_PIN));
@@ -225,9 +208,17 @@ void loop()
     com.etatAcc = "Cx0y0z0";
   }
 
-  if (com.shouldSend_)
+  if ((currentMillis - lastDebounceTime_SEND) > SendTime)
   {
-    com.sendMsg();
+    if (com.shouldSend_)
+    {
+      lastDebounceTime_SEND = millis();
+      com.sendMsg();
+    }
+    else
+    {
+      lastDebounceTime_SEND = millis();
+    }
   }
 }
 
