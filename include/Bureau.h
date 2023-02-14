@@ -12,30 +12,21 @@ class Bureau : public Commercial {
 private:
     /* data */
 public:
-    Bureau();
-    ~Bureau();
+    Bureau() {
+        ressources.energie = -2;
+        ressources.eau = -1;
+        ressources.bonheur = 0;
+        ressources.materiaux = -10;
+        ressources.argent = -10;
+        ressources.habitant = -5;
+    }
+    ~Bureau() {}
 
-    void afficher();
-    char get_char();
+    void afficher() {
+
+    }
+    char get_char() {
+        return ' ';
+    }
 };
-
-Bureau::Bureau(){
-    ressources.energie = -2;
-    ressources.eau = -1;
-    ressources.bonheur = 0;
-    ressources.materiaux = -10;
-    ressources.argent = -10;
-    ressources.habitant = -5;
-}
-
-Bureau::~Bureau(){}
-
-void Bureau::afficher(){
-
-}
-    
-char Bureau::get_char(){
-    return ' ';
-}
-
 #endif

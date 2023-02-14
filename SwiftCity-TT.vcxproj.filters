@@ -104,7 +104,7 @@
     <ClCompile Include="source\Ville.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Batiment.cpp">
+    <ClCompile Include="ActionClavier.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

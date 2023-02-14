@@ -12,30 +12,21 @@ class MultiLogement : public Residentiel{
 private:
     /* data */
 public:
-    MultiLogement();
-    ~MultiLogement();
+    MultiLogement() {
+        ressources.energie = -10;
+        ressources.eau = -5;
+        ressources.bonheur = 0;
+        ressources.materiaux = 0;
+        ressources.argent = -200;
+        ressources.habitant = 15;
+    }
+    ~MultiLogement() {}
 
-    void afficher();
-    char get_char();
+    void afficher() {
+
+    }
+    char get_char() {
+        return 'M';
 };
-
-MultiLogement::MultiLogement(){
-    ressources.energie = -10;
-    ressources.eau = -5;
-    ressources.bonheur = 0;
-    ressources.materiaux = 0;
-    ressources.argent = -200;
-    ressources.habitant = 15;
-}
-
-MultiLogement::~MultiLogement(){}
-
-void MultiLogement::afficher(){
-
-}
-
-char MultiLogement::get_char(){
-    return 'M'; 
-}
 
 #endif

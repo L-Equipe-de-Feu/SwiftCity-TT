@@ -13,30 +13,22 @@ class Energie : public Service
 private:
     /* data */
 public:
-    Energie();
-    ~Energie();
+    Energie() {
+        ressources.energie = 20;
+        ressources.eau = 0;
+        ressources.bonheur = 1;
+        ressources.materiaux = 0;
+        ressources.argent = -250;
+        ressources.habitant = -1;
+    }
+    ~Energie() {}
 
-    void afficher();
-    char get_char();
+    void afficher() {
+
+    }
+    char get_char() {
+        return 'e';
+    }
 };
-
-Energie::Energie(){
-    ressources.energie = 20;
-    ressources.eau = 0;
-    ressources.bonheur = 1;
-    ressources.materiaux = 0;
-    ressources.argent = -250;
-    ressources.habitant = -1;
-}
-
-Energie::~Energie(){}
-
-void Energie::afficher(){
-
-}
-
-char Energie::get_char(){
-    return 'e';
-}
 
 #endif

@@ -7,24 +7,15 @@ class Route : public Batiment {
     private :
 
     public : 
-        Route();
-        ~Route();
+        Route() {}
+        ~Route() {}
 
-        void afficher();
-        char get_char();
+        void afficher() {
+
+        }
+        char get_char() {
+            return 'R';
+        }
 };
-
-
-Route::Route(){}
-
-Route::~Route(){}
-
-void Route::afficher(){
-
-}
-
-char Route::get_char(){
-    return 'R';
-}
 
 #endif

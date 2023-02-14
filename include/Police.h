@@ -12,30 +12,20 @@ class Police : public Service {
 private:
     /* data */
 public:
-    Police();
-    ~Police();
+    Police() {
+        ressources.energie = -5;
+        ressources.eau = -2;
+        ressources.bonheur = 10;
+        ressources.materiaux = 0;
+        ressources.argent = -100;
+        ressources.habitant = -4;
+    }
+    ~Police() {}
 
-    void afficher();
-    char get_char();
+    void afficher() {}
+    char get_char() {
+        return ' ';
+    }
 };
-
-Police::Police() {
-    ressources.energie = -5;
-    ressources.eau = -2;
-    ressources.bonheur = 10;
-    ressources.materiaux = 0;
-    ressources.argent = -100;
-    ressources.habitant = -4;
-}
-
-Police::~Police() {}
-
-void Police::afficher(){
-
-}
-
-char Police::get_char(){
-    return ' ';
-}
 
 #endif
