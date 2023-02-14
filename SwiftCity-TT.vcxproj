@@ -126,8 +126,10 @@
     <ClInclude Include="include\Residentiel.h" />
     <ClInclude Include="include\Route.h" />
     <ClInclude Include="include\Service.h" />
+    <ClInclude Include="include\sinkhole.h" />
     <ClInclude Include="include\StructRessources.h" />
     <ClInclude Include="include\Terrain.h" />
+    <ClInclude Include="include\Tremblement.h" />
     <ClInclude Include="include\Usine.h" />
     <ClInclude Include="include\Ville.h" />
   </ItemGroup>

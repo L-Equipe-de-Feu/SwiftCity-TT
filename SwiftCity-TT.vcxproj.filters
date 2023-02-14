@@ -114,6 +114,12 @@
     <ClInclude Include="include\Eau.h">
       <Filter>Header Files\Terrains</Filter>
     </ClInclude>
+    <ClInclude Include="include\sinkhole.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Tremblement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main\main.cpp">
