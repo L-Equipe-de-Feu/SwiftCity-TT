@@ -15,5 +15,22 @@ typedef struct {
     int habitant = 0;
 } Ressources;
 
+typedef struct {
+    //produit
+    int energieProd = 0;
+    int eauProd = 0;
+    int bonheurProd = 0;
+    int materiauxProd = 0;
+    int argentProd = 0;
+    int habitantProd = 0;
+    //consommé
+    int energieCons = 0;
+    int eauCons = 0;
+    int bonheurCons = 0;
+    int materiauxCons = 0;
+    int argentCons = 0;
+    int habitantCons = 0;
+} RessourcesVille;
+
 
 #endif
