@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+# Solution files 
+debug
+release 
+.vs
+.vscode
+*.sln
+x64

@@ -13,30 +13,22 @@ class Culture : public Service
 private:
     /* data */
 public:
-    Culture();
-    ~Culture();
+    Culture() {
+        ressources.energie = -10;
+        ressources.eau = -5;
+        ressources.bonheur = 20;
+        ressources.materiaux = 0;
+        ressources.argent = -250;
+        ressources.habitant = -8;
+    }
+    ~Culture() {}
 
-    void afficher();
-    char get_char();
+    void afficher() {}
+
+    char get_char() 
+    
+    {
+        return ' ';
+    }
 };
-
-Culture::Culture(){
-    ressources.energie = -10;
-    ressources.eau = -5;
-    ressources.bonheur = 20;
-    ressources.materiaux = 0;
-    ressources.argent = -250;
-    ressources.habitant = -8;
-}
-
-Culture::~Culture(){}
-
-void Culture::afficher(){
-
-}
-
-char Culture::get_char(){
-    return ' ';
-}
-
 #endif

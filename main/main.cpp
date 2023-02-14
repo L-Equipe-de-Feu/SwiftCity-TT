@@ -3,7 +3,7 @@
 #include "ActionClavier.h"
 #include "Menu.h"
 #include "Curseur.h"
-#include "Batiment.h"
+
 using namespace std;
 #define carre 20
 

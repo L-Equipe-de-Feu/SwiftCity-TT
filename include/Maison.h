@@ -12,30 +12,20 @@ class Maison : public Residentiel {
 private:
     /* data */
 public:
-    Maison();
-    ~Maison();
+    Maison() {
+        ressources.energie = -2;
+        ressources.eau = -1;
+        ressources.bonheur = 0;
+        ressources.materiaux = 0;
+        ressources.argent = -100;
+        ressources.habitant = 3;
+    }
+    ~Maison() {}
 
-    void afficher();
-    char get_char();
+    void afficher() {}
+
+    char get_char() {
+        return 'M';
+    }
 };
-
-Maison::Maison(){
-    ressources.energie = -2;
-    ressources.eau = -1;
-    ressources.bonheur = 0;
-    ressources.materiaux = 0;
-    ressources.argent = -100;
-    ressources.habitant = 3;
-}
-
-Maison::~Maison(){}
-
-void Maison::afficher(){
-
-}
-
-char Maison::get_char(){
-    return 'M'; 
-}
-
 #endif

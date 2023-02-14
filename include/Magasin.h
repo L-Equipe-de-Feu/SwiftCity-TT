@@ -12,30 +12,22 @@ class Magasin : public Commercial {
 private:
     /* data */
 public:
-    Magasin();
-    ~Magasin();
+    Magasin() {
+        ressources.energie = -1;
+        ressources.eau = -1;
+        ressources.bonheur = 0;
+        ressources.materiaux = -5;
+        ressources.argent = -100;
+        ressources.habitant = -2;
+    }
+    ~Magasin(){}
 
-    void afficher();
-    char get_char();
+    void afficher() {
+
+    }
+    char get_char() {
+        return 'C';
+    }
 };
-
-Magasin::Magasin(){
-    ressources.energie = -1;
-    ressources.eau = -1;
-    ressources.bonheur = 0;
-    ressources.materiaux = -5;
-    ressources.argent = -100;
-    ressources.habitant = -2;
-}
-
-Magasin::~Magasin(){}
-
-void Magasin::afficher(){
-
-}
-
-char Magasin::get_char(){ 
-    return 'C';
-}
 
 #endif
