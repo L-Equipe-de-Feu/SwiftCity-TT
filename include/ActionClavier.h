@@ -43,9 +43,6 @@ ActionClavier::~ActionClavier(){}
 bool ActionClavier::lireClavier(){
     char input;
     cin >> input;
-    cout << endl << endl << endl << endl << endl << endl << endl << endl;
-    //rajouter les calcule de monay ici pour les affichage
-
 
     switch (input)
     {
@@ -95,7 +92,7 @@ bool ActionClavier::lireClavier(){
         break;
     
     case 'r':
-        cout<<"construire une route\n";
+        //Construire une route
         ville->construireRoute(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y, new Route);
         break;
 

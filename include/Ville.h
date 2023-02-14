@@ -54,7 +54,9 @@ Ville::~Ville(){
 }
 
 void Ville::construireBatiment(int x, int y, Batiment* b){
-    gridB[x][y] = b;
+    //if(gridB[x+1][y]==Class(Route) || gridB[x-1][y]==Class(Route) || gridB[x][y+1]==Class(Route) || gridB[x][y-1]==Class(Route) && gridT[x][y]==constructible){
+        gridB[x][y] = b;
+    //}
 }
 
 void Ville::construireRoute(int x, int y, Batiment* b){
@@ -62,6 +64,12 @@ void Ville::construireRoute(int x, int y, Batiment* b){
 }
 
 void Ville::affiche(Curseur* curseur){
+    cout << endl << endl << endl << endl << endl << endl << endl << endl;
+    //rajouter les calcule de monayS ici pour les affichage
+    cout << "Votre argent : " << endl;
+    cout << "Votre income : " << endl;
+    cout << "Votre Population : " << endl;
+
 	cout << "|-------------------------------------------------------------------------------|" << endl;
 	for(int i=0; i<taille; i++){
 		for(int e=0; e<taille; e++){
