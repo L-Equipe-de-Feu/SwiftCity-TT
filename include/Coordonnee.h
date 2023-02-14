@@ -8,9 +8,9 @@
 #ifndef COORDONNEE_H
 #define COORDONNEE_H
 
-typedef struct {
+typedef struct{
     int x = 0;
     int y = 0;
-} Coordonnee;
+} Coordonnee ;
 
 #endif

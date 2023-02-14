@@ -1,4 +1,6 @@
-# include "Ville.h"
+#include "Ville.h"
+
+using namespace std;
 
 Ville::Ville() {
     init();

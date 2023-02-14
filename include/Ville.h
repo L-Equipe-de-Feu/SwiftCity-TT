@@ -5,6 +5,7 @@
 #include "Batiment.h"
 #include "terrain.h"
 #include "structRessources.h"
+#include "Curseur.h"
 #define taille 20
 
 class Ville
