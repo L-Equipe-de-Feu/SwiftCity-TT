@@ -24,16 +24,22 @@ long lastDebounceTime_M = 0;
 long lastDebounceTime_S = 0;
 long lastDebounceTime_ARD = 0;
 long lastDebounceTime_ARG = 0;
-long debouceDelay = 10;
+unsigned long debouceDelay = 20;
+
+unsigned long previousMillis = 0;
 
 void setup()
 {
   Serial.begin(BAUD);
   appelVariables();
+  LOWSET();
 }
 
 void loop()
 {
+  unsigned long currentMillis = millis();
+  VitesseEtAppel(60, &previousMillis, &currentMillis);
+
   BOU_A = digitalRead(BOU_A_PIN);
   BOU_B = digitalRead(BOU_B_PIN);
   BOU_M = digitalRead(BOU_M_PIN);
@@ -41,7 +47,7 @@ void loop()
   BOU_ARD = digitalRead(BOU_ARD_PIN);
   BOU_ARG = digitalRead(BOU_ARG_PIN);
 
-  if ((millis() - lastDebounceTime_A) > debouceDelay)
+  if ((currentMillis- lastDebounceTime_A) > debouceDelay)
   {
     if ((BOU_A == LOW) && (STATE_BOU_A < 0))
     {
@@ -49,10 +55,10 @@ void loop()
       STATE_BOU_A = -STATE_BOU_A;
 
       Serial.print("Boutton A cliquer \n");
-      //Serial.println("Allumange de la LED1");
-      //digitalWrite(LED_1, HIGH);
-      //delay(2000);
-      //digitalWrite(LED_1, LOW);
+      // Serial.println("Allumange de la LED1");
+      // digitalWrite(LED_1, HIGH);
+      // delay(2000);
+      // digitalWrite(LED_1, LOW);
     }
     else if ((BOU_A == HIGH) && (STATE_BOU_A > 0))
     {
@@ -61,7 +67,7 @@ void loop()
     }
   }
 
-  if ((millis() - lastDebounceTime_B) > debouceDelay)
+  if ((currentMillis - lastDebounceTime_B) > debouceDelay)
   {
     if ((BOU_B == LOW) && (STATE_BOU_B < 0))
     {
@@ -69,11 +75,12 @@ void loop()
       STATE_BOU_B = -STATE_BOU_B;
 
       Serial.print("Boutton B cliquer \n");
-      Serial.print("Démarrage test de 7 segments \n");
-      for (int i = 1; i < 4; i++)
-      {
-        testaffichage(i);
-      }
+      
+      // Serial.print("Démarrage test de 7 segments \n");
+      // for (int i = 1; i < 4; i++)
+      //{
+      //   testaffichage(i);
+      // }
     }
     else if ((BOU_B == HIGH) && (STATE_BOU_B > 0))
     {
@@ -82,7 +89,7 @@ void loop()
     }
   }
 
-  if ((millis() - lastDebounceTime_M) > debouceDelay)
+  if ((currentMillis - lastDebounceTime_M) > debouceDelay)
   {
     if ((BOU_M == LOW) && (STATE_BOU_M < 0))
     {
@@ -98,7 +105,7 @@ void loop()
     }
   }
 
-  if ((millis() - lastDebounceTime_S) > debouceDelay)
+  if ((currentMillis - lastDebounceTime_S) > debouceDelay)
   {
     if ((BOU_S == LOW) && (STATE_BOU_S < 0))
     {
@@ -114,7 +121,7 @@ void loop()
     }
   }
 
-  if ((millis() - lastDebounceTime_ARD) > debouceDelay)
+  if ((currentMillis- lastDebounceTime_ARD) > debouceDelay)
   {
     if ((BOU_ARD == LOW) && (STATE_BOU_ARD < 0))
     {
@@ -130,7 +137,7 @@ void loop()
     }
   }
 
-  if ((millis() - lastDebounceTime_ARG) > debouceDelay)
+  if ((currentMillis - lastDebounceTime_ARG) > debouceDelay)
   {
     if ((BOU_ARG == LOW) && (STATE_BOU_ARG < 0))
     {

@@ -4,12 +4,12 @@
 #include <Arduino.h>
 #include <ArduinoJson.h>
 
-class Communication{
+class Communication
+{
 
 public:
-
-  volatile bool shouldSend_ = true;  // Drapeau prêt à envoyer un message
-  volatile bool shouldRead_ = true;  // Drapeau prêt à lire un message
+  volatile bool shouldSend_ = true; // Drapeau prêt à envoyer un message
+  volatile bool shouldRead_ = true; // Drapeau prêt à lire un message
 
   String etatBoutonA;
   String etatBoutonB;
@@ -23,10 +23,10 @@ public:
   int time;
   int vitesse;
 
-    void sendMsg(); 
-    void readMsg();
-    void serialSendReady();
-    void serialReadReady();
+  void sendMsg();
+  void readMsg();
+  void serialSendReady();
+  void serialReadReady();
 };
 
 #endif

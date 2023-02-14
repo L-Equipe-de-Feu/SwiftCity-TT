@@ -20,66 +20,54 @@ void appel()
   if (valeur1 == 1)
   {
     un(1);
-    Serial.print("1-1");
   }
   if (valeur2 == 1)
   {
     un(2);
-    Serial.print("2-1");
   }
   if (valeur3 == 1)
   {
     un(3);
-    Serial.print("3-1");
   }
   if (valeur4 == 1)
   {
     un(4);
-    Serial.print("4-1");
   }
 
   // pour 2
   if (valeur1 == 2)
   {
     deux(1);
-    Serial.print("1-2");
   }
   if (valeur2 == 2)
   {
     deux(2);
-    Serial.print("2-2");
   }
   if (valeur3 == 2)
   {
     deux(3);
-    Serial.print("3-2");
   }
   if (valeur4 == 2)
   {
     deux(4);
-    Serial.print("4-2");
   }
 
   // pour 3
   if (valeur1 == 3)
   {
     trois(1);
-    Serial.print("1-3");
   }
   if (valeur2 == 3)
   {
     trois(2);
-    Serial.print("2-3");
   }
   if (valeur3 == 3)
   {
     trois(3);
-    Serial.print("3-3");
   }
   if (valeur4 == 3)
   {
     trois(4);
-    Serial.print("4-3");
   }
 
   // pour 4
@@ -1219,10 +1207,8 @@ void segsave()
   digitalWrite(SEG_A3_PIN, LOW);
   digitalWrite(SEG_A4_PIN, LOW);
 
-  //pour test
+  // pour test
   digitalWrite(SEG_WR_PIN, LOW);
-  
-  
 }
 
 void segoff()
@@ -1344,5 +1330,48 @@ void testaffichage(int i)
     valeur4 = 9;
     appel();
     valeur4 = 1;
+  }
+}
+
+void VitesseEtAppel(int vitesse, unsigned long *previousMillis, unsigned long *currentMillis)
+{
+  unsigned const long interval = ((minutes * 60 * 1000) / vitesse);
+
+  if ((*currentMillis - (*previousMillis)) >= interval)
+  {
+    *previousMillis = *currentMillis;
+    valeur4 = valeur4 + 1;
+    Serial.print("4 =");
+    Serial.println(valeur4);
+    if (valeur4 == 10)
+    {
+      valeur4 = 0;
+      valeur3 = valeur3 + 1;
+      Serial.print("3 = ");
+      Serial.println(valeur3);
+    }
+    if (valeur3 == 10)
+    {
+      valeur3 = 0;
+      valeur2 = valeur2 + 1;
+      Serial.print("2 = ");
+      Serial.println(valeur2);
+    }
+    if (valeur2 == 10)
+    {
+      valeur2 = 0;
+      valeur1 = valeur1 + 1;
+      Serial.print("1 = ");
+      Serial.println(valeur1);
+    }
+    if (valeur1 == 10)
+    {
+      valeur1 = 0;
+    }
+    appel();
+  }
+  else
+  {
+    appel();
   }
 }

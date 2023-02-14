@@ -3,6 +3,8 @@
 
 #include <Arduino.h>
 
+#define minutes long(20)
+
 int zero(int a);
 int un(int a);
 int deux(int a);
@@ -48,7 +50,6 @@ void segon();
 void appel();
 
 void testaffichage(int i);
-
-
+void VitesseEtAppel(int vitesse, unsigned long *previousMillis, unsigned long *currentMillis);
 
 #endif
