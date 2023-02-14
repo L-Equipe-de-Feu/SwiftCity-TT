@@ -1375,3 +1375,11 @@ void VitesseEtAppel(int vitesse, unsigned long *previousMillis, unsigned long *c
     appel();
   }
 }
+
+void SetTemp(int Segment1, int Segment2, int Segment3, int Segment4){
+  valeur1 = Segment1;
+  valeur2 = Segment2;
+  valeur3 = Segment3;
+  valeur4 = Segment4;
+  appel();
+}

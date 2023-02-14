@@ -5,6 +5,7 @@
 #include <string.h>
 #include <ArduinoJson.h>
 
+// Appel des variables pour le debounce
 int BOU_A = HIGH;
 int BOU_B = HIGH;
 int BOU_M = HIGH;
@@ -17,7 +18,6 @@ int STATE_BOU_M = -1;
 int STATE_BOU_S = -1;
 int STATE_BOU_ARD = -1;
 int STATE_BOU_ARG = -1;
-
 long lastDebounceTime_A = 0;
 long lastDebounceTime_B = 0;
 long lastDebounceTime_M = 0;
@@ -26,6 +26,7 @@ long lastDebounceTime_ARD = 0;
 long lastDebounceTime_ARG = 0;
 unsigned long debouceDelay = 20;
 
+// Appel des variables pour le compteur et le debounce
 unsigned long previousMillis = 0;
 
 void setup()
@@ -37,8 +38,24 @@ void setup()
 
 void loop()
 {
+  Communication com;
+
+  int VitesseSegments = 1;
+  int ValeurSegments = 0000;
   unsigned long currentMillis = millis();
-  VitesseEtAppel(60, &previousMillis, &currentMillis);
+
+  // Appel des 7 segments avec le calcul de vitesse
+  if (com.vitesse != VitesseSegments)
+  {
+    VitesseSegments = com.vitesse;
+  }
+
+  if (com.time != ValeurSegments)
+  {
+    ValeurSegments = com.time;
+    // SetTemp(ValeurSegments[0], ValeurSegments[1], ValeurSegments[2], ValeurSegments[3]);
+  }
+  VitesseEtAppel(VitesseSegments, &previousMillis, &currentMillis);
 
   BOU_A = digitalRead(BOU_A_PIN);
   BOU_B = digitalRead(BOU_B_PIN);
@@ -47,125 +64,171 @@ void loop()
   BOU_ARD = digitalRead(BOU_ARD_PIN);
   BOU_ARG = digitalRead(BOU_ARG_PIN);
 
-  if ((currentMillis- lastDebounceTime_A) > debouceDelay)
+  // Code pour bouton A
+  if ((currentMillis - lastDebounceTime_A) > debouceDelay)
   {
     if ((BOU_A == LOW) && (STATE_BOU_A < 0))
     {
+      // Debounce
       lastDebounceTime_A = millis();
       STATE_BOU_A = -STATE_BOU_A;
 
-      Serial.print("Boutton A cliquer \n");
-      // Serial.println("Allumange de la LED1");
-      // digitalWrite(LED_1, HIGH);
-      // delay(2000);
-      // digitalWrite(LED_1, LOW);
+      // Action
+      com.etatBoutonA = BOU_A_ON;
     }
     else if ((BOU_A == HIGH) && (STATE_BOU_A > 0))
     {
+      // Debounce
       lastDebounceTime_A = millis();
       STATE_BOU_A = -STATE_BOU_A;
+
+      // Action
+      com.etatBoutonA = BOU_A_OFF;
+    }
+    else{
+      com.etatBoutonA = BOU_A_OFF;
     }
   }
 
+  // Code pour bouton B
   if ((currentMillis - lastDebounceTime_B) > debouceDelay)
   {
     if ((BOU_B == LOW) && (STATE_BOU_B < 0))
     {
+      // Debounce
       lastDebounceTime_B = millis();
       STATE_BOU_B = -STATE_BOU_B;
 
-      Serial.print("Boutton B cliquer \n");
-      
-      // Serial.print("Démarrage test de 7 segments \n");
-      // for (int i = 1; i < 4; i++)
-      //{
-      //   testaffichage(i);
-      // }
+      // Action
+      com.etatBoutonB = BOU_B_ON;
     }
     else if ((BOU_B == HIGH) && (STATE_BOU_B > 0))
     {
+      // Debounce
       lastDebounceTime_B = millis();
       STATE_BOU_B = -STATE_BOU_B;
+
+      // Action
+      com.etatBoutonB = BOU_B_OFF;
     }
   }
 
+  // Code pour bouton M
   if ((currentMillis - lastDebounceTime_M) > debouceDelay)
   {
     if ((BOU_M == LOW) && (STATE_BOU_M < 0))
     {
+      // Debounce
       lastDebounceTime_M = millis();
       STATE_BOU_M = -STATE_BOU_M;
 
-      Serial.print("Boutton M cliquer \n");
+      // Action
+      com.etatBoutonM = BOU_M_ON;
     }
     else if ((BOU_M == HIGH) && (STATE_BOU_M > 0))
     {
+      // Debounce
       lastDebounceTime_M = millis();
       STATE_BOU_M = -STATE_BOU_M;
+
+      // Action
+      com.etatBoutonM = BOU_M_OFF;
     }
   }
 
+  // Code pour bouton S
   if ((currentMillis - lastDebounceTime_S) > debouceDelay)
   {
     if ((BOU_S == LOW) && (STATE_BOU_S < 0))
     {
+      // Debounce
       lastDebounceTime_S = millis();
       STATE_BOU_S = -STATE_BOU_S;
 
-      Serial.print("Boutton S cliquer \n");
+      // Action
+      com.etatBoutonP = BOU_P_ON;
     }
     else if ((BOU_S == HIGH) && (STATE_BOU_S > 0))
     {
+      // Debounce
       lastDebounceTime_S = millis();
       STATE_BOU_S = -STATE_BOU_S;
+
+      // Action
+      com.etatBoutonP = BOU_P_OFF;
     }
   }
 
-  if ((currentMillis- lastDebounceTime_ARD) > debouceDelay)
+  // Code pour bouton ARD
+  if ((currentMillis - lastDebounceTime_ARD) > debouceDelay)
   {
     if ((BOU_ARD == LOW) && (STATE_BOU_ARD < 0))
     {
+      // Debounce
       lastDebounceTime_ARD = millis();
       STATE_BOU_ARD = -STATE_BOU_ARD;
 
-      Serial.print("Boutton ARD cliquer \n");
+      // Action
+      com.etatBoutonARD = BOU_ARD_ON;
     }
     else if ((BOU_ARD == HIGH) && (STATE_BOU_ARD > 0))
     {
+      // Debounce
       lastDebounceTime_ARD = millis();
       STATE_BOU_ARD = -STATE_BOU_ARD;
+
+      // Action
+      com.etatBoutonARD = BOU_ARD_OFF;
     }
   }
 
+  // Code pour boutton ARG
   if ((currentMillis - lastDebounceTime_ARG) > debouceDelay)
   {
     if ((BOU_ARG == LOW) && (STATE_BOU_ARG < 0))
     {
+      // Debounce
       lastDebounceTime_ARG = millis();
       STATE_BOU_ARG = -STATE_BOU_ARG;
 
-      Serial.print("Boutton ARG cliquer \n");
+      // Action
+      com.etatBoutonARG = BOU_ARG_ON;
     }
     else if ((BOU_ARG == HIGH) && (STATE_BOU_ARG > 0))
     {
+      // Debounce
       lastDebounceTime_ARG = millis();
       STATE_BOU_ARG = -STATE_BOU_ARG;
+
+      // Action
+      com.etatBoutonARG = BOU_ARG_OFF;
     }
   }
 
-  /*if (analogRead(JOY_GD_PIN > 1))
+  // Code pour Joystick G-D
+  if (analogRead(JOY_GD_PIN) < 500 || analogRead(JOY_GD_PIN) > 524)
   {
-    Serial.print("Valeur de joystick Gauche-Droit");
-    Serial.print(digitalRead(JOY_GD_PIN));
-    Serial.println();
+    com.etatJoystick = "Jx" + String(analogRead(JOY_GD_PIN)) + "y" + String(analogRead(JOY_HB_PIN));
+  }
+  else
+  {
+    com.etatAcc = "Jx0y0z0";
   }
 
-  if (analogRead(JOY_HB_PIN > 1))
+  //Code pour Acceleromètre
+  if (analogRead(X_AXIS_PIN) < 500 || analogRead(X_AXIS_PIN) > 524 || analogRead(Y_AXIS_PIN) < 500 || analogRead(Y_AXIS_PIN) > 524 || analogRead(Z_AXIS_PIN) < 500 || analogRead(Z_AXIS_PIN) > 524)
   {
-    Serial.print("Valeur de joystick Haut-Bas");
-    Serial.print(digitalRead(JOY_HB_PIN));
-    Serial.println();
-  }*/
+    com.etatAcc = "Cx" + String(analogRead(X_AXIS_PIN)) + "y" + String(analogRead(Y_AXIS_PIN)) + "z" + String(analogRead(Z_AXIS_PIN));
+  }
+  else
+  {
+    com.etatAcc = "Cx0y0z0";
+  }
+
+  if (com.shouldSend_)
+  {
+    com.sendMsg();
+  }
 }
 
 /*---------------------------- Fonctions "Main" -----------------------------*/
