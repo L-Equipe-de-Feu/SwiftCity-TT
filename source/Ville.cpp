@@ -58,7 +58,7 @@ void Ville::detruire(int x, int y)
 }
 
 
-void Ville::calculTotal()
+void Ville::calculRessources()
 {
     RessourcesVille tempRec;
     int temp;
@@ -196,40 +196,41 @@ void Ville::calculTotal()
 
 }
 
-
-void Ville::calculEnergie()
+void Ville::tick()
 {
-    
-}
+    RessourcesVille tempRec = ressourceTotal;
+    //calcul materiaux
+    int manquant = 0;
+    float travRatio = tempRec.habitantTot / tempRec.habitantTrav;
+    if (travRatio > 1.0)
+    {
+        travRatio = 1.0;
+    }
+    else if (travRatio < 0)
+    {
+        travRatio = 0;
+    }
 
-void Ville::calculProd()
-{
+    tempRec.materiauxTot = ressourceTotal.materiauxTot + (tempRec.materiauxProd * travRatio) - tempRec.materiauxCons;
+    if (tempRec.materiauxTot < 0)
+    {
+        manquant = tempRec.materiauxTot;
+        tempRec.materiauxTot = 0;
+    }
 
-}
+    //calcul argent
+    if (manquant == 0)
+    {
+        tempRec.argentTot = ressourceTotal.argentTot + tempRec.argentProd - tempRec.argentCons;
+    }
+    else
+    {
+        float matRatio = (tempRec.materiauxCons - manquant) / tempRec.materiauxCons;
+        tempRec.argentTot = ressourceTotal.argentTot + (tempRec.argentProd * matRatio) - tempRec.argentCons;
+    }
 
-void Ville::calculEau()
-{
-
-}
-
-void Ville::calculBonheur()
-{
-
-}
-
-void Ville::calculMaterieux()
-{
-
-}
-
-void Ville::calculArgent()
-{
-
-}
-
-void Ville::calculHabitant()
-{
-
+    //transfer
+    ressourceTotal = tempRec;
 }
 
 void Ville::catastrophe()
