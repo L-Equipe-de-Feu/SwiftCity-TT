@@ -9,7 +9,7 @@ Ville::Ville() {
 void Ville::init() {
     for (int i = 0; i < TAILLEX; i++) {
         for (int e = 0; e < TAILLEY; e++) {
-            gridB[i][e] = NULL;
+            gridB[i][e] = nullptr;
         }
     }
 }
@@ -21,12 +21,26 @@ Ville::~Ville() {
 
 void Ville::construireBatiment(int x, int y, Batiment* b) {
     //if(gridB[x+1][y]==Class(Route) || gridB[x-1][y]==Class(Route) || gridB[x][y+1]==Class(Route) || gridB[x][y-1]==Class(Route) && gridT[x][y]==constructible){
-    gridB[x][y] = b;
+    
     //}
+
+    //TODO
+    //1.verify if spot ok
+    //2.verify ressources
+    //3.update ressource ville
+
+    gridB[x][y] = b;
+
+
 }
 
 void Ville::construireRoute(int x, int y, Batiment* b) {
     gridB[x][y] = b;
+    
+    //TODO
+    //1.verify if spot ok
+    //2.verify ressources
+    //3.update ressource ville
 }
 
 void Ville::affiche(Curseur* curseur) {
@@ -57,7 +71,9 @@ void Ville::detruire(int x, int y)
 
 }
 
-
+/// <summary>
+/// calcul toute les donnée pour un tick, repasse sur tout les elements
+/// </summary>
 void Ville::calculRessources()
 {
     RessourcesVille tempRec;
@@ -66,7 +82,7 @@ void Ville::calculRessources()
     {
         for (int j = 0; j < TAILLEY; j++)
         {
-            if (gridB[i][j] != NULL)
+            if (gridB[i][j] != nullptr)
             {
                 //energie
                 temp = gridB[i][j]->GetRessources().energie;
@@ -196,7 +212,10 @@ void Ville::calculRessources()
 
 }
 
-void Ville::tick()
+/// <summary>
+/// update seulement les totaux
+/// </summary>
+void Ville::calculRessourcesRapide()
 {
     RessourcesVille tempRec = ressourceTotal;
     //calcul materiaux
@@ -231,6 +250,19 @@ void Ville::tick()
 
     //transfer
     ressourceTotal = tempRec;
+}
+
+
+void Ville::tick()
+{
+    //1. calcul des ressources
+    calculRessources();
+    //calculRessourcesRapide(); l'un ou l'autre
+
+    //2. avancement du temps
+
+
+    //3. evenement aleatoire
 }
 
 void Ville::catastrophe()
