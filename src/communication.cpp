@@ -36,28 +36,27 @@ void Communication::sendMsg()
 
 void Communication::readMsg()
 {
-  String buffer;
+  char buffer;
 
-  buffer = Serial.read();
-
-  int Taille_Buffer = buffer.length() + 1;
-
-  char Buffer[Taille_Buffer];
-
-  buffer.toCharArray(Buffer, Taille_Buffer);
-
-  if (Buffer[0] == 'V')
+  if (Serial.available() > 0)
   {
-    vitesse[0] = int(Buffer[1]);
-    vitesse[1] = int(Buffer[2]);
-  }
+    buffer = char(Serial.read());
 
-  if (Buffer[0] == 'T')
-  {
-    date[0] = int(Buffer[1]);
-    date[1] = int(Buffer[2]);
-    date[2] = int(Buffer[3]);
-    date[3] = int(Buffer[4]);
+    if (buffer == 'T')
+    {
+      while (Serial.available() < 7)
+        ;
+      for (int i = 0; i <= 3; i++)
+      {
+        buffer = char(Serial.read());
+        date[i] = int(buffer);
+      }
+      for (int i = 0; i <= 1; i++)
+      {
+        buffer = Serial.read();
+        vitesse[i] = int(buffer);
+      }
+    }
   }
 
   // Lecture du message Json
