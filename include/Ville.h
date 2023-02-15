@@ -19,16 +19,11 @@ private:
     Batiment* gridB[TAILLEX][TAILLEY];
     int temps;
     
-    void calculTotal();
-    void calculEnergie();
-    void calculProd();
-    void calculEau();
-    void calculBonheur();
-    void calculMaterieux();
-    void calculArgent();
-    void calculHabitant();
+    void calculRessources();
+    void calculRessourcesRapide();
     void catastrophe();
     bool isConstructible();
+    void tick();
     void init();
 public:
     Ville();

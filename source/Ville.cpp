@@ -24,9 +24,20 @@ void Ville::construireBatiment(int x, int y, Batiment* b) {
     
     //}
 
+    if (x < 0 || y < 0 || x >= TAILLEX || y >= TAILLEY) 
+    {
+        cout << "index erroné" << endl;
+        return;
+    }
     //TODO
     //1.verify if spot ok
+    if (gridB[x][y] != nullptr)
+    {
+        cout << "building deja a cette position" << endl;
+        return;
+    }
     //2.verify ressources
+    
     //3.update ressource ville
 
     gridB[x][y] = b;
