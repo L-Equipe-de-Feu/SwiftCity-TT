@@ -7,9 +7,9 @@ Ville::Ville() {
 }
 
 void Ville::init() {
-    for (int i = 0; i < taille; i++) {
-        for (int e = 0; e < taille; e++) {
-            gridB[i][e] = new Batiment;
+    for (int i = 0; i < TAILLEX; i++) {
+        for (int e = 0; e < TAILLEY; e++) {
+            gridB[i][e] = NULL;
         }
     }
 }
@@ -37,8 +37,8 @@ void Ville::affiche(Curseur* curseur) {
     cout << "Votre Population : " << endl;
 
     cout << "|-------------------------------------------------------------------------------|" << endl;
-    for (int i = 0; i < taille; i++) {
-        for (int e = 0; e < taille; e++) {
+    for (int i = 0; i < TAILLE; i++) {
+        for (int e = 0; e < TAILLE; e++) {
             if (i == curseur->get_Coordonnee().x && e == curseur->get_Coordonnee().y) {
                 cout << "| " << "." << " ";
             }
@@ -49,4 +49,144 @@ void Ville::affiche(Curseur* curseur) {
         cout << "|" << endl;
         cout << "|-------------------------------------------------------------------------------|" << endl;
     }
+}
+
+void Ville::detruire(int x, int y) 
+{
+    
+
+}
+
+
+void Ville::calculTotal()
+{
+    RessourcesVille tempRec;
+    int temp;
+    for (int i = 0; i < TAILLEX; i++)
+    {
+        for (int j = 0; j < TAILLEY; j++)
+        {
+            if (gridB[i][j] != NULL)
+            {
+                //energie
+                temp = gridB[i][j]->GetRessources().energie;
+                if (temp > 0) 
+                {
+                    tempRec.energieProd += temp;
+                }
+                else if (temp < 0)
+                {
+                    tempRec.energieCons += temp;
+                }
+
+                //eau
+                temp = gridB[i][j]->GetRessources().eau;
+                if (temp > 0)
+                {
+                    tempRec.eauProd += temp;
+                }
+                else if (temp < 0)
+                {
+                    tempRec.eauCons += temp;
+                }
+
+                //bonheur 
+                temp = gridB[i][j]->GetRessources().bonheur;
+                if (temp > 0)
+                {
+                    tempRec.bonheurProd += temp;
+                }
+                else if (temp < 0)
+                {
+                    tempRec.bonheurCons += temp;
+                }
+
+                //habitant
+                temp = gridB[i][j]->GetRessources().habitant;
+                if (temp > 0)
+                {
+                    tempRec.eauProd += temp;
+                }
+                else if (temp < 0)
+                {
+                    tempRec.eauCons += temp;
+                }
+
+                //materiaux
+                temp = gridB[i][j]->GetRessources().materiaux;
+                if (temp > 0)
+                {
+                    tempRec.eauProd += temp;
+                }
+                else if (temp < 0)
+                {
+                    tempRec.eauCons += temp;
+                }
+
+                //argent
+                temp = gridB[i][j]->GetRessources().argent;
+                if (temp > 0)
+                {
+                    tempRec.eauProd += temp;
+                }
+                else if (temp < 0)
+                {
+                    tempRec.eauCons += temp;
+                }
+            }
+        }
+    }
+
+    //calcul habitants
+
+    //calcul materiaux
+
+    //calcul argent
+
+}
+
+
+void Ville::calculEnergie()
+{
+    
+}
+
+void Ville::calculProd()
+{
+
+}
+
+void Ville::calculEau()
+{
+
+}
+
+void Ville::calculBonheur()
+{
+
+}
+
+void Ville::calculMaterieux()
+{
+
+}
+
+void Ville::calculArgent()
+{
+
+}
+
+void Ville::calculHabitant()
+{
+
+}
+
+void Ville::catastrophe()
+{
+
+}
+
+bool Ville::isConstructible()
+{
+    return true;
 }

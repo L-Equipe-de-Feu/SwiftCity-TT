@@ -11,7 +11,7 @@
 class Ville
 {
 private:
-    Ressources ressourceTotal;
+    RessourcesVille ressourceTotal;
     Terrain* gridT[taille][taille];
     Batiment* gridB[taille][taille];
     int temps;

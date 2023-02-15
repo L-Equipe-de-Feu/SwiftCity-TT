@@ -34,6 +34,9 @@
     <Filter Include="Header Files\Terrains">
       <UniqueIdentifier>{0e78cfe6-ff99-4a2b-862d-76a3f1d9e5b5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="qtSource">
+      <UniqueIdentifier>{1cbf6200-c722-445f-b3ed-188d25de323a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ActionClavier.h">
@@ -128,7 +131,7 @@
     <ClCompile Include="source\Ville.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ActionClavier.cpp">
+    <ClCompile Include="source\ActionClavier.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
