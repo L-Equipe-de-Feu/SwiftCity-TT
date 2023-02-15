@@ -42,24 +42,25 @@ void loop()
 {
   Communication com;
 
-  int VitesseSegments = 1;
-  int ValeurSegments = 0000;
+  int Date_ref[4] = {0, 1, 0, 1};
+
   unsigned long currentMillis = millis();
 
-  // Appel des 7 segments avec le calcul de vitesse
-  if (com.vitesse != VitesseSegments)
-  {
-    // VitesseSegments = com.vitesse;
-  }
-
-  VitesseEtAppel(VitesseSegments, &previousMillis, &currentMillis);
+  com.readMsg();
 
   // Set manuellement les chiffre sur 7 segments
-  if (com.time != ValeurSegments)
+  if (com.date != Date_ref)
   {
-    ValeurSegments = com.time;
-    // SetTemp(ValeurSegments[0], ValeurSegments[1], ValeurSegments[2], ValeurSegments[3]);
+    SetTemp(com.date[0], com.date[1], com.date[2], com.date[3]);
+    
+    Date_ref[0] = com.date[0];
+    Date_ref[1] = com.date[1];
+    Date_ref[2] = com.date[2];
+    Date_ref[3] = com.date[3];
+    
   }
+
+  VitesseEtAppel(*com.vitesse, &previousMillis, &currentMillis);
 
   BOU_A = digitalRead(BOU_A_PIN);
   BOU_B = digitalRead(BOU_B_PIN);

@@ -20,8 +20,8 @@ public:
   String etatJoystick;
   String etatAcc;
 
-  int time;
-  int vitesse;
+  int date[4] = {0, 1, 0, 1};
+  int vitesse[2] = {0, 1};
 
   void sendMsg();
   void readMsg();
