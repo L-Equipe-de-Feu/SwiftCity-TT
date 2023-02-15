@@ -105,43 +105,94 @@ void Ville::calculTotal()
                 temp = gridB[i][j]->GetRessources().habitant;
                 if (temp > 0)
                 {
-                    tempRec.eauProd += temp;
+                    tempRec.habitantMax += temp;
                 }
                 else if (temp < 0)
                 {
-                    tempRec.eauCons += temp;
+                    tempRec.habitantTrav += temp;
                 }
 
                 //materiaux
                 temp = gridB[i][j]->GetRessources().materiaux;
                 if (temp > 0)
                 {
-                    tempRec.eauProd += temp;
+                    tempRec.materiauxProd += temp; 
                 }
                 else if (temp < 0)
                 {
-                    tempRec.eauCons += temp;
+                    tempRec.materiauxCons += temp;
                 }
 
                 //argent
                 temp = gridB[i][j]->GetRessources().argent;
                 if (temp > 0)
                 {
-                    tempRec.eauProd += temp;
+                    tempRec.argentProd += temp;
                 }
                 else if (temp < 0)
                 {
-                    tempRec.eauCons += temp;
+                    tempRec.argentCons += temp;
                 }
             }
         }
     }
+    //calcul bonheur
+    tempRec.bonheurPour = 100 * tempRec.bonheurProd / tempRec.bonheurCons;
+
+    if (tempRec.bonheurPour > 100) 
+    {
+        tempRec.bonheurPour = 100;
+    }
+    else if (tempRec.bonheurPour < 0)
+    {
+        tempRec.bonheurPour = 0;
+    }
 
     //calcul habitants
+    int gain = (tempRec.bonheurPour-50)* PENTEHABS;
+    tempRec.habitantTot = ressourceTotal.habitantTot + gain;
+
+    if (tempRec.habitantTot <= 0)//game over???
+    {
+        tempRec.habitantTot;
+    }
+    else if (tempRec.habitantTot >= tempRec.habitantMax)
+    {
+        tempRec.habitantTot = tempRec.habitantMax;
+    }
 
     //calcul materiaux
+    int manquant = 0;
+    float travRatio = tempRec.habitantTot / tempRec.habitantTrav;
+    if (travRatio > 1.0)
+    {
+        travRatio = 1.0;
+    }
+    else if (travRatio < 0)
+    {
+        travRatio = 0;
+    }
+
+    tempRec.materiauxTot = ressourceTotal.materiauxTot + (tempRec.materiauxProd * travRatio) - tempRec.materiauxCons;
+    if (tempRec.materiauxTot < 0)
+    {
+        manquant = tempRec.materiauxTot;
+        tempRec.materiauxTot = 0;
+    }
 
     //calcul argent
+    if (manquant == 0) 
+    {
+        tempRec.argentTot = ressourceTotal.argentTot + tempRec.argentProd - tempRec.argentCons;
+    }
+    else
+    {
+        float matRatio = (tempRec.materiauxCons - manquant) / tempRec.materiauxCons;
+        tempRec.argentTot = ressourceTotal.argentTot + (tempRec.argentProd * matRatio) - tempRec.argentCons;
+    }
+
+    //transfer
+    ressourceTotal = tempRec;
 
 }
 
