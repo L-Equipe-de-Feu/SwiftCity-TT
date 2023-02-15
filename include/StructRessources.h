@@ -25,6 +25,7 @@ typedef struct {
     //bonheur
     int bonheurCons = 0; //bonheur necessaire (total de perte par les usine) 
     int bonheurProd = 0; //bonheur total (total de production de bonheur par culture)
+    int bonheurPour = 0;//bonheur en pourcentage
     //habitants 
     int habitantTrav = 0; //nombre d'habitant necessaire pour la production optimale
     int habitantTot = 0; //habitant present dans la ville

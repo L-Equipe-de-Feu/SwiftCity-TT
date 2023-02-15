@@ -37,8 +37,8 @@ void Ville::affiche(Curseur* curseur) {
     cout << "Votre Population : " << endl;
 
     cout << "|-------------------------------------------------------------------------------|" << endl;
-    for (int i = 0; i < TAILLE; i++) {
-        for (int e = 0; e < TAILLE; e++) {
+    for (int i = 0; i < TAILLEX; i++) {
+        for (int e = 0; e < TAILLEY; e++) {
             if (i == curseur->get_Coordonnee().x && e == curseur->get_Coordonnee().y) {
                 cout << "| " << "." << " ";
             }

@@ -6,16 +6,20 @@
 #include "terrain.h"
 #include "structRessources.h"
 #include "Curseur.h"
-#define taille 20
+#define TAILLEX 20
+#define TAILLEY 20
+
+#define PENTEHABS 0.2
 
 class Ville
 {
 private:
     RessourcesVille ressourceTotal;
-    Terrain* gridT[taille][taille];
-    Batiment* gridB[taille][taille];
+    Terrain* gridT[TAILLEX][TAILLEY];
+    Batiment* gridB[TAILLEX][TAILLEY];
     int temps;
-
+    
+    void calculTotal();
     void calculEnergie();
     void calculProd();
     void calculEau();

@@ -37,6 +37,9 @@
     <Filter Include="qtSource">
       <UniqueIdentifier>{1cbf6200-c722-445f-b3ed-188d25de323a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Catastrophes">
+      <UniqueIdentifier>{5a5236f1-d8f4-4b2f-a41d-e7e556f963fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ActionClavier.h">
@@ -118,10 +121,10 @@
       <Filter>Header Files\Terrains</Filter>
     </ClInclude>
     <ClInclude Include="include\sinkhole.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Catastrophes</Filter>
     </ClInclude>
     <ClInclude Include="include\Tremblement.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Catastrophes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
