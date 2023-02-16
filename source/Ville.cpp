@@ -20,10 +20,6 @@ Ville::~Ville() {
 }
 
 void Ville::construireBatiment(int x, int y, Batiment* b) {
-    //if(gridB[x+1][y]==Class(Route) || gridB[x-1][y]==Class(Route) || gridB[x][y+1]==Class(Route) || gridB[x][y-1]==Class(Route) && gridT[x][y]==constructible){
-    
-    //}
-
     if (x < 0 || y < 0 || x >= TAILLEX || y >= TAILLEY) 
     {
         cout << "index erroné" << endl;
@@ -36,9 +32,11 @@ void Ville::construireBatiment(int x, int y, Batiment* b) {
         cout << "building deja a cette position" << endl;
         return;
     }
-    //2.verify ressources
+    //3.verify road
     
-    //3.update ressource ville
+    //4.verify ressources
+    
+    //5.update ressource ville
 
     gridB[x][y] = b;
 
