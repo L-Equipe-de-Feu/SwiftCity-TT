@@ -14,8 +14,8 @@ void Communication::sendMsg()
   // serializeJson(doc, Serial);
 
   // Length (with one extra character for the null terminator)
-  int Taille_Joystick = etatJoystick.length() + 2;
-  int Taille_Acc = etatAcc.length() + 2;
+  int Taille_Joystick = etatJoystick.length() + 1;
+  int Taille_Acc = etatAcc.length() + 1;
 
   char JOY[Taille_Joystick];
   char ACC[Taille_Acc];
@@ -24,8 +24,6 @@ void Communication::sendMsg()
   etatJoystick.toCharArray(JOY, Taille_Joystick);
   etatAcc.toCharArray(ACC, Taille_Acc);
 
-  JOY[Taille_Joystick - 2] = ';';
-  ACC[Taille_Acc - 2] = ';';
   JOY[Taille_Joystick - 1] = '\0';
   ACC[Taille_Acc - 1] = '\0';
 
