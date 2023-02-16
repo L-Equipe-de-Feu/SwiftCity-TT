@@ -7,6 +7,7 @@
 #define ACTIONCLAVIER_H
 
 #include <iostream>
+#include <vector>
 #include "Menu.h"
 #include "Curseur.h"
 #include "Ville.h"
@@ -27,6 +28,7 @@ class ActionClavier {
         ActionClavier(Menu* menuT, Curseur* curseurT, Ville* villeT);
         ~ActionClavier();
         bool lireClavier();
+        bool lireManette();
 
 };
 #endif

@@ -134,6 +134,7 @@
     <ClInclude Include="include\Ville.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Communication.cpp" />
     <ClCompile Include="main\main.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">main;source;include;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">main;source;include;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
