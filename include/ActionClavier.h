@@ -7,7 +7,7 @@
 #define ACTIONCLAVIER_H
 
 #include <iostream>
-#include <vector>
+#include "SerialPort.hpp"
 #include "Menu.h"
 #include "Curseur.h"
 #include "Ville.h"
@@ -16,12 +16,19 @@
 #include "Magasin.h"
 #include "Route.h"
 
+#define Port "COM6"
+#define Baud 9600
+#define MaxBit 255
+
 class ActionClavier {
     private :
         char input;
         Menu* menu;
         Curseur* curseur;
         Ville* ville;
+        int mult[4] = { 1000, 100, 10, 1 };
+
+        int cTi(char c);
 
         bool inerMenu = false;
     public :

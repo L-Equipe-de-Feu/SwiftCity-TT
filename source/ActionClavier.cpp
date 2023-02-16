@@ -76,24 +76,40 @@ bool ActionClavier::lireClavier() {
 
 bool ActionClavier::lireManette()
 {   
-    vector<uint8_t> buffer;
+    SerialPort serial(Port, Baud);
 
-    size_t taille = serial.available();
-
-    serial.read(buffer, taille);
-
-    while(buffer.size() == 0)
+    if (!serial.isConnected())
     {
-        switch (char(buffer.front()))
+        return false;
+    }
+
+    char buffer[MaxBit];
+
+    size_t taille = serial.readSerialPort(buffer, MaxBit);
+
+    for(int i = 0; i < taille; i++)
+    {
+        int x = 0;
+        int y = 0;
+        int z = 0;
+
+        switch (buffer[i])
         {
 
         //case mouvement du curseur
         case 'J':
-            buffer.erase(buffer.begin(), buffer.begin()+1);
-            int x = int(buffer.at(0)) + int(buffer.at(1)) + int(buffer.at(2)) + int(buffer.at(3));
-            buffer.erase(buffer.begin(), buffer.begin() + 4);
-            int y = int(buffer.at(0)) + int(buffer.at(1)) + int(buffer.at(2)) + int(buffer.at(3));
-            buffer.erase(buffer.begin(), buffer.begin() + 3);
+            i++;
+            for (int j = 0; j < 4; j++)
+            {
+                x += cTi(buffer[++i]) * mult[j];
+            }
+
+            i++;
+
+            for (int j = 0; j < 4; j++)
+            {
+                y += cTi(buffer[++i]) * mult[j];
+            }
             //Fonction curseur (x, y)
             cout << "Joystick : Jx" << x << "y" << y << endl;
             break;
@@ -101,38 +117,52 @@ bool ActionClavier::lireManette()
         //bouton
         case 'A':
             //Fonction bouton A
-            buffer.erase(buffer.begin());
-            cout << "Bouton A pressé" << endl;
+            cout << "Bouton A presse" << endl;
             break;
         case 'B':
             //Fonction bouton B
-            buffer.erase(buffer.begin());
-            cout << "Bouton B pressé" << endl;
+            cout << "Bouton B presse" << endl;
             break;
         case 'M':
             //Fonction bouton MENU
-            buffer.erase(buffer.begin());
-            cout << "Bouton MENU pressé" << endl;
+            cout << "Bouton MENU presse" << endl;
             break;
         case 'S':
             //Fonction bouton START
-            buffer.erase(buffer.begin());
-            cout << "Bouton START pressé" << endl;
+            cout << "Bouton START presse" << endl;
             break;
         case 'D':
             //Fonction bouton arriere DROIT
-            buffer.erase(buffer.begin());
-            cout << "Bouton arriere DROIT pressé" << endl;
+            cout << "Bouton arriere DROIT presse" << endl;
             break;
         case 'G':
             //Fonction bouton arriere GAUCHE
-            buffer.erase(buffer.begin());
-            cout << "Bouton arriere GAUCHE pressé" << endl;
+            cout << "Bouton arriere GAUCHE presse" << endl;
             break;
 
         //Accéléromètre
         case 'C':
-            //Fonction accéléromètre
+            i++;
+            for (int j = 0; j < 4; j++)
+            {
+                x += cTi(buffer[++i]) * mult[j];
+            }
+
+            i++;
+
+            for (int j = 0; j < 4; j++)
+            {
+                y += cTi(buffer[++i]) * mult[j];
+            }
+
+            i++;
+
+            for (int j = 0; j < 4; j++)
+            {
+                z += cTi(buffer[++i]) * mult[j];
+            }
+            //Fonction accéléromètre (x, y, z)
+            cout << "Accelerometre : Cx" << x << "y" << y << "z" << z << endl;
             break;
         default:
             return true;
@@ -140,4 +170,10 @@ bool ActionClavier::lireManette()
         }
     }
     return true;
+}
+
+int ActionClavier::cTi(char c)
+{
+    int i = c - '0';
+    return i;
 }

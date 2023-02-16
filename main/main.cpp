@@ -12,15 +12,14 @@ Batiment* gridB [carre][carre];
 Menu* menu = new Menu();
 Curseur* curseur = new Curseur(carre, carre);
 Ville* ville = new Ville();
-SerialPort s;
 
 int main(int argc)
 {
 	ActionClavier clavier(menu, curseur, ville);
 
-	while(clavier.lireClavier()){
-		ville->affiche(curseur);
-	}
+	bool connect = true;
+
+	while(clavier.lireManette()){}
 
 	delete menu;
 	delete curseur;
