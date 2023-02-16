@@ -9,9 +9,9 @@
 // 4 = 1-2-3-4-5-6-7
 
 int valeur1 = 0;
-int valeur2 = 0;
+int valeur2 = 1;
 int valeur3 = 0;
-int valeur4 = 0;
+int valeur4 = 1;
 
 void appel()
 {
@@ -1345,11 +1345,14 @@ void VitesseEtAppel(int vitesse, unsigned long *previousMillis, unsigned long *c
       valeur4 = 0;
       valeur3 = valeur3 + 1;
     }
-    if (valeur3 == 10)
+    if (valeur3 == 3)
     {
-      valeur3 = 0;
+      if (valeur4 == 2)
+      {
       valeur2 = valeur2 + 1;
-
+      valeur3 = 0;
+      valeur4 = 1;
+      }
     }
     if (valeur2 == 10)
     {
@@ -1357,9 +1360,13 @@ void VitesseEtAppel(int vitesse, unsigned long *previousMillis, unsigned long *c
       valeur1 = valeur1 + 1;
 
     }
-    if (valeur1 == 10)
+    if (valeur1 == 1)
     {
-      valeur1 = 0;
+      if (valeur2 == 3)
+      {
+        valeur1 = 0;
+        valeur2 = 1;
+      }
     }
     appel();
   }
