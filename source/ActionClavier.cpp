@@ -73,3 +73,71 @@ bool ActionClavier::lireClavier() {
     return true;
 
 }
+
+bool ActionClavier::lireManette()
+{   
+    vector<uint8_t> buffer;
+
+    size_t taille = serial.available();
+
+    serial.read(buffer, taille);
+
+    while(buffer.size() == 0)
+    {
+        switch (char(buffer.front()))
+        {
+
+        //case mouvement du curseur
+        case 'J':
+            buffer.erase(buffer.begin(), buffer.begin()+1);
+            int x = int(buffer.at(0)) + int(buffer.at(1)) + int(buffer.at(2)) + int(buffer.at(3));
+            buffer.erase(buffer.begin(), buffer.begin() + 4);
+            int y = int(buffer.at(0)) + int(buffer.at(1)) + int(buffer.at(2)) + int(buffer.at(3));
+            buffer.erase(buffer.begin(), buffer.begin() + 3);
+            //Fonction curseur (x, y)
+            cout << "Joystick : Jx" << x << "y" << y << endl;
+            break;
+
+        //bouton
+        case 'A':
+            //Fonction bouton A
+            buffer.erase(buffer.begin());
+            cout << "Bouton A pressé" << endl;
+            break;
+        case 'B':
+            //Fonction bouton B
+            buffer.erase(buffer.begin());
+            cout << "Bouton B pressé" << endl;
+            break;
+        case 'M':
+            //Fonction bouton MENU
+            buffer.erase(buffer.begin());
+            cout << "Bouton MENU pressé" << endl;
+            break;
+        case 'S':
+            //Fonction bouton START
+            buffer.erase(buffer.begin());
+            cout << "Bouton START pressé" << endl;
+            break;
+        case 'D':
+            //Fonction bouton arriere DROIT
+            buffer.erase(buffer.begin());
+            cout << "Bouton arriere DROIT pressé" << endl;
+            break;
+        case 'G':
+            //Fonction bouton arriere GAUCHE
+            buffer.erase(buffer.begin());
+            cout << "Bouton arriere GAUCHE pressé" << endl;
+            break;
+
+        //Accéléromètre
+        case 'C':
+            //Fonction accéléromètre
+            break;
+        default:
+            return true;
+            break;
+        }
+    }
+    return true;
+}

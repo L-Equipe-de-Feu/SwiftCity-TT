@@ -5,7 +5,6 @@
 #include "Curseur.h"
 #include "SerialPort.hpp"
 
-
 using namespace std;
 #define carre 20
 

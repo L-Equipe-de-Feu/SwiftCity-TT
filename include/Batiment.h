@@ -14,8 +14,7 @@ protected:
     Ressources ressources;
     Ressources achat;
 public:
-    Batiment() 
-    { }
+    Batiment() { }
 
     virtual ~Batiment() {}
 

@@ -7,9 +7,11 @@ Ville::Ville() {
 }
 
 void Ville::init() {
+
     for (int i = 0; i < TAILLEX; i++) {
         for (int e = 0; e < TAILLEY; e++) {
             gridB[i][e] = nullptr;
+
         }
     }
 }
@@ -20,9 +22,10 @@ Ville::~Ville() {
 }
 
 void Ville::construireBatiment(int x, int y, Batiment* b) {
+
     if (x < 0 || y < 0 || x >= TAILLEX || y >= TAILLEY) 
     {
-        cout << "index erroné" << endl;
+        cout << "index erronï¿½" << endl;
         return;
     }
     //TODO
@@ -40,7 +43,6 @@ void Ville::construireBatiment(int x, int y, Batiment* b) {
 
     gridB[x][y] = b;
 
-
 }
 
 void Ville::construireRoute(int x, int y, Batiment* b) {
@@ -50,6 +52,7 @@ void Ville::construireRoute(int x, int y, Batiment* b) {
     //1.verify if spot ok
     //2.verify ressources
     //3.update ressource ville
+
 }
 
 void Ville::affiche(Curseur* curseur) {
@@ -60,8 +63,10 @@ void Ville::affiche(Curseur* curseur) {
     cout << "Votre Population : " << endl;
 
     cout << "|-------------------------------------------------------------------------------|" << endl;
+
     for (int i = 0; i < TAILLEX; i++) {
         for (int e = 0; e < TAILLEY; e++) {
+
             if (i == curseur->get_Coordonnee().x && e == curseur->get_Coordonnee().y) {
                 cout << "| " << "." << " ";
             }
@@ -74,6 +79,7 @@ void Ville::affiche(Curseur* curseur) {
     }
 }
 
+
 void Ville::detruire(int x, int y) 
 {
     
@@ -81,7 +87,7 @@ void Ville::detruire(int x, int y)
 }
 
 /// <summary>
-/// calcul toute les donnée pour un tick, repasse sur tout les elements
+/// calcul toute les donnï¿½e pour un tick, repasse sur tout les elements
 /// </summary>
 void Ville::calculRessources()
 {
