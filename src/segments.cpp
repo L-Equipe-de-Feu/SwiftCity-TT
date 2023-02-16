@@ -1340,28 +1340,22 @@ void VitesseEtAppel(int vitesse, unsigned long *previousMillis, unsigned long *c
   {
     *previousMillis = *currentMillis;
     valeur4 = valeur4 + 1;
-    Serial.print("4 =");
-    Serial.println(valeur4);
     if (valeur4 == 10)
     {
       valeur4 = 0;
       valeur3 = valeur3 + 1;
-      Serial.print("3 = ");
-      Serial.println(valeur3);
     }
     if (valeur3 == 10)
     {
       valeur3 = 0;
       valeur2 = valeur2 + 1;
-      Serial.print("2 = ");
-      Serial.println(valeur2);
+
     }
     if (valeur2 == 10)
     {
       valeur2 = 0;
       valeur1 = valeur1 + 1;
-      Serial.print("1 = ");
-      Serial.println(valeur1);
+
     }
     if (valeur1 == 10)
     {
