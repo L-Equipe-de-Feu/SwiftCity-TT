@@ -12,12 +12,14 @@ int BOU_M = HIGH;
 int BOU_S = HIGH;
 int BOU_ARD = HIGH;
 int BOU_ARG = HIGH;
+
 int STATE_BOU_A = -1;
 int STATE_BOU_B = -1;
 int STATE_BOU_M = -1;
 int STATE_BOU_S = -1;
 int STATE_BOU_ARD = -1;
 int STATE_BOU_ARG = -1;
+
 long lastDebounceTime_A = 0;
 long lastDebounceTime_B = 0;
 long lastDebounceTime_M = 0;
@@ -25,8 +27,9 @@ long lastDebounceTime_S = 0;
 long lastDebounceTime_ARD = 0;
 long lastDebounceTime_ARG = 0;
 long lastDebounceTime_SEND = 0;
+
 unsigned long debouceDelay = 20;
-unsigned long SendTime = 50;
+unsigned long SendTime = 1000;
 
 // Appel des variables pour le compteur et le debounce
 unsigned long previousMillis = 0;
@@ -52,12 +55,11 @@ void loop()
   if (com.date != Date_ref)
   {
     SetTemp(com.date[0], com.date[1], com.date[2], com.date[3]);
-    
+
     Date_ref[0] = com.date[0];
     Date_ref[1] = com.date[1];
     Date_ref[2] = com.date[2];
     Date_ref[3] = com.date[3];
-    
   }
 
   VitesseEtAppel(*com.vitesse, &previousMillis, &currentMillis);
@@ -79,7 +81,7 @@ void loop()
       STATE_BOU_A = -STATE_BOU_A;
 
       // Action
-      Serial.write("A;");
+      Serial.write("A");
     }
     else if ((BOU_A == HIGH) && (STATE_BOU_A > 0))
     {
@@ -99,7 +101,7 @@ void loop()
       STATE_BOU_B = -STATE_BOU_B;
 
       // Action
-      Serial.write("B;");
+      Serial.write("B");
     }
     else if ((BOU_B == HIGH) && (STATE_BOU_B > 0))
     {
@@ -119,7 +121,7 @@ void loop()
       STATE_BOU_M = -STATE_BOU_M;
 
       // Action
-      Serial.write("M;");
+      Serial.write("M");
     }
     else if ((BOU_M == HIGH) && (STATE_BOU_M > 0))
     {
@@ -139,7 +141,7 @@ void loop()
       STATE_BOU_S = -STATE_BOU_S;
 
       // Action
-      Serial.write("S;");
+      Serial.write("S");
     }
     else if ((BOU_S == HIGH) && (STATE_BOU_S > 0))
     {
@@ -159,7 +161,7 @@ void loop()
       STATE_BOU_ARD = -STATE_BOU_ARD;
 
       // Action
-      Serial.write("ARD;");
+      Serial.write("D");
     }
     else if ((BOU_ARD == HIGH) && (STATE_BOU_ARD > 0))
     {
@@ -179,7 +181,7 @@ void loop()
       STATE_BOU_ARG = -STATE_BOU_ARG;
 
       // Action
-      Serial.write("ARG;");
+      Serial.write("G");
     }
     else if ((BOU_ARG == HIGH) && (STATE_BOU_ARG > 0))
     {
@@ -190,23 +192,38 @@ void loop()
   }
 
   // Code pour Joystick G-D
-  if (analogRead(JOY_GD_PIN) < 500 || analogRead(JOY_GD_PIN) > 524)
+  if (analogRead(JOY_GD_PIN) < 500 || analogRead(JOY_GD_PIN) > 524 || analogRead(JOY_HB_PIN) < 500 || analogRead(JOY_HB_PIN) > 524)
   {
-    com.etatJoystick = "Jx" + String(analogRead(JOY_GD_PIN)) + "y" + String(analogRead(JOY_HB_PIN));
+    int GD = analogRead(JOY_GD_PIN);
+    int HB = analogRead(JOY_HB_PIN);
+    String GDRes, HBRes;
+    GDRes = String(int(GD/1000)) + String(int((GD%1000)/100)) + String(int((GD%100)/10)) + String(int((GD%10)));  
+    HBRes = String(int(HB/1000)) + String(int((HB%1000)/100)) + String(int((HB%100)/10)) + String(int((HB%10)));  
+
+    com.etatJoystick = "Jx" + GDRes + "y" + HBRes;
   }
   else
   {
-    com.etatAcc = "Jx0y0z0";
+    com.etatAcc = "Jx000y000";
   }
 
   // Code pour Acceleromètre
   if (analogRead(X_AXIS_PIN) < 500 || analogRead(X_AXIS_PIN) > 524 || analogRead(Y_AXIS_PIN) < 500 || analogRead(Y_AXIS_PIN) > 524 || analogRead(Z_AXIS_PIN) < 500 || analogRead(Z_AXIS_PIN) > 524)
   {
-    com.etatAcc = "Cx" + String(analogRead(X_AXIS_PIN)) + "y" + String(analogRead(Y_AXIS_PIN)) + "z" + String(analogRead(Z_AXIS_PIN));
+    int X = analogRead(X_AXIS_PIN);
+    int Y = analogRead(Y_AXIS_PIN);
+    int Z = analogRead(Z_AXIS_PIN);
+
+    String XRes, YRes, ZRes;
+    XRes = String(int(X/100)) + String(int((X%100)/10)) + String(int((X%10)));  
+    YRes = String(int(Y/100)) + String(int((Y%100)/10)) + String(int((Y%10)));
+    ZRes = String(int(Z/100)) + String(int((Z%100)/10)) + String(int((Z%10)));
+
+    com.etatAcc = "Cx" + XRes + "y" + YRes + "z" + ZRes;
   }
   else
   {
-    com.etatAcc = "Cx0y0z0";
+    com.etatAcc = "Cx000y000z000";
   }
 
   if ((currentMillis - lastDebounceTime_SEND) > SendTime)
@@ -222,87 +239,3 @@ void loop()
     }
   }
 }
-
-/*---------------------------- Fonctions "Main" -----------------------------*/
-
-/*void loop() {
-  Communication com;
-
-  if (analogRead(JOY_GD_PIN) < 500 || analogRead(JOY_GD_PIN) > 524)
-  {
-    com.etatJoystick = "Jx" + String(analogRead(JOY_GD_PIN)) + "y" + String(analogRead(JOY_HB_PIN));
-  }
-  else
-  {
-    com.etatJoystick = "Jx0y0";
-  }
-
-  if (analogRead(JOY_GD_PIN) < 500 || analogRead(JOY_GD_PIN) > 524)
-  {
-    com.etatAcc = "Cx" + String(analogRead(X_AXIS_PIN)) + "y" + String(analogRead(Y_AXIS_PIN)) + "z" + String(analogRead(Z_AXIS_PIN));
-  }
-  else
-  {
-    com.etatAcc = "Cx0y0z0";
-  }
-
-  if (digitalRead(BOU_A_PIN) == HIGH)
-  {
-    com.etatBoutonA = BOU_A_ON;
-  }
-  else
-  {
-    com.etatBoutonA = BOU_A_OFF;
-  }
-
-  if (digitalRead(BOU_B_PIN) == HIGH)
-  {
-    com.etatBoutonB = BOU_B_ON;
-  }
-  else
-  {
-    com.etatBoutonB = BOU_B_OFF;
-  }
-
-  if (digitalRead(BOU_M_PIN) == HIGH)
-  {
-    com.etatBoutonM = BOU_M_ON;
-  }
-  else
-  {
-    com.etatBoutonM = BOU_M_OFF;
-  }
-
-  if (digitalRead(BOU_S_PIN) == HIGH)
-  {
-    com.etatBoutonP = BOU_P_ON;
-  }
-  else
-  {
-    com.etatBoutonP = BOU_P_OFF;
-  }
-
-  if (digitalRead(BOU_ARD_PIN) == HIGH)
-  {
-    com.etatBoutonARD = BOU_ARD_ON;
-  }
-  else
-  {
-    com.etatBoutonARD = BOU_ARD_OFF;
-  }
-
-  if (digitalRead(BOU_ARG_PIN) == HIGH)
-  {
-    com.etatBoutonARG = BOU_ARG_ON;
-  }
-  else
-  {
-    com.etatBoutonARG = BOU_ARG_OFF;
-  }
-
-  if(com.shouldSend_)
-  {
-    com.sendMsg();
-  }
-
-}*/

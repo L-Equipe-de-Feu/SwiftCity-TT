@@ -42,20 +42,6 @@ void LOWSET();
 #define SEG_EN_PIN 52
 #define SEG_A4_PIN 6
 
-// Etat bouton
-#define BOU_A_ON "A1"
-#define BOU_A_OFF "A0"
-#define BOU_B_ON "B1"
-#define BOU_B_OFF "B0"
-#define BOU_M_ON "M1"
-#define BOU_M_OFF "M0"
-#define BOU_P_ON "P1"
-#define BOU_P_OFF "P0"
-#define BOU_ARD_ON "D1"
-#define BOU_ARD_OFF "D0"
-#define BOU_ARG_ON "G1"
-#define BOU_ARG_OFF "G0"
-
 // Frequence de transmission serielle
 #define BAUD 9600
 
