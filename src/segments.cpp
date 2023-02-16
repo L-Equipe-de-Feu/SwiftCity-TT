@@ -1338,27 +1338,55 @@ void VitesseEtAppel(int vitesse, unsigned long *previousMillis, unsigned long *c
 
   if ((*currentMillis - (*previousMillis)) >= interval)
   {
-    *previousMillis = *currentMillis;
-    valeur4 = valeur4 + 1;
+    valeur4 += 1;
+
     if (valeur4 == 10)
     {
       valeur4 = 0;
       valeur3 = valeur3 + 1;
     }
+    if (valeur1 == 0)
+    {
+      if (valeur2 == 2)
+      {
+        if (valeur3 == 2)
+        {
+          if (valeur4 == 9)
+          {
+            valeur2 += 1;
+            valeur3 = 0;
+            valeur4 = 1;
+          }
+        }
+      }
+    }
+
     if (valeur3 == 3)
     {
-      if (valeur4 == 2)
+
+      if (valeur2 % 2 != 0 || (valeur1 == 0 && valeur2 == 8))
       {
-      valeur2 = valeur2 + 1;
-      valeur3 = 0;
-      valeur4 = 1;
+        if (valeur4 == 2)
+        {
+          valeur2 = valeur2 + 1;
+          valeur3 = 0;
+          valeur4 = 1;
+        }
+      }
+      else
+      {
+        if (valeur4 == 1)
+        {
+          valeur2 = valeur2 + 1;
+          valeur3 = 0;
+          valeur4 = 1;
+        }
       }
     }
     if (valeur2 == 10)
     {
       valeur2 = 0;
       valeur1 = valeur1 + 1;
-
     }
     if (valeur1 == 1)
     {
@@ -1369,6 +1397,7 @@ void VitesseEtAppel(int vitesse, unsigned long *previousMillis, unsigned long *c
       }
     }
     appel();
+    *previousMillis = *currentMillis;
   }
   else
   {
@@ -1376,7 +1405,8 @@ void VitesseEtAppel(int vitesse, unsigned long *previousMillis, unsigned long *c
   }
 }
 
-void SetTemp(int Segment1, int Segment2, int Segment3, int Segment4){
+void SetTemp(int Segment1, int Segment2, int Segment3, int Segment4)
+{
   valeur1 = Segment1;
   valeur2 = Segment2;
   valeur3 = Segment3;

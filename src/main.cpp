@@ -29,7 +29,10 @@ long lastDebounceTime_ARG = 0;
 long lastDebounceTime_SEND = 0;
 
 unsigned long debouceDelay = 20;
-unsigned long SendTime = 1000;
+unsigned long SendTime = 1000000;
+
+int Date_ref[4] = {0, 1, 0, 1};
+int Vitesse_ref[2] = {0, 1};
 
 // Appel des variables pour le compteur et le debounce
 unsigned long previousMillis = 0;
@@ -45,24 +48,31 @@ void loop()
 {
   Communication com;
 
-  int Date_ref[4] = {0, 1, 0, 1};
+ 
 
   unsigned long currentMillis = millis();
 
   com.readMsg();
 
   // Set manuellement les chiffre sur 7 segments
-  if (com.date != Date_ref)
+  if (com.date[0] != Date_ref[0] || com.date[1] != Date_ref[1] || com.date[2] != Date_ref[2] || com.date[3] != Date_ref[3])
   {
-    SetTemp(com.date[0], com.date[1], com.date[2], com.date[3]);
-
     Date_ref[0] = com.date[0];
     Date_ref[1] = com.date[1];
     Date_ref[2] = com.date[2];
     Date_ref[3] = com.date[3];
+    SetTemp(Date_ref[0], Date_ref[1], Date_ref[2], Date_ref[3]);
   }
 
-  VitesseEtAppel(*com.vitesse, &previousMillis, &currentMillis);
+  if(com.vitesse[0] != Vitesse_ref[0] || com.vitesse[1] != Vitesse_ref[1])
+  {
+    Vitesse_ref[0] = com.vitesse[0];
+    Vitesse_ref[1] = com.vitesse[1];
+  }
+
+  int VitesseVal = (Vitesse_ref[0] * 10) + (Vitesse_ref[1]);
+
+  VitesseEtAppel(VitesseVal, &previousMillis, &currentMillis);
 
   BOU_A = digitalRead(BOU_A_PIN);
   BOU_B = digitalRead(BOU_B_PIN);

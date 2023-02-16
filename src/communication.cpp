@@ -56,29 +56,4 @@ void Communication::readMsg()
       }
     }
   }
-
-  // Lecture du message Json
-  /*StaticJsonDocument<500> doc;
-  JsonVariant parse_date, parse_vitesse;
-
-  // Lecture sur le port Seriel
-  DeserializationError error = deserializeJson(doc, Serial);
-  // shouldRead_ = false;
-
-  // Si erreur dans le message
-  if (error)
-  {
-    Serial.print("deserialize() failed: ");
-    Serial.println(error.c_str());
-    return;
-  }
-
-  // Analyse des éléments du message message
-  parse_date = doc["date"];
-  parse_vitesse = doc["vitesse"];
-  if (!parse_date.isNull() && !parse_vitesse.isNull())
-  {
-    time = parse_date;
-    vitesse = parse_vitesse;
-  }*/
 }

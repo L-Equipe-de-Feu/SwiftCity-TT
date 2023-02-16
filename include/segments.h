@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 
-#define minutes long(20)
+#define minutes long(1)
 
 int zero(int a);
 int un(int a);
