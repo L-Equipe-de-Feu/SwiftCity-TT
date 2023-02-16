@@ -102,37 +102,37 @@ bool ActionClavier::lireManette()
         case 'A':
             //Fonction bouton A
             buffer.erase(buffer.begin());
-            cout << "Bouton A pressé" << endl;
+            cout << "Bouton A pressÃ©" << endl;
             break;
         case 'B':
             //Fonction bouton B
             buffer.erase(buffer.begin());
-            cout << "Bouton B pressé" << endl;
+            cout << "Bouton B pressÃ©" << endl;
             break;
         case 'M':
             //Fonction bouton MENU
             buffer.erase(buffer.begin());
-            cout << "Bouton MENU pressé" << endl;
+            cout << "Bouton MENU pressÃ©" << endl;
             break;
         case 'S':
             //Fonction bouton START
             buffer.erase(buffer.begin());
-            cout << "Bouton START pressé" << endl;
+            cout << "Bouton START pressÃ©" << endl;
             break;
         case 'D':
             //Fonction bouton arriere DROIT
             buffer.erase(buffer.begin());
-            cout << "Bouton arriere DROIT pressé" << endl;
+            cout << "Bouton arriere DROIT pressÃ©" << endl;
             break;
         case 'G':
             //Fonction bouton arriere GAUCHE
             buffer.erase(buffer.begin());
-            cout << "Bouton arriere GAUCHE pressé" << endl;
+            cout << "Bouton arriere GAUCHE pressÃ©" << endl;
             break;
 
-        //Accéléromètre
+        //AccÃ©lÃ©romÃ¨tre
         case 'C':
-            //Fonction accéléromètre
+            //Fonction accÃ©lÃ©romÃ¨tre
             break;
         default:
             return true;

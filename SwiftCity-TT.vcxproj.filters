@@ -34,6 +34,18 @@
     <Filter Include="Header Files\Terrains">
       <UniqueIdentifier>{0e78cfe6-ff99-4a2b-862d-76a3f1d9e5b5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="qtSource">
+      <UniqueIdentifier>{1cbf6200-c722-445f-b3ed-188d25de323a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Catastrophes">
+      <UniqueIdentifier>{5a5236f1-d8f4-4b2f-a41d-e7e556f963fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ExternalLib">
+      <UniqueIdentifier>{6b03d701-5ed1-4a68-adb4-4c3afe67f5a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ExternalLib\serial">
+      <UniqueIdentifier>{71bd6c37-2a1d-43e7-9d1e-93ba8c0ccb05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ActionClavier.h">
@@ -115,10 +127,13 @@
       <Filter>Header Files\Terrains</Filter>
     </ClInclude>
     <ClInclude Include="include\sinkhole.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Catastrophes</Filter>
     </ClInclude>
     <ClInclude Include="include\Tremblement.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Catastrophes</Filter>
+    </ClInclude>
+    <ClInclude Include="externalLib\serial\SerialPort.hpp">
+      <Filter>ExternalLib\serial</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -131,8 +146,8 @@
     <ClCompile Include="source\ActionClavier.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Communication.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="externalLib\serial\SerialPort.cpp">
+      <Filter>ExternalLib\serial</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
