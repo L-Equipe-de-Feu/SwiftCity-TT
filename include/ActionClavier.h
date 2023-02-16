@@ -7,24 +7,21 @@
 #define ACTIONCLAVIER_H
 
 #include <iostream>
-#include "Menu.h"
+#include <conio.h>
+#include "MenuConsole.h"
 #include "Curseur.h"
 #include "Ville.h"
-#include "Maison.h"
-#include "Usine.h"
-#include "Magasin.h"
 #include "Route.h"
 
 class ActionClavier {
     private :
-        char input;
-        Menu* menu;
+        MenuConsole* menu;
         Curseur* curseur;
         Ville* ville;
-
         bool inerMenu = false;
+
     public :
-        ActionClavier(Menu* menuT, Curseur* curseurT, Ville* villeT);
+        ActionClavier(MenuConsole* menuT, Curseur* curseurT, Ville* villeT);
         ~ActionClavier();
         bool lireClavier();
 

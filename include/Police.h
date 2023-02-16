@@ -23,6 +23,7 @@ public:
     ~Police() {}
 
     void afficher() {}
+
     char get_char() {
         return ' ';
     }

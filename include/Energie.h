@@ -23,9 +23,8 @@ public:
     }
     ~Energie() {}
 
-    void afficher() {
+    void afficher() {}
 
-    }
     char get_char() {
         return 'e';
     }

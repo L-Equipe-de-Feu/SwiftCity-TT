@@ -22,9 +22,8 @@ public:
     }
     ~Usine() {}
 
-    void afficher() {
+    void afficher() {}
 
-    }
     char get_char() {
         return 'U';
     }

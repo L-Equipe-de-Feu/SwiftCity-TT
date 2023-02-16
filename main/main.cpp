@@ -1,15 +1,17 @@
 #include <iostream>
-#include <vector>
+#include <stdlib.h>
 #include "ActionClavier.h"
-#include "Menu.h"
+#include "MenuConsole.h"
 #include "Curseur.h"
+#include "Ville.h"
 
 using namespace std;
-#define carre 20
+#define TAILLEX 15
+#define TAILLEY 30
 
-Batiment* gridB [carre][carre];
-Menu* menu = new Menu();
-Curseur* curseur = new Curseur(carre, carre);
+Batiment* gridB [TAILLEX][TAILLEY];
+MenuConsole* menu = new MenuConsole();
+Curseur* curseur = new Curseur(TAILLEX, TAILLEY);
 Ville* ville = new Ville();
 
 int main(int argc)
@@ -17,6 +19,7 @@ int main(int argc)
 	ActionClavier clavier(menu, curseur, ville);
 
 	while(clavier.lireClavier()){
+		system("cls");
 		ville->affiche(curseur);
 	}
 

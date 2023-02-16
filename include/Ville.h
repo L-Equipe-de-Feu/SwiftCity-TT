@@ -6,8 +6,8 @@
 #include "terrain.h"
 #include "structRessources.h"
 #include "Curseur.h"
-#define TAILLEX 20
-#define TAILLEY 20
+#define TAILLEX 15
+#define TAILLEY 30
 
 #define PENTEHABS 0.2
 

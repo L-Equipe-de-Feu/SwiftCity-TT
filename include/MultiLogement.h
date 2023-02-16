@@ -22,11 +22,11 @@ public:
     }
     ~MultiLogement() {}
 
-    void afficher() {
+    void afficher() {}
 
-    }
     char get_char() {
         return 'M';
+    }
 };
 
 #endif

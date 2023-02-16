@@ -22,9 +22,8 @@ public:
     }
     ~Bureau() {}
 
-    void afficher() {
+    void afficher() {}
 
-    }
     char get_char() {
         return ' ';
     }
