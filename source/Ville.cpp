@@ -3,7 +3,7 @@
 using namespace std;
 
 Ville::Ville() {
-    init();
+    init();   
 }
 
 void Ville::init() {
@@ -12,6 +12,11 @@ void Ville::init() {
             gridB[i][e] = nullptr;
         }
     }
+
+    //starting ressources
+    ressourceTotal.argentTot = 50000;
+    ressourceTotal.bonheurPour = 50;
+    ressourceTotal.materiauxTot = 1000;
 }
 
 Ville::~Ville() {
@@ -19,40 +24,39 @@ Ville::~Ville() {
     delete[] gridT;
 }
 
-void Ville::construireBatiment(int x, int y, Batiment* b) {
-    //if(gridB[x+1][y]==Class(Route) || gridB[x-1][y]==Class(Route) || gridB[x][y+1]==Class(Route) || gridB[x][y-1]==Class(Route) && gridT[x][y]==constructible){
-    
-    //}
-
+bool Ville::construireBatiment(int x, int y, Batiment* b) {
+    //1.verify index
     if (x < 0 || y < 0 || x >= TAILLEX || y >= TAILLEY) 
     {
         cout << "index erroné" << endl;
-        return;
+        return false;
     }
-    //TODO
-    //1.verify if spot ok
+    //2.verify if spot ok
     if (gridB[x][y] != nullptr)
     {
         cout << "building deja a cette position" << endl;
-        return;
+        return false;
     }
-    //2.verify ressources
-    //3.ajouter batiment
+    //3.verify ressources
+    
+    //4.ajouter batiment
     gridB[x][y] = b;
-    //4.update ressource ville
+    //5.update ressource ville
 
     
 
-
+    return true;
 }
 
-void Ville::construireRoute(int x, int y, Batiment* b) {
+bool Ville::construireRoute(int x, int y, Batiment* b) {
     gridB[x][y] = b;
     
     //TODO
     //1.verify if spot ok
     //2.verify ressources
     //3.update ressource ville
+
+    return true;
 }
 
 void Ville::affiche(Curseur* curseur) {
@@ -110,7 +114,7 @@ void Ville::calculRessources()
             {
                 //energie
                 temp = gridB[i][j]->GetRessources().energie;
-                if (temp > 0) 
+                if (temp > 0)
                 {
                     tempRec.energieProd += temp;
                 }
@@ -156,7 +160,7 @@ void Ville::calculRessources()
                 temp = gridB[i][j]->GetRessources().materiaux;
                 if (temp > 0)
                 {
-                    tempRec.materiauxProd += temp; 
+                    tempRec.materiauxProd += temp;
                 }
                 else if (temp < 0)
                 {
@@ -177,19 +181,27 @@ void Ville::calculRessources()
         }
     }
     //calcul bonheur
-    tempRec.bonheurPour = 100 * tempRec.bonheurProd / tempRec.bonheurCons;
+    if (tempRec.bonheurCons > 0)
+    {
+        tempRec.bonheurPour = 100 * tempRec.bonheurProd / tempRec.bonheurCons;
 
-    if (tempRec.bonheurPour > 100) 
-    {
-        tempRec.bonheurPour = 100;
+        if (tempRec.bonheurPour > 100)
+        {
+            tempRec.bonheurPour = 100;
+        }
+        else if (tempRec.bonheurPour < 0)
+        {
+            tempRec.bonheurPour = 0;
+        }
     }
-    else if (tempRec.bonheurPour < 0)
+    else
     {
-        tempRec.bonheurPour = 0;
+        tempRec.bonheurPour = 75;
     }
+    
 
     //calcul habitants
-    int gain = (tempRec.bonheurPour-50)* PENTEHABS;
+    int gain = (tempRec.bonheurPour-50)* PENTEHABS ;
     tempRec.habitantTot = ressourceTotal.habitantTot + gain;
 
     if (tempRec.habitantTot <= 0)//game over???
@@ -242,6 +254,31 @@ void Ville::calculRessources()
 void Ville::calculRessourcesRapide()
 {
     RessourcesVille tempRec = ressourceTotal;
+    //calcul materiaux    
+    tempRec.bonheurPour = 100 * tempRec.bonheurProd / tempRec.bonheurCons;
+
+    if (tempRec.bonheurPour > 100)
+    {
+        tempRec.bonheurPour = 100;
+    }
+    else if (tempRec.bonheurPour < 0)
+    {
+        tempRec.bonheurPour = 0;
+    }
+
+    //calcul habitants
+    int gain = (tempRec.bonheurPour - 50) * PENTEHABS;
+    tempRec.habitantTot = ressourceTotal.habitantTot + gain;
+
+    if (tempRec.habitantTot <= 0)//game over???
+    {
+        tempRec.habitantTot;
+    }
+    else if (tempRec.habitantTot >= tempRec.habitantMax)
+    {
+        tempRec.habitantTot = tempRec.habitantMax;
+    }
+
     //calcul materiaux
     int manquant = 0;
     float travRatio = tempRec.habitantTot / tempRec.habitantTrav;

@@ -29,8 +29,8 @@ public:
     Ville();
     ~Ville();
 
-    void construireBatiment(int x, int y, Batiment* b);
-    void construireRoute(int x, int y, Batiment* b);
+    bool construireBatiment(int x, int y, Batiment* b);
+    bool construireRoute(int x, int y, Batiment* b);
     void detruire(int x, int y);
 
     void affiche(Curseur* curseur);

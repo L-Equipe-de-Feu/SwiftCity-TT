@@ -60,9 +60,6 @@
     <ClInclude Include="include\MenuConsole.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Route.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\StructRessources.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -134,6 +131,9 @@
     </ClInclude>
     <ClInclude Include="externalLib\serial\SerialPort.hpp">
       <Filter>ExternalLib\serial</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Route.h">
+      <Filter>Header Files\Batiments</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

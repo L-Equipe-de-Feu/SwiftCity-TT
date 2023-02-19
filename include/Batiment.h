@@ -12,7 +12,7 @@
 class Batiment {
 protected:
     Ressources ressources;
-    Ressources achat;
+    int couts = 10;
 public:
     Batiment() { }
 
