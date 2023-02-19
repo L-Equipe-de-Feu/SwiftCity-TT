@@ -37,10 +37,11 @@ void Ville::construireBatiment(int x, int y, Batiment* b) {
         return;
     }
     //2.verify ressources
-    
-    //3.update ressource ville
-
+    //3.ajouter batiment
     gridB[x][y] = b;
+    //4.update ressource ville
+
+    
 
 
 }
