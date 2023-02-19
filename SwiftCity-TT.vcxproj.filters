@@ -40,6 +40,12 @@
     <Filter Include="Header Files\Catastrophes">
       <UniqueIdentifier>{5a5236f1-d8f4-4b2f-a41d-e7e556f963fb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ExternalLib">
+      <UniqueIdentifier>{6b03d701-5ed1-4a68-adb4-4c3afe67f5a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ExternalLib\serial">
+      <UniqueIdentifier>{71bd6c37-2a1d-43e7-9d1e-93ba8c0ccb05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ActionClavier.h">
@@ -126,6 +132,9 @@
     <ClInclude Include="include\Tremblement.h">
       <Filter>Header Files\Catastrophes</Filter>
     </ClInclude>
+    <ClInclude Include="externalLib\serial\SerialPort.hpp">
+      <Filter>ExternalLib\serial</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main\main.cpp">
@@ -136,6 +145,9 @@
     </ClCompile>
     <ClCompile Include="source\ActionClavier.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="externalLib\serial\SerialPort.cpp">
+      <Filter>ExternalLib\serial</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

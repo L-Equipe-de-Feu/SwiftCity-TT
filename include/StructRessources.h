@@ -38,7 +38,7 @@ typedef struct {
     int argentTot = 0;
     int argentCons = 0;
     int argentProd = 0;
-    } RessourcesVille;
+} RessourcesVille;
 
 
 #endif
