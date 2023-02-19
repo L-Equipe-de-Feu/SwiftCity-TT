@@ -135,6 +135,9 @@
     <ClInclude Include="include\Route.h">
       <Filter>Header Files\Batiments</Filter>
     </ClInclude>
+    <ClInclude Include="include\GestionnaireTemps.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main\main.cpp">
@@ -148,6 +151,12 @@
     </ClCompile>
     <ClCompile Include="externalLib\serial\SerialPort.cpp">
       <Filter>ExternalLib\serial</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GestionnaireTemps.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Communication.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

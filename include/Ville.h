@@ -20,7 +20,8 @@ private:
     int temps;
     
     void calculRessources();
-    void calculRessourcesRapide();
+    void calculRessourcesIndependant();
+    void calculRessourcesDependant();
     void catastrophe();
     bool isConstructible();
     void tick();

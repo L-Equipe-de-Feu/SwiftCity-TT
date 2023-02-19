@@ -32,29 +32,59 @@ bool Ville::construireBatiment(int x, int y, Batiment* b) {
         return false;
     }
     //2.verify if spot ok
-    if (gridB[x][y] != nullptr)
-    {
+    if (gridB[x][y] != nullptr)    {
         cout << "building deja a cette position" << endl;
         return false;
     }
-    //3.verify ressources
-    
-    //4.ajouter batiment
-    gridB[x][y] = b;
-    //5.update ressource ville
 
-    
+    if (!gridT[x][y]->getPeuConstruire()) 
+    {
+        cout << "ne peux pas construire a cette position" << endl;
+        return false;
+    }
+
+    //3.verify ressources
+    if (gridB[x][y]->get_Couts() < ressourceTotal.argentTot)
+    {
+        cout << "t tro povre bruz" << endl;
+        return false;
+    }
+
+    ressourceTotal.argentTot -= gridB[x][y]->get_Couts();
+
+    //4.ajouter batiment
+    gridB[x][y] = b;   
+
+    calculRessourcesIndependant();
 
     return true;
 }
 
 bool Ville::construireRoute(int x, int y, Batiment* b) {
-    gridB[x][y] = b;
+    //1.verify index
+    if (x < 0 || y < 0 || x >= TAILLEX || y >= TAILLEY)
+    {
+        cout << "index erroné" << endl;
+        return false;
+    }
+    //2.verify if spot ok
+    if (gridB[x][y] != nullptr) {
+        cout << "building deja a cette position" << endl;
+        return false;
+    }
+
+    //3.verify ressources
+    if (gridB[x][y]->get_Couts() < ressourceTotal.argentTot)
+    {
+        cout << "t tro povre bruz" << endl;
+        return false;
+    }
+
+    ressourceTotal.argentTot -= gridB[x][y]->get_Couts();
     
-    //TODO
-    //1.verify if spot ok
-    //2.verify ressources
-    //3.update ressource ville
+    gridB[x][y] = b;
+
+    calculRessourcesIndependant();
 
     return true;
 }
@@ -78,7 +108,7 @@ void Ville::affiche(Curseur* curseur) {
             }
             else 
             {
-                if (gridB[i][e] == NULL)
+                if (gridB[i][e] == NULL || gridB[i][e] == nullptr)
                 {
                     cout << "| " << "  ";
                 }
@@ -95,16 +125,27 @@ void Ville::affiche(Curseur* curseur) {
 
 void Ville::detruire(int x, int y) 
 {
+    ressourceTotal.argentTot += gridB[x][y]->get_Refund();
     delete gridB[x][y];
     gridB[x][y] = nullptr;
 }
 
 /// <summary>
-/// calcul toute les donnée pour un tick, repasse sur tout les elements
+/// calcul toute les donnée
 /// </summary>
 void Ville::calculRessources()
 {
-    RessourcesVille tempRec;
+    calculRessourcesIndependant();
+    calculRessourcesDependant();
+}
+
+
+/// <summary>
+/// update les ressources independantes
+/// </summary>
+void Ville::calculRessourcesIndependant() 
+{
+    RessourcesVille tempRec = ressourceTotal;
     int temp;
     for (int i = 0; i < TAILLEX; i++)
     {
@@ -180,6 +221,14 @@ void Ville::calculRessources()
             }
         }
     }
+}
+
+/// <summary>
+/// update les ressources dependantes et calcul les gains
+/// </summary>
+void Ville::calculRessourcesDependant()
+{
+    RessourcesVille tempRec = ressourceTotal;
     //calcul bonheur
     if (tempRec.bonheurCons > 0)
     {
@@ -198,62 +247,7 @@ void Ville::calculRessources()
     {
         tempRec.bonheurPour = 75;
     }
-    
 
-    //calcul habitants
-    int gain = (tempRec.bonheurPour-50)* PENTEHABS ;
-    tempRec.habitantTot = ressourceTotal.habitantTot + gain;
-
-    if (tempRec.habitantTot <= 0)//game over???
-    {
-        tempRec.habitantTot;
-    }
-    else if (tempRec.habitantTot >= tempRec.habitantMax)
-    {
-        tempRec.habitantTot = tempRec.habitantMax;
-    }
-
-    //calcul materiaux
-    int manquant = 0;
-    float travRatio = tempRec.habitantTot / tempRec.habitantTrav;
-    if (travRatio > 1.0)
-    {
-        travRatio = 1.0;
-    }
-    else if (travRatio < 0)
-    {
-        travRatio = 0;
-    }
-
-    tempRec.materiauxTot = ressourceTotal.materiauxTot + (tempRec.materiauxProd * travRatio) - tempRec.materiauxCons;
-    if (tempRec.materiauxTot < 0)
-    {
-        manquant = tempRec.materiauxTot;
-        tempRec.materiauxTot = 0;
-    }
-
-    //calcul argent
-    if (manquant == 0) 
-    {
-        tempRec.argentTot = ressourceTotal.argentTot + tempRec.argentProd - tempRec.argentCons;
-    }
-    else
-    {
-        float matRatio = (tempRec.materiauxCons - manquant) / tempRec.materiauxCons;
-        tempRec.argentTot = ressourceTotal.argentTot + (tempRec.argentProd * matRatio) - tempRec.argentCons;
-    }
-
-    //transfer
-    ressourceTotal = tempRec;
-
-}
-
-/// <summary>
-/// update seulement les totaux
-/// </summary>
-void Ville::calculRessourcesRapide()
-{
-    RessourcesVille tempRec = ressourceTotal;
     //calcul materiaux    
     tempRec.bonheurPour = 100 * tempRec.bonheurProd / tempRec.bonheurCons;
 
@@ -313,11 +307,14 @@ void Ville::calculRessourcesRapide()
     ressourceTotal = tempRec;
 }
 
-
+/// <summary>
+/// 
+/// </summary>
+/// <param name="sec"></param>
 void Ville::tick()
 {
     //1. calcul des ressources
-    calculRessources();
+    
     //calculRessourcesRapide(); l'un ou l'autre
 
     //2. avancement du temps

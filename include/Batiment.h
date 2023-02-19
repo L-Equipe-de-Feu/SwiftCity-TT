@@ -11,9 +11,10 @@
 
 class Batiment {
 protected:
-    Ressources ressources;
-    int couts = 10;
-public:
+    Ressources ressources; 
+    int couts = 100;
+    int refund = 50;
+public:    
     Batiment() { }
 
     virtual ~Batiment() {}
@@ -34,6 +35,16 @@ public:
     virtual char get_char()
     {
         return ' ';
+    }
+
+    virtual int get_Couts()
+    {
+        return couts;
+    }
+
+    virtual int get_Refund()
+    {
+        return refund;
     }
 };
 

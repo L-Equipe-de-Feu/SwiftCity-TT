@@ -119,6 +119,7 @@
     <ClInclude Include="include\Ecole.h" />
     <ClInclude Include="include\Energie.h" />
     <ClInclude Include="include\Gazon.h" />
+    <ClInclude Include="include\GestionnaireTemps.h" />
     <ClInclude Include="include\Industriel.h" />
     <ClInclude Include="include\Magasin.h" />
     <ClInclude Include="include\Maison.h" />
@@ -143,6 +144,8 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">main;source;include;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="source\ActionClavier.cpp" />
+    <ClCompile Include="source\Communication.cpp" />
+    <ClCompile Include="source\GestionnaireTemps.cpp" />
     <ClCompile Include="source\Ville.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

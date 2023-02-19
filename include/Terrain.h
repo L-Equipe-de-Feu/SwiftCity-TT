@@ -5,8 +5,9 @@ class Terrain {
     protected :
         bool construire;
     public :
+        Terrain();
         /** @brief permet de set un terrain est constructible ou pas*/
-        virtual void setPeuConstruire(bool c)=0;
+        virtual bool getPeuConstruire()=0;
 
         virtual void afficher() = 0;
         virtual char get_char() = 0;
