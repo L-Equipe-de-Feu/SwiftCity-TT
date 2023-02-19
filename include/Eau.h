@@ -10,5 +10,12 @@ class Eau : public Terrain {
         ~Eau();
         /** @brief permet de set un terrain est constructible ou pas*/
         void setPeuConstruire(bool c);  
+
+        void afficher() {}
+
+        char get_char()
+        {
+            return ',';
+        }
 };
 #endif

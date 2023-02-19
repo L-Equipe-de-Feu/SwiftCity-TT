@@ -57,7 +57,7 @@
     <ClInclude Include="include\Curseur.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Menu.h">
+    <ClInclude Include="include\MenuConsole.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Route.h">

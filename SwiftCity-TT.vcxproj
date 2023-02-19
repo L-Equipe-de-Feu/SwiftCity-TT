@@ -122,7 +122,7 @@
     <ClInclude Include="include\Industriel.h" />
     <ClInclude Include="include\Magasin.h" />
     <ClInclude Include="include\Maison.h" />
-    <ClInclude Include="include\Menu.h" />
+    <ClInclude Include="include\MenuConsole.h" />
     <ClInclude Include="include\MultiLogement.h" />
     <ClInclude Include="include\Police.h" />
     <ClInclude Include="include\Pompier.h" />

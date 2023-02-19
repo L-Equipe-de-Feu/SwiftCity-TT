@@ -56,31 +56,43 @@ void Ville::construireRoute(int x, int y, Batiment* b) {
 }
 
 void Ville::affiche(Curseur* curseur) {
-    cout << endl << endl << endl << endl << endl << endl << endl << endl;
-    //rajouter les calcule de monayS ici pour les affichage
-    cout << "Votre argent : " << endl;
-    cout << "Votre income : " << endl;
-    cout << "Votre Population : " << endl;
+    //tick();
+    //cout << endl << endl << endl << endl << endl << endl << endl << endl;
+    //rajouter les calcules ici pour les affichage
+    cout << "Votre argent : " << ressourceTotal.argentTot << endl;
+    cout << "Votre income : " << ressourceTotal.argentProd << endl;
+    cout << "Votre Population : " << ressourceTotal.habitantTot << " / " << ressourceTotal.habitantMax << endl;
+    cout << "Votre Energie : " << ressourceTotal.energieCons << "/" << ressourceTotal.energieProd << endl;
+    cout << "Votre Eau : " << ressourceTotal.eauCons << "/" << ressourceTotal.eauProd << endl;
 
-    cout << "|-------------------------------------------------------------------------------|" << endl;
+    
+    cout << "|-----------------------------------------------------------------------------------------------------------------------|" << endl;
     for (int i = 0; i < TAILLEX; i++) {
         for (int e = 0; e < TAILLEY; e++) {
             if (i == curseur->get_Coordonnee().x && e == curseur->get_Coordonnee().y) {
                 cout << "| " << "." << " ";
             }
-            else {
-                cout << "| " << gridB[i][e]->get_char() << " ";
+            else 
+            {
+                if (gridB[i][e] == NULL)
+                {
+                    cout << "| " << "  ";
+                }
+                else 
+                {
+                    cout << "| " << gridB[i][e]->get_char() << " ";
+                }
             }
         }
         cout << "|" << endl;
-        cout << "|-------------------------------------------------------------------------------|" << endl;
+        cout << "|-----------------------------------------------------------------------------------------------------------------------|" << endl;
     }
 }
 
 void Ville::detruire(int x, int y) 
 {
-    
-
+    delete gridB[x][y];
+    gridB[x][y] = nullptr;
 }
 
 /// <summary>

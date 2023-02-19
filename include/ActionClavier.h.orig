@@ -7,13 +7,16 @@
 #define ACTIONCLAVIER_H
 
 #include <iostream>
+<<<<<<< HEAD
+#include <vector>
+#include "Menu.h"
+=======
 #include <conio.h>
 #include "MenuConsole.h"
+>>>>>>> origin/curseur-affichage-2
 #include "Curseur.h"
 #include "Ville.h"
 #include "Route.h"
-#include "SerialPort.hpp"
-#include <vector>
 
 class ActionClavier {
     private :
@@ -26,7 +29,7 @@ class ActionClavier {
         ActionClavier(MenuConsole* menuT, Curseur* curseurT, Ville* villeT);
         ~ActionClavier();
         bool lireClavier();
-        //bool lireManette();
+        bool lireManette();
 
 };
 #endif

@@ -3,7 +3,11 @@
 #include "ActionClavier.h"
 #include "MenuConsole.h"
 #include "Curseur.h"
+<<<<<<< HEAD
+#include "SerialPort.hpp"
+=======
 #include "Ville.h"
+>>>>>>> origin/curseur-affichage-2
 
 using namespace std;
 #define TAILLEX 15
@@ -13,6 +17,7 @@ Batiment* gridB [TAILLEX][TAILLEY];
 MenuConsole* menu = new MenuConsole();
 Curseur* curseur = new Curseur(TAILLEX, TAILLEY);
 Ville* ville = new Ville();
+SerialPort s;
 
 int main(int argc)
 {

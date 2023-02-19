@@ -1,6 +1,8 @@
 #include "ActionClavier.h"
 
-ActionClavier::ActionClavier(Menu* menuT, Curseur* curseurT, Ville* villeT) {
+using namespace std;
+
+ActionClavier::ActionClavier(MenuConsole* menuT, Curseur* curseurT, Ville* villeT) {
     menu = menuT;
     curseur = curseurT;
     ville = villeT;
@@ -12,7 +14,7 @@ ActionClavier::~ActionClavier() {}
 
 bool ActionClavier::lireClavier() {
     char input;
-    cin >> input;
+    input = getch();
 
     switch (input)
     {
@@ -33,52 +35,34 @@ bool ActionClavier::lireClavier() {
 
         //case choix de construction
     //pourl'instant sur la touche n. le sub menu seras fait plus tard
-    case 'n':
-        inerMenu = true;
-        cout << "construi un batiment\n";
-        break;
-    case 'f':
-        if (inerMenu) {
-            //monter le menu
-        }
-        break;
-    case 'v':
-        if (inerMenu) {
-            //desendre le menu
-        }
-        break;
 
-    case '1':
-        //construire maison
-        ville->construireBatiment(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y, new Maison);
-        break;
-    case '2':
-        //construire usine
-        ville->construireBatiment(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y, new Usine);
-        break;
-    case '3':
-        //construire magasin
-        ville->construireBatiment(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y, new Magasin);
+    case 'q':
+        //construire
+        cout << "Que voulez vous construire : \n" << "\tResidentiel : 1\n" << "\tIndustriel : 2\n" << "\tCommerciale : 3\n" << "\tServices : 4\n";
+        ville->construireBatiment(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y, menu->construire_Batiment_sousMenu(getch()));
         break;
 
     case 'r':
         //Construire une route
         ville->construireRoute(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y, new Route);
         break;
+        
+    case '0':
+        return false;
+        break;
 
     default:
-        return false;
         break;
     }
     return true;
 
 }
-
+/*TODO serial comm
 bool ActionClavier::lireManette()
 {   
     vector<uint8_t> buffer;
 
-    size_t taille = serial.available();
+    size_t taille = 0;//TODO serial.available();
 
     serial.read(buffer, taille);
 
@@ -141,3 +125,4 @@ bool ActionClavier::lireManette()
     }
     return true;
 }
+*/

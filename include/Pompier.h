@@ -23,9 +23,8 @@ public:
     }
     ~Pompier() {}
 
-    void afficher() {
+    void afficher() {}
 
-    }
     char get_char() {
         return ' ';
     }

@@ -25,10 +25,7 @@ public:
 
     ~Aqueduc() {}
     
-    void afficher() 
-    {
-
-    }
+    void afficher() {}
     
     char get_char() 
     {
