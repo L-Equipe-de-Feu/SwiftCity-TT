@@ -20,7 +20,7 @@ public:
         ressources.bonheur = 1;
         ressources.materiaux = 0;
         ressources.argent = -250;
-        ressources.habitant = -2;
+        ressources.habitant = 0;
     }
 
     ~Aqueduc() {}

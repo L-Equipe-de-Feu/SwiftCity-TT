@@ -46,7 +46,7 @@ char* GestionnaireTemps::time_to_str(int mode)
 		strftime(output, 80, "%c", &tempsPresent);
 		break;
 	case 3:
-		strftime(output, 80, "%h %d %R", &tempsPresent);
+		strftime(output, 80, "%Y %h %d %R", &tempsPresent);
 		break;
 	}
 

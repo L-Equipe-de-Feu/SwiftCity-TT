@@ -19,7 +19,7 @@ public:
         ressources.bonheur = 1;
         ressources.materiaux = 0;
         ressources.argent = -250;
-        ressources.habitant = -1;
+        ressources.habitant = 0;
     }
     ~Energie() {}
 

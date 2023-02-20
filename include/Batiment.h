@@ -14,6 +14,7 @@ protected:
     Ressources ressources; 
     int couts = 100;
     int refund = 50;
+    bool isRoute = false;
 public:    
     Batiment() { }
 
@@ -45,6 +46,11 @@ public:
     virtual int get_Refund()
     {
         return refund;
+    }
+
+    virtual bool estRoute()
+    { 
+        return isRoute; 
     }
 };
 

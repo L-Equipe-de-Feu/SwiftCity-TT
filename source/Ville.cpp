@@ -27,29 +27,89 @@ Ville::~Ville() {
 }
 
 bool Ville::construireBatiment(int x, int y, Batiment* b) {
-    //1.verify index
+    
+
+    //1.verify index and ptr
     if (x < 0 || y < 0 || x >= TAILLEX || y >= TAILLEY) 
     {
         cout << "index erroné" << endl;
         return false;
     }
+    if (b == nullptr)return false;
+
     //2.verify if spot ok
+    //vide
     if (gridB[x][y] != nullptr)    {
         cout << "building deja a cette position" << endl;
         return false;
     }
-
+    //terrain constructible
     if (!gridT[x][y]->getPeuConstruire()) 
     {
         cout << "ne peux pas construire a cette position" << endl;
         return false;
     }
+    //route adjacente
+    bool adj = false;
+    if (x > 0) 
+    {
+        if (gridB[x - 1][y] != NULL)
+        {
+            adj = gridB[x - 1][y]->estRoute();
+        }        
+    }
+    if (x < TAILLEX-1 && !adj)
+    {
+        if (gridB[x + 1][y] != NULL) 
+        {
+            adj = gridB[x + 1][y]->estRoute();
+        }        
+    }
+    if (y > 0 && !adj)
+    {
+        if (gridB[x][y - 1] != NULL)
+        {
+            adj = gridB[x][y-1]->estRoute();
+        }
+    }
+    if (y < TAILLEY-1 && !adj)
+    { 
+        if (gridB[x][y + 1] != NULL)
+        {
+            adj = gridB[x][y+1]->estRoute();
+        }        
+    }
+
+    if (!adj) 
+    {
+        cout << "pas de route adjacente" << endl;
+        return false;
+    }
 
     //3.verify ressources
+    //cout
     if (b->get_Couts() > ressourceTotal.argentTot)
     {
         cout << "t tro povre bruz" << endl;
         return false;
+    }
+    //eau
+    if (b->GetRessources().eau < 0) 
+    {
+        if (ressourceTotal.eauCons-b->GetRessources().eau > ressourceTotal.eauProd)
+        {
+            cout << "mouille touer un peu" << endl;
+            return false;
+        }
+    }
+    //energie
+    if (b->GetRessources().energie < 0)
+    {
+        if (ressourceTotal.energieCons - b->GetRessources().energie > ressourceTotal.energieProd)
+        {
+            cout << "t'as trip le breaker guy" << endl;
+            return false;
+        }
     }
 
     ressourceTotal.argentTot -= b->get_Couts();
@@ -100,6 +160,7 @@ void Ville::affiche(Curseur* curseur) {
     cout << "Votre Population : " << ressourceTotal.habitantTot << " / " << ressourceTotal.habitantMax << endl;
     cout << "Votre Energie : " << ressourceTotal.energieCons << "/" << ressourceTotal.energieProd << endl;
     cout << "Votre Eau : " << ressourceTotal.eauCons << "/" << ressourceTotal.eauProd << endl;
+    cout << "Votre Bonheur : " << ressourceTotal.bonheurPour << "%" << endl;
     cout << GT.time_to_str(3) << endl;
     
     cout << "|-----------------------------------------------------------------------------------------------------------------------|" << endl;
@@ -110,7 +171,7 @@ void Ville::affiche(Curseur* curseur) {
             }
             else 
             {
-                if (gridB[i][e] == NULL || gridB[i][e] == nullptr)
+                if (gridB[i][e] == NULL)
                 {
                     cout << "| " << "  ";
                 }
@@ -149,7 +210,7 @@ void Ville::calculRessources()
 /// </summary>
 void Ville::calculRessourcesIndependant() 
 {
-    RessourcesVille tempRec = ressourceTotal;
+    RessourcesVille tempRec;
     int temp;
     for (int i = 0; i < TAILLEX; i++)
     {
@@ -165,7 +226,7 @@ void Ville::calculRessourcesIndependant()
                 }
                 else if (temp < 0)
                 {
-                    tempRec.energieCons += temp;
+                    tempRec.energieCons -= temp;
                 }
 
                 //eau
@@ -176,7 +237,7 @@ void Ville::calculRessourcesIndependant()
                 }
                 else if (temp < 0)
                 {
-                    tempRec.eauCons += temp;
+                    tempRec.eauCons -= temp;
                 }
 
                 //bonheur 
@@ -187,7 +248,7 @@ void Ville::calculRessourcesIndependant()
                 }
                 else if (temp < 0)
                 {
-                    tempRec.bonheurCons += temp;
+                    tempRec.bonheurCons -= temp;
                 }
 
                 //habitant
@@ -198,7 +259,7 @@ void Ville::calculRessourcesIndependant()
                 }
                 else if (temp < 0)
                 {
-                    tempRec.habitantTrav += temp;
+                    tempRec.habitantTrav -= temp;
                 }
 
                 //materiaux
@@ -209,7 +270,7 @@ void Ville::calculRessourcesIndependant()
                 }
                 else if (temp < 0)
                 {
-                    tempRec.materiauxCons += temp;
+                    tempRec.materiauxCons -= temp;
                 }
 
                 //argent
@@ -220,19 +281,12 @@ void Ville::calculRessourcesIndependant()
                 }
                 else if (temp < 0)
                 {
-                    tempRec.argentCons += temp;
+                    tempRec.argentCons -= temp;
                 }
             }
         }
     }
-}
 
-/// <summary>
-/// update les ressources dependantes et calcul les gains
-/// </summary>
-void Ville::calculRessourcesDependant()
-{
-    RessourcesVille tempRec = ressourceTotal;
     //calcul bonheur
     if (tempRec.bonheurCons > 0)
     {
@@ -251,6 +305,28 @@ void Ville::calculRessourcesDependant()
     {
         tempRec.bonheurPour = 75;
     }
+
+    ressourceTotal.argentCons = tempRec.argentCons;
+    ressourceTotal.argentProd = tempRec.argentProd;
+    ressourceTotal.bonheurCons = tempRec.bonheurCons;
+    ressourceTotal.bonheurProd = tempRec.bonheurProd;
+    ressourceTotal.habitantTrav = tempRec.habitantTrav;
+    ressourceTotal.habitantMax = tempRec.habitantMax;
+    ressourceTotal.materiauxCons = tempRec.materiauxCons;
+    ressourceTotal.materiauxProd = tempRec.materiauxProd;
+    ressourceTotal.eauCons = tempRec.eauCons;
+    ressourceTotal.eauProd = tempRec.eauProd;
+    ressourceTotal.energieCons = tempRec.energieCons;
+    ressourceTotal.energieProd = tempRec.energieProd;
+    ressourceTotal.bonheurPour = tempRec.bonheurPour;
+}
+
+/// <summary>
+/// update les ressources dependantes et calcul les gains
+/// </summary>
+void Ville::calculRessourcesDependant()
+{
+    RessourcesVille tempRec = ressourceTotal;    
 
     //calcul materiaux    
     tempRec.bonheurPour = 100 * tempRec.bonheurProd / tempRec.bonheurCons;

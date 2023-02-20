@@ -93,11 +93,11 @@ public :
         switch (input)
         {
         case '1':
-            return new Energie;
+            return new Aqueduc;
             break;
 
         case '2':
-            return new Aqueduc;
+            return new Energie;
             break;
 
         case '3':

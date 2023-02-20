@@ -5,9 +5,9 @@
 
 class Route : public Batiment {
     private :
-
+        
     public : 
-        Route() {}
+        Route() { isRoute = true; }
         ~Route() {}
 
         void afficher() {
