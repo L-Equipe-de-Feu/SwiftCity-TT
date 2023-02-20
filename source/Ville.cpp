@@ -1,7 +1,5 @@
 #include "Ville.h"
 
-
-
 using namespace std;
 
 Ville::Ville() {
@@ -17,8 +15,9 @@ void Ville::init() {
     }
 
     //starting ressources
-    ressourceTotal.argentTot = 50000;
-    ressourceTotal.bonheurPour = 50;
+    ressourceTotal.argentTot = 1000;
+
+    calculRessourcesIndependant();
 }
 
 Ville::~Ville() {
