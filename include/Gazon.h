@@ -9,14 +9,14 @@ class Gazon : public Terrain {
         Gazon() { construire = true; }
         ~Gazon() {}
          /** @brief permet de set un terrain est constructible ou pas*/
-        bool getPeuConstruire() 
+        virtual bool getPeuConstruire() 
         {
             return construire;
         }
 
-        void afficher() {}
+        virtual void afficher() {}
 
-        char get_char() 
+        virtual char get_char() 
         {
             return 'g';
         }

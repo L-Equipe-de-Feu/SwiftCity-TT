@@ -1,14 +1,7 @@
 #pragma once
-
-typedef struct TempsDate
-{
-	int seconde = 0;
-	int minute = 0;
-	int heure = 0;
-	int jour = 1;
-	int mois = 1;
-	int annee = 2000;
-};
+#include <iostream>
+#include <ctime>
+#include <chrono>
 
 typedef enum VitessesTemps
 {
@@ -21,14 +14,17 @@ typedef enum VitessesTemps
 class GestionnaireTemps
 {
 private:
-	TempsDate tempsPresent;
+	tm tempsPresent;
+	VitessesTemps VT;
 public:
 	GestionnaireTemps();
 	GestionnaireTemps(int s, int mi, int h, int j, int mo, int a);
 
-	void avancerTemps(int sec);
+	int avancerTemps(unsigned int sec);
 
-	char* afficher(int mode);
+	void changerVitesse(VitessesTemps newVT);
+
+	char* time_to_str(int mode);
 	//mode 1: communication manette
 	//mode 2: affichage complet
 	//mode 3: affichage en jeu

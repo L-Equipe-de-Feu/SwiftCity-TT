@@ -5,7 +5,10 @@
 #include "Batiment.h"
 #include "terrain.h"
 #include "structRessources.h"
+#include "GestionnaireTemps.h"
 #include "Curseur.h"
+#include "Gazon.h"
+
 #define TAILLEX 15
 #define TAILLEY 30
 
@@ -15,6 +18,7 @@ class Ville
 {
 private:
     RessourcesVille ressourceTotal;
+    GestionnaireTemps GT;
     Terrain* gridT[TAILLEX][TAILLEY];
     Batiment* gridB[TAILLEX][TAILLEY];
     int temps;

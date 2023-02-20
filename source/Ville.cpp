@@ -1,5 +1,7 @@
 #include "Ville.h"
 
+
+
 using namespace std;
 
 Ville::Ville() {
@@ -10,13 +12,13 @@ void Ville::init() {
     for (int i = 0; i < TAILLEX; i++) {
         for (int e = 0; e < TAILLEY; e++) {
             gridB[i][e] = nullptr;
+            gridT[i][e] = new Gazon();
         }
     }
 
     //starting ressources
     ressourceTotal.argentTot = 50000;
     ressourceTotal.bonheurPour = 50;
-    ressourceTotal.materiauxTot = 1000;
 }
 
 Ville::~Ville() {
@@ -44,13 +46,13 @@ bool Ville::construireBatiment(int x, int y, Batiment* b) {
     }
 
     //3.verify ressources
-    if (gridB[x][y]->get_Couts() < ressourceTotal.argentTot)
+    if (b->get_Couts() > ressourceTotal.argentTot)
     {
         cout << "t tro povre bruz" << endl;
         return false;
     }
 
-    ressourceTotal.argentTot -= gridB[x][y]->get_Couts();
+    ressourceTotal.argentTot -= b->get_Couts();
 
     //4.ajouter batiment
     gridB[x][y] = b;   
@@ -74,13 +76,13 @@ bool Ville::construireRoute(int x, int y, Batiment* b) {
     }
 
     //3.verify ressources
-    if (gridB[x][y]->get_Couts() < ressourceTotal.argentTot)
+    if (b->get_Couts() > ressourceTotal.argentTot)
     {
         cout << "t tro povre bruz" << endl;
         return false;
     }
 
-    ressourceTotal.argentTot -= gridB[x][y]->get_Couts();
+    ressourceTotal.argentTot -= b->get_Couts();
     
     gridB[x][y] = b;
 
@@ -98,7 +100,7 @@ void Ville::affiche(Curseur* curseur) {
     cout << "Votre Population : " << ressourceTotal.habitantTot << " / " << ressourceTotal.habitantMax << endl;
     cout << "Votre Energie : " << ressourceTotal.energieCons << "/" << ressourceTotal.energieProd << endl;
     cout << "Votre Eau : " << ressourceTotal.eauCons << "/" << ressourceTotal.eauProd << endl;
-
+    cout << GT.time_to_str(3) << endl;
     
     cout << "|-----------------------------------------------------------------------------------------------------------------------|" << endl;
     for (int i = 0; i < TAILLEX; i++) {
@@ -125,6 +127,8 @@ void Ville::affiche(Curseur* curseur) {
 
 void Ville::detruire(int x, int y) 
 {
+    if (gridB[x][y] == nullptr)return;
+
     ressourceTotal.argentTot += gridB[x][y]->get_Refund();
     delete gridB[x][y];
     gridB[x][y] = nullptr;
@@ -315,7 +319,6 @@ void Ville::tick()
 {
     //1. calcul des ressources
     
-    //calculRessourcesRapide(); l'un ou l'autre
 
     //2. avancement du temps
 
