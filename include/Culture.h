@@ -14,12 +14,13 @@ private:
     /* data */
 public:
     Culture() {
-        ressources.energie = -10;
-        ressources.eau = -5;
-        ressources.bonheur = 20;
+        ressources.energie = -1;
+        ressources.eau = -1;
+        ressources.bonheur = 5;
         ressources.materiaux = 0;
-        ressources.argent = -250;
-        ressources.habitant = -8;
+        ressources.argent = -50;
+        ressources.habitant = 0;
+        couts = 50;
     }
     ~Culture() {}
 
@@ -27,7 +28,7 @@ public:
 
     char get_char() 
     {
-        return ' ';
+        return 'C';
     }
 };
 #endif

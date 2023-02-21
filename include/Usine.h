@@ -15,10 +15,11 @@ public:
     Usine() {
         ressources.energie = -10;
         ressources.eau = -4;
-        ressources.bonheur = -20;
-        ressources.materiaux = 60;
+        ressources.bonheur = -10;
+        ressources.materiaux = 120;
         ressources.argent = -100;
         ressources.habitant = -10;
+        couts = 500;
     }
     ~Usine() {}
 

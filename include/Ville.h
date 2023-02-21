@@ -42,6 +42,8 @@ public:
     void detruire(int x, int y);
     void tick();
     void affiche(Curseur* curseur);
+    void accelerer();
+    void decelerer();
 };
 
 #endif

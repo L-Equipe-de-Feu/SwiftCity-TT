@@ -63,7 +63,15 @@ int ActionClavier::lireClavier() {
         ville->construireRoute(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y, new Route);
         return 1;
         break;
-        
+
+    case 'k':
+        ville->decelerer();
+        break;
+
+    case 'l':
+        ville->accelerer();
+        break;
+
     case '\x1b'://escape
         return -1;
         break;

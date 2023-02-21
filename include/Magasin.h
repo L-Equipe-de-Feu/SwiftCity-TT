@@ -16,9 +16,9 @@ public:
         ressources.energie = -1;
         ressources.eau = -1;
         ressources.bonheur = 0;
-        ressources.materiaux = -5;
-        ressources.argent = -100;
-        ressources.habitant = -2;
+        ressources.materiaux = -100;
+        ressources.argent = 1000;
+        ressources.habitant = 0;
     }
     ~Magasin(){}
 

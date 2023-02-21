@@ -23,6 +23,13 @@ public:
 	int avancerTemps(unsigned int sec);
 
 	void changerVitesse(VitessesTemps newVT);
+	
+	VitessesTemps getVitesseTemps();
+	
+	char* vitesse_to_str();
+
+	void accelerer();
+	void decelerer();
 
 	char* time_to_str(int mode);
 	//mode 1: communication manette

@@ -23,8 +23,9 @@ void Ville::init() {
 }
 
 Ville::~Ville() {
-    delete[] gridB;
-    delete[] gridT;
+    // TODO : crash a la fermeture, verifier pourquoi
+    //delete[] gridB;
+    //delete[] gridT;
 }
 
 bool Ville::construireBatiment(int x, int y, Batiment* b) {
@@ -162,7 +163,9 @@ void Ville::affiche(Curseur* curseur) {
     cout << "Votre Energie : " << ressourceTotal.energieCons << "/" << ressourceTotal.energieProd << endl;
     cout << "Votre Eau : " << ressourceTotal.eauCons << "/" << ressourceTotal.eauProd << endl;
     cout << "Votre Bonheur : " << ressourceTotal.bonheurPour << "%" << endl;
-    cout << GT.time_to_str(3) << endl;
+    cout << "Vos Materiaux : " << ressourceTotal.materiauxTot << endl;
+
+    cout << GT.time_to_str(3) << "\tVitesse : " << GT.vitesse_to_str() << endl;
     
     cout << "|-----------------------------------------------------------------------------------------------------------------------|" << endl;
     for (int i = 0; i < TAILLEX; i++) {
@@ -185,6 +188,16 @@ void Ville::affiche(Curseur* curseur) {
         cout << "|" << endl;
         cout << "|-----------------------------------------------------------------------------------------------------------------------|" << endl;
     }
+}
+
+void Ville::accelerer()
+{
+    GT.accelerer();
+}
+
+void Ville::decelerer()
+{
+    GT.decelerer();
 }
 
 void Ville::detruire(int x, int y) 

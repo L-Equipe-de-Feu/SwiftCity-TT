@@ -17,10 +17,11 @@ public:
     {
         ressources.energie = -2;
         ressources.eau = 10;
-        ressources.bonheur = 1;
+        ressources.bonheur = 0;
         ressources.materiaux = 0;
-        ressources.argent = -250;
+        ressources.argent = -10;
         ressources.habitant = 0;
+        couts = 50;
     }
 
     ~Aqueduc() {}

@@ -16,10 +16,11 @@ public:
     Energie() {
         ressources.energie = 20;
         ressources.eau = 0;
-        ressources.bonheur = 1;
+        ressources.bonheur = 0;
         ressources.materiaux = 0;
-        ressources.argent = -250;
+        ressources.argent = -10;
         ressources.habitant = 0;
+        couts = 50;
     }
     ~Energie() {}
 
