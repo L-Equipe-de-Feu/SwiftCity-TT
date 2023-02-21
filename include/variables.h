@@ -43,6 +43,6 @@ void LOWSET();
 #define SEG_A4_PIN 6
 
 // Frequence de transmission serielle
-#define BAUD 9600
+#define BAUD 115200
 
 #endif
