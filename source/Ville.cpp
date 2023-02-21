@@ -3,7 +3,9 @@
 using namespace std;
 
 Ville::Ville() {
-    init();   
+    init();  
+
+    ticktimelast = time(0);
 }
 
 void Ville::init() {
@@ -15,7 +17,7 @@ void Ville::init() {
     }
 
     //starting ressources
-    ressourceTotal.argentTot = 1000;
+    ressourceTotal.argentTot = 5000;
 
     calculRessourcesIndependant();
 }
@@ -325,27 +327,15 @@ void Ville::calculRessourcesIndependant()
 /// </summary>
 void Ville::calculRessourcesDependant()
 {
-    RessourcesVille tempRec = ressourceTotal;    
-
-    //calcul materiaux    
-    tempRec.bonheurPour = 100 * tempRec.bonheurProd / tempRec.bonheurCons;
-
-    if (tempRec.bonheurPour > 100)
-    {
-        tempRec.bonheurPour = 100;
-    }
-    else if (tempRec.bonheurPour < 0)
-    {
-        tempRec.bonheurPour = 0;
-    }
-
+    RessourcesVille tempRec = ressourceTotal;
+   
     //calcul habitants
     int gain = (tempRec.bonheurPour - 50) * PENTEHABS;
     tempRec.habitantTot = ressourceTotal.habitantTot + gain;
 
     if (tempRec.habitantTot <= 0)//game over???
     {
-        tempRec.habitantTot;
+        tempRec.habitantTot = 0;
     }
     else if (tempRec.habitantTot >= tempRec.habitantMax)
     {
@@ -354,20 +344,27 @@ void Ville::calculRessourcesDependant()
 
     //calcul materiaux
     int manquant = 0;
-    float travRatio = tempRec.habitantTot / tempRec.habitantTrav;
-    if (travRatio > 1.0)
-    {
-        travRatio = 1.0;
-    }
-    else if (travRatio < 0)
+    float travRatio = 0;
+    if (tempRec.habitantTrav == 0)
     {
         travRatio = 0;
     }
-
+    else
+    {        
+        travRatio = tempRec.habitantTot / tempRec.habitantTrav;
+        if (travRatio > 1.0)
+        {
+            travRatio = 1.0;
+        }
+        else if (travRatio < 0)
+        {
+            travRatio = 0;
+        }
+    }
     tempRec.materiauxTot = ressourceTotal.materiauxTot + (tempRec.materiauxProd * travRatio) - tempRec.materiauxCons;
     if (tempRec.materiauxTot < 0)
     {
-        manquant = tempRec.materiauxTot;
+        manquant = -tempRec.materiauxTot;
         tempRec.materiauxTot = 0;
     }
 
@@ -392,13 +389,31 @@ void Ville::calculRessourcesDependant()
 /// <param name="sec"></param>
 void Ville::tick()
 {
-    //1. calcul des ressources
+    ticktime = time(0);
+    int elapsedSec = ticktime - ticktimelast;
     
+    if(elapsedSec > 0)
+    {
+        //1. avancement du temps
+        ticktimeH += GT.avancerTemps(elapsedSec);
+        int elapsedH = int(ticktimeH - tickHtimelast) / 3600;
+        //2. calcul des ressources    
+        calculRessourcesIndependant();
 
-    //2. avancement du temps
+        if (elapsedH > 0) 
+        {
+            for (int i = 0; i < elapsedH; i++)
+            {
+                calculRessourcesDependant();
+            }
+            tickHtimelast = ticktimeH;
+        }
 
+        //3. evenement aleatoire
+        //TODO
 
-    //3. evenement aleatoire
+        ticktimelast = ticktime;
+    }    
 }
 
 void Ville::catastrophe()

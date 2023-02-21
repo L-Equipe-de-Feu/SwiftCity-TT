@@ -3,7 +3,7 @@
 #include <ctime>
 #include <chrono>
 
-typedef enum VitessesTemps
+enum VitessesTemps
 {
 	X1 = 30, 
 	X2 = 60, 

@@ -21,14 +21,17 @@ private:
     GestionnaireTemps GT;
     Terrain* gridT[TAILLEX][TAILLEY];
     Batiment* gridB[TAILLEX][TAILLEY];
-    int temps;
+    long ticktime = 0;
+    long ticktimelast = 0;
+    long ticktimeH = 0;
+    long tickHtimelast = 0;
     
     void calculRessources();
     void calculRessourcesIndependant();
     void calculRessourcesDependant();
     void catastrophe();
     bool isConstructible();
-    void tick();
+    
     void init();
 public:
     Ville();
@@ -37,7 +40,7 @@ public:
     bool construireBatiment(int x, int y, Batiment* b);
     bool construireRoute(int x, int y, Batiment* b);
     void detruire(int x, int y);
-
+    void tick();
     void affiche(Curseur* curseur);
 };
 

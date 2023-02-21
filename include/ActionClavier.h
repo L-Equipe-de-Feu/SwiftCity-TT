@@ -25,7 +25,7 @@ class ActionClavier {
     public :
         ActionClavier(MenuConsole* menuT, Curseur* curseurT, Ville* villeT);
         ~ActionClavier();
-        bool lireClavier();
+        int lireClavier();
         //bool lireManette();
 
 };

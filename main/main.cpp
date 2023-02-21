@@ -4,6 +4,7 @@
 #include "MenuConsole.h"
 #include "Curseur.h"
 #include "Ville.h"
+#include <ctime>
 
 using namespace std;
 #define TAILLEX 15
@@ -14,18 +15,38 @@ MenuConsole* menu = new MenuConsole();
 Curseur* curseur = new Curseur(TAILLEX, TAILLEY);
 Ville* ville = new Ville();
 
-int main(int argc)
+void main()
 {
 	ActionClavier clavier(menu, curseur, ville);
+	long tick = time(0);
+	long lasttick = tick;
 
-	while(clavier.lireClavier()){
-		system("cls");
-		ville->affiche(curseur);
-	}
+
+	bool quit = false;
+	do{
+		tick = time(0);
+		if (tick - lasttick >= 1) 
+		{			
+			system("cls");
+			ville->tick();
+			ville->affiche(curseur);
+			lasttick = tick;
+		}
+		
+		switch (clavier.lireClavier())
+		{
+		case 1:
+			system("cls");
+			ville->affiche(curseur);
+			break;
+		case -1:
+			quit = true;
+			break;
+		} 
+
+	} while (!quit);
 
 	delete menu;
 	delete curseur;
 	delete ville;
-
-	return 1;
 }

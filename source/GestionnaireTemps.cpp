@@ -2,9 +2,20 @@
 
 GestionnaireTemps::GestionnaireTemps()
 {
-	time_t now = time(0);
-	tempsPresent = *gmtime(&now);
-	VT = X1;
+	tm datejeu;
+	datejeu.tm_year = 111;
+	datejeu.tm_mday = 3;
+	datejeu.tm_mon = 2;
+	datejeu.tm_hour = 8;
+	datejeu.tm_min = 0;
+	datejeu.tm_sec = 0;
+	datejeu.tm_isdst = 0;
+	datejeu.tm_wday = 0;
+	datejeu.tm_yday = 0;
+
+	mktime(&datejeu);
+	tempsPresent = datejeu;
+	VT = X2;
 }
 
 GestionnaireTemps::GestionnaireTemps(int s, int mi, int h, int j, int mo, int a)
@@ -13,20 +24,19 @@ GestionnaireTemps::GestionnaireTemps(int s, int mi, int h, int j, int mo, int a)
 }
 
 /// <summary>
-/// avance le temps et retourne combien d'heure se sont écoulé
+/// avance le temps et retourne le temps avancer en jeu
 /// </summary>
 /// <param name="sec">quantité de sec a avancer</param>
-/// <returns>nombre de trigger de calcul de bien</returns>
+/// <returns>nombre sec elapsed in game</returns>
 int GestionnaireTemps::avancerTemps(unsigned int sec)
 {
 	//multiplicateur
 	sec = sec * VT;
-
 	tempsPresent.tm_sec += sec;
 
 	mktime(&tempsPresent);
 
-	return sec / 3600;
+	return sec;
 }
 
 void GestionnaireTemps::changerVitesse(VitessesTemps newVT)
