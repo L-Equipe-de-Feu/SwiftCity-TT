@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 
-#define minutes long(1)
+//#define minutes long(12)
 
 int zero(int a);
 int un(int a);
@@ -50,7 +50,7 @@ void segon();
 void appel();
 
 void testaffichage(int i);
-void VitesseEtAppel(int vitesse, unsigned long *previousMillis, unsigned long *currentMillis);
+//void VitesseEtAppel(int vitesse, unsigned long *previousMillis, unsigned long *currentMillis);
 void SetTemp(int Segment1, int Segment2, int Segment3, int Segment4);
 
 #endif

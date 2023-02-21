@@ -20,7 +20,7 @@ public:
   String etatJoystick;
   String etatAcc;
 
-  int date[4] = {0, 1, 0, 1};
+  int date[4] = {1, 1, 2, 8};
   int vitesse[2] = {0, 1};
 
   void sendMsg();

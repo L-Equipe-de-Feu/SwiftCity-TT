@@ -29,9 +29,9 @@ long lastDebounceTime_ARG = 0;
 long lastDebounceTime_SEND = 0;
 
 unsigned long debouceDelay = 20;
-unsigned long SendTime = 1000000;
+unsigned long SendTime = 50;
 
-int Date_ref[4] = {0, 1, 0, 1};
+int Date_ref[4] = {1, 1, 2, 8};
 int Vitesse_ref[2] = {0, 1};
 
 // Appel des variables pour le compteur et le debounce
@@ -47,8 +47,6 @@ void setup()
 void loop()
 {
   Communication com;
-
- 
 
   unsigned long currentMillis = millis();
 
@@ -69,10 +67,10 @@ void loop()
     Vitesse_ref[0] = com.vitesse[0];
     Vitesse_ref[1] = com.vitesse[1];
   }
+  //Appel des 7 segments
+  appel();
 
-  int VitesseVal = (Vitesse_ref[0] * 10) + (Vitesse_ref[1]);
-
-  VitesseEtAppel(VitesseVal, &previousMillis, &currentMillis);
+  //VitesseEtAppel(VitesseVal, &previousMillis, &currentMillis);
 
   BOU_A = digitalRead(BOU_A_PIN);
   BOU_B = digitalRead(BOU_B_PIN);
@@ -80,6 +78,38 @@ void loop()
   BOU_S = digitalRead(BOU_S_PIN);
   BOU_ARD = digitalRead(BOU_ARD_PIN);
   BOU_ARG = digitalRead(BOU_ARG_PIN);
+
+  // Code pour LEDS
+  if(Vitesse_ref[1] == 1){
+    digitalWrite(LED_1, HIGH);
+    digitalWrite(LED_2, LOW);
+    digitalWrite(LED_3, LOW);
+    digitalWrite(LED_4, LOW);
+  }
+  else if(Vitesse_ref[1] == 2){
+    digitalWrite(LED_1, HIGH);
+    digitalWrite(LED_2, HIGH);
+    digitalWrite(LED_3, LOW);
+    digitalWrite(LED_4, LOW);
+  }
+  else if(Vitesse_ref[1] == 3){
+    digitalWrite(LED_1, HIGH);
+    digitalWrite(LED_2, HIGH);
+    digitalWrite(LED_3, HIGH);
+    digitalWrite(LED_4, LOW);
+  }
+  else if(Vitesse_ref[1] == 4){
+    digitalWrite(LED_1, HIGH);
+    digitalWrite(LED_2, HIGH);
+    digitalWrite(LED_3, HIGH);
+    digitalWrite(LED_4, HIGH);
+  }
+  else{
+    digitalWrite(LED_1, LOW);
+    digitalWrite(LED_2, LOW);
+    digitalWrite(LED_3, LOW);
+    digitalWrite(LED_4, LOW);
+  }
 
   // Code pour bouton A
   if ((currentMillis - lastDebounceTime_A) > debouceDelay)
