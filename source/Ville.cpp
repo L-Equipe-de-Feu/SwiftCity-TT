@@ -364,7 +364,7 @@ void Ville::calculRessourcesDependant()
     }
     else
     {        
-        travRatio = tempRec.habitantTot / tempRec.habitantTrav;
+        travRatio = float(tempRec.habitantTot) / float(tempRec.habitantTrav);
         if (travRatio > 1.0)
         {
             travRatio = 1.0;

@@ -28,7 +28,7 @@ public:
 
     char get_char() 
     {
-        return 'C';
+        return 'c';
     }
 };
 #endif
