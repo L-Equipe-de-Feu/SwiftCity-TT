@@ -80,6 +80,7 @@ bool ActionClavier::lireManette()
 
     if (!serial.isConnected())
     {
+        serial.closeSerial();
         return false;
     }
 
@@ -165,10 +166,14 @@ bool ActionClavier::lireManette()
             cout << "Accelerometre : Cx" << x << "y" << y << "z" << z << endl;
             break;
         default:
+            serial.closeSerial();
             return true;
             break;
         }
     }
+
+    serial.closeSerial();
+
     return true;
 }
 

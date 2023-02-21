@@ -17,7 +17,7 @@
 #include "Route.h"
 
 #define Port "COM6"
-#define Baud 9600
+#define Baud 115200
 #define MaxBit 255
 
 class ActionClavier {
