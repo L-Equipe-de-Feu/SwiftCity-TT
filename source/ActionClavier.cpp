@@ -64,6 +64,10 @@ int ActionClavier::lireClavier() {
         return 1;
         break;
 
+    case 'x':
+        ville->detruire(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y);
+        break;
+
     case 'k':
         ville->decelerer();
         break;
