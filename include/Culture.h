@@ -16,11 +16,11 @@ public:
     Culture() {
         ressources.energie = -1;
         ressources.eau = -1;
-        ressources.bonheur = 5;
+        ressources.bonheur = 15;
         ressources.materiaux = 0;
         ressources.argent = -50;
         ressources.habitant = 0;
-        couts = 50;
+        couts = 20;
     }
     ~Culture() {}
 
@@ -28,7 +28,7 @@ public:
 
     char get_char() 
     {
-        return 'c';
+        return '^';
     }
 };
 #endif

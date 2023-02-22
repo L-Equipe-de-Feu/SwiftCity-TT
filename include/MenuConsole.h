@@ -101,7 +101,6 @@ public :
             break;
 
         case '3':
-            cout << "(WIP)";
             return new Culture;
             break;
 
