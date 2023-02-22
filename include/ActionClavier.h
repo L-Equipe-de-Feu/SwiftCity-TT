@@ -32,7 +32,7 @@ class ActionClavier {
 
         bool inerMenu = false;
     public :
-        ActionClavier(Menu* menuT, Curseur* curseurT, Ville* villeT);
+        //ActionClavier(Menu* menuT, Curseur* curseurT, Ville* villeT);
         ~ActionClavier();
         bool lireClavier();
         bool lireManette();

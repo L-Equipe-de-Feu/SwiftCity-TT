@@ -1,10 +1,10 @@
 #include "ActionClavier.h"
-
+/*
 ActionClavier::ActionClavier(Menu* menuT, Curseur* curseurT, Ville* villeT) {
     menu = menuT;
     curseur = curseurT;
     ville = villeT;
-}
+}*/
 
 
 ActionClavier::~ActionClavier() {}
