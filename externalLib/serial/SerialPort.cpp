@@ -61,6 +61,7 @@ SerialPort::SerialPort(const char *portName, int BAUD)
 
 SerialPort::~SerialPort()
 {
+    
     if (this->connected)
     {
         this->connected = false;

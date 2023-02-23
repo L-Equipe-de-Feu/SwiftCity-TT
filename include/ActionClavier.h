@@ -18,7 +18,7 @@
 
 #define Port "COM6"
 #define Baud 115200
-#define MaxBit 255
+#define MaxBit 512
 
 class ActionClavier {
     private :
@@ -28,11 +28,14 @@ class ActionClavier {
         Ville* ville;
         int mult[4] = { 1000, 100, 10, 1 };
 
+        SerialPort* serial;
+
         int cTi(char c);
 
         bool inerMenu = false;
     public :
-        //ActionClavier(Menu* menuT, Curseur* curseurT, Ville* villeT);
+        ActionClavier();
+        ActionClavier(Menu* menuT, Curseur* curseurT, Ville* villeT);
         ~ActionClavier();
         bool lireClavier();
         bool lireManette();

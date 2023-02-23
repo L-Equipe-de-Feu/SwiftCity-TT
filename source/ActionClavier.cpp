@@ -1,13 +1,19 @@
 #include "ActionClavier.h"
-/*
+ActionClavier::ActionClavier() 
+{
+    serial = new SerialPort(Port, Baud);
+}
+
 ActionClavier::ActionClavier(Menu* menuT, Curseur* curseurT, Ville* villeT) {
     menu = menuT;
     curseur = curseurT;
     ville = villeT;
-}*/
+}
 
-
-ActionClavier::~ActionClavier() {}
+ActionClavier::~ActionClavier() 
+{
+    delete serial;
+}
 
 
 bool ActionClavier::lireClavier() {
@@ -76,17 +82,15 @@ bool ActionClavier::lireClavier() {
 
 bool ActionClavier::lireManette()
 {   
-    SerialPort serial(Port, Baud);
-
-    if (!serial.isConnected())
+    if (!serial->isConnected())
     {
-        serial.closeSerial();
         return false;
     }
 
+
     char buffer[MaxBit];
 
-    size_t taille = serial.readSerialPort(buffer, MaxBit);
+    size_t taille = serial->readSerialPort(buffer, MaxBit);
 
     for(int i = 0; i < taille; i++)
     {
@@ -144,35 +148,31 @@ bool ActionClavier::lireManette()
         //Accéléromètre
         case 'C':
             i++;
-            for (int j = 0; j < 4; j++)
+            for (int j = 0; j < 3; j++)
             {
-                x += cTi(buffer[++i]) * mult[j];
+                x += cTi(buffer[++i]) * mult[j+1];
             }
 
             i++;
 
-            for (int j = 0; j < 4; j++)
+            for (int j = 0; j < 3; j++)
             {
-                y += cTi(buffer[++i]) * mult[j];
+                y += cTi(buffer[++i]) * mult[j+1];
             }
 
             i++;
 
-            for (int j = 0; j < 4; j++)
+            for (int j = 0; j < 3; j++)
             {
-                z += cTi(buffer[++i]) * mult[j];
+                z += cTi(buffer[++i]) * mult[j+1];
             }
             //Fonction accéléromètre (x, y, z)
             cout << "Accelerometre : Cx" << x << "y" << y << "z" << z << endl;
             break;
         default:
-            serial.closeSerial();
-            return true;
             break;
         }
     }
-
-    serial.closeSerial();
 
     return true;
 }
