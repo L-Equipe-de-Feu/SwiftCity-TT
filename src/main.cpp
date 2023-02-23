@@ -254,6 +254,31 @@ void loop()
     int Y = analogRead(Y_AXIS_PIN);
     int Z = analogRead(Z_AXIS_PIN);
 
+  if (X > 338)
+    {
+      X = 338;
+    }
+    else
+    {
+      X = X;
+    }
+     if (Y > 338)
+    {
+      Y = 338;
+    }
+    else
+    {
+      Y = Y;
+    }
+     if (Z > 338)
+    {
+      Z= 338;
+    }
+    else
+    {
+      Z = Z;
+    }
+
     String XRes, YRes, ZRes;
     XRes = String(int(X/100)) + String(int((X%100)/10)) + String(int((X%10)));  
     YRes = String(int(Y/100)) + String(int((Y%100)/10)) + String(int((Y%10)));
