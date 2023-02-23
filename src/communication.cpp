@@ -24,12 +24,11 @@ void Communication::sendMsg()
   etatJoystick.toCharArray(JOY, Taille_Joystick);
   etatAcc.toCharArray(ACC, Taille_Acc);
 
-  JOY[Taille_Joystick - 1] = '\0';
-  ACC[Taille_Acc - 1] = '\0';
+  //JOY[Taille_Joystick - 1] = '\0';
+  //ACC[Taille_Acc - 1] = '\0';
 
   Serial.write(JOY);
   Serial.write(ACC);
-  Serial.print("\n");
 }
 
 void Communication::readMsg()
