@@ -8,10 +8,10 @@
 // 3 = 8-9-10-11-12-13-14
 // 4 = 1-2-3-4-5-6-7
 
-int valeur1 = 0;
+int valeur1 = 1;
 int valeur2 = 1;
-int valeur3 = 0;
-int valeur4 = 1;
+int valeur3 = 2;
+int valeur4 = 8;
 
 void appel()
 {
