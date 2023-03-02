@@ -13,8 +13,7 @@ private:
 public:
 	ComArduino(char* port, int baud);
 	~ComArduino();
-	bool comVitesse(int vitesse);
-	bool comDate(int date);
+	bool send(int date, int vitesse);
 };
 
 

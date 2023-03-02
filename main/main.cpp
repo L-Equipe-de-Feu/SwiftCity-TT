@@ -17,18 +17,18 @@ int main(int argc)
 
 	while (true)
 	{
-		test.comVitesse(1);
+		test.send(0, 1);
 		cout << "1" << endl;
-		Sleep(5000);
-		test.comVitesse(2);
+		Sleep(1000);
+		test.send(0, 2);
 		cout << "2" << endl;
-		Sleep(5000);
-		test.comVitesse(3);
+		Sleep(1000);
+		test.send(0, 3);
 		cout << "3" << endl;
-		Sleep(5000);
-		test.comVitesse(4);
+		Sleep(1000);
+		test.send(0, 4);
 		cout << "4" << endl;
-		Sleep(5000);
+		Sleep(1000);
 	}
 
 	return 1;

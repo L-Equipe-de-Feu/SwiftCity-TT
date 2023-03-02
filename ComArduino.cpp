@@ -10,9 +10,9 @@ ComArduino::~ComArduino()
 	delete serial;
 }
 
-bool ComArduino::comVitesse(int vitesse)
+bool ComArduino::send(int date, int vitesse)
 {
-	char buffer[1] = { vitesse };
+	char buffer[7] = {'t', 0, 0, 0, 0, 0, vitesse};
 
 	if (serial->isConnected())
 	{
@@ -20,14 +20,4 @@ bool ComArduino::comVitesse(int vitesse)
 	}
 
 	return serial->writeSerialPort(buffer ,MaxBit);
-}
-
-bool ComArduino::comDate(int date)
-{
-	if (serial->isConnected())
-	{
-		return false;
-	}
-
-	return true;
 }
