@@ -135,6 +135,9 @@
     <ClInclude Include="externalLib\serial\SerialPort.hpp">
       <Filter>ExternalLib\serial</Filter>
     </ClInclude>
+    <ClInclude Include="ComArduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main\main.cpp">
@@ -148,6 +151,9 @@
     </ClCompile>
     <ClCompile Include="externalLib\serial\SerialPort.cpp">
       <Filter>ExternalLib\serial</Filter>
+    </ClCompile>
+    <ClCompile Include="ComArduino.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

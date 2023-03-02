@@ -106,6 +106,7 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ComArduino.h" />
     <ClInclude Include="externalLib\serial\SerialPort.hpp" />
     <ClInclude Include="include\ActionClavier.h" />
     <ClInclude Include="include\Aqueduc.h" />
@@ -137,6 +138,7 @@
     <ClInclude Include="include\Ville.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ComArduino.cpp" />
     <ClCompile Include="externalLib\serial\SerialPort.cpp" />
     <ClCompile Include="main\main.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">main;source;include;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
