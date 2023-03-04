@@ -16,6 +16,10 @@ int valeur4 = 8;
 void appel()
 {
   // pour 1
+  //Serial.print(valeur1);
+  //Serial.print(valeur2);
+  //Serial.print(valeur3);
+  //Serial.println(valeur4);
   if (valeur1 == 1)
   {
     un(1);
@@ -1200,6 +1204,7 @@ void segsave()
 {
   digitalWrite(SEG_CS_PIN, HIGH);
   digitalWrite(SEG_WR_PIN, HIGH);
+  digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_A0_PIN, LOW);
   digitalWrite(SEG_A1_PIN, LOW);
   digitalWrite(SEG_A2_PIN, LOW);
@@ -1207,7 +1212,8 @@ void segsave()
   digitalWrite(SEG_A4_PIN, LOW);
 
   // pour test
-  digitalWrite(SEG_WR_PIN, LOW);
+   digitalWrite(SEG_WR_PIN, LOW);
+   digitalWrite(SEG_CS_PIN, LOW);
 }
 
 void segoff()
@@ -1217,6 +1223,9 @@ void segoff()
   digitalWrite(SEG_A2_PIN, LOW);
   digitalWrite(SEG_A3_PIN, LOW);
   digitalWrite(SEG_A4_PIN, LOW);
+  digitalWrite(SEG_CS_PIN, LOW);
+  digitalWrite(SEG_WR_PIN, LOW);
+  digitalWrite(SEG_EN_PIN, HIGH);
   digitalWrite(SEG_D_PIN, LOW);
 }
 
@@ -1229,6 +1238,7 @@ void segon()
   digitalWrite(SEG_A4_PIN, LOW);
   digitalWrite(SEG_CS_PIN, LOW);
   digitalWrite(SEG_WR_PIN, LOW);
+  digitalWrite(SEG_EN_PIN, LOW);
   digitalWrite(SEG_D_PIN, HIGH);
 }
 
@@ -1341,7 +1351,7 @@ void SetTemp(int Segment1, int Segment2, int Segment3, int Segment4)
   appel();
 }
 
-/*void VitesseEtAppel(int vitesse, unsigned long *previousMillis, unsigned long *currentMillis)
+void VitesseEtAppel(int vitesse, unsigned long *previousMillis, unsigned long *currentMillis)
 {
   unsigned const long interval = ((minutes * 60 * 1000) / vitesse);
 
@@ -1412,4 +1422,4 @@ void SetTemp(int Segment1, int Segment2, int Segment3, int Segment4)
   {
     appel();
   }
-}*/
+}

@@ -29,7 +29,7 @@ long lastDebounceTime_ARG = 0;
 long lastDebounceTime_SEND = 0;
 
 unsigned long debouceDelay = 20;
-unsigned long SendTime = 1000;
+unsigned long SendTime = 10000000;
 
 int Date_ref[4] = {1, 1, 2, 8};
 int Vitesse_ref[2] = {0, 1};
@@ -67,10 +67,11 @@ void loop()
     Vitesse_ref[0] = com.vitesse[0];
     Vitesse_ref[1] = com.vitesse[1];
   }
-  //Appel des 7 segments
-  appel();
 
-  //VitesseEtAppel(VitesseVal, &previousMillis, &currentMillis);
+  //Appel des 7 segments
+  //appel();
+
+  VitesseEtAppel(60, &previousMillis, &currentMillis);
 
   BOU_A = digitalRead(BOU_A_PIN);
   BOU_B = digitalRead(BOU_B_PIN);
