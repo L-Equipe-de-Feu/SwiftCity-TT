@@ -6,6 +6,8 @@
 
 class Communication
 {
+private:
+  int cTi(char c);
 
 public:
   volatile bool shouldSend_ = true; // Drapeau prêt à envoyer un message
@@ -21,7 +23,7 @@ public:
   String etatAcc;
 
   int date[4] = {1, 1, 2, 8};
-  int vitesse[2] = {0, 1};
+  int vitesse[2] = {0, 0};
 
   void sendMsg();
   void readMsg();

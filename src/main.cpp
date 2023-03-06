@@ -32,10 +32,12 @@ unsigned long debouceDelay = 20;
 unsigned long SendTime = 10000000;
 
 int Date_ref[4] = {1, 1, 2, 8};
-int Vitesse_ref[2] = {0, 1};
+int Vitesse_ref[2] = {0, 0};
 
 // Appel des variables pour le compteur et le debounce
 unsigned long previousMillis = 0;
+
+Communication com;
 
 void setup()
 {
@@ -46,8 +48,6 @@ void setup()
 
 void loop()
 {
-  Communication com;
-
   unsigned long currentMillis = millis();
 
   com.readMsg();

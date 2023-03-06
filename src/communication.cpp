@@ -34,25 +34,32 @@ void Communication::sendMsg()
 void Communication::readMsg()
 {
   char buffer;
+  int chiffre;
 
-  if (Serial.available() > 0)
+  if (Serial.available() >= 7)
   {
     buffer = char(Serial.read());
 
     if (buffer == 'T')
     {
-      while (Serial.available() < 7)
-        ;
       for (int i = 0; i <= 3; i++)
       {
         buffer = char(Serial.read());
-        date[i] = int(buffer);
+        chiffre = cTi(buffer);
+        date[i] = int(chiffre);
       }
       for (int i = 0; i <= 1; i++)
       {
-        buffer = Serial.read();
-        vitesse[i] = int(buffer);
+        buffer = char(Serial.read());
+        chiffre = cTi(buffer);
+        vitesse[i] = int(chiffre);
       }
     }
   }
+}
+
+int Communication::cTi(char c)
+{
+    int i = c - '0';
+    return i;
 }
