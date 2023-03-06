@@ -13,22 +13,18 @@ using namespace std;
 int main(int argc)
 {
 	char port[] = "COM4";
-	ComArduino test(port, 115200);
+	int baud = 115200;
+	ComArduino test(port, baud);
+
+	char date[4] = { '0', '0', '0', '0' };
 
 	while (true)
 	{
-		test.send(0, 1);
-		cout << "1" << endl;
-		Sleep(1000);
-		test.send(0, 2);
-		cout << "2" << endl;
-		Sleep(1000);
-		test.send(0, 3);
-		cout << "3" << endl;
-		Sleep(1000);
-		test.send(0, 4);
-		cout << "4" << endl;
-		Sleep(1000);
+		test.lireManette();
+		test.send(date, '1');
+		Sleep(50);
+		test.send(date, '0');
+		Sleep(50);
 	}
 
 	return 1;

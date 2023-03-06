@@ -1,7 +1,6 @@
 #include "ActionClavier.h"
-ActionClavier::ActionClavier() 
+ActionClavier::ActionClavier()
 {
-    serial = new SerialPort(Port, Baud);
 }
 
 ActionClavier::ActionClavier(Menu* menuT, Curseur* curseurT, Ville* villeT) {
@@ -92,6 +91,11 @@ bool ActionClavier::lireManette()
 
     size_t taille = serial->readSerialPort(buffer, MaxBit);
 
+    if (taille <= 0)
+    {
+        return true;
+    }
+
     for(int i = 0; i < taille; i++)
     {
         int x = 0;
@@ -103,20 +107,23 @@ bool ActionClavier::lireManette()
 
         //case mouvement du curseur
         case 'J':
-            i++;
-            for (int j = 0; j < 4; j++)
+            if (i + 10 < taille)
             {
-                x += cTi(buffer[++i]) * mult[j];
-            }
+                i++;
+                for (int j = 0; j < 4; j++)
+                {
+                    x += cTi(buffer[++i]) * mult[j];
+                }
 
-            i++;
+                i++;
 
-            for (int j = 0; j < 4; j++)
-            {
-                y += cTi(buffer[++i]) * mult[j];
+                for (int j = 0; j < 4; j++)
+                {
+                    y += cTi(buffer[++i]) * mult[j];
+                }
+                //Fonction curseur (x, y)
+                cout << "Joystick : Jx" << x << "y" << y << endl;
             }
-            //Fonction curseur (x, y)
-            cout << "Joystick : Jx" << x << "y" << y << endl;
             break;
 
         //bouton
@@ -147,29 +154,33 @@ bool ActionClavier::lireManette()
 
         //Accéléromètre
         case 'C':
-            i++;
-            for (int j = 0; j < 3; j++)
+            if (i + 12 < taille)
             {
-                x += cTi(buffer[++i]) * mult[j+1];
+                i++;
+                for (int j = 0; j < 3; j++)
+                {
+                    x += cTi(buffer[++i]) * mult[j + 1];
+                }
+
+                i++;
+
+                for (int j = 0; j < 3; j++)
+                {
+                    y += cTi(buffer[++i]) * mult[j + 1];
+                }
+
+                i++;
+
+                for (int j = 0; j < 3; j++)
+                {
+                    z += cTi(buffer[++i]) * mult[j + 1];
+                }
+                //Fonction accéléromètre (x, y, z)
+                cout << "Accelerometre : Cx" << x << "y" << y << "z" << z << endl;
             }
-
-            i++;
-
-            for (int j = 0; j < 3; j++)
-            {
-                y += cTi(buffer[++i]) * mult[j+1];
-            }
-
-            i++;
-
-            for (int j = 0; j < 3; j++)
-            {
-                z += cTi(buffer[++i]) * mult[j+1];
-            }
-            //Fonction accéléromètre (x, y, z)
-            cout << "Accelerometre : Cx" << x << "y" << y << "z" << z << endl;
             break;
         default:
+            cout << "Non valide" << endl;
             break;
         }
     }
