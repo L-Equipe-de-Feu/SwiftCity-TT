@@ -123,6 +123,7 @@
     <ClInclude Include="include\Industriel.h" />
     <ClInclude Include="include\Magasin.h" />
     <ClInclude Include="include\Maison.h" />
+    <ClInclude Include="include\map.h" />
     <ClInclude Include="include\MenuConsole.h" />
     <ClInclude Include="include\MultiLogement.h" />
     <ClInclude Include="include\Police.h" />
@@ -146,6 +147,7 @@
     <ClCompile Include="source\ActionClavier.cpp" />
     <ClCompile Include="source\Communication.cpp" />
     <ClCompile Include="source\GestionnaireTemps.cpp" />
+    <ClCompile Include="source\map.cpp" />
     <ClCompile Include="source\Ville.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

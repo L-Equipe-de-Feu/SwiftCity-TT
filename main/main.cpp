@@ -4,6 +4,7 @@
 #include "MenuConsole.h"
 #include "Curseur.h"
 #include "Ville.h"
+#include "map.h"
 #include <ctime>
 
 using namespace std;
@@ -17,36 +18,10 @@ Ville* ville = new Ville();
 
 void main()
 {
-	ActionClavier clavier(menu, curseur, ville);
-	long tick = time(0);
-	long lasttick = tick;
-
-
-	bool quit = false;
-	do{
-		tick = time(0);
-		if (tick - lasttick >= 1) 
-		{			
-			system("cls");
-			ville->tick();
-			ville->affiche(curseur);
-			lasttick = tick;
-		}
-		
-		switch (clavier.lireClavier())
-		{
-		case 1:
-			system("cls");
-			ville->affiche(curseur);
-			break;
-		case -1:
-			quit = true;
-			break;
-		} 
-
-	} while (!quit);
-
-	delete menu;
-	delete curseur;
-	delete ville;
+	char map1[m][n];
+	int x = 24;
+	randomized_map(x, map1);
+	for (int i = 0; i < m; i++)
+		for (int j = 0; j < n; j++)
+			cout << map1[m][n] << endl;
 }

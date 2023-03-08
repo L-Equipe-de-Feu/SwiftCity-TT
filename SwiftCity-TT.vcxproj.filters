@@ -138,6 +138,9 @@
     <ClInclude Include="include\GestionnaireTemps.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\map.h">
+      <Filter>Header Files\Terrains</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main\main.cpp">
@@ -156,6 +159,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Communication.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
