@@ -817,7 +817,7 @@ int neuf(int a)
 void seg1()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 0);
   analogWrite(SEG_A1_PIN, 0);
@@ -829,7 +829,7 @@ void seg1()
 void seg2()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 255);
   analogWrite(SEG_A1_PIN, 0);
@@ -841,7 +841,7 @@ void seg2()
 void seg3()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 0);
   analogWrite(SEG_A1_PIN, 255);
@@ -853,7 +853,7 @@ void seg3()
 void seg4()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 255);
   analogWrite(SEG_A1_PIN, 255);
@@ -865,7 +865,7 @@ void seg4()
 void seg5()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 0);
   analogWrite(SEG_A1_PIN, 0);
@@ -877,7 +877,7 @@ void seg5()
 void seg6()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 255);
   analogWrite(SEG_A1_PIN, 0);
@@ -889,7 +889,7 @@ void seg6()
 void seg7()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 0);
   analogWrite(SEG_A1_PIN, 255);
@@ -901,7 +901,7 @@ void seg7()
 void seg8()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 255);
   analogWrite(SEG_A1_PIN, 255);
@@ -913,7 +913,7 @@ void seg8()
 void seg9()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 0);
   analogWrite(SEG_A1_PIN, 0);
@@ -925,7 +925,7 @@ void seg9()
 void seg10()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 255);
   analogWrite(SEG_A1_PIN, 0);
@@ -937,7 +937,7 @@ void seg10()
 void seg11()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 0);
   analogWrite(SEG_A1_PIN, 255);
@@ -949,7 +949,7 @@ void seg11()
 void seg12()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 255);
   analogWrite(SEG_A1_PIN, 255);
@@ -961,7 +961,7 @@ void seg12()
 void seg13()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 0);
   analogWrite(SEG_A1_PIN, 0);
@@ -973,7 +973,7 @@ void seg13()
 void seg14()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 255);
   analogWrite(SEG_A1_PIN, 0);
@@ -985,7 +985,7 @@ void seg14()
 void seg15()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 0);
   analogWrite(SEG_A1_PIN, 255);
@@ -997,7 +997,7 @@ void seg15()
 void seg16()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 255);
   analogWrite(SEG_A1_PIN, 255);
@@ -1009,7 +1009,7 @@ void seg16()
 void seg17()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 0);
   analogWrite(SEG_A1_PIN, 0);
@@ -1021,7 +1021,7 @@ void seg17()
 void seg18()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 255);
   analogWrite(SEG_A1_PIN, 0);
@@ -1033,7 +1033,7 @@ void seg18()
 void seg19()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 0);
   analogWrite(SEG_A1_PIN, 255);
@@ -1045,7 +1045,7 @@ void seg19()
 void seg20()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 255);
   analogWrite(SEG_A1_PIN, 255);
@@ -1057,7 +1057,7 @@ void seg20()
 void seg21()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 0);
   analogWrite(SEG_A1_PIN, 0);
@@ -1069,7 +1069,7 @@ void seg21()
 void seg22()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 255);
   analogWrite(SEG_A1_PIN, 0);
@@ -1081,7 +1081,7 @@ void seg22()
 void seg23()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 0);
   analogWrite(SEG_A1_PIN, 255);
@@ -1093,7 +1093,7 @@ void seg23()
 void seg24()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 255);
   analogWrite(SEG_A1_PIN, 255);
@@ -1105,7 +1105,7 @@ void seg24()
 void seg25()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 0);
   analogWrite(SEG_A1_PIN, 0);
@@ -1117,7 +1117,7 @@ void seg25()
 void seg26()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 255);
   analogWrite(SEG_A1_PIN, 0);
@@ -1129,7 +1129,7 @@ void seg26()
 void seg27()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 0);
   analogWrite(SEG_A1_PIN, 255);
@@ -1141,7 +1141,7 @@ void seg27()
 void seg28()
 {
   analogWrite(SEG_CS_PIN, 0);
-  analogWrite(SEG_WR_PIN, 0);
+  //analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_A0_PIN, 255);
   analogWrite(SEG_A1_PIN, 255);
@@ -1152,22 +1152,9 @@ void seg28()
 
 void segsave()
 {
-  analogWrite(SEG_EN_PIN, 0);
-  analogWrite(SEG_CS_PIN, 255);
+  analogWrite(SEG_WR_PIN, 0);
   analogWrite(SEG_WR_PIN, 255);
-  // pour test
-  analogWrite(SEG_WR_PIN, 0);
-  analogWrite(SEG_CS_PIN, 0);
-
-  analogWrite(SEG_A0_PIN, 0);
-  analogWrite(SEG_A1_PIN, 0);
-  analogWrite(SEG_A2_PIN, 0);
-  analogWrite(SEG_A3_PIN, 0);
-  analogWrite(SEG_A4_PIN, 0);
-
-  // pour test
-  analogWrite(SEG_WR_PIN, 0);
-  analogWrite(SEG_CS_PIN, 0);
+  //analogWrite(SEG_CS_PIN, 255);
 }
 
 void segoff()
@@ -1179,7 +1166,7 @@ void segoff()
   analogWrite(SEG_A4_PIN, 0);
   analogWrite(SEG_CS_PIN, 0);
   analogWrite(SEG_WR_PIN, 0);
-  analogWrite(SEG_EN_PIN, 255);
+  analogWrite(SEG_EN_PIN, 0);
   analogWrite(SEG_D_PIN, 0);
 }
 

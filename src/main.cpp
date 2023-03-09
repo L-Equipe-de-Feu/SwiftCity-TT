@@ -27,11 +27,9 @@ long lastDebounceTime_S = 0;
 long lastDebounceTime_ARD = 0;
 long lastDebounceTime_ARG = 0;
 long lastDebounceTime_SEND = 0;
-long lastDebounceTime_SEG = 0;
 
 unsigned long debouceDelay = 20;
 unsigned long SendTime = 1000000;
-unsigned long TimeSeg = 1;
 
 int Date_ref[4] = {1, 1, 2, 8};
 int Vitesse_ref[2] = {0, 0};
@@ -54,14 +52,6 @@ void loop()
 
   com.readMsg();
 
-
-//testaffichageindi(10);
-//appel(2,2,2,2);
-
-//for(int x = 0; x <= 4; x++){
-  //testaffichage(x, 1);
-//}
-
   // Set manuellement les chiffre sur 7 segments
   if (com.date[0] != Date_ref[0] || com.date[1] != Date_ref[1] || com.date[2] != Date_ref[2] || com.date[3] != Date_ref[3])
   {
@@ -71,24 +61,13 @@ void loop()
     Date_ref[3] = com.date[3];
   }
 
-  if(com.vitesse[0] != Vitesse_ref[0] || com.vitesse[1] != Vitesse_ref[1])
+  if (com.vitesse[0] != Vitesse_ref[0] || com.vitesse[1] != Vitesse_ref[1])
   {
     Vitesse_ref[0] = com.vitesse[0];
     Vitesse_ref[1] = com.vitesse[1];
   }
 
-   if ((currentMillis - lastDebounceTime_SEG) > TimeSeg)
-  {
-    if (com.shouldSend_)
-    {
-      lastDebounceTime_SEG = millis();
-      //appel(Date_ref[0], Date_ref[1], Date_ref[2], Date_ref[3]);
-    }
-    else
-    {
-      lastDebounceTime_SEG = millis();
-    }
-  }
+  appel(Date_ref[0], Date_ref[1], Date_ref[2], Date_ref[3]); appel(Date_ref[0], Date_ref[1], Date_ref[2], Date_ref[3]);
 
   BOU_A = digitalRead(BOU_A_PIN);
   BOU_B = digitalRead(BOU_B_PIN);
@@ -98,31 +77,36 @@ void loop()
   BOU_ARG = digitalRead(BOU_ARG_PIN);
 
   // Code pour LEDS
-  if(Vitesse_ref[1] == 1){
+  if (Vitesse_ref[1] == 1)
+  {
     digitalWrite(LED_1, HIGH);
     digitalWrite(LED_2, LOW);
     digitalWrite(LED_3, LOW);
     digitalWrite(LED_4, LOW);
   }
-  else if(Vitesse_ref[1] == 2){
+  else if (Vitesse_ref[1] == 2)
+  {
     digitalWrite(LED_1, HIGH);
     digitalWrite(LED_2, HIGH);
     digitalWrite(LED_3, LOW);
     digitalWrite(LED_4, LOW);
   }
-  else if(Vitesse_ref[1] == 3){
+  else if (Vitesse_ref[1] == 3)
+  {
     digitalWrite(LED_1, HIGH);
     digitalWrite(LED_2, HIGH);
     digitalWrite(LED_3, HIGH);
     digitalWrite(LED_4, LOW);
   }
-  else if(Vitesse_ref[1] == 4){
+  else if (Vitesse_ref[1] == 4)
+  {
     digitalWrite(LED_1, HIGH);
     digitalWrite(LED_2, HIGH);
     digitalWrite(LED_3, HIGH);
     digitalWrite(LED_4, HIGH);
   }
-  else{
+  else
+  {
     digitalWrite(LED_1, LOW);
     digitalWrite(LED_2, LOW);
     digitalWrite(LED_3, LOW);
@@ -255,8 +239,8 @@ void loop()
     int GD = analogRead(JOY_GD_PIN);
     int HB = analogRead(JOY_HB_PIN);
     String GDRes, HBRes;
-    GDRes = String(int(GD/1000)) + String(int((GD%1000)/100)) + String(int((GD%100)/10)) + String(int((GD%10)));  
-    HBRes = String(int(HB/1000)) + String(int((HB%1000)/100)) + String(int((HB%100)/10)) + String(int((HB%10)));  
+    GDRes = String(int(GD / 1000)) + String(int((GD % 1000) / 100)) + String(int((GD % 100) / 10)) + String(int((GD % 10)));
+    HBRes = String(int(HB / 1000)) + String(int((HB % 1000) / 100)) + String(int((HB % 100) / 10)) + String(int((HB % 10)));
 
     com.etatJoystick = "Jx" + GDRes + "y" + HBRes;
   }
@@ -272,7 +256,7 @@ void loop()
     int Y = analogRead(Y_AXIS_PIN);
     int Z = analogRead(Z_AXIS_PIN);
 
-  if (X > 338)
+    if (X > 338)
     {
       X = 338;
     }
@@ -280,7 +264,7 @@ void loop()
     {
       X = X;
     }
-     if (Y > 338)
+    if (Y > 338)
     {
       Y = 338;
     }
@@ -288,9 +272,9 @@ void loop()
     {
       Y = Y;
     }
-     if (Z > 338)
+    if (Z > 338)
     {
-      Z= 338;
+      Z = 338;
     }
     else
     {
@@ -298,9 +282,9 @@ void loop()
     }
 
     String XRes, YRes, ZRes;
-    XRes = String(int(X/100)) + String(int((X%100)/10)) + String(int((X%10)));  
-    YRes = String(int(Y/100)) + String(int((Y%100)/10)) + String(int((Y%10)));
-    ZRes = String(int(Z/100)) + String(int((Z%100)/10)) + String(int((Z%10)));
+    XRes = String(int(X / 100)) + String(int((X % 100) / 10)) + String(int((X % 10)));
+    YRes = String(int(Y / 100)) + String(int((Y % 100) / 10)) + String(int((Y % 10)));
+    ZRes = String(int(Z / 100)) + String(int((Z % 100) / 10)) + String(int((Z % 10)));
 
     com.etatAcc = "Cx" + XRes + "y" + YRes + "z" + ZRes;
   }
