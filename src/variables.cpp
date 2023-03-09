@@ -33,8 +33,6 @@ void appelVariables()
     pinMode(SEG_A3_PIN, OUTPUT);
     pinMode(SEG_EN_PIN, OUTPUT);
     pinMode(SEG_A4_PIN, OUTPUT);
-
-    delay(1000);
 }
 
 void LOWSET()
@@ -44,15 +42,15 @@ void LOWSET()
     digitalWrite(LED_3, LOW);
     digitalWrite(LED_4, LOW);
 
-    digitalWrite(SEG_A0_PIN, LOW);
-    digitalWrite(SEG_WR_PIN, LOW);
-    digitalWrite(SEG_A1_PIN, LOW);
-    digitalWrite(SEG_CS_PIN, LOW);
-    digitalWrite(SEG_A2_PIN, LOW);
-    digitalWrite(SEG_D_PIN, LOW);
-    digitalWrite(SEG_A3_PIN, LOW);
-    digitalWrite(SEG_EN_PIN, LOW);
-    digitalWrite(SEG_A4_PIN, LOW);
+    analogWrite(SEG_A0_PIN, 0);
+    analogWrite(SEG_A1_PIN, 0);
+    analogWrite(SEG_A2_PIN, 0);
+    analogWrite(SEG_A3_PIN, 0);
+    analogWrite(SEG_A4_PIN, 0);
+    analogWrite(SEG_CS_PIN, 0);
+    analogWrite(SEG_WR_PIN, 0);
+    analogWrite(SEG_EN_PIN, 0);
+    analogWrite(SEG_D_PIN, 0);
 
     segon();
 }

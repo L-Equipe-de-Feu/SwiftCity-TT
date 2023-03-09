@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include <string.h>
 
-//Appel des fonctions
+// Appel des fonctions
 void appelVariables();
 void LOWSET();
 
@@ -33,13 +33,13 @@ void LOWSET();
 
 // 7 SEGMENTS
 #define SEG_A0_PIN 2
-#define SEG_WR_PIN 46
+#define SEG_WR_PIN 8
 #define SEG_A1_PIN 3
-#define SEG_CS_PIN 48
+#define SEG_CS_PIN 9
 #define SEG_A2_PIN 4
-#define SEG_D_PIN 50
+#define SEG_D_PIN 10
 #define SEG_A3_PIN 5
-#define SEG_EN_PIN 52
+#define SEG_EN_PIN 11
 #define SEG_A4_PIN 6
 
 // Frequence de transmission serielle

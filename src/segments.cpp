@@ -8,18 +8,8 @@
 // 3 = 8-9-10-11-12-13-14
 // 4 = 1-2-3-4-5-6-7
 
-int valeur1 = 1;
-int valeur2 = 1;
-int valeur3 = 2;
-int valeur4 = 8;
-
-void appel()
+void appel(int valeur4, int valeur3, int valeur2, int valeur1)
 {
-  // pour 1
-  //Serial.print(valeur1);
-  //Serial.print(valeur2);
-  //Serial.print(valeur3);
-  //Serial.println(valeur4);
   if (valeur1 == 1)
   {
     un(1);
@@ -219,7 +209,6 @@ int zero(int a)
     segsave();
     seg27();
     segsave();
-    valeur1 = 0;
     return 0;
   }
   if (a == 2)
@@ -236,7 +225,6 @@ int zero(int a)
     segsave();
     seg20();
     segsave();
-    valeur2 = 0;
     return 0;
   }
   if (a == 3)
@@ -253,7 +241,6 @@ int zero(int a)
     segsave();
     seg13();
     segsave();
-    valeur3 = 0;
     return 0;
   }
   if (a == 4)
@@ -270,7 +257,6 @@ int zero(int a)
     segsave();
     seg6();
     segsave();
-    valeur4 = 0;
     return 0;
   }
   return 1;
@@ -287,7 +273,6 @@ int un(int a)
     segsave();
     seg24();
     segsave();
-    valeur1 = 1;
     return 0;
   }
   if (a == 2)
@@ -296,7 +281,6 @@ int un(int a)
     segsave();
     seg17();
     segsave();
-    valeur2 = 1;
     return 0;
   }
   if (a == 3)
@@ -305,7 +289,6 @@ int un(int a)
     segsave();
     seg10();
     segsave();
-    valeur3 = 1;
     return 0;
   }
   if (a == 4)
@@ -314,7 +297,6 @@ int un(int a)
     segsave();
     seg3();
     segsave();
-    valeur4 = 1;
     return 0;
   }
   return 1;
@@ -337,7 +319,6 @@ int deux(int a)
     segsave();
     seg28();
     segsave();
-    valeur1 = 2;
     return 0;
   }
   if (a == 2)
@@ -352,7 +333,6 @@ int deux(int a)
     segsave();
     seg21();
     segsave();
-    valeur2 = 2;
     return 0;
   }
   if (a == 3)
@@ -367,7 +347,6 @@ int deux(int a)
     segsave();
     seg14();
     segsave();
-    valeur3 = 2;
     return 0;
   }
   if (a == 4)
@@ -382,7 +361,6 @@ int deux(int a)
     segsave();
     seg7();
     segsave();
-    valeur4 = 2;
     return 0;
   }
   return 1;
@@ -405,7 +383,6 @@ int trois(int a)
     segsave();
     seg28();
     segsave();
-    valeur1 = 3;
     return 0;
   }
   if (a == 2)
@@ -420,7 +397,6 @@ int trois(int a)
     segsave();
     seg21();
     segsave();
-    valeur2 = 3;
     return 0;
   }
   if (a == 3)
@@ -435,7 +411,6 @@ int trois(int a)
     segsave();
     seg14();
     segsave();
-    valeur3 = 3;
     return 0;
   }
   if (a == 4)
@@ -450,7 +425,6 @@ int trois(int a)
     segsave();
     seg7();
     segsave();
-    valeur4 = 3;
     return 0;
   }
   return 1;
@@ -471,7 +445,6 @@ int quatre(int a)
     segsave();
     seg28();
     segsave();
-    valeur1 = 4;
     return 0;
   }
   if (a == 2)
@@ -484,7 +457,6 @@ int quatre(int a)
     segsave();
     seg21();
     segsave();
-    valeur2 = 4;
     return 0;
   }
   if (a == 3)
@@ -497,7 +469,6 @@ int quatre(int a)
     segsave();
     seg14();
     segsave();
-    valeur3 = 4;
     return 0;
   }
   if (a == 4)
@@ -510,7 +481,6 @@ int quatre(int a)
     segsave();
     seg7();
     segsave();
-    valeur4 = 4;
     return 0;
   }
   return 1;
@@ -533,7 +503,6 @@ int cinq(int a)
     segsave();
     seg28();
     segsave();
-    valeur1 = 5;
     return 0;
   }
   if (a == 2)
@@ -548,7 +517,6 @@ int cinq(int a)
     segsave();
     seg21();
     segsave();
-    valeur2 = 5;
     return 0;
   }
   if (a == 3)
@@ -563,7 +531,6 @@ int cinq(int a)
     segsave();
     seg14();
     segsave();
-    valeur3 = 5;
     return 0;
   }
   if (a == 4)
@@ -578,7 +545,6 @@ int cinq(int a)
     segsave();
     seg7();
     segsave();
-    valeur4 = 5;
     return 0;
   }
   return 1;
@@ -603,7 +569,6 @@ int six(int a)
     segsave();
     seg28();
     segsave();
-    valeur1 = 6;
     return 0;
   }
   if (a == 2)
@@ -620,7 +585,6 @@ int six(int a)
     segsave();
     seg21();
     segsave();
-    valeur2 = 6;
     return 0;
   }
   if (a == 3)
@@ -637,7 +601,6 @@ int six(int a)
     segsave();
     seg14();
     segsave();
-    valeur3 = 6;
     return 0;
   }
   if (a == 4)
@@ -654,7 +617,6 @@ int six(int a)
     segsave();
     seg7();
     segsave();
-    valeur4 = 6;
     return 0;
   }
   return 1;
@@ -673,7 +635,6 @@ int sept(int a)
     segsave();
     seg24();
     segsave();
-    valeur1 = 7;
     return 0;
   }
   if (a == 2)
@@ -684,7 +645,6 @@ int sept(int a)
     segsave();
     seg17();
     segsave();
-    valeur2 = 7;
     return 0;
   }
   if (a == 3)
@@ -695,7 +655,6 @@ int sept(int a)
     segsave();
     seg10();
     segsave();
-    valeur3 = 7;
     return 0;
   }
   if (a == 4)
@@ -706,7 +665,6 @@ int sept(int a)
     segsave();
     seg3();
     segsave();
-    valeur4 = 7;
     return 0;
   }
   return 1;
@@ -733,7 +691,6 @@ int huit(int a)
     segsave();
     seg28();
     segsave();
-    valeur1 = 8;
     return 0;
   }
   if (a == 2)
@@ -752,7 +709,6 @@ int huit(int a)
     segsave();
     seg21();
     segsave();
-    valeur2 = 8;
     return 0;
   }
   if (a == 3)
@@ -771,7 +727,6 @@ int huit(int a)
     segsave();
     seg14();
     segsave();
-    valeur3 = 8;
     return 0;
   }
   if (a == 4)
@@ -790,7 +745,6 @@ int huit(int a)
     segsave();
     seg7();
     segsave();
-    valeur4 = 8;
     return 0;
   }
   return 1;
@@ -813,7 +767,6 @@ int neuf(int a)
     segsave();
     seg28();
     segsave();
-    valeur1 = 9;
     return 0;
   }
   if (a == 2)
@@ -828,7 +781,6 @@ int neuf(int a)
     segsave();
     seg21();
     segsave();
-    valeur2 = 9;
     return 0;
   }
   if (a == 3)
@@ -843,7 +795,6 @@ int neuf(int a)
     segsave();
     seg14();
     segsave();
-    valeur3 = 9;
     return 0;
   }
   if (a == 4)
@@ -858,7 +809,6 @@ int neuf(int a)
     segsave();
     seg7();
     segsave();
-    valeur4 = 9;
     return 0;
   }
   return 1;
@@ -866,492 +816,545 @@ int neuf(int a)
 
 void seg1()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, LOW);
-  digitalWrite(SEG_A1_PIN, LOW);
-  digitalWrite(SEG_A2_PIN, LOW);
-  digitalWrite(SEG_A3_PIN, LOW);
-  digitalWrite(SEG_A4_PIN, LOW);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 0);
+  analogWrite(SEG_A1_PIN, 0);
+  analogWrite(SEG_A2_PIN, 0);
+  analogWrite(SEG_A3_PIN, 0);
+  analogWrite(SEG_A4_PIN, 0);
 }
 
 void seg2()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, HIGH);
-  digitalWrite(SEG_A1_PIN, LOW);
-  digitalWrite(SEG_A2_PIN, LOW);
-  digitalWrite(SEG_A3_PIN, LOW);
-  digitalWrite(SEG_A4_PIN, LOW);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 255);
+  analogWrite(SEG_A1_PIN, 0);
+  analogWrite(SEG_A2_PIN, 0);
+  analogWrite(SEG_A3_PIN, 0);
+  analogWrite(SEG_A4_PIN, 0);
 }
 
 void seg3()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, LOW);
-  digitalWrite(SEG_A1_PIN, HIGH);
-  digitalWrite(SEG_A2_PIN, LOW);
-  digitalWrite(SEG_A3_PIN, LOW);
-  digitalWrite(SEG_A4_PIN, LOW);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 0);
+  analogWrite(SEG_A1_PIN, 255);
+  analogWrite(SEG_A2_PIN, 0);
+  analogWrite(SEG_A3_PIN, 0);
+  analogWrite(SEG_A4_PIN, 0);
 }
 
 void seg4()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, HIGH);
-  digitalWrite(SEG_A1_PIN, HIGH);
-  digitalWrite(SEG_A2_PIN, LOW);
-  digitalWrite(SEG_A3_PIN, LOW);
-  digitalWrite(SEG_A4_PIN, LOW);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 255);
+  analogWrite(SEG_A1_PIN, 255);
+  analogWrite(SEG_A2_PIN, 0);
+  analogWrite(SEG_A3_PIN, 0);
+  analogWrite(SEG_A4_PIN, 0);
 }
 
 void seg5()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, LOW);
-  digitalWrite(SEG_A1_PIN, LOW);
-  digitalWrite(SEG_A2_PIN, HIGH);
-  digitalWrite(SEG_A3_PIN, LOW);
-  digitalWrite(SEG_A4_PIN, LOW);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 0);
+  analogWrite(SEG_A1_PIN, 0);
+  analogWrite(SEG_A2_PIN, 255);
+  analogWrite(SEG_A3_PIN, 0);
+  analogWrite(SEG_A4_PIN, 0);
 }
 
 void seg6()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, HIGH);
-  digitalWrite(SEG_A1_PIN, LOW);
-  digitalWrite(SEG_A2_PIN, HIGH);
-  digitalWrite(SEG_A3_PIN, LOW);
-  digitalWrite(SEG_A4_PIN, LOW);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 255);
+  analogWrite(SEG_A1_PIN, 0);
+  analogWrite(SEG_A2_PIN, 255);
+  analogWrite(SEG_A3_PIN, 0);
+  analogWrite(SEG_A4_PIN, 0);
 }
 
 void seg7()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, LOW);
-  digitalWrite(SEG_A1_PIN, HIGH);
-  digitalWrite(SEG_A2_PIN, HIGH);
-  digitalWrite(SEG_A3_PIN, LOW);
-  digitalWrite(SEG_A4_PIN, LOW);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 0);
+  analogWrite(SEG_A1_PIN, 255);
+  analogWrite(SEG_A2_PIN, 255);
+  analogWrite(SEG_A3_PIN, 0);
+  analogWrite(SEG_A4_PIN, 0);
 }
 
 void seg8()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, HIGH);
-  digitalWrite(SEG_A1_PIN, HIGH);
-  digitalWrite(SEG_A2_PIN, HIGH);
-  digitalWrite(SEG_A3_PIN, LOW);
-  digitalWrite(SEG_A4_PIN, LOW);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 255);
+  analogWrite(SEG_A1_PIN, 255);
+  analogWrite(SEG_A2_PIN, 255);
+  analogWrite(SEG_A3_PIN, 0);
+  analogWrite(SEG_A4_PIN, 0);
 }
 
 void seg9()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, LOW);
-  digitalWrite(SEG_A1_PIN, LOW);
-  digitalWrite(SEG_A2_PIN, LOW);
-  digitalWrite(SEG_A3_PIN, HIGH);
-  digitalWrite(SEG_A4_PIN, LOW);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 0);
+  analogWrite(SEG_A1_PIN, 0);
+  analogWrite(SEG_A2_PIN, 0);
+  analogWrite(SEG_A3_PIN, 255);
+  analogWrite(SEG_A4_PIN, 0);
 }
 
 void seg10()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, HIGH);
-  digitalWrite(SEG_A1_PIN, LOW);
-  digitalWrite(SEG_A2_PIN, LOW);
-  digitalWrite(SEG_A3_PIN, HIGH);
-  digitalWrite(SEG_A4_PIN, LOW);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 255);
+  analogWrite(SEG_A1_PIN, 0);
+  analogWrite(SEG_A2_PIN, 0);
+  analogWrite(SEG_A3_PIN, 255);
+  analogWrite(SEG_A4_PIN, 0);
 }
 
 void seg11()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, LOW);
-  digitalWrite(SEG_A1_PIN, HIGH);
-  digitalWrite(SEG_A2_PIN, LOW);
-  digitalWrite(SEG_A3_PIN, HIGH);
-  digitalWrite(SEG_A4_PIN, LOW);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 0);
+  analogWrite(SEG_A1_PIN, 255);
+  analogWrite(SEG_A2_PIN, 0);
+  analogWrite(SEG_A3_PIN, 255);
+  analogWrite(SEG_A4_PIN, 0);
 }
 
 void seg12()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, HIGH);
-  digitalWrite(SEG_A1_PIN, HIGH);
-  digitalWrite(SEG_A2_PIN, LOW);
-  digitalWrite(SEG_A3_PIN, HIGH);
-  digitalWrite(SEG_A4_PIN, LOW);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 255);
+  analogWrite(SEG_A1_PIN, 255);
+  analogWrite(SEG_A2_PIN, 0);
+  analogWrite(SEG_A3_PIN, 255);
+  analogWrite(SEG_A4_PIN, 0);
 }
 
 void seg13()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, LOW);
-  digitalWrite(SEG_A1_PIN, LOW);
-  digitalWrite(SEG_A2_PIN, HIGH);
-  digitalWrite(SEG_A3_PIN, HIGH);
-  digitalWrite(SEG_A4_PIN, LOW);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 0);
+  analogWrite(SEG_A1_PIN, 0);
+  analogWrite(SEG_A2_PIN, 255);
+  analogWrite(SEG_A3_PIN, 255);
+  analogWrite(SEG_A4_PIN, 0);
 }
 
 void seg14()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, HIGH);
-  digitalWrite(SEG_A1_PIN, LOW);
-  digitalWrite(SEG_A2_PIN, HIGH);
-  digitalWrite(SEG_A3_PIN, HIGH);
-  digitalWrite(SEG_A4_PIN, LOW);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 255);
+  analogWrite(SEG_A1_PIN, 0);
+  analogWrite(SEG_A2_PIN, 255);
+  analogWrite(SEG_A3_PIN, 255);
+  analogWrite(SEG_A4_PIN, 0);
 }
 
 void seg15()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, LOW);
-  digitalWrite(SEG_A1_PIN, HIGH);
-  digitalWrite(SEG_A2_PIN, HIGH);
-  digitalWrite(SEG_A3_PIN, HIGH);
-  digitalWrite(SEG_A4_PIN, LOW);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 0);
+  analogWrite(SEG_A1_PIN, 255);
+  analogWrite(SEG_A2_PIN, 255);
+  analogWrite(SEG_A3_PIN, 255);
+  analogWrite(SEG_A4_PIN, 0);
 }
 
 void seg16()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, HIGH);
-  digitalWrite(SEG_A1_PIN, HIGH);
-  digitalWrite(SEG_A2_PIN, HIGH);
-  digitalWrite(SEG_A3_PIN, HIGH);
-  digitalWrite(SEG_A4_PIN, LOW);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 255);
+  analogWrite(SEG_A1_PIN, 255);
+  analogWrite(SEG_A2_PIN, 255);
+  analogWrite(SEG_A3_PIN, 255);
+  analogWrite(SEG_A4_PIN, 0);
 }
 
 void seg17()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, LOW);
-  digitalWrite(SEG_A1_PIN, LOW);
-  digitalWrite(SEG_A2_PIN, LOW);
-  digitalWrite(SEG_A3_PIN, LOW);
-  digitalWrite(SEG_A4_PIN, HIGH);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 0);
+  analogWrite(SEG_A1_PIN, 0);
+  analogWrite(SEG_A2_PIN, 0);
+  analogWrite(SEG_A3_PIN, 0);
+  analogWrite(SEG_A4_PIN, 255);
 }
 
 void seg18()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, HIGH);
-  digitalWrite(SEG_A1_PIN, LOW);
-  digitalWrite(SEG_A2_PIN, LOW);
-  digitalWrite(SEG_A3_PIN, LOW);
-  digitalWrite(SEG_A4_PIN, HIGH);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 255);
+  analogWrite(SEG_A1_PIN, 0);
+  analogWrite(SEG_A2_PIN, 0);
+  analogWrite(SEG_A3_PIN, 0);
+  analogWrite(SEG_A4_PIN, 255);
 }
 
 void seg19()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, LOW);
-  digitalWrite(SEG_A1_PIN, HIGH);
-  digitalWrite(SEG_A2_PIN, LOW);
-  digitalWrite(SEG_A3_PIN, LOW);
-  digitalWrite(SEG_A4_PIN, HIGH);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 0);
+  analogWrite(SEG_A1_PIN, 255);
+  analogWrite(SEG_A2_PIN, 0);
+  analogWrite(SEG_A3_PIN, 0);
+  analogWrite(SEG_A4_PIN, 255);
 }
 
 void seg20()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, HIGH);
-  digitalWrite(SEG_A1_PIN, HIGH);
-  digitalWrite(SEG_A2_PIN, LOW);
-  digitalWrite(SEG_A3_PIN, LOW);
-  digitalWrite(SEG_A4_PIN, HIGH);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 255);
+  analogWrite(SEG_A1_PIN, 255);
+  analogWrite(SEG_A2_PIN, 0);
+  analogWrite(SEG_A3_PIN, 0);
+  analogWrite(SEG_A4_PIN, 255);
 }
 
 void seg21()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, LOW);
-  digitalWrite(SEG_A1_PIN, LOW);
-  digitalWrite(SEG_A2_PIN, HIGH);
-  digitalWrite(SEG_A3_PIN, LOW);
-  digitalWrite(SEG_A4_PIN, HIGH);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 0);
+  analogWrite(SEG_A1_PIN, 0);
+  analogWrite(SEG_A2_PIN, 255);
+  analogWrite(SEG_A3_PIN, 0);
+  analogWrite(SEG_A4_PIN, 255);
 }
 
 void seg22()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, HIGH);
-  digitalWrite(SEG_A1_PIN, LOW);
-  digitalWrite(SEG_A2_PIN, HIGH);
-  digitalWrite(SEG_A3_PIN, LOW);
-  digitalWrite(SEG_A4_PIN, HIGH);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 255);
+  analogWrite(SEG_A1_PIN, 0);
+  analogWrite(SEG_A2_PIN, 255);
+  analogWrite(SEG_A3_PIN, 0);
+  analogWrite(SEG_A4_PIN, 255);
 }
 
 void seg23()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, LOW);
-  digitalWrite(SEG_A1_PIN, HIGH);
-  digitalWrite(SEG_A2_PIN, HIGH);
-  digitalWrite(SEG_A3_PIN, LOW);
-  digitalWrite(SEG_A4_PIN, HIGH);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 0);
+  analogWrite(SEG_A1_PIN, 255);
+  analogWrite(SEG_A2_PIN, 255);
+  analogWrite(SEG_A3_PIN, 0);
+  analogWrite(SEG_A4_PIN, 255);
 }
 
 void seg24()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, HIGH);
-  digitalWrite(SEG_A1_PIN, HIGH);
-  digitalWrite(SEG_A2_PIN, HIGH);
-  digitalWrite(SEG_A3_PIN, LOW);
-  digitalWrite(SEG_A4_PIN, HIGH);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 255);
+  analogWrite(SEG_A1_PIN, 255);
+  analogWrite(SEG_A2_PIN, 255);
+  analogWrite(SEG_A3_PIN, 0);
+  analogWrite(SEG_A4_PIN, 255);
 }
 
 void seg25()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, LOW);
-  digitalWrite(SEG_A1_PIN, LOW);
-  digitalWrite(SEG_A2_PIN, LOW);
-  digitalWrite(SEG_A3_PIN, HIGH);
-  digitalWrite(SEG_A4_PIN, HIGH);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 0);
+  analogWrite(SEG_A1_PIN, 0);
+  analogWrite(SEG_A2_PIN, 0);
+  analogWrite(SEG_A3_PIN, 255);
+  analogWrite(SEG_A4_PIN, 255);
 }
 
 void seg26()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, HIGH);
-  digitalWrite(SEG_A1_PIN, LOW);
-  digitalWrite(SEG_A2_PIN, LOW);
-  digitalWrite(SEG_A3_PIN, HIGH);
-  digitalWrite(SEG_A4_PIN, HIGH);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 255);
+  analogWrite(SEG_A1_PIN, 0);
+  analogWrite(SEG_A2_PIN, 0);
+  analogWrite(SEG_A3_PIN, 255);
+  analogWrite(SEG_A4_PIN, 255);
 }
 
 void seg27()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, LOW);
-  digitalWrite(SEG_A1_PIN, HIGH);
-  digitalWrite(SEG_A2_PIN, LOW);
-  digitalWrite(SEG_A3_PIN, HIGH);
-  digitalWrite(SEG_A4_PIN, HIGH);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 0);
+  analogWrite(SEG_A1_PIN, 255);
+  analogWrite(SEG_A2_PIN, 0);
+  analogWrite(SEG_A3_PIN, 255);
+  analogWrite(SEG_A4_PIN, 255);
 }
 
 void seg28()
 {
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, HIGH);
-  digitalWrite(SEG_A1_PIN, HIGH);
-  digitalWrite(SEG_A2_PIN, LOW);
-  digitalWrite(SEG_A3_PIN, HIGH);
-  digitalWrite(SEG_A4_PIN, HIGH);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_A0_PIN, 255);
+  analogWrite(SEG_A1_PIN, 255);
+  analogWrite(SEG_A2_PIN, 0);
+  analogWrite(SEG_A3_PIN, 255);
+  analogWrite(SEG_A4_PIN, 255);
 }
 
 void segsave()
 {
-  digitalWrite(SEG_CS_PIN, HIGH);
-  digitalWrite(SEG_WR_PIN, HIGH);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_A0_PIN, LOW);
-  digitalWrite(SEG_A1_PIN, LOW);
-  digitalWrite(SEG_A2_PIN, LOW);
-  digitalWrite(SEG_A3_PIN, LOW);
-  digitalWrite(SEG_A4_PIN, LOW);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_CS_PIN, 255);
+  analogWrite(SEG_WR_PIN, 255);
+  // pour test
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_CS_PIN, 0);
+
+  analogWrite(SEG_A0_PIN, 0);
+  analogWrite(SEG_A1_PIN, 0);
+  analogWrite(SEG_A2_PIN, 0);
+  analogWrite(SEG_A3_PIN, 0);
+  analogWrite(SEG_A4_PIN, 0);
 
   // pour test
-   digitalWrite(SEG_WR_PIN, LOW);
-   digitalWrite(SEG_CS_PIN, LOW);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_CS_PIN, 0);
 }
 
 void segoff()
 {
-  digitalWrite(SEG_A0_PIN, LOW);
-  digitalWrite(SEG_A1_PIN, LOW);
-  digitalWrite(SEG_A2_PIN, LOW);
-  digitalWrite(SEG_A3_PIN, LOW);
-  digitalWrite(SEG_A4_PIN, LOW);
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, HIGH);
-  digitalWrite(SEG_D_PIN, LOW);
+  analogWrite(SEG_A0_PIN, 0);
+  analogWrite(SEG_A1_PIN, 0);
+  analogWrite(SEG_A2_PIN, 0);
+  analogWrite(SEG_A3_PIN, 0);
+  analogWrite(SEG_A4_PIN, 0);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 255);
+  analogWrite(SEG_D_PIN, 0);
 }
 
 void segon()
 {
-  digitalWrite(SEG_A0_PIN, LOW);
-  digitalWrite(SEG_A1_PIN, LOW);
-  digitalWrite(SEG_A2_PIN, LOW);
-  digitalWrite(SEG_A3_PIN, LOW);
-  digitalWrite(SEG_A4_PIN, LOW);
-  digitalWrite(SEG_CS_PIN, LOW);
-  digitalWrite(SEG_WR_PIN, LOW);
-  digitalWrite(SEG_EN_PIN, LOW);
-  digitalWrite(SEG_D_PIN, HIGH);
+  analogWrite(SEG_A0_PIN, 0);
+  analogWrite(SEG_A1_PIN, 0);
+  analogWrite(SEG_A2_PIN, 0);
+  analogWrite(SEG_A3_PIN, 0);
+  analogWrite(SEG_A4_PIN, 0);
+  analogWrite(SEG_CS_PIN, 0);
+  analogWrite(SEG_WR_PIN, 0);
+  analogWrite(SEG_EN_PIN, 0);
+  analogWrite(SEG_D_PIN, 255);
 }
 
-void testaffichage(int i)
+void testaffichage(int i, int x)
 {
+
   if (i == 1)
   {
-    valeur1 = 0;
-    appel();
-    valeur1 = 1;
-    appel();
-    valeur1 = 2;
-    appel();
-    valeur1 = 3;
-    appel();
-    valeur1 = 4;
-    appel();
-    valeur1 = 5;
-    appel();
-    valeur1 = 6;
-    appel();
-    valeur1 = 7;
-    appel();
-    valeur1 = 8;
-    appel();
-    valeur1 = 9;
-    appel();
-    valeur1 = 1;
+    appel(1, 0, 0, 0);
+    delay(x);
+    appel(2, 0, 0, 0);
+    delay(x);
+    appel(3, 0, 0, 0);
+    delay(x);
+    appel(4, 0, 0, 0);
+    delay(x);
+    appel(5, 0, 0, 0);
+    delay(x);
+    appel(6, 0, 0, 0);
+    delay(x);
+    appel(7, 0, 0, 0);
+    delay(x);
+    appel(8, 0, 0, 0);
+    delay(x);
+    appel(9, 0, 0, 0);
+    delay(x);
   }
   if (i == 2)
   {
-    valeur2 = 0;
-    appel();
-    valeur2 = 1;
-    appel();
-    valeur2 = 2;
-    appel();
-    valeur2 = 3;
-    appel();
-    valeur2 = 4;
-    appel();
-    valeur2 = 5;
-    appel();
-    valeur2 = 6;
-    appel();
-    valeur2 = 7;
-    appel();
-    valeur2 = 8;
-    appel();
-    valeur2 = 9;
-    appel();
-    valeur2 = 1;
+    appel(0, 1, 0, 0);
+    delay(x);
+    appel(0, 2, 0, 0);
+    delay(x);
+    appel(0, 3, 0, 0);
+    delay(x);
+    appel(0, 4, 0, 0);
+    delay(x);
+    appel(0, 5, 0, 0);
+    delay(x);
+    appel(0, 6, 0, 0);
+    delay(x);
+    appel(0, 7, 0, 0);
+    delay(x);
+    appel(0, 8, 0, 0);
+    delay(x);
+    appel(0, 9, 0, 0);
+    delay(x);
   }
   if (i == 3)
   {
-    valeur3 = 0;
-    appel();
-    valeur3 = 1;
-    appel();
-    valeur3 = 2;
-    appel();
-    valeur3 = 3;
-    appel();
-    valeur3 = 4;
-    appel();
-    valeur3 = 5;
-    appel();
-    valeur3 = 6;
-    appel();
-    valeur3 = 7;
-    appel();
-    valeur3 = 8;
-    appel();
-    valeur3 = 9;
-    appel();
-    valeur3 = 1;
+    appel(0, 0, 1, 0);
+    delay(x);
+    appel(0, 0, 2, 0);
+    delay(x);
+    appel(0, 0, 3, 0);
+    delay(x);
+    appel(0, 0, 4, 0);
+    delay(x);
+    appel(0, 0, 5, 0);
+    delay(x);
+    appel(0, 0, 6, 0);
+    delay(x);
+    appel(0, 0, 7, 0);
+    delay(x);
+    appel(0, 0, 8, 0);
+    delay(x);
+    appel(0, 0, 9, 0);
+    delay(x);
   }
   if (i == 4)
   {
-    valeur4 = 0;
-    appel();
-    valeur4 = 1;
-    appel();
-    valeur4 = 2;
-    appel();
-    valeur4 = 3;
-    appel();
-    valeur4 = 4;
-    appel();
-    valeur4 = 5;
-    appel();
-    valeur4 = 6;
-    appel();
-    valeur4 = 7;
-    appel();
-    valeur4 = 8;
-    appel();
-    valeur4 = 9;
-    appel();
-    valeur4 = 1;
+    appel(0, 0, 0, 1);
+    delay(x);
+    appel(0, 0, 0, 2);
+    delay(x);
+    appel(0, 0, 0, 3);
+    delay(x);
+    appel(0, 0, 0, 4);
+    delay(x);
+    appel(0, 0, 0, 5);
+    delay(x);
+    appel(0, 0, 0, 6);
+    delay(x);
+    appel(0, 0, 0, 7);
+    delay(x);
+    appel(0, 0, 0, 8);
+    delay(x);
+    appel(0, 0, 0, 9);
+    delay(x);
   }
 }
 
-void SetTemp(int Segment1, int Segment2, int Segment3, int Segment4)
+void testaffichageindi(float i)
+{
+  seg1();
+  delay(i);
+  seg2();
+  delay(i);
+  seg3();
+  delay(i);
+  seg4();
+  delay(i);
+  seg5();
+  delay(i);
+  seg6();
+  delay(i);
+  seg7();
+  delay(i);
+  seg8();
+  delay(i);
+  seg9();
+  delay(i);
+  seg10();
+  delay(i);
+  seg11();
+  delay(i);
+  seg12();
+  delay(i);
+  seg13();
+  delay(i);
+  seg14();
+  delay(i);
+  seg15();
+  delay(i);
+  seg16();
+  delay(i);
+  seg17();
+  delay(i);
+  seg18();
+  delay(i);
+  seg19();
+  delay(i);
+  seg20();
+  delay(i);
+  seg21();
+  delay(i);
+  seg22();
+  delay(i);
+  seg23();
+  delay(i);
+  seg24();
+  delay(i);
+  seg25();
+  delay(i);
+  seg26();
+  delay(i);
+  seg27();
+  delay(i);
+  seg28();
+  delay(i);
+}
+
+/*void SetTemp(int Segment1, int Segment2, int Segment3, int Segment4)
 {
   valeur1 = Segment1;
   valeur2 = Segment2;
   valeur3 = Segment3;
   valeur4 = Segment4;
   appel();
-}
+}*/
 
-void VitesseEtAppel(int vitesse, unsigned long *previousMillis, unsigned long *currentMillis)
+/*void VitesseEtAppel(int vitesse, unsigned long *previousMillis, unsigned long *currentMillis)
 {
   unsigned const long interval = ((minutes * 60 * 1000) / vitesse);
 
@@ -1422,4 +1425,4 @@ void VitesseEtAppel(int vitesse, unsigned long *previousMillis, unsigned long *c
   {
     appel();
   }
-}
+}*/

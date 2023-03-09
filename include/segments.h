@@ -47,9 +47,10 @@ void seg28();
 void segsave();
 void segoff();
 void segon();
-void appel();
+void appel(int valeur4, int valeur3, int valeur2, int valeur1);
 
-void testaffichage(int i);
+void testaffichage(int i, int x);
+void testaffichageindi(float i);
 void VitesseEtAppel(int vitesse, unsigned long *previousMillis, unsigned long *currentMillis);
 void SetTemp(int Segment1, int Segment2, int Segment3, int Segment4);
 

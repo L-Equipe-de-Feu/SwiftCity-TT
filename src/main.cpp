@@ -27,9 +27,11 @@ long lastDebounceTime_S = 0;
 long lastDebounceTime_ARD = 0;
 long lastDebounceTime_ARG = 0;
 long lastDebounceTime_SEND = 0;
+long lastDebounceTime_SEG = 0;
 
 unsigned long debouceDelay = 20;
-unsigned long SendTime = 10000000;
+unsigned long SendTime = 1000000;
+unsigned long TimeSeg = 1;
 
 int Date_ref[4] = {1, 1, 2, 8};
 int Vitesse_ref[2] = {0, 0};
@@ -52,6 +54,14 @@ void loop()
 
   com.readMsg();
 
+
+//testaffichageindi(10);
+//appel(2,2,2,2);
+
+//for(int x = 0; x <= 4; x++){
+  //testaffichage(x, 1);
+//}
+
   // Set manuellement les chiffre sur 7 segments
   if (com.date[0] != Date_ref[0] || com.date[1] != Date_ref[1] || com.date[2] != Date_ref[2] || com.date[3] != Date_ref[3])
   {
@@ -59,7 +69,6 @@ void loop()
     Date_ref[1] = com.date[1];
     Date_ref[2] = com.date[2];
     Date_ref[3] = com.date[3];
-    SetTemp(Date_ref[0], Date_ref[1], Date_ref[2], Date_ref[3]);
   }
 
   if(com.vitesse[0] != Vitesse_ref[0] || com.vitesse[1] != Vitesse_ref[1])
@@ -68,10 +77,18 @@ void loop()
     Vitesse_ref[1] = com.vitesse[1];
   }
 
-  //Appel des 7 segments
-  //appel();
-
-  VitesseEtAppel(60, &previousMillis, &currentMillis);
+   if ((currentMillis - lastDebounceTime_SEG) > TimeSeg)
+  {
+    if (com.shouldSend_)
+    {
+      lastDebounceTime_SEG = millis();
+      //appel(Date_ref[0], Date_ref[1], Date_ref[2], Date_ref[3]);
+    }
+    else
+    {
+      lastDebounceTime_SEG = millis();
+    }
+  }
 
   BOU_A = digitalRead(BOU_A_PIN);
   BOU_B = digitalRead(BOU_B_PIN);
