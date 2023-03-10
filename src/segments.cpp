@@ -499,7 +499,7 @@ int cinq(int a)
     segsave();
     seg25();
     segsave();
-    seg26();
+    seg27();
     segsave();
     seg28();
     segsave();
@@ -513,7 +513,7 @@ int cinq(int a)
     segsave();
     seg18();
     segsave();
-    seg19();
+    seg20();
     segsave();
     seg21();
     segsave();
@@ -541,7 +541,7 @@ int cinq(int a)
     segsave();
     seg4();
     segsave();
-    seg5();
+    seg6();
     segsave();
     seg7();
     segsave();

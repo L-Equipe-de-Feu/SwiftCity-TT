@@ -29,7 +29,7 @@ long lastDebounceTime_ARG = 0;
 long lastDebounceTime_SEND = 0;
 
 unsigned long debouceDelay = 20;
-unsigned long SendTime = 1000000;
+unsigned long SendTime = 500;
 
 int Date_ref[4] = {1, 1, 2, 8};
 int Vitesse_ref[2] = {0, 0};
@@ -246,7 +246,7 @@ void loop()
   }
   else
   {
-    com.etatAcc = "Jx000y000";
+    com.etatJoystick = "Jx9999y9999";
   }
 
   // Code pour Acceleromètre
