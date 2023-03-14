@@ -9,6 +9,6 @@
 
 using namespace std;
 
-void randomized_map(int x, char map[m][n]);
+void randomized_map(int x, int map[m][n]);
 
 #endif
