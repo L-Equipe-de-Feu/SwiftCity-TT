@@ -15,12 +15,12 @@ private:
 public:
     Culture() {
         ressources.energie = -1;
-        ressources.eau = -1;
-        ressources.bonheur = 15;
+        ressources.eau = -2;
+        ressources.bonheur = 16;
         ressources.materiaux = 0;
-        ressources.argent = -50;
+        ressources.argent = -200;
         ressources.habitant = 0;
-        couts = 20;
+        couts = 2000;
     }
     ~Culture() {}
 
