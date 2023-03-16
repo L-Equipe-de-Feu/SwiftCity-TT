@@ -18,7 +18,7 @@ void Ville::init() {
     }
 
     //starting ressources
-    ressourceTotal.argentTot = 5000;
+    ressourceTotal.argentTot = 10000;
 
     calculRessourcesIndependant();
 }
@@ -159,7 +159,7 @@ void Ville::affiche(Curseur* curseur) {
     //cout << endl << endl << endl << endl << endl << endl << endl << endl;
     //rajouter les calcules ici pour les affichage
     cout << "Votre argent : " << ressourceTotal.argentTot << endl;
-    cout << "Votre income : " << ressourceTotal.argentProd << endl;
+    cout << "Votre income : " << ressourceTotal.argentIncome << endl;
     cout << "Votre Population : " << ressourceTotal.habitantTot << " / " << ressourceTotal.habitantMax << endl;
     cout << "Votre Energie : " << ressourceTotal.energieCons << "/" << ressourceTotal.energieProd << endl;
     cout << "Votre Eau : " << ressourceTotal.eauCons << "/" << ressourceTotal.eauProd << endl;
@@ -428,7 +428,6 @@ void Ville::calculRessourcesIndependant()
     if (tempRec.bonheurCons > 0)
     {
         tempRec.bonheurPour = 100 * tempRec.bonheurProd / tempRec.bonheurCons;
-
         if (tempRec.bonheurPour > 100)
         {
             tempRec.bonheurPour = 100;
@@ -507,12 +506,14 @@ void Ville::calculRessourcesDependant()
     //calcul argent
     if (manquant == 0)
     {
-        tempRec.argentTot = ressourceTotal.argentTot + tempRec.argentProd - tempRec.argentCons;
+        tempRec.argentIncome = tempRec.argentProd - tempRec.argentCons;
+        tempRec.argentTot = ressourceTotal.argentTot + tempRec.argentIncome;
     }
     else
     {
         float matRatio = (tempRec.materiauxCons - manquant) / tempRec.materiauxCons;
-        tempRec.argentTot = ressourceTotal.argentTot + (tempRec.argentProd * matRatio) - tempRec.argentCons;
+        tempRec.argentIncome = (tempRec.argentProd * matRatio) - tempRec.argentCons;
+        tempRec.argentTot = ressourceTotal.argentTot + tempRec.argentIncome;
     }
 
     //transfer

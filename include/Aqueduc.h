@@ -15,8 +15,8 @@ private:
 public:
     Aqueduc() 
     {
-        ressources.energie = -2;
-        ressources.eau = 10;
+        ressources.energie = 0;
+        ressources.eau = 20;
         ressources.bonheur = 0;
         ressources.materiaux = 0;
         ressources.argent = -10;
@@ -30,7 +30,7 @@ public:
     
     char get_char() 
     {
-        return 'w';
+        return 'O';
     }
 };
 

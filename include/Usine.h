@@ -13,13 +13,13 @@ private:
     /* data */
 public:
     Usine() {
-        ressources.energie = -10;
+        ressources.energie = -8;
         ressources.eau = -4;
-        ressources.bonheur = -10;
-        ressources.materiaux = 120;
-        ressources.argent = -100;
-        ressources.habitant = -10;
-        couts = 500;
+        ressources.bonheur = -4;
+        ressources.materiaux = 100;
+        ressources.argent = -200;
+        ressources.habitant = -7;
+        couts = 200;
     }
     ~Usine() {}
 

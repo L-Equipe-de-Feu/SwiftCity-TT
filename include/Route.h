@@ -14,7 +14,7 @@ class Route : public Batiment {
 
         }
         char get_char() {
-            return 'R';
+            return '-';
         }
 };
 

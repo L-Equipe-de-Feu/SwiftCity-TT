@@ -14,11 +14,11 @@ private:
 public:
     Maison() {
         ressources.energie = -2;
-        ressources.eau = -1;
+        ressources.eau = -2;
         ressources.bonheur = 0;
         ressources.materiaux = 0;
         ressources.argent = 0;
-        ressources.habitant = 4;
+        ressources.habitant = 10;
         couts = 200;
     }
     ~Maison() {}

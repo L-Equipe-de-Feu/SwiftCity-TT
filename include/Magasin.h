@@ -13,12 +13,13 @@ private:
     /* data */
 public:
     Magasin() {
-        ressources.energie = -1;
-        ressources.eau = -1;
+        ressources.energie = -2;
+        ressources.eau = -2;
         ressources.bonheur = 0;
         ressources.materiaux = -100;
-        ressources.argent = 1000;
-        ressources.habitant = 0;
+        ressources.argent = 400;
+        ressources.habitant = 3;
+        couts = 100;
     }
     ~Magasin(){}
 
