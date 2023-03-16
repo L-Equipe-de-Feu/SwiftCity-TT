@@ -8,20 +8,19 @@
 
 #include <iostream>
 #include "SerialPort.hpp"
-#include "Menu.h"
+#include <conio.h>
+#include "MenuConsole.h"
 #include "Curseur.h"
 #include "Ville.h"
-#include "Maison.h"
-#include "Usine.h"
-#include "Magasin.h"
 #include "Route.h"
+#include "SerialPort.hpp"
+#include <vector>
 
 #define MaxBit 512
 
 class ActionClavier {
     private :
-        char input;
-        Menu* menu;
+        MenuConsole* menu;
         Curseur* curseur;
         Ville* ville;
         int mult[4] = { 1000, 100, 10, 1 };
@@ -35,10 +34,10 @@ class ActionClavier {
 
     public :
         ActionClavier();
-        ActionClavier(Menu* menuT, Curseur* curseurT, Ville* villeT);
+        ActionClavier(MenuConsole* menuT, Curseur* curseurT, Ville* villeT);
         ~ActionClavier();
-        bool lireClavier();
-        bool lireManette();
+        int lireClavier();
+        //bool lireManette();
 
 };
 #endif

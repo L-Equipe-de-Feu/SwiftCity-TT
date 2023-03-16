@@ -3,10 +3,15 @@
 
 class Terrain {
     protected :
-        bool construire;
+        bool construire = true;
     public :
+        Terrain() {}
+        ~Terrain() {}
         /** @brief permet de set un terrain est constructible ou pas*/
-        virtual void setPeuConstruire(bool c)=0;
+        virtual bool getPeuConstruire() { return construire; }
+
+        virtual void afficher() { }
+        virtual char get_char() { return 'T'; }
 };
 
 #endif

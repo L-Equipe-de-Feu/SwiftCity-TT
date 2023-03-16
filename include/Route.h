@@ -5,16 +5,16 @@
 
 class Route : public Batiment {
     private :
-
+        
     public : 
-        Route() {}
+        Route() { isRoute = true; }
         ~Route() {}
 
         void afficher() {
 
         }
         char get_char() {
-            return 'R';
+            return '-';
         }
 };
 

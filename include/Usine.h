@@ -13,18 +13,18 @@ private:
     /* data */
 public:
     Usine() {
-        ressources.energie = -10;
+        ressources.energie = -8;
         ressources.eau = -4;
-        ressources.bonheur = -20;
-        ressources.materiaux = 60;
-        ressources.argent = -100;
-        ressources.habitant = -10;
+        ressources.bonheur = -4;
+        ressources.materiaux = 100;
+        ressources.argent = -200;
+        ressources.habitant = -7;
+        couts = 200;
     }
     ~Usine() {}
 
-    void afficher() {
+    void afficher() {}
 
-    }
     char get_char() {
         return 'U';
     }

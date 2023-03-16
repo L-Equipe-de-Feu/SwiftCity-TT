@@ -8,7 +8,7 @@
 #define CURSEUR_H
 
 #include <iostream>
-#include "Coordonnee.h"
+#include <Coordonnee.h>
 
 using namespace std;
 

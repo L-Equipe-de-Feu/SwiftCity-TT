@@ -16,16 +16,16 @@ public:
     Energie() {
         ressources.energie = 20;
         ressources.eau = 0;
-        ressources.bonheur = 1;
+        ressources.bonheur = 0;
         ressources.materiaux = 0;
-        ressources.argent = -250;
-        ressources.habitant = -1;
+        ressources.argent = -10;
+        ressources.habitant = 0;
+        couts = 50;
     }
     ~Energie() {}
 
-    void afficher() {
+    void afficher() {}
 
-    }
     char get_char() {
         return 'e';
     }

@@ -3,7 +3,9 @@ ActionClavier::ActionClavier()
 {
 }
 
-ActionClavier::ActionClavier(Menu* menuT, Curseur* curseurT, Ville* villeT) {
+using namespace std;
+
+ActionClavier::ActionClavier(MenuConsole* menuT, Curseur* curseurT, Ville* villeT) {
     menu = menuT;
     curseur = curseurT;
     ville = villeT;
@@ -15,77 +17,84 @@ ActionClavier::~ActionClavier()
 }
 
 
-bool ActionClavier::lireClavier() {
+/// <summary>
+/// getch non bloquant
+/// </summary>
+/// <returns>charactere detecte</returns>
+int getch_noblock() {
+    if (_kbhit())
+        return _getch();
+    else
+        return -1;
+}
+
+int ActionClavier::lireClavier() {
     char input;
-    cin >> input;
+    input = getch_noblock();
 
     switch (input)
     {
         //case mouvement du curseur
     case 'w':
         curseur->bougerHaut();
+        return 1;
         break;
     case 'a':
         curseur->bougerGauche();
+        return 1;
         break;
     case 's':
         curseur->bougerBas();
+        return 1;
         break;
     case 'd':
         curseur->bougerDroit();
+        return 1;
         break;
         //Fin case mouvement du curseur
 
         //case choix de construction
     //pourl'instant sur la touche n. le sub menu seras fait plus tard
-    case 'n':
-        inerMenu = true;
-        cout << "construi un batiment\n";
-        break;
-    case 'f':
-        if (inerMenu) {
-            //monter le menu
-        }
-        break;
-    case 'v':
-        if (inerMenu) {
-            //desendre le menu
-        }
-        break;
 
-    case '1':
-        //construire maison
-        ville->construireBatiment(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y, new Maison);
-        break;
-    case '2':
-        //construire usine
-        ville->construireBatiment(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y, new Usine);
-        break;
-    case '3':
-        //construire magasin
-        ville->construireBatiment(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y, new Magasin);
+    case 'q':
+        //construire
+        cout << "Que voulez vous construire : \n" << "\tResidentiel : 1\n" << "\tIndustriel : 2\n" << "\tCommerciale : 3\n" << "\tServices : 4\n";
+        ville->construireBatiment(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y, menu->construire_Batiment_sousMenu(getch()));
+        return 1;
         break;
 
     case 'r':
         //Construire une route
         ville->construireRoute(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y, new Route);
+        return 1;
         break;
 
-    default:
-        return false;
+    case 'x':
+        ville->detruire(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y);
+        break;
+
+    case 'k':
+        ville->decelerer();
+        break;
+
+    case 'l':
+        ville->accelerer();
+        break;
+
+    case '\x1b'://escape
+        return -1;
         break;
     }
-    return true;
+    return 0;
 
 }
-
+/*TODO serial comm
 bool ActionClavier::lireManette()
 {   
     if (!serial->isConnected())
     {
         return false;
     }
-
 
     char buffer[MaxBit];
 

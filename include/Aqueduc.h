@@ -15,24 +15,22 @@ private:
 public:
     Aqueduc() 
     {
-        ressources.energie = -2;
-        ressources.eau = 10;
-        ressources.bonheur = 1;
+        ressources.energie = 0;
+        ressources.eau = 20;
+        ressources.bonheur = 0;
         ressources.materiaux = 0;
-        ressources.argent = -250;
-        ressources.habitant = -2;
+        ressources.argent = -10;
+        ressources.habitant = 0;
+        couts = 50;
     }
 
     ~Aqueduc() {}
     
-    void afficher() 
-    {
-
-    }
+    void afficher() {}
     
     char get_char() 
     {
-        return 'w';
+        return 'O';
     }
 };
 

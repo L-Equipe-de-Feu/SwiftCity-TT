@@ -6,9 +6,19 @@
 
 class Eau : public Terrain {
     public :
-        Eau(bool c = false);
-        ~Eau();
+        Eau() { construire = false; }
+        ~Eau() {}
         /** @brief permet de set un terrain est constructible ou pas*/
-        void setPeuConstruire(bool c);  
+        bool getPeuConstruire() 
+        {
+            return construire;
+        }
+
+        void afficher() {}
+
+        char get_char()
+        {
+            return ',';
+        }
 };
 #endif

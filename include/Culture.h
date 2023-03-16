@@ -14,21 +14,21 @@ private:
     /* data */
 public:
     Culture() {
-        ressources.energie = -10;
-        ressources.eau = -5;
-        ressources.bonheur = 20;
+        ressources.energie = -1;
+        ressources.eau = -2;
+        ressources.bonheur = 16;
         ressources.materiaux = 0;
-        ressources.argent = -250;
-        ressources.habitant = -8;
+        ressources.argent = -200;
+        ressources.habitant = 0;
+        couts = 2000;
     }
     ~Culture() {}
 
     void afficher() {}
 
     char get_char() 
-    
     {
-        return ' ';
+        return '^';
     }
 };
 #endif

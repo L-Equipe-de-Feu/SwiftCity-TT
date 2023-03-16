@@ -6,9 +6,19 @@
 
 class Gazon : public Terrain {
     public :
-        Gazon(bool c = true);
-        ~Gazon();
+        Gazon() { construire = true; }
+        ~Gazon() {}
          /** @brief permet de set un terrain est constructible ou pas*/
-        void setPeuConstruire(bool c);  
+        virtual bool getPeuConstruire() 
+        {
+            return construire;
+        }
+
+        virtual void afficher() {}
+
+        virtual char get_char() 
+        {
+            return 'g';
+        }
 };
 #endif
