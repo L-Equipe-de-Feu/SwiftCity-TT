@@ -29,6 +29,7 @@ void Communication::sendMsg()
 
   Serial.write(JOY);
   Serial.write(ACC);
+  //Serial.write('\n');
 }
 
 void Communication::readMsg()

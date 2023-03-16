@@ -67,7 +67,8 @@ void loop()
     Vitesse_ref[1] = com.vitesse[1];
   }
 
-  appel(Date_ref[0], Date_ref[1], Date_ref[2], Date_ref[3]); appel(Date_ref[0], Date_ref[1], Date_ref[2], Date_ref[3]);
+  appel(Date_ref[0], Date_ref[1], Date_ref[2], Date_ref[3]);
+  appel(Date_ref[0], Date_ref[1], Date_ref[2], Date_ref[3]);
 
   BOU_A = digitalRead(BOU_A_PIN);
   BOU_B = digitalRead(BOU_B_PIN);
@@ -236,12 +237,27 @@ void loop()
   // Code pour Joystick G-D
   if (analogRead(JOY_GD_PIN) < 500 || analogRead(JOY_GD_PIN) > 524 || analogRead(JOY_HB_PIN) < 500 || analogRead(JOY_HB_PIN) > 524)
   {
-    int GD = analogRead(JOY_GD_PIN);
-    int HB = analogRead(JOY_HB_PIN);
     String GDRes, HBRes;
-    GDRes = String(int(GD / 1000)) + String(int((GD % 1000) / 100)) + String(int((GD % 100) / 10)) + String(int((GD % 10)));
-    HBRes = String(int(HB / 1000)) + String(int((HB % 1000) / 100)) + String(int((HB % 100) / 10)) + String(int((HB % 10)));
+    if (analogRead(JOY_GD_PIN) < 500 || analogRead(JOY_GD_PIN) > 524)
+    {
+      int GD = analogRead(JOY_GD_PIN);
 
+      GDRes = String(int(GD / 1000)) + String(int((GD % 1000) / 100)) + String(int((GD % 100) / 10)) + String(int((GD % 10)));
+    }
+    else
+    {
+      GDRes = String(9999);
+    }
+
+    if (analogRead(JOY_HB_PIN) < 500 || analogRead(JOY_HB_PIN) > 524)
+    {
+      int HB = analogRead(JOY_HB_PIN);
+      HBRes = String(int(HB / 1000)) + String(int((HB % 1000) / 100)) + String(int((HB % 100) / 10)) + String(int((HB % 10)));
+    }
+    else
+    {
+      HBRes = String(9999);
+    }
     com.etatJoystick = "Jx" + GDRes + "y" + HBRes;
   }
   else
@@ -250,7 +266,7 @@ void loop()
   }
 
   // Code pour Acceleromètre
-  if (analogRead(X_AXIS_PIN) < 500 || analogRead(X_AXIS_PIN) > 524 || analogRead(Y_AXIS_PIN) < 500 || analogRead(Y_AXIS_PIN) > 524 || analogRead(Z_AXIS_PIN) < 500 || analogRead(Z_AXIS_PIN) > 524)
+  if (analogRead(X_AXIS_PIN) < 320 || analogRead(X_AXIS_PIN) > 350 || analogRead(Y_AXIS_PIN) < 295 || analogRead(Y_AXIS_PIN) > 325 || analogRead(Z_AXIS_PIN) < 265 || analogRead(Z_AXIS_PIN) > 295)
   {
     int X = analogRead(X_AXIS_PIN);
     int Y = analogRead(Y_AXIS_PIN);
@@ -290,7 +306,7 @@ void loop()
   }
   else
   {
-    com.etatAcc = "Cx000y000z000";
+    com.etatAcc = "Cx999y999z999";
   }
 
   if ((currentMillis - lastDebounceTime_SEND) > SendTime)
