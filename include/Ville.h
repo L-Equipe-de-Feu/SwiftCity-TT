@@ -2,12 +2,14 @@
 #define VILLE_H
 
 #include <iostream>
+#include <random>
 #include "Batiment.h"
 #include "terrain.h"
 #include "structRessources.h"
 #include "GestionnaireTemps.h"
 #include "Curseur.h"
 #include "Gazon.h"
+#include "Eau.h"
 
 #define TAILLEX 15
 #define TAILLEY 30
@@ -44,6 +46,7 @@ public:
     void affiche(Curseur* curseur);
     void accelerer();
     void decelerer();
+    void genererTerrain(int x);
 };
 
 #endif

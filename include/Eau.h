@@ -18,7 +18,7 @@ class Eau : public Terrain {
 
         char get_char()
         {
-            return ',';
+            return '~';
         }
 };
 #endif

@@ -9,10 +9,11 @@ Ville::Ville() {
 }
 
 void Ville::init() {
+    genererTerrain(rand());    
     for (int i = 0; i < TAILLEX; i++) {
         for (int e = 0; e < TAILLEY; e++) {
             gridB[i][e] = nullptr;
-            gridT[i][e] = new Gazon();
+            //gridT[i][e] = new Gazon();
         }
     }
 
@@ -177,7 +178,7 @@ void Ville::affiche(Curseur* curseur) {
             {
                 if (gridB[i][e] == NULL)
                 {
-                    cout << "| " << "  ";
+                    cout << "| " << gridT[i][e]->get_char() << " ";
                 }
                 else 
                 {
@@ -198,6 +199,128 @@ void Ville::accelerer()
 void Ville::decelerer()
 {
     GT.decelerer();
+}
+
+/// <summary>
+/// generation aléatoire de la map de depart
+/// </summary>
+/// <param name="x">chiffre random venant du generateur de muons</param>
+void Ville::genererTerrain(int x)
+{
+    random_device r;
+    default_random_engine generator(r());
+    uniform_int_distribution<int> range(0, 1000);
+
+    bool map[TAILLEX][TAILLEY];
+    for (int i = 0; i < TAILLEX; i++)
+    {
+        for (int j = 0; j < TAILLEY; j++)
+        {
+            map[i][j] = false;
+        }
+    }
+
+    int depart;
+    if (TAILLEY>TAILLEX)
+    {
+        depart = x % TAILLEY;
+    }
+    else
+    {
+        depart = x % TAILLEX;
+    }
+
+    int position = depart;
+    int virage = 0;
+    int equation = range(generator);
+    if (equation % 2 == 0)
+    {
+        if (TAILLEX > TAILLEY)
+        {
+            position = floor(position * TAILLEY / TAILLEX);
+        }
+        map[0][position] = 1;
+        for (int i = 1; i < TAILLEX; i++)
+        {
+            equation = range(generator);
+            if (equation % 3 == 0)
+            {
+                map[i][position] = 1;
+                if (position > 0 && virage != 1)
+                {
+                    map[i][position - 1] = 1;
+                    position--;
+                    virage = 2;
+                }
+            }
+            else if (equation % 3 == 1)
+            {
+                map[i][position] = 1;
+                virage = 0;
+            }
+            else if (equation % 3 == 2)
+            {
+                map[i][position] = 1;
+                if (position < TAILLEY - 1 && virage != 2)
+                {
+                    map[i][position + 1] = 1;
+                    position++;
+                    virage = 1;
+                }
+            }
+        }
+    }
+    else
+    {
+        if (TAILLEY > TAILLEX)
+        {
+            position = floor(position * TAILLEX / TAILLEY);
+        }
+        map[position][0] = 1;
+        for (int j = 1; j < TAILLEY; j++)
+        {
+            equation = range(generator);
+            if (equation % 3 == 0)
+            {
+                map[position][j] = 1;
+                if (position > 0 && virage != 1)
+                {
+                    map[position - 1][j] = 1;
+                    position--;
+                    virage = 2;
+                }
+            }
+            else if (equation % 3 == 1)
+            {
+                map[position][j] = 1;
+                virage = 0;
+            }
+            else if (equation % 3 == 2)
+            {
+                map[position][j] = 1;
+                if (position < TAILLEX - 1 && virage != 2)
+                {
+                    map[position + 1][j] = 1;
+                    position++;
+                    virage = 1;
+                }
+            }
+        }
+    }
+    for (int p = 0; p < TAILLEX; p++)
+    {
+        for (int q = 0; q < TAILLEY; q++)
+        {
+            if (!map[p][q]) 
+            {
+                gridT[p][q] = new Gazon();
+            }
+            else 
+            {
+                gridT[p][q] = new Eau();
+            }            
+        }
+    }
 }
 
 void Ville::detruire(int x, int y) 
