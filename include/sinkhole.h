@@ -1,11 +1,9 @@
-
-
 #ifndef SINKHOLE_H
 #define SINKHOLE_H
 
 #include <iostream>
 #include <cstdlib>
-#include <random>
+#include "randomEngine.h"
 
 
 struct Point
@@ -22,6 +20,7 @@ private:
 	int tX = 1;
 	int tY = 1;
 	bool carte[TailleMax][TailleMax]{ {} };
+	std::uniform_int_distribution<int>* dsit1000;
 public:
 	Sinkhole();
 	Sinkhole(int tailleX, int tailleY);
@@ -37,19 +36,14 @@ public:
 
 };
 
-//random
-#ifndef RANDGEN
-#define RANDGEN
-random_device r;
-default_random_engine gen(r());
-#endif // !RANDGEN
-uniform_int_distribution<int> dsit1000(0, 1000);
+
 
 Sinkhole::Sinkhole(){}
 
 Sinkhole::Sinkhole(int tailleX, int tailleY) {
 	tX = tailleX;
 	tY = tailleY;
+	dsit1000 = new uniform_int_distribution<int>(0, 1000);
 }
 
 Sinkhole::~Sinkhole(){
@@ -65,8 +59,8 @@ void Sinkhole::reinit() {
 
 //e = 1 totalement random)
 void Sinkhole::random(int r, bool e) {
-	if (e) fillCircle(dsit1000(gen) % tX, dsit1000(gen) % tY, dsit1000(gen) % (tX / 2) + 0.5);
-	else fillCircle(dsit1000(gen) % tX, dsit1000(gen) % tY, r);
+	if (e) fillCircle((*dsit1000)(gen) % tX, (*dsit1000)(gen) % tY, (*dsit1000)(gen) % (tX / 2) + 0.5);
+	else fillCircle((*dsit1000)(gen) % tX, (*dsit1000)(gen) % tY, r);
 	
 }
 
@@ -100,5 +94,5 @@ void Sinkhole::getCopieTableau(bool (&copie)[rows][cols]) {
 }
 
 
-
 #endif // !SINKHOLE_H
+

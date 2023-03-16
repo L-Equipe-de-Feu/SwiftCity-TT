@@ -6,6 +6,7 @@ Ville::Ville() {
     init();  
 
     ticktimelast = time(0);
+    GT.time_to_str(4);
 }
 
 void Ville::init() {
@@ -432,6 +433,15 @@ void Ville::tick()
 
 void Ville::catastrophe()
 {
+    bool gridAffecte[TAILLEX][TAILLEY];
+    for (int i = 0; i < TAILLEX; i++)
+    {
+        for (int j = 0; j < TAILLEY; j++)
+        {
+            gridAffecte[i][j] = false;
+        }
+    }
+
 
 }
 

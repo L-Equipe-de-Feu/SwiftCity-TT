@@ -8,6 +8,7 @@
 #include "GestionnaireTemps.h"
 #include "Curseur.h"
 #include "Gazon.h"
+#include "catastrophes.h"
 
 #define TAILLEX 15
 #define TAILLEY 30
@@ -21,6 +22,7 @@ private:
     GestionnaireTemps GT;
     Terrain* gridT[TAILLEX][TAILLEY];
     Batiment* gridB[TAILLEX][TAILLEY];
+    //Catastrophes* cata;
     long ticktime = 0;
     long ticktimelast = 0;
     long ticktimeH = 0;

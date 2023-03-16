@@ -138,8 +138,11 @@
     <ClInclude Include="include\GestionnaireTemps.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="catastrophes.h">
+    <ClInclude Include="include\catastrophes.h">
       <Filter>Header Files\Catastrophes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\randomEngine.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

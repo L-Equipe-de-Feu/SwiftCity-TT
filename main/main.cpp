@@ -8,7 +8,6 @@
 #include "Curseur.h"
 #include "Ville.h"
 #include <ctime>
-#include "catastrophes.h"
 
 using namespace std;
 #define TAILLEX 15

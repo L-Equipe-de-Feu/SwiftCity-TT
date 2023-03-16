@@ -107,11 +107,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="externalLib\serial\SerialPort.hpp" />
-    <ClInclude Include="catastrophes.h" />
     <ClInclude Include="include\ActionClavier.h" />
     <ClInclude Include="include\Aqueduc.h" />
     <ClInclude Include="include\Batiment.h" />
     <ClInclude Include="include\Bureau.h" />
+    <ClInclude Include="include\catastrophes.h" />
     <ClInclude Include="include\Commercial.h" />
     <ClInclude Include="include\Coordonnee.h" />
     <ClInclude Include="include\Culture.h" />
@@ -128,6 +128,7 @@
     <ClInclude Include="include\MultiLogement.h" />
     <ClInclude Include="include\Police.h" />
     <ClInclude Include="include\Pompier.h" />
+    <ClInclude Include="include\randomEngine.h" />
     <ClInclude Include="include\Residentiel.h" />
     <ClInclude Include="include\Route.h" />
     <ClInclude Include="include\Service.h" />
