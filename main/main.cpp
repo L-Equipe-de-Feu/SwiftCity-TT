@@ -20,6 +20,7 @@ void main()
 {
 	char port[] = "COM4";
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int baud = 115200;
 	ComArduino test(port, baud);
   
@@ -51,6 +52,8 @@ void main()
 
 	} while (!quit);
 =======
+=======
+>>>>>>> parent of fd6d8c5 (La communication deux sens fonctionnelle)
 	ComArduino test(port, 115200);
 
 	while (true)
