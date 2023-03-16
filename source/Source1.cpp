@@ -20,6 +20,10 @@ void randomized_map(int x, bool map[m][n])
 	int equation = range(generator);
 	if(equation%2==0)
 	{
+		if (m > n)
+		{
+			position = floor(position * n / m);
+		}
 		map[0][position] = 1;
 		for (int i = 1; i < m; i++)
 		{
@@ -53,6 +57,10 @@ void randomized_map(int x, bool map[m][n])
 	}
 	else
 	{
+		if (n > m)
+		{
+			position = floor(position * m / n);
+		}
 		map[position][0] = 1;
 		for (int j = 1; j < n; j++)
 		{
