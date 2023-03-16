@@ -1,10 +1,10 @@
-#include <map.h>
+#include "map.h"
 
 random_device r;
 default_random_engine generator(r());
 uniform_int_distribution<int> range(0, 1000);
 
-void randomized_map(int x, int map[m][n])
+void randomized_map(int x, bool map[m][n])
 {
 	int depart;
 	if (n > m)
