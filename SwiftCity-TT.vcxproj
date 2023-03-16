@@ -147,7 +147,7 @@
     <ClCompile Include="source\ActionClavier.cpp" />
     <ClCompile Include="source\Communication.cpp" />
     <ClCompile Include="source\GestionnaireTemps.cpp" />
-    <ClCompile Include="source\map.cpp" />
+    <ClCompile Include="source\Source1.cpp" />
     <ClCompile Include="source\Ville.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

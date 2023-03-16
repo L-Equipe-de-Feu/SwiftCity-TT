@@ -161,7 +161,7 @@
     <ClCompile Include="source\Communication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\map.cpp">
+    <ClCompile Include="source\Source1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

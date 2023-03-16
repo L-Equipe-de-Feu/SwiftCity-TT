@@ -18,13 +18,6 @@ int map1[m][n];
 
 void main()
 {
-	for (int i = 0; i < m; i++)
-	{
-		for (int j = 0; j < n; j++)
-		{
-			map1[i][j] = NULL;
-		}
-	}
-	int x = 24;
+	int x = 78;
 	randomized_map(x, map1);
 }

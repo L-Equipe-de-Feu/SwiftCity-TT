@@ -1,7 +1,18 @@
 #include "map.h"
 
+random_device r;
+default_random_engine generator(r());
+uniform_int_distribution<int> range(0, 1000);
+
 void randomized_map(int x, int map[m][n])
 {
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			map[i][j] = 0;
+		}
+	}
 	int depart;
 	if (n > m)
 	{
@@ -13,10 +24,10 @@ void randomized_map(int x, int map[m][n])
 	}
 	int eau=0;
 	int position=0;
-	int equation=(pow(x, depart)/m)-n;
-	if(equation%2==0)
+	int equation=range(generator);
+	if(2%2==0)
 	{
-		map[0][depart] = 0;
+		map[0][depart] = 1;
 		for(int i=0; i<m; i++)
 		{
 			for(int j=0; j<n; j++)
@@ -25,27 +36,29 @@ void randomized_map(int x, int map[m][n])
 				{
 					for(int k=j-1; k<j+2; k++)
 					{
-						if(i>0 && map[i-1][k]==0 && map[i][j-2]!=0 && map[i][j-1]!=0)
+						if(i>0 && map[i-1][k]==1 && map[i][j-2]!=1 && map[i][j-1]!=1)
 						{
 							eau++;
 							position=k;
-							if(eau==1 && map[i-1][j+2]==0)
+							if(eau==1 && map[i-1][j+2]==1)
 							{
 								eau=0;
 								k=j+2;
+								cout << "Bitche " << endl;
 							}
 							if(eau>1)
 							{
-								for(int l=1; map[i-l][position-1]==0 && map[i-l][position]==0; l++)
+								for(int l=1; map[i-l][position-1]==1 && map[i-l][position]==1; l++)
 								{
-									if(map[i-l-1][position-1]!=0)
+									if(map[i-l-1][position-1]!=1)
 									{
 										position=k-1;
 									}
-									else if(map[i-l-1][position]!=0)
+									else if(map[i-l-1][position]!=1)
 									{
 										position=k;
 									}
+									cout << "Bitch " << endl;
 								}
 							}
 						}
@@ -53,67 +66,51 @@ void randomized_map(int x, int map[m][n])
 				}
 				if(eau==1)
 				{
-					equation=(pow(x, depart)/i)-position;
+					equation= range(generator);
 					if(equation%3==0)
 					{
 						if(position-1>=0)
 						{
-							map[i][position-1]=0;
+							map[i][position-1]=1;
 						}
-						map[i][position]=0;
-						map[i][position+1]=1;
+						map[i][position]=1;
+						map[i][position+1]=0;
+						cout << "bitch " << endl;
 					}
 					else if(equation%3==1)
 					{
+						cout << "fuck you " << endl;
 						if(position-1>=0)
 						{
-							map[i][position-1]=1;
+							map[i][position-1]=0;
 						}
-						map[i][position]=0;
-						map[i][position+1]=1;
+						map[i][position]=1;
+						map[i][position+1]=0;
 					}
 					else if(equation%3==2)
 					{
+						cout << "Come on " << endl;
 						if(position-1>=0)
 						{
-							map[i][position-1]=1;
+							map[i][position-1]=0;
 						}
-						map[i][position]=0;
-						map[i][position+1]=0;
+						map[i][position]=1;
+						map[i][position+1]=1;
 					}
 				}
 				else if(eau>1)
 				{
-					equation=(pow(x, depart)/i)-position;
+					equation= range(generator);
 					if(position=j+1 && equation%2==0)
 					{
 						if(j-1>=0)
 						{
-							map[i][j-1]=1;
+							map[i][j-1]=0;
 						}
 						map[i][j]=1;
-						map[i][j+1]=0;
-					}
-					else if(position=j+1 && equation%2==1)
-					{
-						if(j-1>=0)
-						{
-							map[i][j-1]=1;
-						}
-						map[i][j]=1;
-						map[i][j+1]=0;
-						map[i][j+2]=0;
-					}
-					else if(position=j && equation%2==0)
-					{
-						if(j-1>=0)
-						{
-							map[i][j-1]=1;
-						}
-						map[i][j]=0;
 						map[i][j+1]=1;
 					}
-					else if(position=j && equation%2==1)
+					else if(position=j+1 && equation%2==1)
 					{
 						if(j-1>=0)
 						{
@@ -121,13 +118,32 @@ void randomized_map(int x, int map[m][n])
 						}
 						map[i][j]=0;
 						map[i][j+1]=1;
+						map[i][j+2]=1;
+					}
+					else if(position=j && equation%2==0)
+					{
+						if(j-1>=0)
+						{
+							map[i][j-1]=0;
+						}
+						map[i][j]=1;
+						map[i][j+1]=0;
+					}
+					else if(position=j && equation%2==1)
+					{
+						if(j-1>=0)
+						{
+							map[i][j-1]=1;
+						}
+						map[i][j]=1;
+						map[i][j+1]=0;
 					}
 				}
 				else
 				{
-					if(map[i][j]!=0)
+					if(map[i][j]!=1)
 					{
-						map[i][j]=1;
+						map[i][j]=0;
 					}
 				}
 			}
@@ -135,7 +151,7 @@ void randomized_map(int x, int map[m][n])
 	}
 	else
 	{
-		map[depart][0]=0;
+		map[depart][0]=1;
 		for(int i=0; i<m; i++)
 		{
 			for(int j=0; j<n; j++)
@@ -144,24 +160,24 @@ void randomized_map(int x, int map[m][n])
 				{
 					for(int k=i-1; k<i+2; k++)
 					{
-						if(j>0 && map[k][j-1]==0 && map[i-2][j]!=0 && map[i-1][j]!=0)
+						if(j>0 && map[k][j-1]==1 && map[i-2][j]!=1 && map[i-1][j]!=1)
 						{
 							eau++;
 							position=k;
-							if(eau==1 && map[i+2][j-1]==0)
+							if(eau==1 && map[i+2][j-1]==1)
 							{
 								eau=0;
 								k=i+2;
 							}
 							if(eau>1)
 							{
-								for(int l=1; map[position-1][j-l]==0 && map[position][j-l]==0; l++)
+								for(int l=1; map[position-1][j-l]==1 && map[position][j-l]==1; l++)
 								{
-									if(map[position-1][j-l-1]!=0)
+									if(map[position-1][j-l-1]!=1)
 									{
 										position=k-1;
 									}
-									else if(map[position][j-l-1]!=0)
+									else if(map[position][j-l-1]!=1)
 									{
 										position=k;
 									}
@@ -172,83 +188,83 @@ void randomized_map(int x, int map[m][n])
 				}
 				if(eau==1)
 				{
-					equation=(pow(x, depart)/i)-position;
+					equation= range(generator);
 					if(equation%3==0)
 					{
 						if(position-1>=0)
 						{
-							map[position-1][j]=0;
+							map[position-1][j]=1;
 						}
-						map[position][j]=0;
-						map[position+1][j]=1;
+						map[position][j]=1;
+						//map[position+1][j]=0;
 					}
 					else if(equation%3==1)
 					{
 						if(position-1>=0)
 						{
-							map[position-1][j]=1;
+							//map[position-1][j]=0;
 						}
-						map[position][j]=0;
-						map[position+1][j]=1;
+						map[position][j]=1;
+						//map[position+1][j]=0;
 					}
 					else if(equation%3==2)
 					{
 						if(position-1>=0)
 						{
-							map[position-1][j]=1;
+							//map[position-1][j]=0;
 						}
-						map[position][j]=0;
-						map[position+1][j]=0;
+						map[position][j]=1;
+						map[position+1][j]=1;
 					}
 				}
 				else if(eau>1)
 				{
-					equation=(pow(x, depart)/i)-position;
+					equation= range(generator);
 					if(position=i+1 && equation%2==0)
 					{
 						if(i-1>=0)
 						{
-							map[i-1][j]=1;
+							//map[i-1][j]=0;
 						}
-						map[i][j]=1;
-						map[i+1][j]=0;
+						//map[i][j]=0;
+						map[i+1][j]=1;
 					}
 					else if(position=i+1 && equation%2==1)
 					{
 						if(i-1>=0)
 						{
-							map[i-1][j]=1;
+							//map[i-1][j]=0;
 						}
-						map[i][j]=1;
-						map[i+1][j]=0;
-						map[i+2][j]=0;
+						//map[i][j]=0;
+						map[i+1][j]=1;
+						map[i+2][j]=1;
 					}
 					else if(position=i && equation%2==0)
 					{
 						if(i-1>=0)
 						{
-							map[i-1][j]=1;
+							//map[i-1][j]=0;
 						}
-						map[i][j]=0;
-						map[i+1][j]=1;
+						map[i][j]=1;
+						//map[i+1][j]=0;
 					}
 					else if(position=i && equation%2==1)
 					{
 						if(i-1>=0)
 						{
-							map[i-1][j]=0;
+							map[i-1][j]=1;
 						}
-						map[i][j]=0;
-						map[i+1][j]=1;
+						map[i][j]=1;
+						//map[i+1][j]=0;
 					}
 				}
-				/*else
+				else
 				{
-					if(map[i][j]!=0)
+					if(map[i][j]!=1)
 					{
-						map[i][j]=1;
+						map[i][j]=0;
 					}
-				}*/
+				}
 			}
 		}
 	}
@@ -256,10 +272,6 @@ void randomized_map(int x, int map[m][n])
 	{
 		for(int q=0; q<n; q++)
 		{
-			/*if (map[p][q] != 0)
-			{
-				map[p][q] = 1;
-			}*/
 			cout << map[p][q] << " ";
 		}
 		cout << endl;
