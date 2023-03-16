@@ -200,6 +200,10 @@ void Ville::decelerer()
     GT.decelerer();
 }
 
+void Ville::genererTerrain(int x)
+{
+}
+
 void Ville::detruire(int x, int y) 
 {
     if (gridB[x][y] == nullptr)return;

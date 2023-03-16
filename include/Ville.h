@@ -44,6 +44,7 @@ public:
     void affiche(Curseur* curseur);
     void accelerer();
     void decelerer();
+    void genererTerrain(int x);
 };
 
 #endif

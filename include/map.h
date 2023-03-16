@@ -4,11 +4,25 @@
 #include <iostream>
 #include <math.h>
 #include <string.h>
-#define m 64
-#define n 64
+#include <Eau.h>
+#include <Gazon.h>
 
 using namespace std;
 
-void randomized_map(int x, int map[m][n]);
+class terrainGenerator
+{
+private:
+	int m = 64;
+	int n = 64;
+	Terrain*** terrainGenere;
+
+public:
+	terrainGenerator(int x, int y);
+	~terrainGenerator();
+
+	void randomized_map(int x);
+	void afficher();
+};
+
 
 #endif
