@@ -7,12 +7,6 @@
 #include <cstdlib>
 #include <random>
 
-using namespace std;
-
-
-random_device r;
-default_random_engine gen(r());
-uniform_int_distribution<int> dsit1000(0,1000);
 
 struct Point
 {
@@ -42,6 +36,14 @@ public:
 
 
 };
+
+//random
+#ifndef RANDGEN
+#define RANDGEN
+random_device r;
+default_random_engine gen(r());
+#endif // !RANDGEN
+uniform_int_distribution<int> dsit1000(0, 1000);
 
 Sinkhole::Sinkhole(){}
 

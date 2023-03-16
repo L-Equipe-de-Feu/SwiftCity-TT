@@ -8,12 +8,10 @@
 #define FLOCON_H
 
 
-
 #include <random>
-#include <iostream>
 #include <algorithm>
 
-using namespace std;
+
 
 class Flocon
 {
@@ -61,8 +59,11 @@ public:
 };
 
 //random
+#ifndef RANDGEN
+#define RANDGEN
 random_device r;
-default_random_engine generator(r());
+default_random_engine gen(r());
+#endif // !RANDGEN
 uniform_int_distribution<int> coor(-1, 1), st(0, 4), start(0,1000);
 
 Flocon::Flocon() {}
@@ -71,8 +72,8 @@ Flocon::Flocon(int tailleX, int tailleY) {
 
 	tX = tailleX;
 	tY = tailleY;
-	x = start(generator)%tX;
-	y = start(generator)%tY;
+	x = start(gen)%tX;
+	y = start(gen)%tY;
 	carte[x][y] = true;
 	minX = x;
 	maxX = x;
@@ -94,14 +95,14 @@ void Flocon::reinit() {
 			carte[i][j] = false;
 		}
 	}
-	x = start(generator) % tX;
-	y = start(generator) % tY;
+	x = start(gen) % tX;
+	y = start(gen) % tY;
 }
 
 bool Flocon::walk() {
 	//genere une direction aleatoire
-	int dx = coor(generator);
-	int dy = coor(generator);
+	int dx = coor(gen);
+	int dy = coor(gen);
 
 	//trouve la prochaine case sur laquel le curseur va se deplacer
 	int newX = x + dx;
@@ -131,7 +132,7 @@ bool Flocon::walk() {
 		domainMinY = std::max((minY - domain), 0);
 		domainMaxY = std::min((maxY + domain), (tY - 1));
 
-		switch (st(generator)) {
+		switch (st(gen)) {
 		case 0:
 			x = domainMinX;
 			y = domainMinY;

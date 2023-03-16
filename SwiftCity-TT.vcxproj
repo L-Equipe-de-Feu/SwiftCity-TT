@@ -107,6 +107,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="externalLib\serial\SerialPort.hpp" />
+    <ClInclude Include="catastrophes.h" />
     <ClInclude Include="include\ActionClavier.h" />
     <ClInclude Include="include\Aqueduc.h" />
     <ClInclude Include="include\Batiment.h" />

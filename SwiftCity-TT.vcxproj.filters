@@ -138,6 +138,9 @@
     <ClInclude Include="include\GestionnaireTemps.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="catastrophes.h">
+      <Filter>Header Files\Catastrophes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main\main.cpp">
