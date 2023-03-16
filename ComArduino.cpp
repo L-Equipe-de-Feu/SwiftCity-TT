@@ -7,20 +7,17 @@ ComArduino::ComArduino(char* port, int baud)
 
 ComArduino::~ComArduino()
 {
+	delete serial;
 }
 
-bool ComArduino::send(char date[4], char vitesse)
+bool ComArduino::send(int date, int vitesse)
 {
-	char buffer[7] = {'T', date[0], date[1], date[2], date[3], '0', vitesse};
+	char buffer[7] = {'t', 0, 0, 0, 0, 0, vitesse};
 
-	if (!serial->isConnected())
+	if (serial->isConnected())
 	{
 		return false;
 	}
 
-	serial->writeSerialPort(buffer, 7);
-
-	cout << "Send" << endl;
-
-	return true;
+	return serial->writeSerialPort(buffer ,MaxBit);
 }

@@ -19,6 +19,7 @@ Ville* ville = new Ville();
 void main()
 {
 	char port[] = "COM4";
+<<<<<<< HEAD
 	int baud = 115200;
 	ComArduino test(port, baud);
   
@@ -49,6 +50,25 @@ void main()
 		} 
 
 	} while (!quit);
+=======
+	ComArduino test(port, 115200);
+
+	while (true)
+	{
+		test.send(0, 1);
+		cout << "1" << endl;
+		Sleep(1000);
+		test.send(0, 2);
+		cout << "2" << endl;
+		Sleep(1000);
+		test.send(0, 3);
+		cout << "3" << endl;
+		Sleep(1000);
+		test.send(0, 4);
+		cout << "4" << endl;
+		Sleep(1000);
+	}
+>>>>>>> parent of fd6d8c5 (La communication deux sens fonctionnelle)
 
 	delete menu;
 	delete curseur;

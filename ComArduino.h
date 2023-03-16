@@ -4,13 +4,16 @@
 
 #include <iostream>
 #include "SerialPort.hpp"
-#include "ActionClavier.h"
 
-class ComArduino: public ActionClavier {
+#define MaxBit 512
+
+class ComArduino {
+private:
+	SerialPort* serial;
 public:
 	ComArduino(char* port, int baud);
 	~ComArduino();
-	bool send(char date[4], char vitesse);
+	bool send(int date, int vitesse);
 };
 
 
