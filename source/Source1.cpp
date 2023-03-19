@@ -4,7 +4,7 @@ random_device r;
 default_random_engine generator(r());
 uniform_int_distribution<int> range(0, 1000);
 
-void randomized_map(int x, bool map[m][n])
+void randomized_map(int x, int map[m][n])
 {
 	int depart;
 	if (n > m)
@@ -25,6 +25,42 @@ void randomized_map(int x, bool map[m][n])
 			position = floor(position * n / m);
 		}
 		map[0][position] = 1;
+		if (position > 20)
+		{
+			for (int l = position - n/5 - n/3; l < position - n/5; l++)
+			{
+				map[0][l] = 3;
+			}
+		}
+		else if (position > 8)
+		{
+			for (int l = 0; l < position - n/5; l++)
+			{
+				map[0][l] = 3;
+			}
+		}
+		for (int l = position + n/5 + 1; l < position + n/5 + n/3 && l < m; l++)
+		{
+			map[0][l] = 3;
+		}
+		if (position > 7)
+		{
+			for (int l = position - n/5; l < position; l++)
+			{
+				map[0][l] = 2;
+			}
+		}
+		else
+		{
+			for (int l = 0; l < position; l++)
+			{
+				map[0][l] = 2;
+			}
+		}
+		for (int l = position + 1; l < position + n/5 + 1 && l < n; l++)
+		{
+			map[0][l] = 2;
+		}
 		for (int i = 1; i < m; i++)
 		{
 			equation = range(generator);

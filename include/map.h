@@ -10,6 +10,6 @@
 
 using namespace std;
 
-void randomized_map(int x, bool map[m][n]);
+void randomized_map(int x, int map[m][n]);
 
 #endif

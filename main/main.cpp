@@ -18,7 +18,7 @@ Batiment* gridB [TAILLEX][TAILLEY];
 MenuConsole* menu = new MenuConsole();
 Curseur* curseur = new Curseur(TAILLEX, TAILLEY);
 Ville* ville = new Ville();
-bool map1[m][n];
+int map1[m][n];
 
 void main()
 {

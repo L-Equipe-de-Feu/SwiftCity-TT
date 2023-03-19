@@ -440,31 +440,3 @@ bool Ville::isConstructible()
 }
 
 ofstream Save("save.txt", ios::out | ios::trunc); //efface le contenu du fichier s'il n'est pas vide
-
-void Ville::save()
-{
-    RessourcesVille res;
-    if (Save)
-    {
-        Save << TAILLEX << endl << TAILLEY << endl;
-        Save << GT.time_to_str(4) << endl;
-        Save << res.habitantTot << ";" << res.materiauxTot << ";" << res.argentTot << endl;
-        for (int i = 0; i < TAILLEX; i++)
-        {
-            for (int j = 0; j < TAILLEY; j++)
-            {
-                Save << gridT[i][j] << ",";
-            }
-            Save << ";";
-        }
-        for (int i = 0; i < TAILLEX; i++)
-        {
-            for (int j = 0; j < TAILLEY; j++)
-            {
-                Save << gridB[i][j] << ",";
-            }
-            Save << ";";
-        }
-        Save.close();
-    }
-}
