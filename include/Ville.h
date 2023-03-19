@@ -2,6 +2,7 @@
 #define VILLE_H
 
 #include <iostream>
+#include <fstream>
 #include "Batiment.h"
 #include "terrain.h"
 #include "structRessources.h"
