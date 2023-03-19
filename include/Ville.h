@@ -4,6 +4,7 @@
 #include <iostream>
 #include <random>
 #include <fstream>
+#include <string>
 #include "Batiment.h"
 #include "terrain.h"
 #include "structRessources.h"
@@ -36,7 +37,7 @@ private:
     bool isConstructible();
 
     void save();
-    
+    void load();
     void init();
 public:
     Ville();

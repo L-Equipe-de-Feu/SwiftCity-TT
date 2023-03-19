@@ -565,7 +565,7 @@ bool Ville::isConstructible()
 
 void Ville::save()
 {
-    ofstream Save("save.txt", ios::out | ios::trunc); //efface le contenu du fichier s'il n'est pas vide
+    ofstream Save("save.txt", ios::out); //efface le contenu du fichier s'il n'est pas vide
     RessourcesVille res;
     if (Save)
     {
@@ -576,18 +576,44 @@ void Ville::save()
         {
             for (int j = 0; j < TAILLEY; j++)
             {
-                Save << gridT[i][j] << ",";
+                Save << gridT[i][j] << " ";
             }
-            Save << ";";
+        }
+        Save << endl;
+        for (int i = 0; i < TAILLEX; i++)
+        {
+            for (int j = 0; j < TAILLEY; j++)
+            {
+                Save << gridB[i][j] << " ";
+            }
+        }
+        Save.close();
+    }
+}
+
+void Ville::load()
+{
+    ifstream Load("save.txt", ios::in);
+    RessourcesVille res;
+    if (Load)
+    {
+        Load >> TAILLEX >> TAILLEY;
+        Load >> GT.time_to_str(4);
+        Load >> res.habitantTot >> res.materiauxTot >> res.argentTot;
+        for (int i = 0; i < TAILLEX; i++)
+        {
+            for (int j = 0; j < TAILLEY; j++)
+            {
+                Load >> gridT[i][j];
+            }
         }
         for (int i = 0; i < TAILLEX; i++)
         {
             for (int j = 0; j < TAILLEY; j++)
             {
-                Save << gridB[i][j] << ",";
+                Load >> gridB[i][j];
             }
-            Save << ";";
         }
-        Save.close();
+        Load.close();
     }
 }
