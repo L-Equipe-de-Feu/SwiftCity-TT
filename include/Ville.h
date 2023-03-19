@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <random>
+#include <fstream>
 #include "Batiment.h"
 #include "terrain.h"
 #include "structRessources.h"
@@ -33,6 +34,8 @@ private:
     void calculRessourcesDependant();
     void catastrophe();
     bool isConstructible();
+
+    void save();
     
     void init();
 public:
