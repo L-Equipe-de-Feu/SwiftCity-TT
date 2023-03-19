@@ -141,8 +141,8 @@
     <ClInclude Include="include\catastrophes.h">
       <Filter>Header Files\Catastrophes</Filter>
     </ClInclude>
-    <ClInclude Include="include\randomEngine.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="include\randomeng.h">
+      <Filter>Header Files\Catastrophes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +162,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Communication.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\catastrophes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\randomeng.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Sinkhole.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Tremblement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

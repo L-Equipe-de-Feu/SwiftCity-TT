@@ -128,7 +128,7 @@
     <ClInclude Include="include\MultiLogement.h" />
     <ClInclude Include="include\Police.h" />
     <ClInclude Include="include\Pompier.h" />
-    <ClInclude Include="include\randomEngine.h" />
+    <ClInclude Include="include\randomeng.h" />
     <ClInclude Include="include\Residentiel.h" />
     <ClInclude Include="include\Route.h" />
     <ClInclude Include="include\Service.h" />
@@ -146,8 +146,12 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">main;source;include;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="source\ActionClavier.cpp" />
+    <ClCompile Include="source\catastrophes.cpp" />
     <ClCompile Include="source\Communication.cpp" />
     <ClCompile Include="source\GestionnaireTemps.cpp" />
+    <ClCompile Include="source\randomeng.cpp" />
+    <ClCompile Include="source\Sinkhole.cpp" />
+    <ClCompile Include="source\Tremblement.cpp" />
     <ClCompile Include="source\Ville.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

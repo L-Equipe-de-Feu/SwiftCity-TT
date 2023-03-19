@@ -22,7 +22,6 @@ private:
     GestionnaireTemps GT;
     Terrain* gridT[TAILLEX][TAILLEY];
     Batiment* gridB[TAILLEX][TAILLEY];
-    //Catastrophes* cata;
     long ticktime = 0;
     long ticktimelast = 0;
     long ticktimeH = 0;

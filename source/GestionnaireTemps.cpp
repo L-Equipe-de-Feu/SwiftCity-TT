@@ -76,9 +76,6 @@ char* GestionnaireTemps::time_to_str(int mode)
 	case 3:
 		strftime(output, 80, "%Y %h %d %R", &tempsPresent);
 		break;
-	case 4:
-		time_t epoch = mktime(&tempsPresent);
-		sprintf(output, "%li", epoch);
 	}
 
 	return output;
