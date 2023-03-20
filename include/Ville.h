@@ -2,14 +2,13 @@
 #define VILLE_H
 
 #include <iostream>
-#include <random>
 #include "Batiment.h"
 #include "terrain.h"
 #include "structRessources.h"
 #include "GestionnaireTemps.h"
 #include "Curseur.h"
 #include "Gazon.h"
-#include "Eau.h"
+#include "catastrophes.h"
 
 #define TAILLEX 15
 #define TAILLEY 30

@@ -1,3 +1,6 @@
+
+#define NOMINMAX
+
 #include <iostream>
 #include <stdlib.h>
 #include "ActionClavier.h"
