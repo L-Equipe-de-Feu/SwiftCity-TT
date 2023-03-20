@@ -4,7 +4,7 @@
 
 #include "sinkhole.h"
 #include "Tremblement.h"
-#include <random>
+#include "randomeng.h"
 
 
 
@@ -16,7 +16,7 @@ public:
 
 	void reinit();
 	template <size_t rows, size_t cols>
-	void destruction(int Pv, bool(&copie)[rows][cols]);
+	void destruction(int Pv, bool(&copie)[rows][cols], int choix);
 
 private:
 	Flocon* flocon = new Flocon();

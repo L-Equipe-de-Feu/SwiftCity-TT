@@ -1,6 +1,4 @@
 #include "catastrophes.h"
-#include <random>
-#include "randomeng.h"
 
 //extern std::random_device r;
 //extern std::default_random_engine gen(r());
@@ -30,7 +28,7 @@ void Catastrophes::reinit() {
 }
 
 template <size_t rows, size_t cols>
-void Catastrophes::destruction(int Pv, bool(&copie)[rows][cols]) {
+void Catastrophes::destruction(int Pv, bool(&copie)[rows][cols], int choix = choice(randEng::gen())) {
 	int choix = choice(randEng::gen());
 	switch (choix) {
 	case 0:
