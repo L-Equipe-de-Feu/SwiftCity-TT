@@ -29,7 +29,7 @@ long lastDebounceTime_ARG = 0;
 long lastDebounceTime_SEND = 0;
 
 unsigned long debouceDelay = 20;
-unsigned long SendTime = 500;
+unsigned long SendTime = 100;
 
 int Date_ref[4] = {1, 1, 2, 8};
 int Vitesse_ref[2] = {0, 1};
