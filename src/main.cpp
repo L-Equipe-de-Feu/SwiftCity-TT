@@ -32,7 +32,7 @@ unsigned long debouceDelay = 20;
 unsigned long SendTime = 500;
 
 int Date_ref[4] = {1, 1, 2, 8};
-int Vitesse_ref[2] = {0, 0};
+int Vitesse_ref[2] = {0, 1};
 
 // Appel des variables pour le compteur et le debounce
 unsigned long previousMillis = 0;
@@ -266,31 +266,31 @@ void loop()
   }
 
   // Code pour Acceleromètre
-  if (analogRead(X_AXIS_PIN) < 320 || analogRead(X_AXIS_PIN) > 350 || analogRead(Y_AXIS_PIN) < 295 || analogRead(Y_AXIS_PIN) > 325 || analogRead(Z_AXIS_PIN) < 265 || analogRead(Z_AXIS_PIN) > 295)
+  if (analogRead(X_AXIS_PIN) <= 999 || analogRead(X_AXIS_PIN) >= 0 || analogRead(Y_AXIS_PIN) <= 999 || analogRead(Y_AXIS_PIN) >= 0 || analogRead(Z_AXIS_PIN) <= 999 || analogRead(Z_AXIS_PIN) >= 0)
   {
     int X = analogRead(X_AXIS_PIN);
     int Y = analogRead(Y_AXIS_PIN);
     int Z = analogRead(Z_AXIS_PIN);
 
-    if (X > 338)
+    if (X > 676)
     {
-      X = 338;
+      X = 676;
     }
     else
     {
       X = X;
     }
-    if (Y > 338)
+    if (Y > 676)
     {
-      Y = 338;
+      Y = 676;
     }
     else
     {
       Y = Y;
     }
-    if (Z > 338)
+    if (Z > 676)
     {
-      Z = 338;
+      Z = 676;
     }
     else
     {

@@ -23,7 +23,7 @@ public:
   String etatAcc;
 
   int date[4] = {1, 1, 2, 8};
-  int vitesse[2] = {0, 0};
+  int vitesse[2] = {0, 1};
 
   void sendMsg();
   void readMsg();
