@@ -1,6 +1,5 @@
 #include <iostream>
 #include <stdlib.h>
-#include "ActionClavier.h"
 #include "ComArduino.h"
 #include "MenuConsole.h"
 #include "Curseur.h"
@@ -19,12 +18,9 @@ Ville* ville = new Ville();
 void main()
 {
 	char port[] = "COM4";
-<<<<<<< HEAD
-<<<<<<< HEAD
 	int baud = 115200;
-	ComArduino test(port, baud);
+	ComArduino input(port, baud, menu, curseur, ville);
   
-	ActionClavier clavier(menu, curseur, ville);
 	long tick = time(0);
 	long lasttick = tick;
 
@@ -36,14 +32,20 @@ void main()
 			system("cls");
 			ville->tick();
 			ville->affiche(curseur);
+			if (input.getInerMenu()) {
+				menu->afficher_Batiment_sousMenu();
+			}
 			lasttick = tick;
 		}
 		
-		switch (clavier.lireClavier())
+		switch (input.lireClavier())
 		{
 		case 1:
 			system("cls");
 			ville->affiche(curseur);
+			if (input.getInerMenu()) {
+				menu->afficher_Batiment_sousMenu();
+			}
 			break;
 		case -1:
 			quit = true;
@@ -51,27 +53,6 @@ void main()
 		} 
 
 	} while (!quit);
-=======
-=======
->>>>>>> parent of fd6d8c5 (La communication deux sens fonctionnelle)
-	ComArduino test(port, 115200);
-
-	while (true)
-	{
-		test.send(0, 1);
-		cout << "1" << endl;
-		Sleep(1000);
-		test.send(0, 2);
-		cout << "2" << endl;
-		Sleep(1000);
-		test.send(0, 3);
-		cout << "3" << endl;
-		Sleep(1000);
-		test.send(0, 4);
-		cout << "4" << endl;
-		Sleep(1000);
-	}
->>>>>>> parent of fd6d8c5 (La communication deux sens fonctionnelle)
 
 	delete menu;
 	delete curseur;

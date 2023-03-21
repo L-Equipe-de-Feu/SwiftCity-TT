@@ -1,23 +1,26 @@
 #include "ComArduino.h"
 
-ComArduino::ComArduino(char* port, int baud)
+ComArduino::ComArduino(char* port, int baud, MenuConsole* menuT, Curseur* curseurT, Ville* villeT) : ActionClavier(menuT, curseurT, villeT)
 {
 	serial = new SerialPort(port, baud);
 }
 
 ComArduino::~ComArduino()
 {
-	delete serial;
 }
 
-bool ComArduino::send(int date, int vitesse)
+bool ComArduino::send(char date[4], char vitesse)
 {
-	char buffer[7] = {'t', 0, 0, 0, 0, 0, vitesse};
+	char buffer[7] = {'T', date[0], date[1], date[2], date[3], '0', vitesse};
 
-	if (serial->isConnected())
+	if (!serial->isConnected())
 	{
 		return false;
 	}
 
-	return serial->writeSerialPort(buffer ,MaxBit);
+	serial->writeSerialPort(buffer, 7);
+
+	cout << "Send" << endl;
+
+	return true;
 }

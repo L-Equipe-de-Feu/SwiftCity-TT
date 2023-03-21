@@ -133,6 +133,8 @@
       <Filter>ExternalLib\serial</Filter>
     </ClInclude>
     <ClInclude Include="ComArduino.h">
+		<Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="include\Route.h">
       <Filter>Header Files\Batiments</Filter>
     </ClInclude>
@@ -154,6 +156,8 @@
       <Filter>ExternalLib\serial</Filter>
     </ClCompile>
     <ClCompile Include="ComArduino.cpp">
+		<Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="source\GestionnaireTemps.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

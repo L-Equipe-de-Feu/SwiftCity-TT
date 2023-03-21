@@ -1,7 +1,6 @@
 #include "ActionClavier.h"
-ActionClavier::ActionClavier() 
+ActionClavier::ActionClavier()
 {
-    serial = new SerialPort(Port, Baud);
 }
 
 using namespace std;
@@ -37,7 +36,15 @@ int ActionClavier::lireClavier() {
     {
         //case mouvement du curseur
     case 'w':
-        curseur->bougerHaut();
+        if (inerMenu)
+        {
+            menu->bougerHaut();
+        }
+        else
+        {
+            curseur->bougerHaut();
+        }
+        
         return 1;
         break;
     case 'a':
@@ -45,11 +52,19 @@ int ActionClavier::lireClavier() {
         return 1;
         break;
     case 's':
-        curseur->bougerBas();
+        if (inerMenu)
+        {
+            menu->bougerBas();
+        }
+        else
+        {
+            curseur->bougerBas();
+        }
         return 1;
         break;
     case 'd':
         curseur->bougerDroit();
+        
         return 1;
         break;
         //Fin case mouvement du curseur
@@ -59,8 +74,7 @@ int ActionClavier::lireClavier() {
 
     case 'q':
         //construire
-        cout << "Que voulez vous construire : \n" << "\tResidentiel : 1\n" << "\tIndustriel : 2\n" << "\tCommerciale : 3\n" << "\tServices : 4\n";
-        ville->construireBatiment(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y, menu->construire_Batiment_sousMenu(getch()));
+        inerMenu = true;
         return 1;
         break;
 
@@ -82,14 +96,34 @@ int ActionClavier::lireClavier() {
         ville->accelerer();
         break;
 
+    case '1':
+        if (inerMenu && menu->getValider()<1)
+        {
+            menu->valider();
+        }
+        else 
+        {
+            ville->construireBatiment(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y, menu->construire_Batiment_sousMenu());
+            inerMenu = false;
+            //menu->sortir();
+        }
+        break;
+    case '2' :
+        inerMenu = false;
+        menu->sortir();
+        souvien = nullptr;
+        break;
+
     case '\x1b'://escape
         return -1;
         break;
     }
+
     return 0;
 
 }
-/*TODO serial comm
+
+
 bool ActionClavier::lireManette()
 {   
     if (!serial->isConnected())
@@ -98,8 +132,13 @@ bool ActionClavier::lireManette()
     }
 
     char buffer[MaxBit];
-
+    
     size_t taille = serial->readSerialPort(buffer, MaxBit);
+
+    if (taille <= 0)
+    {
+        return true;
+    }
 
     for(int i = 0; i < taille; i++)
     {
@@ -112,38 +151,93 @@ bool ActionClavier::lireManette()
 
         //case mouvement du curseur
         case 'J':
-            i++;
-            for (int j = 0; j < 4; j++)
+            if (i + 10 < taille)
             {
-                x += cTi(buffer[++i]) * mult[j];
+                i++;
+                for (int j = 0; j < 4; j++)
+                {
+                    x += cTi(buffer[++i]) * mult[j];
+                }
+
+                i++;
+
+                for (int j = 0; j < 4; j++)
+                {
+                    y += cTi(buffer[++i]) * mult[j];
+                }
+                //Fonction curseur (x, y)
+                cout << "Joystick : Jx" << x << "y" << y << endl;
             }
-
-            i++;
-
-            for (int j = 0; j < 4; j++)
+            if (!inerMenu)
             {
-                y += cTi(buffer[++i]) * mult[j];
+                if (x != 9999) {
+                    if (x > 511)
+                    {
+                        curseur->bougerDroit();
+                    }
+                    if (x < 511)
+                    {
+                        curseur->bougerGauche();
+                    }
+                }
+                if (y != 9999) {
+                    if (y > 511)
+                    {
+                        curseur->bougerHaut();
+                    }
+                    if (y < 511)
+                    {
+                        curseur->bougerBas();
+                    }
+                }
             }
-            //Fonction curseur (x, y)
-            cout << "Joystick : Jx" << x << "y" << y << endl;
+            else 
+            {
+                if (y != 9999) {
+                    if (y > 511)
+                    {
+                        menu->bougerHaut();
+                    }
+                    if (y < 511)
+                    {
+                        menu->bougerBas();
+                    }
+                }
+            }
+            
             break;
 
         //bouton
         case 'A':
             //Fonction bouton A
             cout << "Bouton A presse" << endl;
+            if (inerMenu && menu->getValider() < 1)
+            {
+                menu->valider();
+            }
+            else
+            {
+                ville->construireBatiment(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y, menu->construire_Batiment_sousMenu());
+                inerMenu = false;
+                //menu->sortir();
+            }
             break;
         case 'B':
             //Fonction bouton B
             cout << "Bouton B presse" << endl;
+            inerMenu = false;
+            menu->sortir();
+            souvien = nullptr;
             break;
         case 'M':
             //Fonction bouton MENU
             cout << "Bouton MENU presse" << endl;
+            inerMenu = true;
             break;
         case 'S':
             //Fonction bouton START
             cout << "Bouton START presse" << endl;
+            ville->construireRoute(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y, new Route);
             break;
         case 'D':
             //Fonction bouton arriere DROIT
@@ -156,31 +250,36 @@ bool ActionClavier::lireManette()
 
         //Accéléromètre
         case 'C':
-            i++;
-            for (int j = 0; j < 3; j++)
+            if (i + 12 < taille)
             {
-                x += cTi(buffer[++i]) * mult[j+1];
+                i++;
+                for (int j = 0; j < 3; j++)
+                {
+                    x += cTi(buffer[++i]) * mult[j + 1];
+                }
+
+                i++;
+
+                for (int j = 0; j < 3; j++)
+                {
+                    y += cTi(buffer[++i]) * mult[j + 1];
+                }
+
+                i++;
+
+                for (int j = 0; j < 3; j++)
+                {
+                    z += cTi(buffer[++i]) * mult[j + 1];
+                }
+                //Fonction accéléromètre (x, y, z)
+                cout << "Accelerometre : Cx" << x << "y" << y << "z" << z << endl;
             }
-
-            i++;
-
-            for (int j = 0; j < 3; j++)
-            {
-                y += cTi(buffer[++i]) * mult[j+1];
-            }
-
-            i++;
-
-            for (int j = 0; j < 3; j++)
-            {
-                z += cTi(buffer[++i]) * mult[j+1];
-            }
-            //Fonction accéléromètre (x, y, z)
-            cout << "Accelerometre : Cx" << x << "y" << y << "z" << z << endl;
             break;
         default:
+            cout << "Non valide" << endl;
             break;
         }
+
     }
 
     return true;
@@ -190,4 +289,14 @@ int ActionClavier::cTi(char c)
 {
     int i = c - '0';
     return i;
+}
+
+bool ActionClavier::getInerMenu()
+{
+    return inerMenu;
+}
+
+void ActionClavier::setInerMenu(bool menu)
+{
+    inerMenu = menu;
 }

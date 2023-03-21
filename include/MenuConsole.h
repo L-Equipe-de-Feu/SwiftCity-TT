@@ -21,101 +21,158 @@
 #include "Energie.h"
 #include "Police.h"
 #include "Pompier.h"
-
+#define menuLargeur 10
+#define menuHauteur 4
 using namespace std;
 
 class MenuConsole{
+private : 
+    int choix = 0;
+    int valide = 0;
+    int premierChoix = 0;
+    int deuxiemeChoix = 0;
+    string textMenu[menuHauteur][menuLargeur] = { {"Residentiel", "Maison", "MultiLogement(WIP)"},
+                                {"Industriel", "Usine"},
+                                {"Commerciale", "Magasin", "Bureau(WIP)"},
+                                {"Services", "Aqueduc", "Energie", "Culture", "Ecole(WIP)", "Police(WIP)", "Pompier(WIP)"} };
 public :
 
-    Batiment* construire_Batiment_sousMenu(char input) {
-        switch (input) {
-        case '1':
+    void afficher_Batiment_sousMenu() {
+        cout << "Que voulez vous construire : \n";
+
+        if (valide == 0) 
+        {
+            for (int i = 0; i < menuHauteur; i++) {
+                if (choix == i)
+                {
+                    cout << '>';
+                }
+                premierChoix = choix;
+                cout << textMenu[i][0] << " : \n";
+            }
+        }
+        
+        if (valide == 1)
+        {
+            cout << textMenu[premierChoix][0] << " : \n";
+            for (int e = 1; e < menuLargeur - 1; e++)
+            {
+                if (choix == e)
+                {
+                    cout << '>';
+                }
+                deuxiemeChoix = choix;
+                cout << "\t" << textMenu[premierChoix][e] << "\n";
+            }
+        }
+    }
+
+    void bougerBas() {
+        choix++;
+    }
+
+    void bougerHaut() {
+        choix--;
+    }
+
+    void valider() {
+        choix = 0;
+        valide++;
+    }
+
+    int getValider() {
+        return valide;
+    }
+
+    void sortir() {
+        choix = 0;
+        valide = 0;
+        premierChoix = 0;
+        deuxiemeChoix = 0;
+    }
+
+    //
+
+    Batiment* construire_Batiment_sousMenu() {
+        valide = 0;
+        switch (premierChoix) {
+        case 0:
             //construire maison
-            cout << "\tQue voulez vous construire : \n" << "\t\tMaison : 1\n" << "\t\tMultiLogement(WIP) : 2\n";
-            return construire_Redentiel_sousMenu(getch());
+            return construire_Redentiel_sousMenu(deuxiemeChoix);
             break;
-        case '2':
+        case 1:
             //construire usine
-            cout << "\tQue voulez vous construire : \n" << "\t\tUsine : 1\n";
-            return construire_Industriel_sousMenu(getch());
+            return construire_Industriel_sousMenu(deuxiemeChoix);
             break;
-        case '3':
+        case 2:
             //construire magasin
-            cout << "\tQue voulez vous construire : \n" << "\t\tMagasin : 1\n" << "\t\tBureau(WIP) : 2\n";
-            return construire_Commerciale_sousMenu(getch());
+            return construire_Commerciale_sousMenu(deuxiemeChoix);
             break;
-        case '4' :
+        case 3 :
             //Construire un service
-            cout << "\tQue voulez vous construire : \n" << "\t\tAqueduc : 1" << "\tEnergie : 2" << "\tCulture(WIP) : 3\n"
-                 << "\t\tEcole(WIP) : 4" << "\tPolice(WIP) : 5" << "\tPompier(WIP) : 6";
-            return construire_Service_sousMenu(getch());
+            return construire_Service_sousMenu(deuxiemeChoix);
             break;
         }
         return nullptr;
     }
 
-    Batiment* construire_Redentiel_sousMenu(char input) {
+    Batiment* construire_Redentiel_sousMenu(int input) {
         switch (input)
         {
-        case '1':
+        case 1:
             return new Maison;
             break;
 
-        case '2':
-            cout << "(WIP)";
+        case 2:
             return new MultiLogement;
             break;
         }
         return nullptr;
     }
 
-    Batiment* construire_Industriel_sousMenu(char input) {
+    Batiment* construire_Industriel_sousMenu(int input) {
         return new Usine;
         return nullptr;
     }
 
-    Batiment* construire_Commerciale_sousMenu(char input) {
+    Batiment* construire_Commerciale_sousMenu(int input) {
         switch (input)
         {
-        case '1':
+        case 1:
             return new Magasin;
             break;
 
-        case '2':
-            cout << "(WIP)";
+        case 2:
             return new Bureau;
             break;
         }
         return nullptr;
     }
 
-    Batiment* construire_Service_sousMenu(char input) {
+    Batiment* construire_Service_sousMenu(int input) {
         switch (input)
         {
-        case '1':
+        case 1:
             return new Aqueduc;
             break;
 
-        case '2':
+        case 2:
             return new Energie;
             break;
 
-        case '3':
+        case 3:
             return new Culture;
             break;
 
-        case '4':
-            cout << "(WIP)";
+        case 4:
             return new Ecole;
             break;
 
-        case '5':
-            cout << "(WIP)";
+        case 5:
             return new Police;
             break;
 
-        case '6':
-            cout << "(WIP)";
+        case 6:
             return new Pompier;
             break;
         }
