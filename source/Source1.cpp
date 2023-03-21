@@ -18,7 +18,15 @@ void randomized_map(int x, int map[m][n])
 	int position = depart;
 	int virage = 0;
 	int equation = range(generator);
-	if(/*equation*/2 % 2 == 0)
+	if (depart < 8)
+	{
+		depart += 8;
+	}
+	else if (depart > n - 8)
+	{
+		depart -= 8;
+	}
+	if(equation % 2 == 0)
 	{
 		if (m > n)
 		{
@@ -208,32 +216,178 @@ void randomized_map(int x, int map[m][n])
 			position = floor(position * m / n);
 		}
 		map[position][0] = 1;
+		if (position > m / 5 + m / 3)
+		{
+			for (int l = position - m / 5 - m / 3; l < position - m / 5; l++)
+			{
+				map[l][0] = 3;
+			}
+		}
+		else
+		{
+			for (int l = 0; l < position - m / 5; l++)
+			{
+				map[l][0] = 3;
+			}
+		}
+		for (int l = position + m / 5 + 1; l < position + m / 5 + m / 3 + 1 && l < m; l++)
+		{
+			map[l][0] = 3;
+		}
+		if (position > m / 5)
+		{
+			for (int l = position - m / 5; l < position; l++)
+			{
+				map[l][0] = 2;
+			}
+		}
+		else
+		{
+			for (int l = 0; l < position; l++)
+			{
+				map[l][0] = 2;
+			}
+		}
+		for (int l = position + 1; l < position + m / 5 + 1 && l < m; l++)
+		{
+			map[l][0] = 2;
+		}
 		for (int j = 1; j < n; j++)
 		{
 			equation = range(generator);
 			if (equation % 3 == 0)
 			{
 				map[position][j] = 1;
+				map[position + 1][j] = 2;
 				if (position > 0 && virage != 1)
 				{
 					map[position-1][j] = 1;
 					position--;
 					virage = 2;
 				}
+				if (position > m / 5 + m / 3)
+				{
+					for (int l = position - m / 5 - m / 3; l < position - m / 5; l++)
+					{
+						map[l][j] = 3;
+					}
+				}
+				else
+				{
+					for (int l = 0; l < position - m / 5; l++)
+					{
+						map[l][j] = 3;
+					}
+				}
+				for (int l = position + m / 5 + 2; l < position + m / 5 + m / 3 + 2 && l < m; l++)
+				{
+					map[l][j] = 3;
+				}
+				if (position > m / 5)
+				{
+					for (int l = position - m / 5; l < position; l++)
+					{
+						map[l][j] = 2;
+					}
+				}
+				else
+				{
+					for (int l = 0; l < position; l++)
+					{
+						map[l][j] = 2;
+					}
+				}
+				for (int l = position + 2; l < position + m / 5 + 2 && l < m; l++)
+				{
+					map[l][j] = 2;
+				}
 			}
 			else if (equation % 3 == 1)
 			{
 				map[position][j] = 1;
 				virage = 0;
+				if (position > m / 5 + m / 3)
+				{
+					for (int l = position - m / 5 - m / 3; l < position - m / 5; l++)
+					{
+						map[l][j] = 3;
+					}
+				}
+				else
+				{
+					for (int l = 0; l < position - m / 5; l++)
+					{
+						map[l][j] = 3;
+					}
+				}
+				for (int l = position + m / 5 + 1; l < position + m / 5 + m / 3 + 1 && l < m; l++)
+				{
+					map[l][j] = 3;
+				}
+				if (position > m / 5)
+				{
+					for (int l = position - m / 5; l < position; l++)
+					{
+						map[l][j] = 2;
+					}
+				}
+				else
+				{
+					for (int l = 0; l < position; l++)
+					{
+						map[l][j] = 2;
+					}
+				}
+				for (int l = position + 1; l < position + m / 5 + 1 && l < m; l++)
+				{
+					map[l][j] = 2;
+				}
 			}
 			else if (equation % 3 == 2)
 			{
 				map[position][j] = 1;
+				map[position - 1][j] = 2;
 				if (position < m - 1 && virage != 2)
 				{
 					map[position+1][j] = 1;
 					position++;
 					virage = 1;
+				}
+				if (position > m / 5 + m / 3 + 2)
+				{
+					for (int l = position - m / 5 - m / 3 - 2; l < position - m / 5; l++)
+					{
+						map[l][j] = 3;
+					}
+				}
+				else
+				{
+					for (int l = 0; l < position - m / 5; l++)
+					{
+						map[l][j] = 3;
+					}
+				}
+				for (int l = position + m / 5 + 1; l < position + m / 5 + m / 3 + 1 && l < m; l++)
+				{
+					map[l][j] = 3;
+				}
+				if (position > m / 5 + 1)
+				{
+					for (int l = position - m / 5 - 1; l < position - 1; l++)
+					{
+						map[l][j] = 2;
+					}
+				}
+				else
+				{
+					for (int l = 0; l < position - 1; l++)
+					{
+						map[l][j] = 2;
+					}
+				}
+				for (int l = position + 1; l < position + m / 5 + 1 && l < m; l++)
+				{
+					map[l][j] = 2;
 				}
 			}
 		}
