@@ -5,6 +5,7 @@
 
 enum VitessesTemps
 {
+	X0 = 0,//pause
 	X1 = 30, 
 	X2 = 60, 
 	X3 = 300,

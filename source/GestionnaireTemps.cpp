@@ -85,6 +85,9 @@ char* GestionnaireTemps::vitesse_to_str()
 {
 	switch (VT)
 	{
+	case X0:
+		return "X0";
+		break;
 	case X1:
 		return "X1";
 		break;
@@ -107,6 +110,9 @@ void GestionnaireTemps::accelerer()
 {
 	switch (VT)
 	{
+	case X0:
+		VT = X1;
+		break;
 	case X1:
 		VT = X2;
 		break;
@@ -123,6 +129,9 @@ void GestionnaireTemps::decelerer()
 {
 	switch (VT)
 	{
+	case X1:
+		VT = X0;
+		break;
 	case X2:
 		VT = X1;
 		break;

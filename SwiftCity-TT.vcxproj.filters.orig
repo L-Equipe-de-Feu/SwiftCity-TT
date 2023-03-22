@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Main Files">
+      <UniqueIdentifier>{2fb7711a-704e-404b-a990-117298d8d9e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Batiments">
+      <UniqueIdentifier>{4f0af33b-1305-4afe-ae70-f29f6f8ab976}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Batiments\Commercial">
+      <UniqueIdentifier>{057bea22-778e-403d-928f-896aaeb682a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Batiments\Residentiel">
+      <UniqueIdentifier>{2d82c008-9bcb-407c-928a-089fdaa43249}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Batiments\Services">
+      <UniqueIdentifier>{1b2e7ff9-fb96-4218-8e87-c89256d4a259}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Batiments\Industriel">
+      <UniqueIdentifier>{d5b860c9-e1e4-4ae3-a58e-c45c57fcdac2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Terrains">
+      <UniqueIdentifier>{0e78cfe6-ff99-4a2b-862d-76a3f1d9e5b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="qtSource">
+      <UniqueIdentifier>{1cbf6200-c722-445f-b3ed-188d25de323a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Catastrophes">
+      <UniqueIdentifier>{5a5236f1-d8f4-4b2f-a41d-e7e556f963fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ExternalLib">
+      <UniqueIdentifier>{6b03d701-5ed1-4a68-adb4-4c3afe67f5a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ExternalLib\serial">
+      <UniqueIdentifier>{71bd6c37-2a1d-43e7-9d1e-93ba8c0ccb05}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\ActionClavier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Coordonnee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Curseur.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MenuConsole.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\StructRessources.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Aqueduc.h">
+      <Filter>Header Files\Batiments\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Batiment.h">
+      <Filter>Header Files\Batiments</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Commercial.h">
+      <Filter>Header Files\Batiments\Commercial</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Bureau.h">
+      <Filter>Header Files\Batiments\Commercial</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Culture.h">
+      <Filter>Header Files\Batiments\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Ecole.h">
+      <Filter>Header Files\Batiments\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Energie.h">
+      <Filter>Header Files\Batiments\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Industriel.h">
+      <Filter>Header Files\Batiments\Industriel</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Magasin.h">
+      <Filter>Header Files\Batiments\Commercial</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Gazon.h">
+      <Filter>Header Files\Terrains</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Maison.h">
+      <Filter>Header Files\Batiments\Residentiel</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Police.h">
+      <Filter>Header Files\Batiments\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Pompier.h">
+      <Filter>Header Files\Batiments\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MultiLogement.h">
+      <Filter>Header Files\Batiments\Residentiel</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Usine.h">
+      <Filter>Header Files\Batiments\Industriel</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Residentiel.h">
+      <Filter>Header Files\Batiments\Residentiel</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Service.h">
+      <Filter>Header Files\Batiments\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Terrain.h">
+      <Filter>Header Files\Terrains</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Eau.h">
+      <Filter>Header Files\Terrains</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sinkhole.h">
+      <Filter>Header Files\Catastrophes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Tremblement.h">
+      <Filter>Header Files\Catastrophes</Filter>
+    </ClInclude>
+    <ClInclude Include="externalLib\serial\SerialPort.hpp">
+      <Filter>ExternalLib\serial</Filter>
+    </ClInclude>
+    <ClInclude Include="ComArduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Route.h">
+      <Filter>Header Files\Batiments</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GestionnaireTemps.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\catastrophes.h">
+      <Filter>Header Files\Catastrophes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Ville.h">
+      <Filter>Main Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\randomeng.h">
+      <Filter>Header Files\Catastrophes</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main\main.cpp">
+      <Filter>Main Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Ville.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ActionClavier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="externalLib\serial\SerialPort.cpp">
+      <Filter>ExternalLib\serial</Filter>
+    </ClCompile>
+    <ClCompile Include="ComArduino.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GestionnaireTemps.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Communication.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\catastrophes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\randomeng.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Sinkhole.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Tremblement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
