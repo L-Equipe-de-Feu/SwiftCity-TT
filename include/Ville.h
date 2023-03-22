@@ -9,6 +9,7 @@
 #include "Curseur.h"
 #include "Gazon.h"
 #include "catastrophes.h"
+#include "Eau.h"
 
 #define TAILLEX 15
 #define TAILLEY 30
