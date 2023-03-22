@@ -42,7 +42,7 @@ public :
         char* tabulation = "                                                               ";
         cout << tabulation << tabulation << endl;
         cout << "Clavier  | Manette      |  Description" << tabulation << endl;
-        cout << "WASD     | Joystick     |  déplacement du curseur" << tabulation << endl;
+        cout << "WASD     | Joystick     |  deplacement du curseur" << tabulation << endl;
         cout << "Q        | Menu         |  ouvrir menu de construction" << tabulation << endl;
         cout << "K        | Gach. Gauche |  ralentir l'avencement du temps" << tabulation << endl;
         cout << "L        | Gach. droit  |  accelerer l'avencement du temps" << tabulation << endl;

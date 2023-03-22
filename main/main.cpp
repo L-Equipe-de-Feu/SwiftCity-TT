@@ -16,8 +16,8 @@ MenuConsole* menu = new MenuConsole();
 Curseur* curseur = new Curseur(TAILLEX, TAILLEY);
 Ville* ville = new Ville();
 
+//position de curseur dans la console
 typedef struct pos { int x = 0; int y = 0; };
-
 pos curPosOrigin;		//0,0
 pos curPosGrid;			//grid et info ville
 pos curPosMenu;			//menu
@@ -70,7 +70,7 @@ void main()
 	char sendMsg[10] = "";
 
 	//affiche la ville et le menu au départ
-	setCurPos(curPosOrigin);
+	system("cls");
 	ville->affiche(curseur);
 	if (input.getInerMenu()) {
 		menu->afficher_Batiment_sousMenu();

@@ -34,9 +34,9 @@ protected:
 	SerialPort* serial;
 	char incompleteMessage[MaxMsgLen];
 	int leftLength;
-	bool shake[3] = { 0,0,0 };
 	int lastAccel[3] = { 0,0,0 };
 	void DetectShake(int x, int y, int z);
+	Ville* pVille;
 public:
 	ComArduino(char* port, int baud, MenuConsole* menuT, Curseur* curseurT, Ville* villeT);
 	~ComArduino();

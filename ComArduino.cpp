@@ -4,6 +4,8 @@ ComArduino::ComArduino(char* port, int baud, MenuConsole* menuT, Curseur* curseu
 {
 	serial = new SerialPort(port, baud);
 
+    pVille = villeT;
+
     //fill incomplete message buffer for safety
     for (int i = 0; i < MaxMsgLen; i++)
     {
@@ -25,7 +27,7 @@ bool ComArduino::send(char* message, int bytes)
 
 	serial->writeSerialPort(message, bytes);
 
-	std::cout << "Send" << endl;
+	//std::cout << "Send" << endl;
 
 	return true;
 }
@@ -50,12 +52,13 @@ bool ComArduino::lireManette()
     if (leftLength > 0) 
     {
         //concat incomplete message at start of buffer with incoming buffer 
-        sprintf(buffer, "%s%s", incompleteMessage, buffer);// TODO : à vérifier si fonctionne
+        sprintf(buffer, "%s%s", incompleteMessage, buffer);
         taille += leftLength;
     }
 
     bool incompleteMsg = false;
     unsigned int i = 0;
+    char* space = "                                                      ";
 
     while ( i < taille && !incompleteMsg)
     {
@@ -83,7 +86,7 @@ bool ComArduino::lireManette()
                     y += cTi(buffer[++i]) * mult[j];
                 }
                 //Fonction curseur (x, y)
-                std::cout << "Joystick : Jx" << x << "y" << y << endl;
+                std::cout << "Joystick : Jx" << x << "y" << y << space << endl;
             }
             else 
             {
@@ -103,11 +106,11 @@ bool ComArduino::lireManette()
                     }
                 }
                 if (y != NODATAJ) {
-                    if (y > AdcResMiddle)
+                    if (y < AdcResMiddle)
                     {
                         curseur->bougerHaut();
                     }
-                    if (y < AdcResMiddle)
+                    if (y > AdcResMiddle)
                     {
                         curseur->bougerBas();
                     }
@@ -132,7 +135,7 @@ bool ComArduino::lireManette()
             //bouton
         case 'A':
             //Fonction bouton A
-            std::cout << "Bouton A presse" << endl;
+            std::cout << "Bouton A presse" << space << endl;
             if (inerMenu && menu->getValider() < 1)
             {
                 menu->valider();
@@ -146,29 +149,29 @@ bool ComArduino::lireManette()
             break;
         case 'B':
             //Fonction bouton B
-            std::cout << "Bouton B presse" << endl;
+            std::cout << "Bouton B presse" << space << endl;
             inerMenu = false;
             menu->sortir();
             souvien = nullptr;
             break;
         case 'M':
             //Fonction bouton MENU
-            std::cout << "Bouton MENU presse" << endl;
+            std::cout << "Bouton MENU presse" << space << endl;
             inerMenu = true;
             break;
         case 'S':
             //Fonction bouton START
-            std::cout << "Bouton START presse" << endl;
+            std::cout << "Bouton START presse" << space << endl;
             ville->construireRoute(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y, new Route);
             break;
         case 'D':
             //Fonction bouton arriere DROIT
-            std::cout << "Bouton arriere DROIT presse" << endl;
+            std::cout << "Bouton arriere DROIT presse" << space << endl;
             ville->accelerer();
             break;
         case 'G':
             //Fonction bouton arriere GAUCHE
-            std::cout << "Bouton arriere GAUCHE presse" << endl;
+            std::cout << "Bouton arriere GAUCHE presse" << space << endl;
             ville->decelerer();
             break;
             
@@ -198,7 +201,7 @@ bool ComArduino::lireManette()
 
                 DetectShake(x,y,z);
                 //Fonction accéléromètre (x, y, z)
-                std::cout << "Accelerometre : Cx" << x << "y" << y << "z" << z << endl;
+                //std::cout << "Accelerometre : Cx" << x << "y" << y << "z" << z << endl;
             }
             else
             {
@@ -207,7 +210,7 @@ bool ComArduino::lireManette()
             }
             break;
         default:
-            std::cout << "Non valide" << endl;
+            std::cout << "Non valide" << space << endl;
             break;
         }
         i++;
@@ -232,15 +235,17 @@ bool ComArduino::lireManette()
         leftLength = 0;
     }
 
+    std::cout << space << space << endl;
+
     return true;
 }
 
 void ComArduino::DetectShake(int x, int y, int z) 
 {
-    if (abs(x - lastAccel[0]) >= SHAKETRESHOLD) { shake[0] = true; }
+    if (abs(x - lastAccel[0]) >= SHAKETRESHOLD) { ville->Shake(); }
     lastAccel[0] = x;
-    if (abs(y - lastAccel[1]) >= SHAKETRESHOLD) { shake[1] = true; }
+    if (abs(y - lastAccel[1]) >= SHAKETRESHOLD) { ville->Shake(); }
     lastAccel[1] = y;
-    if (abs(z - lastAccel[2]) >= SHAKETRESHOLD) { shake[2] = true; }
+    if (abs(z - lastAccel[2]) >= SHAKETRESHOLD) { ville->Shake(); }
     lastAccel[2] = z;
 }

@@ -9,6 +9,7 @@ Ville::Ville() {
 }
 
 void Ville::init() {
+    cata = new Catastrophes(TAILLEX, TAILLEY);
     genererTerrain(rand());    
     for (int i = 0; i < TAILLEX; i++) {
         for (int e = 0; e < TAILLEY; e++) {
@@ -24,7 +25,7 @@ void Ville::init() {
 }
 
 Ville::~Ville() {
-    // TODO : crash a la fermeture, verifier pourquoi
+    // TODO : creer un deep copy constructor et deep copy operator
     //delete[] gridB;
     //delete[] gridT;
 }
@@ -152,7 +153,7 @@ bool Ville::construireRoute(int x, int y, Batiment* b) {
 }
 
 void Ville::affiche(Curseur* curseur) {
-    char* tabulation = "                                   "; //besoin d'ajouter pour s'assurer qu'il ne reste pas de char non voulu
+    char* tabulation = "                                                                    "; //besoin d'ajouter pour s'assurer qu'il ne reste pas de char non voulu
     cout << tabulation << tabulation << endl;
     cout << "|-----------------------------------------------------------------------------------------------------------------------|" << endl;
     for (int i = 0; i < TAILLEX; i++) {
@@ -543,15 +544,46 @@ void Ville::tick()
         }
 
         //3. evenement aleatoire
-        //TODO
+        if (!catadeclenche && rand()%100 == 0)
+        {
+            declencherCatastrophe();
+        }
+        else if (catadeclenche) 
+        {
+            catastrophe();
+        }
 
         ticktimelast = ticktime;
     }    
 }
 
+void Ville::declencherCatastrophe()
+{
+    if (!catadeclenche )
+    {
+        catadeclenche = !catadeclenche;
+        cataTrigTime = time(0);
+        cataStrenght = rand() % MAXCATASTRENGTH;
+    }
+}
+
 void Ville::catastrophe()
 {
+    long timeNow = time(0);
 
+    if (timeNow - cataTrigTime < CATAREACTTIME)//precata 
+    {
+        //print warning
+    }
+    else //declenchement cata
+    {
+        //applique destruction
+        bool afflictedGrid[TAILLEX][TAILLEY];
+
+        cata->destruction(cataStrenght,afflictedGrid,0);
+
+        catadeclenche = false;
+    }
 }
 
 bool Ville::isConstructible()
@@ -562,4 +594,9 @@ bool Ville::isConstructible()
 void Ville::getTempsStr(char* buffer) 
 {
     sprintf(buffer, "%s%s", GT.time_to_str(1), GT.vitesse_to_str());
+}
+
+void Ville::Shake() 
+{
+    if (--cataStrenght < 0) cataStrenght = 0;
 }

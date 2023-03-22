@@ -18,6 +18,14 @@ protected:
 public:    
     Batiment() { }
 
+    Batiment(const Batiment& obj) 
+    { 
+        ressources = obj.ressources;
+        couts = obj.couts;
+        refund = obj.refund;
+        isRoute = obj.refund;
+    }
+
     virtual ~Batiment() {}
 
     void SetRessources(Ressources NRessources) 

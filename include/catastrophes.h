@@ -2,6 +2,8 @@
 #ifndef CATASTROPHES_H
 #define CATASTROPHES_H
 
+#define NBCATA		2
+
 #include "sinkhole.h"
 #include "Tremblement.h"
 #include "randomeng.h"

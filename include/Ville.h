@@ -11,10 +11,12 @@
 #include "catastrophes.h"
 #include "Eau.h"
 
-#define TAILLEX 15
-#define TAILLEY 30
+#define TAILLEX             15
+#define TAILLEY             30
 
-#define PENTEHABS 0.2
+#define PENTEHABS           0.2
+#define CATAREACTTIME       5      //seconds
+#define MAXCATASTRENGTH     500 
 
 class Ville
 {
@@ -23,10 +25,14 @@ private:
     GestionnaireTemps GT;
     Terrain* gridT[TAILLEX][TAILLEY];
     Batiment* gridB[TAILLEX][TAILLEY];
+    Catastrophes* cata;
     long ticktime = 0;
     long ticktimelast = 0;
     long ticktimeH = 0;
     long tickHtimelast = 0;
+    long cataTrigTime = 0;
+    bool catadeclenche = false;
+    int cataStrenght = 0;
     
     void calculRessources();
     void calculRessourcesIndependant();
@@ -49,6 +55,8 @@ public:
     void genererTerrain(int x);
     void getTempsStr(char* buffer);
     char nomVille[50] = "|nom de ville placeholder|";
+    void declencherCatastrophe();
+    void Shake();
 };
 
 #endif

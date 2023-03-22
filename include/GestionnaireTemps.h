@@ -6,10 +6,10 @@
 enum VitessesTemps
 {
 	X0 = 0,//pause
-	X1 = 30, 
-	X2 = 60, 
-	X3 = 300,
-	X4 = 900
+	X1 = 60, 
+	X2 = 900, 
+	X3 = 1800,
+	X4 = 3600
 };
 
 class GestionnaireTemps
