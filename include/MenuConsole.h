@@ -40,24 +40,21 @@ public :
     void afficher_menu() 
     {
         char* tabulation = "                                                               ";
-        cout << tabulation << endl;
-        cout << "Clavier  |  Manette  |  Description" << tabulation << endl;
-        cout << "WASD     |  Joystick |  Description" << tabulation << endl;
-        cout << "Q        |           |  ouvrir menu de construction" << tabulation << endl;
-        cout << "K        |           |  ralentir l'avencement du temps" << tabulation << endl;
-        cout << "L        |           |  accelerer l'avencement du temps" << tabulation << endl;
-        cout << "ESC      |           |  quitter le jeu" << tabulation << endl;
+        cout << tabulation << tabulation << endl;
+        cout << "Clavier  | Manette      |  Description" << tabulation << endl;
+        cout << "WASD     | Joystick     |  déplacement du curseur" << tabulation << endl;
+        cout << "Q        | Menu         |  ouvrir menu de construction" << tabulation << endl;
+        cout << "K        | Gach. Gauche |  ralentir l'avencement du temps" << tabulation << endl;
+        cout << "L        | Gach. droit  |  accelerer l'avencement du temps" << tabulation << endl;
+        cout << "ESC      |              |  quitter le jeu" << tabulation << endl;
         cout << tabulation << tabulation << endl;
     }
 
     void afficher_Batiment_sousMenu() {
         char* tabulation = "                                                                      ";
         cout << tabulation << tabulation << endl;
-        cout << "Pour naviguer dans le sous-menu:  1: selectionner,  2: sortir" << tabulation << endl;
+        cout << "Pour naviguer dans le menu:  1 ou A: selectionner,  2 ou B: retour" << tabulation << endl;
         cout << tabulation << tabulation << endl;
-
-
-        cout << tabulation << endl;
         cout << "Que voulez vous construire : " << tabulation << endl;
 
         if (valide == 0) 
