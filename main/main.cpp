@@ -25,7 +25,7 @@ void main()
 	bool quit = false;
 	do{
 		tick = time(0);
-		if (tick - lasttick >= 1) 
+		if (tick - lasttick >= 1)
 		{			
 			system("cls");
 			ville->tick();
@@ -36,7 +36,7 @@ void main()
 			lasttick = tick;
 		}
 		
-		switch (input.lireClavier())
+		switch (input.lireClavier() || input.lireManette())
 		{
 		case 1:
 			system("cls");

@@ -21,7 +21,7 @@
 #include "Police.h"
 #include "Pompier.h"
 
-#define MaxBit 512
+#define MaxBit 5000
 
 class ComArduino: public ActionClavier {
 protected:
