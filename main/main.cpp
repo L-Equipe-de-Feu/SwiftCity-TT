@@ -6,11 +6,9 @@
 #include "Ville.h"
 #include <ctime>
 #include<windows.h>
-using namespace std;
 #define TAILLEX 15
 #define TAILLEY 30
 
-Batiment* gridB [TAILLEX][TAILLEY];
 MenuConsole* menu = new MenuConsole();
 Curseur* curseur = new Curseur(TAILLEX, TAILLEY);
 Ville* ville = new Ville();
@@ -46,6 +44,7 @@ void main()
 			if (input.getInerMenu()) {
 				menu->afficher_Batiment_sousMenu();
 			}
+			lasttick = tick;  //fait que le refresh se refait pas direct après avec le timer
 			break;
 		case -1:
 			quit = true;

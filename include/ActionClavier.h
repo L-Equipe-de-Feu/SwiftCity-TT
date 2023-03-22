@@ -16,28 +16,23 @@
 #include "SerialPort.hpp"
 #include <vector>
 
-#define MaxBit 512
+
 
 class ActionClavier {
-    private :
-        MenuConsole* menu;
-        Curseur* curseur;
-        Ville* ville;
-        int mult[4] = { 1000, 100, 10, 1 };
-        int cTi(char c);
-        bool inerMenu = false;
-        Batiment* souvien = nullptr;
+protected :
+    MenuConsole* menu;
+    Curseur* curseur;
+    Ville* ville;
+    int mult[4] = { 1000, 100, 10, 1 };
+    int cTi(char c);
+    bool inerMenu = false;
+    Batiment* souvien = nullptr;
 
-    protected:
-    SerialPort* serial;
-
-    public :
-        ActionClavier();
-        ActionClavier(MenuConsole* menuT, Curseur* curseurT, Ville* villeT);
-        ~ActionClavier();
-        int lireClavier();
-        bool lireManette();
-        bool getInerMenu();
-        void setInerMenu(bool menu);
+public :
+    ActionClavier(MenuConsole* menuT, Curseur* curseurT, Ville* villeT);
+    ~ActionClavier();
+    int lireClavier();
+    bool getInerMenu();
+    void setInerMenu(bool menu);
 };
 #endif

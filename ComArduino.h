@@ -21,11 +21,16 @@
 #include "Police.h"
 #include "Pompier.h"
 
+#define MaxBit 512
+
 class ComArduino: public ActionClavier {
+protected:
+	SerialPort* serial;
 public:
 	ComArduino(char* port, int baud, MenuConsole* menuT, Curseur* curseurT, Ville* villeT);
 	~ComArduino();
 	bool send(char date[4], char vitesse);
+	bool lireManette();
 };
 
 
