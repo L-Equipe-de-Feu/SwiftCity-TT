@@ -43,18 +43,20 @@ void Communication::readMsg()
 
     if (buffer == 'T')
     {
-      for (int i = 0; i <= 3; i++)
+      for (int i = 0; i < 4; i++)
       {
         buffer = char(Serial.read());
         chiffre = cTi(buffer);
         date[i] = int(chiffre);
       }
-      for (int i = 0; i <= 1; i++)
-      {
+
+      buffer = char(Serial.read());
+      if(buffer == 'X'){
         buffer = char(Serial.read());
         chiffre = cTi(buffer);
-        vitesse[i] = int(chiffre);
+        vitesse = int(chiffre);
       }
+      
     }
   }
 }

@@ -32,7 +32,7 @@ unsigned long debouceDelay = 20;
 unsigned long SendTime = 100;
 
 int Date_ref[4] = {1, 1, 2, 8};
-int Vitesse_ref[2] = {0, 1};
+int Vitesse_ref = 1;
 
 // Appel des variables pour le compteur et le debounce
 unsigned long previousMillis = 0;
@@ -61,10 +61,9 @@ void loop()
     Date_ref[3] = com.date[3];
   }
 
-  if (com.vitesse[0] != Vitesse_ref[0] || com.vitesse[1] != Vitesse_ref[1])
+  if (com.vitesse != Vitesse_ref)
   {
-    Vitesse_ref[0] = com.vitesse[0];
-    Vitesse_ref[1] = com.vitesse[1];
+    Vitesse_ref = com.vitesse;
   }
 
   appel(Date_ref[0], Date_ref[1], Date_ref[2], Date_ref[3]);
@@ -78,28 +77,28 @@ void loop()
   BOU_ARG = digitalRead(BOU_ARG_PIN);
 
   // Code pour LEDS
-  if (Vitesse_ref[1] == 1)
+  if (Vitesse_ref == 1)
   {
     digitalWrite(LED_1, HIGH);
     digitalWrite(LED_2, LOW);
     digitalWrite(LED_3, LOW);
     digitalWrite(LED_4, LOW);
   }
-  else if (Vitesse_ref[1] == 2)
+  else if (Vitesse_ref == 2)
   {
     digitalWrite(LED_1, HIGH);
     digitalWrite(LED_2, HIGH);
     digitalWrite(LED_3, LOW);
     digitalWrite(LED_4, LOW);
   }
-  else if (Vitesse_ref[1] == 3)
+  else if (Vitesse_ref == 3)
   {
     digitalWrite(LED_1, HIGH);
     digitalWrite(LED_2, HIGH);
     digitalWrite(LED_3, HIGH);
     digitalWrite(LED_4, LOW);
   }
-  else if (Vitesse_ref[1] == 4)
+  else if (Vitesse_ref == 4)
   {
     digitalWrite(LED_1, HIGH);
     digitalWrite(LED_2, HIGH);
