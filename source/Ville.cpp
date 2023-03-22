@@ -31,7 +31,6 @@ Ville::~Ville() {
 
 bool Ville::construireBatiment(int x, int y, Batiment* b) {
     
-
     //1.verify index and ptr
     if (x < 0 || y < 0 || x >= TAILLEX || y >= TAILLEY) 
     {
@@ -119,9 +118,8 @@ bool Ville::construireBatiment(int x, int y, Batiment* b) {
 
     //4.ajouter batiment
     gridB[x][y] = b;   
-
     calculRessourcesIndependant();
-
+    
     return true;
 }
 
@@ -148,7 +146,6 @@ bool Ville::construireRoute(int x, int y, Batiment* b) {
     ressourceTotal.argentTot -= b->get_Couts();
     
     gridB[x][y] = b;
-
     calculRessourcesIndependant();
 
     return true;

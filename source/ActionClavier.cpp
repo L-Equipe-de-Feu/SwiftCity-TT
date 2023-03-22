@@ -1,5 +1,4 @@
 #include "ActionClavier.h"
-
 using namespace std;
 
 ActionClavier::ActionClavier(MenuConsole* menuT, Curseur* curseurT, Ville* villeT) {
@@ -8,8 +7,9 @@ ActionClavier::ActionClavier(MenuConsole* menuT, Curseur* curseurT, Ville* ville
     ville = villeT;
 }
 
-
-ActionClavier::~ActionClavier() {}
+ActionClavier::~ActionClavier() 
+{
+}
 
 
 /// <summary>
@@ -31,7 +31,15 @@ int ActionClavier::lireClavier() {
     {
         //case mouvement du curseur
     case 'w':
-        curseur->bougerHaut();
+        if (inerMenu)
+        {
+            menu->bougerHaut();
+        }
+        else
+        {
+            curseur->bougerHaut();
+        }
+        
         return 1;
         break;
     case 'a':
@@ -39,11 +47,19 @@ int ActionClavier::lireClavier() {
         return 1;
         break;
     case 's':
-        curseur->bougerBas();
+        if (inerMenu)
+        {
+            menu->bougerBas();
+        }
+        else
+        {
+            curseur->bougerBas();
+        }
         return 1;
         break;
     case 'd':
         curseur->bougerDroit();
+        
         return 1;
         break;
         //Fin case mouvement du curseur
@@ -53,8 +69,7 @@ int ActionClavier::lireClavier() {
 
     case 'q':
         //construire
-        cout << "Que voulez vous construire : \n" << "\tResidentiel : 1\n" << "\tIndustriel : 2\n" << "\tCommerciale : 3\n" << "\tServices : 4\n";
-        ville->construireBatiment(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y, menu->construire_Batiment_sousMenu(getch()));
+        inerMenu = true;
         return 1;
         break;
 
@@ -76,79 +91,45 @@ int ActionClavier::lireClavier() {
         ville->accelerer();
         break;
 
+    case '1':
+        if (inerMenu && menu->getValider()<1)
+        {
+            menu->valider();
+        }
+        else 
+        {
+            ville->construireBatiment(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y, menu->construire_Batiment_sousMenu());
+            inerMenu = false;
+            //menu->sortir();
+        }
+        break;
+    case '2' :
+        inerMenu = false;
+        menu->sortir();
+        souvien = nullptr;
+        break;
+
     case '\x1b'://escape
         return -1;
         break;
     }
+
     return 0;
 
 }
-/*TODO serial comm
-bool ActionClavier::lireManette()
-{   
-    vector<uint8_t> buffer;
 
-    size_t taille = 0;//TODO serial.available();
-
-    serial.read(buffer, taille);
-
-    while(buffer.size() == 0)
-    {
-        switch (char(buffer.front()))
-        {
-
-        //case mouvement du curseur
-        case 'J':
-            buffer.erase(buffer.begin(), buffer.begin()+1);
-            int x = int(buffer.at(0)) + int(buffer.at(1)) + int(buffer.at(2)) + int(buffer.at(3));
-            buffer.erase(buffer.begin(), buffer.begin() + 4);
-            int y = int(buffer.at(0)) + int(buffer.at(1)) + int(buffer.at(2)) + int(buffer.at(3));
-            buffer.erase(buffer.begin(), buffer.begin() + 3);
-            //Fonction curseur (x, y)
-            cout << "Joystick : Jx" << x << "y" << y << endl;
-            break;
-
-        //bouton
-        case 'A':
-            //Fonction bouton A
-            buffer.erase(buffer.begin());
-            cout << "Bouton A pressé" << endl;
-            break;
-        case 'B':
-            //Fonction bouton B
-            buffer.erase(buffer.begin());
-            cout << "Bouton B pressé" << endl;
-            break;
-        case 'M':
-            //Fonction bouton MENU
-            buffer.erase(buffer.begin());
-            cout << "Bouton MENU pressé" << endl;
-            break;
-        case 'S':
-            //Fonction bouton START
-            buffer.erase(buffer.begin());
-            cout << "Bouton START pressé" << endl;
-            break;
-        case 'D':
-            //Fonction bouton arriere DROIT
-            buffer.erase(buffer.begin());
-            cout << "Bouton arriere DROIT pressé" << endl;
-            break;
-        case 'G':
-            //Fonction bouton arriere GAUCHE
-            buffer.erase(buffer.begin());
-            cout << "Bouton arriere GAUCHE pressé" << endl;
-            break;
-
-        //Accéléromètre
-        case 'C':
-            //Fonction accéléromètre
-            break;
-        default:
-            return true;
-            break;
-        }
-    }
-    return true;
+int ActionClavier::cTi(char c)
+{
+    int i = c - '0';
+    return i;
 }
-*/
+
+bool ActionClavier::getInerMenu()
+{
+    return inerMenu;
+}
+
+void ActionClavier::setInerMenu(bool menu)
+{
+    inerMenu = menu;
+}

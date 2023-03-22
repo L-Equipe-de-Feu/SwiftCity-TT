@@ -7,6 +7,7 @@
 #define ACTIONCLAVIER_H
 
 #include <iostream>
+#include "SerialPort.hpp"
 #include <conio.h>
 #include "MenuConsole.h"
 #include "Curseur.h"
@@ -15,18 +16,23 @@
 #include "SerialPort.hpp"
 #include <vector>
 
+
+
 class ActionClavier {
-    private :
-        MenuConsole* menu;
-        Curseur* curseur;
-        Ville* ville;
-        bool inerMenu = false;
+protected :
+    MenuConsole* menu;
+    Curseur* curseur;
+    Ville* ville;
+    int mult[4] = { 1000, 100, 10, 1 };
+    int cTi(char c);
+    bool inerMenu = false;
+    Batiment* souvien = nullptr;
 
-    public :
-        ActionClavier(MenuConsole* menuT, Curseur* curseurT, Ville* villeT);
-        ~ActionClavier();
-        int lireClavier();
-        //bool lireManette();
-
+public :
+    ActionClavier(MenuConsole* menuT, Curseur* curseurT, Ville* villeT);
+    ~ActionClavier();
+    int lireClavier();
+    bool getInerMenu();
+    void setInerMenu(bool menu);
 };
 #endif
