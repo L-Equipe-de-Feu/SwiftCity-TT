@@ -67,6 +67,8 @@ void main()
 
 	bool quit = false;
 
+	char sendMsg[10] = "";
+
 	//affiche la ville et le menu au départ
 	setCurPos(curPosOrigin);
 	ville->affiche(curseur);
@@ -89,10 +91,9 @@ void main()
 			if (input.getInerMenu()) {
 				menu->afficher_Batiment_sousMenu();
 			}
-			lasttick = tick;
-		}
-
-		
+			ville->getTempsStr(sendMsg);
+			lasttick = tick;			
+		}		
 		
 		if (input.lireClavier() || input.lireManette())
 		{
@@ -102,8 +103,14 @@ void main()
 			if (input.getInerMenu()) {
 				menu->afficher_Batiment_sousMenu();
 			}
-			break;
-		} 
+			ville->getTempsStr(sendMsg);
+		}
+
+		if (sendMsg[0] != '\0')
+		{
+			input.send(sendMsg, strlen(sendMsg));
+			sendMsg[0] = '\0';
+		}
 
 	} while (!input.getQuitState());
 

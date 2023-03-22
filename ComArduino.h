@@ -35,7 +35,7 @@ protected:
 public:
 	ComArduino(char* port, int baud, MenuConsole* menuT, Curseur* curseurT, Ville* villeT);
 	~ComArduino();
-	bool send(char date[4], char vitesse);
+	bool send(char* message, int bytes);
 	bool lireManette();
 };
 

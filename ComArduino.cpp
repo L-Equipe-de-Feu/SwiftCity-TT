@@ -16,16 +16,14 @@ ComArduino::~ComArduino()
     delete serial;
 }
 
-bool ComArduino::send(char date[4], char vitesse)
+bool ComArduino::send(char* message, int bytes)
 {
-	char buffer[7] = {'T', date[0], date[1], date[2], date[3], '0', vitesse};
-
 	if (!serial->isConnected())
 	{
 		return false;
 	}
 
-	serial->writeSerialPort(buffer, 7);
+	serial->writeSerialPort(message, bytes);
 
 	std::cout << "Send" << endl;
 

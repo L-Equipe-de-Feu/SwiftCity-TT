@@ -47,6 +47,7 @@ public:
     void accelerer();
     void decelerer();
     void genererTerrain(int x);
+    void getTempsStr(char* buffer);
     char nomVille[50] = "|nom de ville placeholder|";
 };
 

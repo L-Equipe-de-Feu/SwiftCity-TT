@@ -558,3 +558,8 @@ bool Ville::isConstructible()
 {
     return true;
 }
+
+void Ville::getTempsStr(char* buffer) 
+{
+    sprintf(buffer, "%s%s", GT.time_to_str(1), GT.vitesse_to_str());
+}
