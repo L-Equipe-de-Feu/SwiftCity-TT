@@ -8,13 +8,25 @@
 #include "Curseur.h"
 #include "Ville.h"
 #include <ctime>
-#include<windows.h>
+#include <windows.h>
 #define TAILLEX 15
 #define TAILLEY 30
 
 MenuConsole* menu = new MenuConsole();
 Curseur* curseur = new Curseur(TAILLEX, TAILLEY);
 Ville* ville = new Ville();
+
+void clearscreen()
+{
+	HANDLE hOut;
+	COORD Position;
+
+	hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	Position.X = 0;
+	Position.Y = 0;
+	SetConsoleCursorPosition(hOut, Position);
+}
 
 void main()
 {
@@ -30,7 +42,7 @@ void main()
 		tick = time(0);
 		if (tick - lasttick >= 1)
 		{			
-			system("cls");
+			clearscreen();
 			ville->tick();
 			ville->affiche(curseur);
 			if (input.getInerMenu()) {
@@ -42,12 +54,11 @@ void main()
 		switch (input.lireClavier() || input.lireManette())
 		{
 		case 1:
-			system("cls");
+			clearscreen();
 			ville->affiche(curseur);
 			if (input.getInerMenu()) {
 				menu->afficher_Batiment_sousMenu();
 			}
-			lasttick = tick;  //fait que le refresh se refait pas direct après avec le timer
 			break;
 		case -1:
 			quit = true;
@@ -60,3 +71,4 @@ void main()
 	delete curseur;
 	delete ville;
 }
+

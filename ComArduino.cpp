@@ -57,7 +57,7 @@ bool ComArduino::lireManette()
     }
 
     bool incompleteMsg = false;
-    int i = 0;
+    unsigned int i = 0;
 
     while ( i < taille && !incompleteMsg)
     {

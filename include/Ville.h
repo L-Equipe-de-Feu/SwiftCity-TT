@@ -47,6 +47,7 @@ public:
     void accelerer();
     void decelerer();
     void genererTerrain(int x);
+    char nomVille[50] = "SwiftCity-TT (nom de ville placeholder)";
 };
 
 #endif

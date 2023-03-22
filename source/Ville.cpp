@@ -152,19 +152,7 @@ bool Ville::construireRoute(int x, int y, Batiment* b) {
 }
 
 void Ville::affiche(Curseur* curseur) {
-    //tick();
-    //cout << endl << endl << endl << endl << endl << endl << endl << endl;
-    //rajouter les calcules ici pour les affichage
-    cout << "Votre argent : " << ressourceTotal.argentTot << endl;
-    cout << "Votre income : " << ressourceTotal.argentIncome << endl;
-    cout << "Votre Population : " << ressourceTotal.habitantTot << " / " << ressourceTotal.habitantMax << endl;
-    cout << "Votre Energie : " << ressourceTotal.energieCons << "/" << ressourceTotal.energieProd << endl;
-    cout << "Votre Eau : " << ressourceTotal.eauCons << "/" << ressourceTotal.eauProd << endl;
-    cout << "Votre Bonheur : " << ressourceTotal.bonheurPour << "%" << endl;
-    cout << "Vos Materiaux : " << ressourceTotal.materiauxTot << endl;
-
-    cout << GT.time_to_str(3) << "\tVitesse : " << GT.vitesse_to_str() << endl;
-    
+    cout << nomVille << endl;
     cout << "|-----------------------------------------------------------------------------------------------------------------------|" << endl;
     for (int i = 0; i < TAILLEX; i++) {
         for (int e = 0; e < TAILLEY; e++) {
@@ -186,6 +174,20 @@ void Ville::affiche(Curseur* curseur) {
         cout << "|" << endl;
         cout << "|-----------------------------------------------------------------------------------------------------------------------|" << endl;
     }
+    //tick();
+    //cout << endl << endl << endl << endl << endl << endl << endl << endl;
+    //rajouter les calcules ici pour les affichage
+    char tabulation[10] = "\t\t\t";
+    cout << "Votre argent : " << ressourceTotal.argentTot << tabulation <<endl;
+    cout << "Votre income : " << ressourceTotal.argentIncome << tabulation << endl;
+    cout << "Votre Population : " << ressourceTotal.habitantTot << " / " << ressourceTotal.habitantMax << tabulation << endl;
+    cout << "Votre Energie : " << ressourceTotal.energieCons << "/" << ressourceTotal.energieProd << tabulation << endl;
+    cout << "Votre Eau : " << ressourceTotal.eauCons << "/" << ressourceTotal.eauProd << tabulation << endl;
+    cout << "Votre Bonheur : " << ressourceTotal.bonheurPour << "%" << tabulation << endl;
+    cout << "Vos Materiaux : " << ressourceTotal.materiauxTot << tabulation << endl;
+
+    cout << GT.time_to_str(3) << "\tVitesse : " << GT.vitesse_to_str() << tabulation << endl;
+
 }
 
 void Ville::accelerer()
