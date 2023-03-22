@@ -43,7 +43,7 @@ int ActionClavier::lireClavier() {
         return 1;
         break;
     case 'a':
-        curseur->bougerGauche();
+        if (!inerMenu) curseur->bougerGauche();
         return 1;
         break;
     case 's':
@@ -58,7 +58,7 @@ int ActionClavier::lireClavier() {
         return 1;
         break;
     case 'd':
-        curseur->bougerDroit();
+        if (!inerMenu) curseur->bougerDroit();
         
         return 1;
         break;
@@ -110,7 +110,7 @@ int ActionClavier::lireClavier() {
         break;
 
     case '\x1b'://escape
-        return -1;
+        return quit = true;
         break;
     }
 
@@ -132,4 +132,9 @@ bool ActionClavier::getInerMenu()
 void ActionClavier::setInerMenu(bool menu)
 {
     inerMenu = menu;
+}
+
+bool ActionClavier::getQuitState() 
+{
+    return quit;
 }

@@ -41,21 +41,22 @@ public :
     {
         char* tabulation = "                                                               ";
         cout << tabulation << endl;
-        cout << "Menu : " << tabulation << endl;
-        cout << "Touches    |    Description" << tabulation << endl;
-        cout << "Q          |    ouvrir menu de construction" << tabulation << endl;
-        cout << "K          |    ralentir l'avencement du temps" << tabulation << endl;
-        cout << "L          |    accelerer l'avencement du temps" << tabulation << endl;
-        cout << "ESC        |    quitter le jeu" << tabulation << endl;
-        //padding
-        cout << tabulation << tabulation << endl;
-        cout << tabulation << tabulation << endl;
-        cout << tabulation << tabulation << endl;
+        cout << "Clavier  |  Manette  |  Description" << tabulation << endl;
+        cout << "WASD     |  Joystick |  Description" << tabulation << endl;
+        cout << "Q        |           |  ouvrir menu de construction" << tabulation << endl;
+        cout << "K        |           |  ralentir l'avencement du temps" << tabulation << endl;
+        cout << "L        |           |  accelerer l'avencement du temps" << tabulation << endl;
+        cout << "ESC      |           |  quitter le jeu" << tabulation << endl;
         cout << tabulation << tabulation << endl;
     }
 
     void afficher_Batiment_sousMenu() {
-        char* tabulation = "                                                              ";
+        char* tabulation = "                                                                      ";
+        cout << tabulation << tabulation << endl;
+        cout << "Pour naviguer dans le sous-menu:  1: selectionner,  2: sortir" << tabulation << endl;
+        cout << tabulation << tabulation << endl;
+
+
         cout << tabulation << endl;
         cout << "Que voulez vous construire : " << tabulation << endl;
 
@@ -81,15 +82,10 @@ public :
                     cout << '>';
                 }
                 deuxiemeChoix = choix;
-                cout << "\t" << textMenu[premierChoix][e] << tabulation << endl;
+                cout << "    " << textMenu[premierChoix][e] << tabulation << endl;
             }
         }
-        //padding
-        cout << tabulation << tabulation << endl;
-        cout << "Pour naviguer dans le sous-menu:  1: selectionner,  2: sortir" << tabulation << endl;
-        cout << tabulation << tabulation << endl;
-        cout << tabulation << tabulation << endl;
-        cout << tabulation << tabulation << endl;
+        
     }
 
     void bougerBas() {

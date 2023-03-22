@@ -27,6 +27,7 @@ protected :
     int cTi(char c);
     bool inerMenu = false;
     Batiment* souvien = nullptr;
+    bool quit = false;
 
 public :
     ActionClavier(MenuConsole* menuT, Curseur* curseurT, Ville* villeT);
@@ -34,5 +35,6 @@ public :
     int lireClavier();
     bool getInerMenu();
     void setInerMenu(bool menu);
+    bool getQuitState();
 };
 #endif

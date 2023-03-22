@@ -85,27 +85,27 @@ void main()
 			setCurPos(curPosOrigin);
 			ville->tick();
 			ville->affiche(curseur);
-			lasttick = tick;
-		}
-		
-		switch (input.lireClavier() || input.lireManette())
-		{
-		case 1:
-			setCurPos(curPosOrigin);
-			ville->affiche(curseur);
+			menu->afficher_menu();
 			if (input.getInerMenu()) {
 				menu->afficher_Batiment_sousMenu();
 			}
-			else {
-				menu->afficher_menu();
+			lasttick = tick;
+		}
+
+		
+		
+		if (input.lireClavier() || input.lireManette())
+		{
+			setCurPos(curPosOrigin);
+			ville->affiche(curseur);
+			menu->afficher_menu();
+			if (input.getInerMenu()) {
+				menu->afficher_Batiment_sousMenu();
 			}
-			break;
-		case -1:
-			quit = true;
 			break;
 		} 
 
-	} while (!quit);
+	} while (!input.getQuitState());
 
 	delete menu;
 	delete curseur;
