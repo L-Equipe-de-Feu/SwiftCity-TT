@@ -196,7 +196,7 @@ bool ComArduino::lireManette()
                     z += cTi(buffer[++i]) * mult[j + 1];
                 }
 
-
+                DetectShake(x,y,z);
                 //Fonction accéléromètre (x, y, z)
                 std::cout << "Accelerometre : Cx" << x << "y" << y << "z" << z << endl;
             }
@@ -233,4 +233,14 @@ bool ComArduino::lireManette()
     }
 
     return true;
+}
+
+void ComArduino::DetectShake(int x, int y, int z) 
+{
+    if (abs(x - lastAccel[0]) >= SHAKETRESHOLD) { shake[0] = true; }
+    lastAccel[0] = x;
+    if (abs(y - lastAccel[1]) >= SHAKETRESHOLD) { shake[1] = true; }
+    lastAccel[1] = y;
+    if (abs(z - lastAccel[2]) >= SHAKETRESHOLD) { shake[2] = true; }
+    lastAccel[2] = z;
 }
