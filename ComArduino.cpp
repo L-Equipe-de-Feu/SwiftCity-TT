@@ -197,6 +197,8 @@ bool ComArduino::lireManette()
                 {
                     z += cTi(buffer[++i]) * mult[j + 1];
                 }
+
+
                 //Fonction accéléromètre (x, y, z)
                 std::cout << "Accelerometre : Cx" << x << "y" << y << "z" << z << endl;
             }
