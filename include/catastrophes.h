@@ -12,17 +12,14 @@
 
 class Catastrophes {
 public:
-	Catastrophes();
 	Catastrophes(int TailleX, int TailleY);
 	~Catastrophes();
-
-	void reinit();
-	template <size_t rows, size_t cols>
-	void destruction(int Pv, bool(&copie)[rows][cols], int choix);
+	void reinit();	
+	void destruction(int Pv, bool** copie);
 
 private:
-	Flocon* flocon = new Flocon();
-	Sinkhole* sinkhole = new Sinkhole();
+	Flocon* flocon;
+	Sinkhole* sinkhole;
 };
 
 

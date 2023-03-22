@@ -109,6 +109,10 @@ int ActionClavier::lireClavier() {
         souvien = nullptr;
         break;
 
+    case 'c':
+        ville->declencherCatastrophe();
+        break;
+
     case '\x1b'://escape
         return quit = true;
         break;

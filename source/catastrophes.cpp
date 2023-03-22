@@ -5,16 +5,9 @@
 std::uniform_int_distribution<int> choice(0, 1);
 
 
-Catastrophes::Catastrophes() {
-}
-
 Catastrophes::Catastrophes(int TailleX, int TailleY) {
-	delete flocon;
-	delete sinkhole;
-	Flocon* flocon1 = new Flocon(TailleX, TailleY);
-	Sinkhole* sinkhole1 = new Sinkhole(TailleX, TailleY);
-	flocon = flocon1;
-	sinkhole = sinkhole1;
+	flocon = new Flocon(TailleX, TailleY);
+	sinkhole = new Sinkhole(TailleX, TailleY);
 }
 
 Catastrophes::~Catastrophes() {
@@ -27,12 +20,13 @@ void Catastrophes::reinit() {
 	sinkhole->reinit();
 }
 
-template <size_t rows, size_t cols>
-void Catastrophes::destruction(int Pv, bool(&copie)[rows][cols], int choix = choice(randEng::gen())) {
-	int choix = choice(randEng::gen());
+
+void Catastrophes::destruction(int Pv, bool** copie) {
+	
+	int choix = randEng::gen() % NBCATA;
 	switch (choix) {
 	case 0:
-		sinkhole->random(Pv, 1);
+		sinkhole->random(Pv, 0);
 		sinkhole->getCopieTableau(copie);
 		sinkhole->reinit();
 		break;
@@ -42,5 +36,5 @@ void Catastrophes::destruction(int Pv, bool(&copie)[rows][cols], int choix = cho
 		flocon->getCopieTableau(copie);
 		flocon->reinit();
 		break;
-	}
+	}	
 }

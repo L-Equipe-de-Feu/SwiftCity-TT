@@ -50,8 +50,7 @@ public:
 
 	void reinit();
 	bool walk();
-	template <size_t rows, size_t cols>
-	void getCopieTableau(bool(&copie)[rows][cols]);
+	void getCopieTableau(bool** copie);
 	void walkFor(int n);
 
 

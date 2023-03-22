@@ -18,11 +18,11 @@ class Sinkhole
 {
 private:
 	#define TailleMax 200
-	int tX = 1;
-	int tY = 1;
+
 	bool carte[TailleMax][TailleMax]{ {} };
 public:
-	Sinkhole();
+	int tX = 1;
+	int tY = 1;
 	Sinkhole(int tailleX, int tailleY);
 	~Sinkhole();
 
@@ -30,8 +30,7 @@ public:
 	void random(int r = 0, bool e = 1);
 	void fillCircle(int x,int y, double r);
 	bool insideCircle(Point center, Point tile, double radius);
-	template <size_t rows, size_t cols>
-	void getCopieTableau(bool (&copie)[rows][cols]);
+	void getCopieTableau(bool** copie);
 
 
 };

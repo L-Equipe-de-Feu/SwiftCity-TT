@@ -15,6 +15,8 @@ void Ville::init() {
         for (int e = 0; e < TAILLEY; e++) {
             gridB[i][e] = nullptr;
             //gridT[i][e] = new Gazon();
+
+            
         }
     }
 
@@ -25,7 +27,7 @@ void Ville::init() {
 }
 
 Ville::~Ville() {
-    // TODO : creer un deep copy constructor et deep copy operator
+    // TODO : trouver source bug quand delete
     //delete[] gridB;
     //delete[] gridT;
 }
@@ -155,11 +157,16 @@ bool Ville::construireRoute(int x, int y, Batiment* b) {
 void Ville::affiche(Curseur* curseur) {
     char* tabulation = "                                                                    "; //besoin d'ajouter pour s'assurer qu'il ne reste pas de char non voulu
     cout << tabulation << tabulation << endl;
-    cout << "|-----------------------------------------------------------------------------------------------------------------------|" << endl;
+    cout << "|";
+    for (int i = 0; i < TAILLEY-1; i++)
+    {
+        cout << "----";
+    }
+    cout << "---|" << endl;
     for (int i = 0; i < TAILLEX; i++) {
         for (int e = 0; e < TAILLEY; e++) {
             if (i == curseur->get_Coordonnee().x && e == curseur->get_Coordonnee().y) {
-                cout << "| " << "." << " ";
+                cout << "| " << "@" << " ";
             }
             else 
             {
@@ -174,7 +181,12 @@ void Ville::affiche(Curseur* curseur) {
             }
         }
         cout << "|" << endl;
-        cout << "|-----------------------------------------------------------------------------------------------------------------------|" << endl;
+        cout << "|";
+        for (int i = 0; i < TAILLEY-1; i++)
+        {
+            cout << "----";
+        }
+        cout << "---|" << endl;
     }
     cout << tabulation << tabulation << endl;
     cout << nomVille << " \t" << GT.time_to_str(3) << "\tVitesse : " << GT.vitesse_to_str() << tabulation << endl;
@@ -186,6 +198,14 @@ void Ville::affiche(Curseur* curseur) {
     cout << "Votre Population : " << ressourceTotal.habitantTot << " / " << ressourceTotal.habitantMax << tabulation << endl;
     cout << "Votre Eau : " << ressourceTotal.eauCons << "/" << ressourceTotal.eauProd << tabulation << endl;
     cout << "Votre Energie : " << ressourceTotal.energieCons << "/" << ressourceTotal.energieProd << tabulation << endl;
+
+    if (catadeclenche) 
+    {
+        cout << "!!!!!! LA CATASTROPHE ARRIVE !!!!!!" << "                                               " << endl;
+        cout << "!!!!!!    SHAKE TA MANETTE   !!!!!!" << "                                               " << endl;
+        cout << "Force de la catastrophe : " << cataStrenght << "                                               " << endl;
+
+    }
 }
 
 void Ville::accelerer()
@@ -544,7 +564,7 @@ void Ville::tick()
         }
 
         //3. evenement aleatoire
-        if (!catadeclenche && rand()%100 == 0)
+        if (!catadeclenche && rand()%1000 == 0)
         {
             declencherCatastrophe();
         }
@@ -563,7 +583,7 @@ void Ville::declencherCatastrophe()
     {
         catadeclenche = !catadeclenche;
         cataTrigTime = time(0);
-        cataStrenght = rand() % MAXCATASTRENGTH;
+        cataStrenght = MAXCATASTRENGTH;
     }
 }
 
@@ -578,9 +598,27 @@ void Ville::catastrophe()
     else //declenchement cata
     {
         //applique destruction
-        bool afflictedGrid[TAILLEX][TAILLEY];
+        bool**  afflictedGrid;
+        afflictedGrid = new bool* [TAILLEX];
+        for (int i = 0; i < TAILLEX; i++)
+        {
+            afflictedGrid[i] = new bool[TAILLEY];
+        }
 
-        cata->destruction(cataStrenght,afflictedGrid,0);
+
+        cata->destruction(cataStrenght, afflictedGrid);
+
+        for (int i = 0; i < TAILLEX; i++)
+        {
+            for (int j = 0; j < TAILLEY; j++)
+            {
+                if (afflictedGrid[i][j]) 
+                {
+                    detruire(i, j);
+                }
+            }
+
+        }
 
         catadeclenche = false;
     }

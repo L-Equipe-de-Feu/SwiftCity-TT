@@ -10,13 +10,12 @@
 #include "Gazon.h"
 #include "catastrophes.h"
 #include "Eau.h"
-
-#define TAILLEX             15
-#define TAILLEY             30
+#include "globalDefine.h"
+#include "Route.h"
 
 #define PENTEHABS           0.2
 #define CATAREACTTIME       5      //seconds
-#define MAXCATASTRENGTH     500 
+#define MAXCATASTRENGTH     50 
 
 class Ville
 {

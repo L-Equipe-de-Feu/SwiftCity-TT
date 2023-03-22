@@ -86,7 +86,7 @@ bool ComArduino::lireManette()
                     y += cTi(buffer[++i]) * mult[j];
                 }
                 //Fonction curseur (x, y)
-                std::cout << "Joystick : Jx" << x << "y" << y << space << endl;
+                //std::cout << "Joystick : Jx" << x << "y" << y << space << endl;
             }
             else 
             {
@@ -119,11 +119,11 @@ bool ComArduino::lireManette()
             else
             {
                 if (y != NODATAJ) {
-                    if (y > AdcResMiddle)
+                    if (y < AdcResMiddle)
                     {
                         menu->bougerHaut();
                     }
-                    if (y < AdcResMiddle)
+                    if (y > AdcResMiddle)
                     {
                         menu->bougerBas();
                     }
@@ -210,7 +210,7 @@ bool ComArduino::lireManette()
             }
             break;
         default:
-            std::cout << "Non valide" << space << endl;
+            //std::cout << "Non valide" << space << endl;
             break;
         }
         i++;

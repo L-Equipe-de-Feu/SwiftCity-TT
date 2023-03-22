@@ -1,12 +1,9 @@
 #include "sinkhole.h"
-#include <random>
 #include "randomeng.h"
 
 //random
 //extern std::random_device r;
 //extern std::default_random_engine gen(r());
-
-Sinkhole::Sinkhole() {}
 
 Sinkhole::Sinkhole(int tailleX, int tailleY) {
 	tX = tailleX;
@@ -17,8 +14,8 @@ Sinkhole::~Sinkhole() {
 }
 
 void Sinkhole::reinit() {
-	for (int i = 0; i < tY; tY++) {
-		for (int j = 0; j < tX; j++) {
+	for (int i = 0; i < tX; i++) {
+		for (int j = 0; j < tY; j++) {
 			carte[i][j] = false;
 		}
 	}
@@ -35,11 +32,11 @@ void Sinkhole::fillCircle(int x, int y, double r) {
 	Point center;
 	center.x = x;
 	center.y = y;
-	for (int i = 0; i < tY; i++) {
-		for (int j = 0; j < tX; j++) {
+	for (int i = 0; i < tX; i++) {
+		for (int j = 0; j < tY; j++) {
 			Point tile;
-			tile.x = j;
-			tile.y = i;
+			tile.x = i;
+			tile.y = j;
 			carte[i][j] = insideCircle(center, tile, r);
 		}
 	}
@@ -51,11 +48,10 @@ bool Sinkhole::insideCircle(Point center, Point tile, double radius) {
 	return distance <= radius;
 }
 
-template <size_t rows, size_t cols>
-void Sinkhole::getCopieTableau(bool(&copie)[rows][cols]) {
-	for (int i = 0; i < tY; i++) {
-		for (int j = 0; j < tX; j++) {
-			copie[i][j] = carte[i][j];
+void Sinkhole::getCopieTableau(bool** copie) {
+	for (int i = 0; i < tX; i++) {
+		for (int j = 0; j < tY; j++) {
+		 copie[i][j] = carte[i][j];
 		}
 	}
 }

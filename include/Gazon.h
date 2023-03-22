@@ -18,7 +18,7 @@ class Gazon : public Terrain {
 
         virtual char get_char() 
         {
-            return 'G';
+            return '#';
         }
 };
 #endif

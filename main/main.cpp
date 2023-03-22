@@ -9,8 +9,6 @@
 #include "Ville.h"
 #include <ctime>
 #include <windows.h>
-#define TAILLEX 15
-#define TAILLEY 30
 
 MenuConsole* menu = new MenuConsole();
 Curseur* curseur = new Curseur(TAILLEX, TAILLEY);

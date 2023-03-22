@@ -27,7 +27,7 @@
 #define AdcRes			1023
 #define AdcResMiddle	511
 #define NODATAJ			9999
-#define SHAKETRESHOLD	100
+#define SHAKETRESHOLD	75
 
 class ComArduino: public ActionClavier {
 protected:

@@ -30,8 +30,8 @@ Flocon::~Flocon() {
 
 
 void Flocon::reinit() {
-	for (int i = 0; i < tY; i++) {
-		for (int j = 0; j < tX;j++) {
+	for (int i = 0; i < tX; i++) {
+		for (int j = 0; j < tY;j++) {
 			carte[i][j] = false;
 		}
 	}
@@ -108,10 +108,9 @@ bool Flocon::walk() {
 	}
 }
 
-template <size_t rows, size_t cols>
-void Flocon::getCopieTableau(bool(&copie)[rows][cols]) {
-	for (int i = 0; i < tY; i++) {
-		for (int j = 0; j < tX; j++) {
+void Flocon::getCopieTableau(bool** copie) {
+	for (int i = 0; i < tX; i++) {
+		for (int j = 0; j < tY; j++) {
 			copie[i][j] = carte[i][j];
 		}
 	}
