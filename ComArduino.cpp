@@ -3,6 +3,12 @@
 ComArduino::ComArduino(char* port, int baud, MenuConsole* menuT, Curseur* curseurT, Ville* villeT) : ActionClavier(menuT, curseurT, villeT)
 {
 	serial = new SerialPort(port, baud);
+
+    //fill incomplete message buffer for safety
+    for (int i = 0; i < MaxMsgLen; i++)
+    {
+        incompleteMessage[i] = '\0';
+    }
 }
 
 ComArduino::~ComArduino()
@@ -21,7 +27,7 @@ bool ComArduino::send(char date[4], char vitesse)
 
 	serial->writeSerialPort(buffer, 7);
 
-	cout << "Send" << endl;
+	std::cout << "Send" << endl;
 
 	return true;
 }
@@ -34,16 +40,26 @@ bool ComArduino::lireManette()
         return false;
     }
 
-    char buffer[MaxBit];
+    char buffer[MaxByte];
 
-    size_t taille = serial->readSerialPort(buffer, MaxBit);
+    size_t taille = serial->readSerialPort(buffer, MaxByte);
 
     if (taille <= 0)
     {
         return true;
     }
 
-    for (int i = 0; i < taille; i++)
+    if (leftLength > 0) 
+    {
+        //concat incomplete message at start of buffer with incoming buffer 
+        sprintf(buffer, "%s%s", incompleteMessage, buffer);// TODO : à vérifier si fonctionne
+        taille += leftLength;
+    }
+
+    bool incompleteMsg = false;
+    int i = 0;
+
+    while ( i < taille && !incompleteMsg)
     {
         int x = 0;
         int y = 0;
@@ -52,7 +68,7 @@ bool ComArduino::lireManette()
         switch (buffer[i])
         {
 
-            //case mouvement du curseur
+        //case mouvement du curseur
         case 'J':
             if (i + 10 < taille)
             {
@@ -69,26 +85,31 @@ bool ComArduino::lireManette()
                     y += cTi(buffer[++i]) * mult[j];
                 }
                 //Fonction curseur (x, y)
-                cout << "Joystick : Jx" << x << "y" << y << endl;
+                std::cout << "Joystick : Jx" << x << "y" << y << endl;
+            }
+            else 
+            {
+                incompleteMsg = true;
+                break;
             }
             if (!inerMenu)
             {
-                if (x != 9999) {
-                    if (x > 511)
+                if (x != NODATAJ) {
+                    if (x > AdcResMiddle)
                     {
                         curseur->bougerDroit();
                     }
-                    if (x < 511)
+                    if (x < AdcResMiddle)
                     {
                         curseur->bougerGauche();
                     }
                 }
-                if (y != 9999) {
-                    if (y > 511)
+                if (y != NODATAJ) {
+                    if (y > AdcResMiddle)
                     {
                         curseur->bougerHaut();
                     }
-                    if (y < 511)
+                    if (y < AdcResMiddle)
                     {
                         curseur->bougerBas();
                     }
@@ -96,12 +117,12 @@ bool ComArduino::lireManette()
             }
             else
             {
-                if (y != 9999) {
-                    if (y > 511)
+                if (y != NODATAJ) {
+                    if (y > AdcResMiddle)
                     {
                         menu->bougerHaut();
                     }
-                    if (y < 511)
+                    if (y < AdcResMiddle)
                     {
                         menu->bougerBas();
                     }
@@ -113,7 +134,7 @@ bool ComArduino::lireManette()
             //bouton
         case 'A':
             //Fonction bouton A
-            cout << "Bouton A presse" << endl;
+            std::cout << "Bouton A presse" << endl;
             if (inerMenu && menu->getValider() < 1)
             {
                 menu->valider();
@@ -127,32 +148,34 @@ bool ComArduino::lireManette()
             break;
         case 'B':
             //Fonction bouton B
-            cout << "Bouton B presse" << endl;
+            std::cout << "Bouton B presse" << endl;
             inerMenu = false;
             menu->sortir();
             souvien = nullptr;
             break;
         case 'M':
             //Fonction bouton MENU
-            cout << "Bouton MENU presse" << endl;
+            std::cout << "Bouton MENU presse" << endl;
             inerMenu = true;
             break;
         case 'S':
             //Fonction bouton START
-            cout << "Bouton START presse" << endl;
+            std::cout << "Bouton START presse" << endl;
             ville->construireRoute(curseur->get_Coordonnee().x, curseur->get_Coordonnee().y, new Route);
             break;
         case 'D':
             //Fonction bouton arriere DROIT
-            cout << "Bouton arriere DROIT presse" << endl;
+            std::cout << "Bouton arriere DROIT presse" << endl;
+            ville->accelerer();
             break;
         case 'G':
             //Fonction bouton arriere GAUCHE
-            cout << "Bouton arriere GAUCHE presse" << endl;
+            std::cout << "Bouton arriere GAUCHE presse" << endl;
+            ville->decelerer();
             break;
-
-            //Accéléromètre
+            
         case 'C':
+            //Accéléromètre
             if (i + 12 < taille)
             {
                 i++;
@@ -175,14 +198,38 @@ bool ComArduino::lireManette()
                     z += cTi(buffer[++i]) * mult[j + 1];
                 }
                 //Fonction accéléromètre (x, y, z)
-                cout << "Accelerometre : Cx" << x << "y" << y << "z" << z << endl;
+                std::cout << "Accelerometre : Cx" << x << "y" << y << "z" << z << endl;
+            }
+            else
+            {
+                incompleteMsg = true;
+                break;
             }
             break;
         default:
-            cout << "Non valide" << endl;
+            std::cout << "Non valide" << endl;
             break;
         }
+        i++;
+    }
 
+    if(incompleteMsg)
+    {
+        leftLength = 0;
+        for (int j = 0; j < taille; j++)
+        {
+            incompleteMessage[j] = buffer[i++];
+            leftLength++;
+        }
+        incompleteMessage[leftLength++] = '\0';
+    }
+    else 
+    {
+        for (int j = 0; j < MaxMsgLen; j++)
+        {
+            incompleteMessage[j] = '\0';
+        }
+        leftLength = 0;
     }
 
     return true;
