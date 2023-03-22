@@ -30,6 +30,13 @@ void clearscreen()
 
 void main()
 {
+	ShowWindow(GetConsoleWindow(), SW_MAXIMIZE);//fullscreen
+	HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_CURSOR_INFO cursorInfo;
+	GetConsoleCursorInfo(out, &cursorInfo);
+	cursorInfo.bVisible = false; // set the cursor invisible donc pas de flash
+	SetConsoleCursorInfo(out, &cursorInfo);
+
 	char port[] = "COM4";
 	int baud = 115200;
 	ComArduino input(port, baud, menu, curseur, ville);
@@ -48,6 +55,9 @@ void main()
 			if (input.getInerMenu()) {
 				menu->afficher_Batiment_sousMenu();
 			}
+			else {
+				menu->afficher_menu();
+			}
 			lasttick = tick;
 		}
 		
@@ -58,6 +68,9 @@ void main()
 			ville->affiche(curseur);
 			if (input.getInerMenu()) {
 				menu->afficher_Batiment_sousMenu();
+			}
+			else {
+				menu->afficher_menu();
 			}
 			break;
 		case -1:

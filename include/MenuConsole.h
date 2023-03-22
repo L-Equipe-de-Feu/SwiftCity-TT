@@ -37,8 +37,27 @@ private :
                                 {"Services", "Aqueduc", "Energie", "Culture", "Ecole(WIP)", "Police(WIP)", "Pompier(WIP)"} };
 public :
 
+    void afficher_menu() 
+    {
+        char* tabulation = "                                                               ";
+        cout << tabulation << endl;
+        cout << "Menu : " << tabulation << endl;
+        cout << "Touches\t\t|\tDescription" << tabulation << endl;
+        cout << "Q\t\t|\touvrir menu de construction" << tabulation << endl;
+        cout << "K\t\t|\tralentir l'avencement du temps" << tabulation << endl;
+        cout << "L\t\t|\taccelerer l'avencement du temps" << tabulation << endl;
+        cout << "ESC\t\t|\tquitter le jeu" << tabulation << endl;
+        //padding
+        cout << tabulation << tabulation << endl;
+        cout << tabulation << tabulation << endl;
+        cout << tabulation << tabulation << endl;
+        cout << tabulation << tabulation << endl;
+    }
+
     void afficher_Batiment_sousMenu() {
-        cout << "Que voulez vous construire : \n";
+        char* tabulation = "                                                              ";
+        cout << tabulation << endl;
+        cout << "Que voulez vous construire : " << tabulation << endl;
 
         if (valide == 0) 
         {
@@ -48,13 +67,13 @@ public :
                     cout << '>';
                 }
                 premierChoix = choix;
-                cout << textMenu[i][0] << " : \n";
+                cout << textMenu[i][0] << " : " << tabulation << endl;
             }
         }
         
         if (valide == 1)
         {
-            cout << textMenu[premierChoix][0] << " : \n";
+            cout << textMenu[premierChoix][0] << " : " << tabulation << endl;
             for (int e = 1; e < menuLargeur - 1; e++)
             {
                 if (choix == e)
@@ -62,9 +81,15 @@ public :
                     cout << '>';
                 }
                 deuxiemeChoix = choix;
-                cout << "\t" << textMenu[premierChoix][e] << "\n";
+                cout << "\t" << textMenu[premierChoix][e] << tabulation << endl;
             }
         }
+        //padding
+        cout << tabulation << tabulation << endl;
+        cout << "Pour naviguer dans le sous menu : 1: selectionner, 2: sortir" << tabulation << endl;
+        cout << tabulation << tabulation << endl;
+        cout << tabulation << tabulation << endl;
+        cout << tabulation << tabulation << endl;
     }
 
     void bougerBas() {

@@ -46,11 +46,20 @@
     <Filter Include="ExternalLib\serial">
       <UniqueIdentifier>{71bd6c37-2a1d-43e7-9d1e-93ba8c0ccb05}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Controle">
+      <UniqueIdentifier>{4360e9ab-554c-47f5-9992-15a3afb3702a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controle">
+      <UniqueIdentifier>{92275419-5073-44ad-98ee-20541d5c8ebd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Catastrophes">
+      <UniqueIdentifier>{714f3cec-9577-42b8-8b00-41edef555c34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Ville">
+      <UniqueIdentifier>{03061891-3d5f-4e53-ba43-461649c729d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\ActionClavier.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Coordonnee.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -132,9 +141,6 @@
     <ClInclude Include="externalLib\serial\SerialPort.hpp">
       <Filter>ExternalLib\serial</Filter>
     </ClInclude>
-    <ClInclude Include="ComArduino.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Route.h">
       <Filter>Header Files\Batiments</Filter>
     </ClInclude>
@@ -150,40 +156,46 @@
     <ClInclude Include="include\randomeng.h">
       <Filter>Header Files\Catastrophes</Filter>
     </ClInclude>
+    <ClInclude Include="include\ActionClavier.h">
+      <Filter>Header Files\Controle</Filter>
+    </ClInclude>
+    <ClInclude Include="ComArduino.h">
+      <Filter>Header Files\Controle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main\main.cpp">
       <Filter>Main Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Ville.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\ActionClavier.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="externalLib\serial\SerialPort.cpp">
       <Filter>ExternalLib\serial</Filter>
     </ClCompile>
-    <ClCompile Include="ComArduino.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="source\ActionClavier.cpp">
+      <Filter>Source Files\Controle</Filter>
     </ClCompile>
-    <ClCompile Include="source\GestionnaireTemps.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="ComArduino.cpp">
+      <Filter>Source Files\Controle</Filter>
     </ClCompile>
     <ClCompile Include="source\Communication.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Controle</Filter>
     </ClCompile>
     <ClCompile Include="source\catastrophes.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Catastrophes</Filter>
     </ClCompile>
     <ClCompile Include="source\randomeng.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Catastrophes</Filter>
     </ClCompile>
     <ClCompile Include="source\Sinkhole.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Catastrophes</Filter>
     </ClCompile>
     <ClCompile Include="source\Tremblement.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Catastrophes</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Ville.cpp">
+      <Filter>Source Files\Ville</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GestionnaireTemps.cpp">
+      <Filter>Source Files\Ville</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
