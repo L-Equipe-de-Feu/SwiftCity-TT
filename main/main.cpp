@@ -74,7 +74,7 @@ void main()
 		menu->afficher_Batiment_sousMenu();
 	}
 	else {
-		menu->afficher_menu();
+		menu->afficher_Controles();
 	}
 
 	do{
@@ -85,7 +85,7 @@ void main()
 			setCurPos(curPosOrigin);
 			ville->tick();
 			ville->affiche(curseur);
-			menu->afficher_menu();
+			menu->afficher_Controles();
 			if (input.getInerMenu()) {
 				menu->afficher_Batiment_sousMenu();
 			}
@@ -97,7 +97,7 @@ void main()
 		{
 			setCurPos(curPosOrigin);
 			ville->affiche(curseur);
-			menu->afficher_menu();
+			menu->afficher_Controles();
 			if (input.getInerMenu()) {
 				menu->afficher_Batiment_sousMenu();
 			}

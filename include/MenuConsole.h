@@ -35,19 +35,27 @@ private :
                                 {"Industriel", "Usine"},
                                 {"Commerciale", "Magasin", "Bureau(WIP)"},
                                 {"Services", "Aqueduc", "Energie", "Culture", "Ecole(WIP)", "Police(WIP)", "Pompier(WIP)"} };
+    int nbElementMenu[menuHauteur] = { 2, 1, 2, 6 };
+
 public :
 
-    void afficher_menu() 
+    void afficher_Controles() 
     {
         char* tabulation = "                                                               ";
         cout << tabulation << tabulation << endl;
         cout << "Clavier  | Manette      |  Description" << tabulation << endl;
-        cout << "WASD     | Joystick     |  deplacement du curseur" << tabulation << endl;
-        cout << "Q        | Menu         |  ouvrir menu de construction" << tabulation << endl;
+        cout << "WASD     | Joystick     |  Deplacement du curseur" << tabulation << endl;
+        cout << "Q        | Menu         |  Ouvrir menu de construction" << tabulation << endl;
+        cout << "R        | Start        |  Construire une route" << tabulation << endl;
         cout << "K        | Gach. Gauche |  ralentir l'avencement du temps" << tabulation << endl;
         cout << "L        | Gach. droit  |  accelerer l'avencement du temps" << tabulation << endl;
         cout << "ESC      |              |  quitter le jeu" << tabulation << endl;
         cout << tabulation << tabulation << endl;
+    }
+
+    void afficher_Menu() 
+    {
+    
     }
 
     void afficher_Batiment_sousMenu() {
@@ -60,11 +68,11 @@ public :
         if (valide == 0) 
         {
             for (int i = 0; i < menuHauteur; i++) {
-                if (choix == i)
+                if (choix % menuHauteur == i )
                 {
                     cout << '>';
                 }
-                premierChoix = choix;
+                premierChoix = choix % menuHauteur;
                 cout << textMenu[i][0] << " : " << tabulation << endl;
             }
         }
@@ -74,11 +82,11 @@ public :
             cout << textMenu[premierChoix][0] << " : " << tabulation << endl;
             for (int e = 1; e < menuLargeur - 1; e++)
             {
-                if (choix == e)
+                if ((choix % nbElementMenu[premierChoix])+1 == e)
                 {
                     cout << '>';
                 }
-                deuxiemeChoix = choix;
+                deuxiemeChoix = (choix % nbElementMenu[premierChoix]) + 1;
                 cout << "    " << textMenu[premierChoix][e] << tabulation << endl;
             }
         }

@@ -2,6 +2,7 @@
 #define ROUTE_H
 
 #include <iostream>
+#include "Batiment.h"
 
 class Route : public Batiment {
     private :
