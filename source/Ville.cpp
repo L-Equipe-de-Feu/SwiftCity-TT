@@ -21,7 +21,7 @@ void Ville::init() {
     }
 
     //starting ressources
-    ressourceTotal.argentTot = 10000;
+    ressourceTotal.argentTot = 50000;
 
     calculRessourcesIndependant();
 }

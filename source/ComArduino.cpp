@@ -2,9 +2,13 @@
 
 ComArduino::ComArduino(char* port, int baud, MenuConsole* menuT, Curseur* curseurT, Ville* villeT) : ActionClavier(menuT, curseurT, villeT)
 {
+    sprintf(portName, "%s", port);
+    baudrate = baud;
 	serial = new SerialPort(port, baud);
 
-    pVille = villeT;
+    menu = menuT;
+    curseur = curseurT;
+    ville = villeT;
 
     //fill incomplete message buffer for safety
     for (int i = 0; i < MaxMsgLen; i++)
@@ -22,7 +26,10 @@ bool ComArduino::send(char* message, int bytes)
 {
 	if (!serial->isConnected())
 	{
-		return false;
+        if (!reconnect())
+        {
+            return false;
+        }
 	}
 
 	serial->writeSerialPort(message, bytes);
@@ -32,12 +39,33 @@ bool ComArduino::send(char* message, int bytes)
 	return true;
 }
 
+bool ComArduino::reconnect() 
+{
+    if (time(0) - lastReconnect >= RECORETRYTIME) 
+    {
+        delete serial;
+        serial = new SerialPort(portName, baudrate);
+
+        lastReconnect = time(0);
+
+        return serial->isConnected();
+    }
+    else 
+    {
+        return false;
+    }   
+}
+
 bool ComArduino::lireManette()
 {
 
     if (!serial->isConnected())
     {
-        return false;
+        if (!reconnect())
+        {
+            return false;
+        }
+        
     }
 
     char buffer[MaxByte];

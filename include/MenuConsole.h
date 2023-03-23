@@ -31,6 +31,7 @@ private :
     int valide = 0;
     int premierChoix = 0;
     int deuxiemeChoix = 0;
+    bool showHiddenMenu = false;
     string textMenu[menuHauteur][menuLargeur] = { {"Residentiel", "Maison", "MultiLogement(WIP)"},
                                 {"Industriel", "Usine"},
                                 {"Commerciale", "Magasin", "Bureau(WIP)"},
@@ -50,12 +51,19 @@ public :
         cout << "K        | Gach. Gauche |  ralentir l'avencement du temps" << tabulation << endl;
         cout << "L        | Gach. droit  |  accelerer l'avencement du temps" << tabulation << endl;
         cout << "ESC      |              |  quitter le jeu" << tabulation << endl;
+
+        if (showHiddenMenu)
+        {
+        cout << "DEBUG" << tabulation << tabulation << endl;
+        cout << "C        |              |  Declencher une catastrophe" << tabulation << endl;
+        }
+
         cout << tabulation << tabulation << endl;
     }
 
-    void afficher_Menu() 
+    void toggleShowHiddenMenu()
     {
-    
+        showHiddenMenu = !showHiddenMenu;
     }
 
     void afficher_Batiment_sousMenu() {

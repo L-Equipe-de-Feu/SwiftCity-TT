@@ -91,6 +91,10 @@ int ActionClavier::lireClavier() {
         ville->accelerer();
         break;
 
+    case 'm':
+        menu->toggleShowHiddenMenu();
+        break;
+
     case '1':
         if (inerMenu && menu->getValider()<1)
         {

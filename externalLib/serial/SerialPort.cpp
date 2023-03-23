@@ -20,14 +20,7 @@ SerialPort::SerialPort(const char *portName, int BAUD)
                                 NULL);
     if (this->handler == INVALID_HANDLE_VALUE)
     {
-        if (GetLastError() == ERROR_FILE_NOT_FOUND)
-        {
-            std::cerr << "ERROR: Handle was not attached.Reason : " << portName << " not available\n";
-        }
-        else
-        {
-            std::cerr << "ERROR!!!\n";
-        }
+        std::cout << "Manette deconnecte                         " << std::endl;
     }
     else
     {
@@ -35,7 +28,7 @@ SerialPort::SerialPort(const char *portName, int BAUD)
 
         if (!GetCommState(this->handler, &dcbSerialParameters))
         {
-            std::cerr << "Failed to get current serial parameters\n";
+            //std::cerr << "Failed to get current serial parameters\n";
         }
         else
         {
@@ -47,7 +40,7 @@ SerialPort::SerialPort(const char *portName, int BAUD)
 
             if (!SetCommState(handler, &dcbSerialParameters))
             {
-                std::cout << "ALERT: could not set serial port parameters\n";
+                //std::cout << "ALERT: could not set serial port parameters\n";
             }
             else
             {
