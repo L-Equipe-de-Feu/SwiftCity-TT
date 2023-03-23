@@ -116,6 +116,10 @@ int ActionClavier::lireClavier() {
     case 'c':
         ville->declencherCatastrophe();
         break;
+    
+    case 'v':
+        ville->Shake();
+        break;
 
     case '\x1b'://escape
         return quit = true;

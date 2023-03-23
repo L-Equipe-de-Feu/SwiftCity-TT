@@ -201,10 +201,11 @@ void Ville::affiche(Curseur* curseur) {
 
     if (catadeclenche) 
     {
-        cout << "!!!!!! LA CATASTROPHE ARRIVE !!!!!!" << "                                               " << endl;
-        cout << "!!!!!!    SHAKE TA MANETTE   !!!!!!" << "                                               " << endl;
-        cout << "Force de la catastrophe : " << cataStrenght << "                                               " << endl;
-
+        cout << tabulation << tabulation << endl;
+        cout << "!!!!!! LA CATASTROPHE ARRIVE !!!!!!" << tabulation << endl;
+        cout << "!!!!!!    SHAKE TA MANETTE   !!!!!!" << tabulation << endl;
+        cout << "Force de la catastrophe : " << cataStrenght << tabulation << endl;
+        cout << tabulation << tabulation << endl;
     }
 }
 

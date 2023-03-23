@@ -1,5 +1,6 @@
 
 #define NOMINMAX
+#define CONSOLELINENB 63
 
 #include <iostream>
 #include <stdlib.h>
@@ -21,6 +22,9 @@ pos curPosGrid;			//grid et info ville
 pos curPosMenu;			//menu
 pos curPosMessage;		//messages
 
+
+////// CONSOLE CURSOR CONTROL ////// 
+
 void setCurPos(pos p)
 {
 	HANDLE hOut;
@@ -32,6 +36,39 @@ void setCurPos(pos p)
 	Position.Y = p.y;
 	SetConsoleCursorPosition(hOut, Position);
 }
+
+COORD GetConsoleCursorPosition(HANDLE hConsoleOutput)
+{
+	CONSOLE_SCREEN_BUFFER_INFO cbsi;
+	if (GetConsoleScreenBufferInfo(hConsoleOutput, &cbsi))
+	{
+		return cbsi.dwCursorPosition;
+	}
+	else
+	{
+		// The function failed. Call GetLastError() for details.
+		COORD invalid = { 0, 0 };
+		return invalid;
+	}
+}
+
+void fillSpaceLeft() 
+{
+	HANDLE hOut;
+	COORD Position;
+
+	hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	Position = GetConsoleCursorPosition(hOut);
+	if (Position.Y < CONSOLELINENB) 
+	{
+		for (int i = Position.Y; i < CONSOLELINENB; i++)
+		{
+			cout << "                                                                              " << endl;
+		}
+	}
+}
+
+////// END CONSOLE CURSOR CONTROL //////
 
 void setup() 
 {
@@ -109,6 +146,8 @@ void main()
 			input.send(sendMsg, strlen(sendMsg));
 			sendMsg[0] = '\0';
 		}
+
+		fillSpaceLeft();
 
 	} while (!input.getQuitState());
 

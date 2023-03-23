@@ -20,7 +20,14 @@ SerialPort::SerialPort(const char *portName, int BAUD)
                                 NULL);
     if (this->handler == INVALID_HANDLE_VALUE)
     {
-        std::cout << "Manette deconnecte                         " << std::endl;
+        if (GetLastError() == ERROR_FILE_NOT_FOUND)
+        {
+            //std::cerr << "ERROR: Handle was not attached.Reason : " << portName << " not available\n";
+        }
+        else
+        {
+            //std::cerr << "ERROR!!!\n";
+        }
     }
     else
     {
