@@ -25,7 +25,7 @@ public:
     void afficher() {}
 
     char get_char() {
-        return 'M';
+        return ' ';
     }
 };
 

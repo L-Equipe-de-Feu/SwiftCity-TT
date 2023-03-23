@@ -15,6 +15,12 @@
 #include "Eau.h"
 #include "globalDefine.h"
 #include "Route.h"
+#include "Magasin.h"
+#include "Usine.h"
+#include "Maison.h"
+#include "Aqueduc.h"
+#include "Culture.h"
+#include "Energie.h"
 
 #define PENTEHABS           0.2
 #define CATAREACTTIME       5      //seconds

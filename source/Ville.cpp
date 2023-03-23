@@ -715,7 +715,80 @@ void Ville::load()
         semicol = line.find(';');
         ressourceTotal.bonheurPour = stoi(line.substr(0, semicol));
 
+        line = "";
+        while (line == "") getline(pFile, line);
 
+        int c = 0;
+        for (int i = 0; i < TAILLEX; i++)
+        {
+            for (int j = 0; j < TAILLEY; j++)
+            {                
+                switch (line[c])
+                {
+                case '#':
+                    gridT[i][j] = new Gazon();
+                    break;
+
+                case '~':
+                    gridT[i][j] = new Eau();
+                    break;
+                default:
+                    gridT[i][j] = new Gazon();                    
+                    break;
+                }
+                c += 2;
+            }
+        }
+
+        line = "";
+        while (line == "") getline(pFile, line);
+
+        c = 0;
+        for (int i = 0; i < TAILLEX; i++)
+        {
+            for (int j = 0; j < TAILLEY; j++)
+            {
+                switch (line[c])
+                {
+                case ' ':
+                    gridB[i][j] = nullptr;
+                    break;
+
+                case '-':
+                    gridB[i][j] = new Route();
+                    break;
+
+                case 'C':
+                    gridB[i][j] = new Magasin();
+                    break;
+
+                case 'U':
+                    gridB[i][j] = new Usine();
+                    break;
+
+                case 'M':
+                    gridB[i][j] = new Maison();
+                    break;
+
+                case '^':
+                    gridB[i][j] = new Culture();
+                    break;
+
+                case 'e':
+                    gridB[i][j] = new Energie();
+                    break;
+
+                case 'O':
+                    gridB[i][j] = new Aqueduc();
+                    break;
+
+                default:
+                    gridB[i][j] = nullptr;
+                    break;
+                }
+                c += 2;
+            }
+        }
 
 
         pFile.close();
