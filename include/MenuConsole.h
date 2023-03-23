@@ -111,7 +111,7 @@ public :
     }
 
     void bougerHaut() {
-        choix--;
+        if(choix != 0) choix--;
     }
 
     void valider() {
