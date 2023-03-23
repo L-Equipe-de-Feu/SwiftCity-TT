@@ -549,10 +549,20 @@ void Ville::tick()
     
     if(elapsedSec > 0)
     {
-        //1. avancement du temps
+        //1. evenement aleatoire
+        if (!catadeclenche && rand() % 1000 == 0)
+        {
+            declencherCatastrophe();
+        }
+        else if (catadeclenche)
+        {
+            catastrophe();
+        }
+
+        //2. avancement du temps
         ticktimeH += GT.avancerTemps(elapsedSec);
         int elapsedH = int(ticktimeH - tickHtimelast) / 3600;
-        //2. calcul des ressources    
+        //3. calcul des ressources    
         calculRessourcesIndependant();
 
         if (elapsedH > 0) 
@@ -564,15 +574,7 @@ void Ville::tick()
             tickHtimelast = ticktimeH;
         }
 
-        //3. evenement aleatoire
-        if (!catadeclenche && rand()%1000 == 0)
-        {
-            declencherCatastrophe();
-        }
-        else if (catadeclenche) 
-        {
-            catastrophe();
-        }
+        
 
         ticktimelast = ticktime;
     }    

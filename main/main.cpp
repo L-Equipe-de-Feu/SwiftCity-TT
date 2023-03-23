@@ -93,7 +93,7 @@ void main()
 {
 	setup();
 
-	char port[] = "COM4";
+	char port[] = "COM6";
 	int baud = 115200;
 	ComArduino input(port, baud, menu, curseur, ville);
   
