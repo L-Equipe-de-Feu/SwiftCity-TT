@@ -37,6 +37,15 @@ void Flocon::reinit() {
 	}
 	x = randEng::gen() % tX;
 	y = randEng::gen() % tY;
+	carte[x][y] = true;
+	minX = x;
+	maxX = x;
+	minY = y;
+	maxY = y;
+	domainMinX = std::max((minX - domain), 0);
+	domainMaxX = std::min((maxX + domain), (tX));
+	domainMinY = std::max((minY - domain), 0);
+	domainMaxY = std::min((maxY + domain), (tY));
 }
 
 bool Flocon::walk() {
@@ -49,10 +58,10 @@ bool Flocon::walk() {
 	int newY = y + dy;
 
 	//regarde si le curseur est sorti du domain et le remet a l'oppose
-	if (newX < domainMinX) newX = domainMaxX;
-	if (newX > domainMaxX) newX = domainMinX;
-	if (newY < domainMinY) newY = domainMaxY;
-	if (newY > domainMaxY) newY = domainMinY;
+	if (newX < domainMinX) newX = domainMinX;
+	if (newX > domainMaxX) newX = domainMaxX;
+	if (newY < domainMinY) newY = domainMinY;
+	if (newY > domainMaxY) newY = domainMaxY;
 
 	// regarde si le prochain pixel nm est deja placer
 	if (carte[newX][newY] == true) {
