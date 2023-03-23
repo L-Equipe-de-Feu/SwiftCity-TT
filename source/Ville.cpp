@@ -649,7 +649,7 @@ void Ville::save()
     {
         pFile << TAILLEX << endl << TAILLEY << endl;
         pFile << GT.time_to_str(4) << endl;
-        sprintf(buffer, "%i;%i;%i", res.habitantTot,res.materiauxTot, res.argentTot);
+        sprintf(buffer, "%i;%i;%i;%i", res.habitantTot,res.materiauxTot, res.argentTot,res.bonheurPour);
         pFile  << buffer << endl;
         for (int i = 0; i < TAILLEX; i++)
         {
@@ -697,8 +697,26 @@ void Ville::load()
         pFile >> time;
         GT.loadTime(time);
 
-        int test;
-        pFile >> test;
+        string line;
+        while (line == "") getline(pFile, line);
+        
+        int semicol = line.find(';');        
+        ressourceTotal.habitantTot = stoi(line.substr(0, semicol));
+        line = line.substr(semicol+1, line.length()-1);
+        
+        semicol = line.find(';');
+        ressourceTotal.materiauxTot = stoi(line.substr(0, semicol));
+        line = line.substr(semicol+1, line.length()-1);
+        
+        semicol = line.find(';');
+        ressourceTotal.argentTot = stoi(line.substr(0, semicol));
+        line = line.substr(semicol + 1, line.length() - 1);
+        
+        semicol = line.find(';');
+        ressourceTotal.bonheurPour = stoi(line.substr(0, semicol));
+
+
+
 
         pFile.close();
     }

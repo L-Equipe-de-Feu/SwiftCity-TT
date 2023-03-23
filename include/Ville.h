@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
+#include <string>
 #include "Batiment.h"
 #include "terrain.h"
 #include "structRessources.h"
