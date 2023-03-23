@@ -639,3 +639,68 @@ void Ville::Shake()
 {
     if (--cataStrenght < 0) cataStrenght = 0;
 }
+
+void Ville::save()
+{
+    ofstream pFile("Save\\save.txt", ios::out); //efface le contenu du fichier s'il n'est pas vide
+    RessourcesVille res;
+    char buffer[50];
+    if (pFile)
+    {
+        pFile << TAILLEX << endl << TAILLEY << endl;
+        pFile << GT.time_to_str(4) << endl;
+        sprintf(buffer, "%i;%i;%i", res.habitantTot,res.materiauxTot, res.argentTot);
+        pFile  << buffer << endl;
+        for (int i = 0; i < TAILLEX; i++)
+        {
+            for (int j = 0; j < TAILLEY; j++)
+            {
+                pFile << gridT[i][j]->get_char() << ';';
+            }
+        }
+        pFile << endl;
+        for (int i = 0; i < TAILLEX; i++)
+        {
+            for (int j = 0; j < TAILLEY; j++)
+            {
+                if (gridB[i][j] == nullptr) 
+                {
+                    pFile << ' ' << ';';
+                }
+                else 
+                {
+                    pFile << gridB[i][j]->get_char() << ';';
+                }
+                
+            }
+        }
+        pFile <<endl;
+        pFile.close();
+    }
+}
+
+void Ville::load()
+{
+    
+    ifstream pFile("Save/save.txt", ios::in);
+    RessourcesVille res;
+    if (pFile)
+    {
+        int X,Y;
+        pFile >> X >> Y;
+        if (TAILLEX != X || TAILLEY != Y) 
+        {
+            return;//cancel wrong size
+        }
+
+        long long time;
+        pFile >> time;
+        GT.loadTime(time);
+
+        int test;
+        pFile >> test;
+
+        pFile.close();
+    }
+    
+}

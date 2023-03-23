@@ -2,6 +2,7 @@
 #define VILLE_H
 
 #include <iostream>
+#include <fstream>
 #include "Batiment.h"
 #include "terrain.h"
 #include "structRessources.h"
@@ -56,6 +57,8 @@ public:
     char nomVille[50] = "|nom de ville placeholder|";
     void declencherCatastrophe();
     void Shake();
+    void save();
+    void load();
 };
 
 #endif

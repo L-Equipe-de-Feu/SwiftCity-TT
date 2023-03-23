@@ -15,7 +15,7 @@ GestionnaireTemps::GestionnaireTemps()
 
 	mktime(&datejeu);
 	tempsPresent = datejeu;
-	VT = X2;
+	VT = X1;
 }
 
 GestionnaireTemps::GestionnaireTemps(int s, int mi, int h, int j, int mo, int a)
@@ -33,7 +33,7 @@ GestionnaireTemps::GestionnaireTemps(int s, int mi, int h, int j, int mo, int a)
 
 	mktime(&datejeu);
 	tempsPresent = datejeu;
-	VT = X2;
+	VT = X1;
 }
 
 /// <summary>
@@ -75,6 +75,9 @@ char* GestionnaireTemps::time_to_str(int mode)
 		break;
 	case 3:
 		strftime(output, 80, "%Y %h %d %R", &tempsPresent);
+		break;
+	case 4:
+		sprintf(output,"%lld", mktime(&tempsPresent));
 		break;
 	}
 
@@ -142,4 +145,10 @@ void GestionnaireTemps::decelerer()
 		VT = X3;
 		break;
 	}
+}
+
+void GestionnaireTemps::loadTime(long long time) 
+{
+	time_t sec = time_t(time);
+	tempsPresent = *gmtime(&sec);
 }

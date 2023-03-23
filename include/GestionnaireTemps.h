@@ -32,6 +32,8 @@ public:
 	void accelerer();
 	void decelerer();
 
+	void loadTime(long long time);
+
 	char* time_to_str(int mode);
 	//mode 1: communication manette
 	//mode 2: affichage complet

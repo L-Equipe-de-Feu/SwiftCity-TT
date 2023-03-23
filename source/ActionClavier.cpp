@@ -121,6 +121,14 @@ int ActionClavier::lireClavier() {
         ville->Shake();
         break;
 
+    case 'o':
+        ville->save();
+        break;
+
+    case 'p':
+        ville->load();
+        break;
+
     case '\x1b'://escape
         return quit = true;
         break;

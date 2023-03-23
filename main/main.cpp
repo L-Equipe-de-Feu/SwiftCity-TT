@@ -1,6 +1,6 @@
 
 #define NOMINMAX
-#define CONSOLELINENB 63
+#define CONSOLELINENB 62
 
 #include <iostream>
 #include <stdlib.h>

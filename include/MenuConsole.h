@@ -7,6 +7,7 @@
 #define MENU_H
 
 #include <iostream>
+#include <cstring>
 #include "Maison.h"
 #include "MultiLogement.h"
 
@@ -21,7 +22,7 @@
 #include "Energie.h"
 #include "Police.h"
 #include "Pompier.h"
-#define menuLargeur 10
+#define menuLargeur 7
 #define menuHauteur 4
 using namespace std;
 
@@ -56,6 +57,9 @@ public :
         {
         cout << "DEBUG" << tabulation << tabulation << endl;
         cout << "C        |              |  Declencher une catastrophe" << tabulation << endl;
+        cout << "V        |              |  Simulation Shake" << tabulation << endl;
+        cout << "O        |              |  Save" << tabulation << endl;
+        cout << "P        |              |  Load" << tabulation << endl;
         }
 
         cout << tabulation << tabulation << endl;
@@ -67,6 +71,7 @@ public :
     }
 
     void afficher_Batiment_sousMenu() {
+        showHiddenMenu = false;
         char* tabulation = "                                                                      ";
         cout << tabulation << tabulation << endl;
         cout << "Pour naviguer dans le menu:  1 ou A: selectionner,  2 ou B: retour" << tabulation << endl;
