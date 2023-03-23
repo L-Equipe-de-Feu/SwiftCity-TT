@@ -24,6 +24,8 @@ void Catastrophes::reinit() {
 void Catastrophes::destruction(int Pv, bool** copie) {
 	
 	int choix = randEng::gen() % NBCATA;
+	//TODO effacer
+	choix = 1;
 	switch (choix) {
 	case 0:
 		sinkhole->random(Pv, 0);
@@ -32,9 +34,9 @@ void Catastrophes::destruction(int Pv, bool** copie) {
 		break;
 
 	case 1:
+		flocon->reinit();
 		flocon->walkFor(Pv * 1000);
 		flocon->getCopieTableau(copie);
-		flocon->reinit();
 		break;
 	}	
 }
