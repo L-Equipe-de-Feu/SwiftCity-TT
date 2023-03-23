@@ -51,6 +51,7 @@ public :
         cout << "R        | Start        |  Construire une route" << tabulation << endl;
         cout << "K        | Gach. Gauche |  ralentir l'avencement du temps" << tabulation << endl;
         cout << "L        | Gach. droit  |  accelerer l'avencement du temps" << tabulation << endl;
+        cout << "X        |              |  detruire un batiments" << tabulation << endl;
         cout << "ESC      |              |  quitter le jeu" << tabulation << endl;
 
         if (showHiddenMenu)
