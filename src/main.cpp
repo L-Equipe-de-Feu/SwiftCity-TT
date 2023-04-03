@@ -67,7 +67,6 @@ void loop()
   }
 
   appel(Date_ref[0], Date_ref[1], Date_ref[2], Date_ref[3]);
-  appel(Date_ref[0], Date_ref[1], Date_ref[2], Date_ref[3]);
 
   BOU_A = digitalRead(BOU_A_PIN);
   BOU_B = digitalRead(BOU_B_PIN);
