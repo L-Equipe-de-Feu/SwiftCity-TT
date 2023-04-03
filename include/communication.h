@@ -22,7 +22,7 @@ public:
   String etatJoystick;
   String etatAcc;
 
-  int date[4] = {1, 1, 2, 8};
+  int date[4] = {1, 1, 1, 1};
   int vitesse = 1;
 
   void sendMsg();
