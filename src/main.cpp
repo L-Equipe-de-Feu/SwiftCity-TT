@@ -31,7 +31,7 @@ long lastDebounceTime_SEND = 0;
 unsigned long debouceDelay = 20;
 unsigned long SendTime = 100;
 
-int Date_ref[4] = {1, 1, 2, 8};
+int Date_ref[4] = {1, 1, 1, 1};
 int Vitesse_ref = 1;
 
 // Appel des variables pour le compteur et le debounce
