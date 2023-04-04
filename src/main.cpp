@@ -233,10 +233,12 @@ void loop()
   }
 
   // Code pour Joystick G-D
-  if (analogRead(JOY_GD_PIN) < 500 || analogRead(JOY_GD_PIN) > 524 || analogRead(JOY_HB_PIN) < 500 || analogRead(JOY_HB_PIN) > 524)
+  int maxjoy = 524;
+  int minjoy = 500;
+  if (analogRead(JOY_GD_PIN) < minjoy || analogRead(JOY_GD_PIN) > maxjoy || analogRead(JOY_HB_PIN) < minjoy || analogRead(JOY_HB_PIN) > maxjoy)
   {
     String GDRes, HBRes;
-    if (analogRead(JOY_GD_PIN) < 500 || analogRead(JOY_GD_PIN) > 524)
+    if (analogRead(JOY_GD_PIN) < minjoy || analogRead(JOY_GD_PIN) > maxjoy)
     {
       int GD = analogRead(JOY_GD_PIN);
 
@@ -247,7 +249,7 @@ void loop()
       GDRes = String(9999);
     }
 
-    if (analogRead(JOY_HB_PIN) < 500 || analogRead(JOY_HB_PIN) > 524)
+    if (analogRead(JOY_HB_PIN) < minjoy || analogRead(JOY_HB_PIN) > maxjoy)
     {
       int HB = analogRead(JOY_HB_PIN);
       HBRes = String(int(HB / 1000)) + String(int((HB % 1000) / 100)) + String(int((HB % 100) / 10)) + String(int((HB % 10)));
