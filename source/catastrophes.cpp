@@ -24,8 +24,6 @@ void Catastrophes::reinit() {
 void Catastrophes::destruction(int Pv, bool** copie) {
 	
 	int choix = randEng::gen() % NBCATA;
-	//TODO effacer
-	choix = 1;
 	switch (choix) {
 	case 0:
 		sinkhole->random(Pv, 0);

@@ -146,6 +146,74 @@ bool Ville::construireRoute(int x, int y, Batiment* b) {
         return false;
     }
 
+    bool up1, left1, right1, down1;
+    bool fup1, fleft1, fright1, fdown1;
+    up1 = left1 = right1 = down1 = fup1 = fleft1 = fright1 = fdown1 = false;
+
+
+    //Verification des limites et connecte a l'exterieur
+    if (y + 1 >= TAILLEY) right1 = true;
+    if (y - 1 < 0) left1 = true;
+    if (x + 1 >= TAILLEX) down1 = true;
+    if (x - 1 < 0) up1 = true;
+
+    //verification des voisins
+    if (!up1) {
+        if (gridB[x - 1][y] != nullptr) {
+            if (gridB[x - 1][y]->estRoute()) up1 = fup1 = true;
+        }
+    }
+
+    if (!left1) {
+        if (gridB[x][y - 1] != nullptr) {
+            if (gridB[x][y - 1]->estRoute()) left1 = fleft1 = true;
+        }
+    }
+
+    if (!right1) {
+        if (gridB[x][y + 1] != nullptr) {
+            if (gridB[x][y + 1]->estRoute()) right1 = fright1 = true;
+        }
+    }
+
+    if (!down1) {
+        if (gridB[x + 1][y] != nullptr) {
+            if (gridB[x + 1][y]->estRoute()) down1 = fdown1 = true;
+        }
+    }
+
+    //Modification des voisin selon les flags
+    if (fup1) {
+        bool vup, vleft, vright, vdown;
+        std::tie(vup, vleft, vright, vdown) = gridB[x - 1][y]->get_voisin();
+        vdown = true;
+        gridB[x - 1][y]->change_voisin(vup, vleft, vright, vdown);
+    }
+
+    if (fleft1) {
+        bool vup, vleft, vright, vdown;
+        std::tie(vup, vleft, vright, vdown) = gridB[x][y - 1]->get_voisin();
+        vright = true;
+        gridB[x][y - 1]->change_voisin(vup, vleft, vright, vdown);
+    }
+
+    if (fright1) {
+        bool vup, vleft, vright, vdown;
+        std::tie(vup, vleft, vright, vdown) = gridB[x][y + 1]->get_voisin();
+        vleft = true;
+        gridB[x][y + 1]->change_voisin(vup, vleft, vright, vdown);
+    }
+
+    if (fdown1) {
+        bool vup, vleft, vright, vdown;
+        std::tie(vup, vleft, vright, vdown) = gridB[x + 1][y]->get_voisin();
+        vup = true;
+        gridB[x + 1][y]->change_voisin(vup, vleft, vright, vdown);
+    }
+
+    //Changement des voisins de la route
+    b->change_voisin(up1, left1, right1, down1);
+
     ressourceTotal.argentTot -= b->get_Couts();
     
     gridB[x][y] = b;
@@ -176,7 +244,8 @@ void Ville::affiche(Curseur* curseur) {
                 }
                 else 
                 {
-                    cout << "| " << gridB[i][e]->get_char() << " ";
+                    if (gridB[i][e]->estRoute()) { cout << gridB[i][e]->get_string(); }
+                    else cout << "| " << gridB[i][e]->get_char() << " ";
                 }
             }
         }
