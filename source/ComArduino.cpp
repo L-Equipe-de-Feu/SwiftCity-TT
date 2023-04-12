@@ -93,6 +93,7 @@ bool ComArduino::lireManette()
         int x = 0;
         int y = 0;
         int z = 0;
+        int muon = 0;
 
         switch (buffer[i])
         {
@@ -237,6 +238,26 @@ bool ComArduino::lireManette()
                 break;
             }
             break;
+
+        //case detecteur de muons
+        case 'W':
+            if (i + 9 < taille)
+            {
+                i++;
+                for (int j = 0; j < 9; j++)
+                {
+                    muon += cTi(buffer[++i]) * pow(10,(8-j));
+                }
+
+                //Fonction muon (muon)
+                std::cout << "muon : W" << muon << endl;
+            }
+            else
+            {
+                incompleteMsg = true;
+                break;
+            }
+
         default:
             //std::cout << "Non valide" << space << endl;
             break;
