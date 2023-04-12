@@ -42,6 +42,9 @@ void LOWSET();
 #define SEG_EN_PIN 11
 #define SEG_A4_PIN 6
 
+//MUON
+#define MUON_PIN A8
+
 // Frequence de transmission serielle
 #define BAUD 115200
 

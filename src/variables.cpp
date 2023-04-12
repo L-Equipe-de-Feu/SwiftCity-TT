@@ -33,6 +33,8 @@ void appelVariables()
     pinMode(SEG_A3_PIN, OUTPUT);
     pinMode(SEG_EN_PIN, OUTPUT);
     pinMode(SEG_A4_PIN, OUTPUT);
+
+    pinMode(MUON_PIN, INPUT);
 }
 
 void LOWSET()

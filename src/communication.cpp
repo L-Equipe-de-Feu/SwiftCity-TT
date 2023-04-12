@@ -16,19 +16,23 @@ void Communication::sendMsg()
   // Length (with one extra character for the null terminator)
   int Taille_Joystick = etatJoystick.length() + 1;
   int Taille_Acc = etatAcc.length() + 1;
+  int Taille_Muon = etatMuon.length() + 1;
 
   char JOY[Taille_Joystick];
   char ACC[Taille_Acc];
+  char MUON[Taille_Muon];
 
   // Copy it over
   etatJoystick.toCharArray(JOY, Taille_Joystick);
   etatAcc.toCharArray(ACC, Taille_Acc);
+  etatMuon.toCharArray(MUON, Taille_Muon);
 
   //JOY[Taille_Joystick - 1] = '\0';
   //ACC[Taille_Acc - 1] = '\0';
 
   Serial.write(JOY);
   Serial.write(ACC);
+  Serial.write(MUON);
   //Serial.write('\n');
 }
 

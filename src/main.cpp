@@ -4,6 +4,7 @@
 #include <communication.h>
 #include <string.h>
 #include <ArduinoJson.h>
+#include <muon.h>
 
 // Appel des variables pour le debounce
 int BOU_A = HIGH;
@@ -31,13 +32,18 @@ long lastDebounceTime_SEND = 0;
 unsigned long debouceDelay = 20;
 unsigned long SendTime = 100;
 
+unsigned long debounceTimemicro1 = 525;
+unsigned long muDetectTime = 33;
+
 int Date_ref[4] = {1, 1, 1, 1};
 int Vitesse_ref = 1;
 
 // Appel des variables pour le compteur et le debounce
 unsigned long previousMillis = 0;
+unsigned long lastmicros = 0;
 
 Communication com;
+Muon m;
 
 void setup()
 {
@@ -49,6 +55,7 @@ void setup()
 void loop()
 {
   unsigned long currentMillis = millis();
+  unsigned long currentmicros = micros();
 
   com.readMsg();
 
@@ -321,4 +328,20 @@ void loop()
       lastDebounceTime_SEND = millis();
     }
   }
+
+  //Code pour MUON
+  String nmoyenne;
+  if ((currentmicros - lastmicros) > muDetectTime && (currentmicros - m.get_lastTime()) > debounceTimemicro1)
+    {
+        if (analogRead(MUON_PIN) > 200)
+        {
+            float moyenne = m.calculMoyenne(currentmicros);
+            nmoyenne = String((int(moyenne / 100000000))) + String((int(moyenne) % 100000000) / 10000000) + String((int(moyenne) % 10000000) / 1000000) + String((int(moyenne) % 1000000) / 100000) + String((int(moyenne) % 100000) / 10000) + String((int(moyenne) % 10000) / 1000) + String((int(moyenne) % 1000) / 100) + String((int(moyenne) % 100) / 10) + String(int(moyenne) % 10);
+            com.etatMuon = "W" + String(nmoyenne);
+            com.sendMsg();
+
+            lastmicros = currentmicros;
+        }
+    }
+    
 }

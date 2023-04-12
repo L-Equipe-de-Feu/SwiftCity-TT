@@ -21,6 +21,7 @@ public:
   String etatBoutonARG;
   String etatJoystick;
   String etatAcc;
+  String etatMuon;
 
   int date[4] = {1, 1, 1, 1};
   int vitesse = 1;
