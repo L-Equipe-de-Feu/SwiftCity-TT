@@ -33,7 +33,7 @@ unsigned long debouceDelay = 20;
 unsigned long SendTime = 100;
 
 unsigned long debounceTimemicro1 = 525;
-unsigned long muDetectTime = 33;
+unsigned long muDetectTime = 100;
 
 int Date_ref[4] = {1, 1, 1, 1};
 int Vitesse_ref = 1;
@@ -316,6 +316,20 @@ void loop()
     com.etatAcc = "Cx999y999z999";
   }
 
+  //Code pour MUON
+  String nmoyenne;
+  if ((currentmicros - lastmicros) > muDetectTime && (currentmicros - m.get_lastTime()) > debounceTimemicro1)
+    {
+        if (analogRead(MUON_PIN) > 200)
+        {
+            float moyenne = m.calculMoyenne(currentmicros);
+            nmoyenne = String((int(moyenne / 100000000))) + String((int(moyenne) % 100000000) / 10000000) + String((int(moyenne) % 10000000) / 1000000) + String((int(moyenne) % 1000000) / 100000) + String((int(moyenne) % 100000) / 10000) + String((int(moyenne) % 10000) / 1000) + String((int(moyenne) % 1000) / 100) + String((int(moyenne) % 100) / 10) + String(int(moyenne) % 10);
+            com.etatMuon = "W" + String(nmoyenne);
+
+            lastmicros = currentmicros;
+        }
+    }
+
   if ((currentMillis - lastDebounceTime_SEND) > SendTime)
   {
     if (com.shouldSend_)
@@ -328,20 +342,4 @@ void loop()
       lastDebounceTime_SEND = millis();
     }
   }
-
-  //Code pour MUON
-  String nmoyenne;
-  if ((currentmicros - lastmicros) > muDetectTime && (currentmicros - m.get_lastTime()) > debounceTimemicro1)
-    {
-        if (analogRead(MUON_PIN) > 200)
-        {
-            float moyenne = m.calculMoyenne(currentmicros);
-            nmoyenne = String((int(moyenne / 100000000))) + String((int(moyenne) % 100000000) / 10000000) + String((int(moyenne) % 10000000) / 1000000) + String((int(moyenne) % 1000000) / 100000) + String((int(moyenne) % 100000) / 10000) + String((int(moyenne) % 10000) / 1000) + String((int(moyenne) % 1000) / 100) + String((int(moyenne) % 100) / 10) + String(int(moyenne) % 10);
-            com.etatMuon = "W" + String(nmoyenne);
-            com.sendMsg();
-
-            lastmicros = currentmicros;
-        }
-    }
-    
 }
