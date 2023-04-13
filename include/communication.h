@@ -21,10 +21,12 @@ public:
   String etatBoutonARG;
   String etatJoystick;
   String etatAcc;
-  String etatMuon;
+  //char etatMuon[10];
 
   int date[4] = {1, 1, 1, 1};
+  char Muon[11] = {'W', '0', '1', '0', '3', '0', '5', '0', '7', '0','\0'};
   int vitesse = 1;
+
 
   void sendMsg();
   void readMsg();

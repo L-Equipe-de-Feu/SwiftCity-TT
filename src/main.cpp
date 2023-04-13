@@ -32,15 +32,15 @@ long lastDebounceTime_SEND = 0;
 unsigned long debouceDelay = 20;
 unsigned long SendTime = 100;
 
-unsigned long debounceTimemicro1 = 300;
-unsigned long muDetectTime = 10;
+//unsigned long debounceTimemicro1 = 300;
+//unsigned long muDetectTime = 10;
 
 int Date_ref[4] = {1, 1, 1, 1};
 int Vitesse_ref = 1;
 
 // Appel des variables pour le compteur et le debounce
 unsigned long previousMillis = 0;
-unsigned long lastmicros = 0;
+//unsigned long lastmicros = 0;
 
 Communication com;
 Muon m;
@@ -48,6 +48,7 @@ Muon m;
 void setup()
 {
   Serial.begin(BAUD);
+  Serial2.begin(BAUD);
   appelVariables();
   LOWSET();
 }
@@ -55,7 +56,7 @@ void setup()
 void loop()
 {
   unsigned long currentMillis = millis();
-  unsigned long currentmicros = micros();
+  //unsigned long currentmicros = micros();
 
   com.readMsg();
 
@@ -316,6 +317,7 @@ void loop()
     com.etatAcc = "Cx999y999z999";
   }
 
+  /*
   //Code pour MUON
   String nmoyenne;
   if ((currentmicros - lastmicros) > muDetectTime)
@@ -333,6 +335,7 @@ void loop()
             lastmicros = currentmicros;
         }
     }
+  */
 
   if ((currentMillis - lastDebounceTime_SEND) > SendTime)
   {
