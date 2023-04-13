@@ -323,11 +323,11 @@ void loop()
         int detect = analogRead(MUON_PIN);
         if (detect > 117)
         {
-            Serial.println(detect);
+            //Serial.println(detect);
             long moyenne = m.calculMoyenne(currentmicros);
-            Serial.println(moyenne);
+            //Serial.println(moyenne);
             nmoyenne = String(long(moyenne / 100000000)) + String(long((moyenne % 100000000) / 10000000)) + String(long((moyenne % 10000000) / 1000000)) + String(long((moyenne % 1000000) / 100000)) + String(long((moyenne % 100000) / 10000)) + String(long((moyenne % 10000) / 1000)) + String(long((moyenne % 1000) / 100)) + String(long((moyenne % 100) / 10)) + String(long((moyenne) % 10));
-            Serial.println(nmoyenne);
+            //Serial.println(nmoyenne);
             com.etatMuon = "W" + String(nmoyenne);
 
             lastmicros = currentmicros;

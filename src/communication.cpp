@@ -30,9 +30,9 @@ void Communication::sendMsg()
   //JOY[Taille_Joystick - 1] = '\0';
   //ACC[Taille_Acc - 1] = '\0';
 
-  //Serial.write(JOY);
-  //Serial.write(ACC);
-  //Serial.write(MUON);
+  Serial.write(JOY);
+  Serial.write(ACC);
+  Serial.write(MUON);
   //Serial.write('\n');
 }
 
