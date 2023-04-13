@@ -13,7 +13,7 @@ private:
 
 public:
     Muon();
-    float calculMoyenne(long t);
+    long calculMoyenne(long t);
     long get_lastTime();
 };
 

@@ -2,39 +2,45 @@
 
 Muon::Muon()
 {
-    for(int i = 0; i < 100; i++)
+    for (int i = 0; i < 100; i++)
     {
         time[i] = 0;
     }
 }
 
-float Muon::calculMoyenne(long currentTime)
+long Muon::calculMoyenne(long currentTime)
 {
-    float moyenne = 0;
+    long moyenne = 0;
 
-    if(position == 99)
+    if (position == 99)
         plein = true;
 
     time[position] = currentTime - lastTime;
+    //time[position] = int(time[position]);
 
-    if(position == 99)
+    if (time[position] < 0)
+    {
+        time[position] *= -1;
+    }
+
+    if (position == 99)
         position = 0;
     else
         position++;
 
-    for(int i = 0; i < 100; i++)
+    for (int i = 0; i < 100; i++)
     {
         moyenne += time[i];
     }
 
-    if(plein)
+    if (plein)
         moyenne /= 100;
     else
         moyenne /= position;
 
     lastTime = currentTime;
 
-    return moyenne;     
+    return moyenne;
 }
 
 long Muon::get_lastTime()
@@ -52,7 +58,7 @@ int lecture()
     {
         position = 0;
     }
-    
+
     // Mettre l'acisition de données ici au lieu de donnée
     float donnee = 30;
     float referrenceDeDetection = 20;

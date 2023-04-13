@@ -32,8 +32,8 @@ long lastDebounceTime_SEND = 0;
 unsigned long debouceDelay = 20;
 unsigned long SendTime = 100;
 
-unsigned long debounceTimemicro1 = 525;
-unsigned long muDetectTime = 100;
+unsigned long debounceTimemicro1 = 300;
+unsigned long muDetectTime = 10;
 
 int Date_ref[4] = {1, 1, 1, 1};
 int Vitesse_ref = 1;
@@ -318,12 +318,16 @@ void loop()
 
   //Code pour MUON
   String nmoyenne;
-  if ((currentmicros - lastmicros) > muDetectTime && (currentmicros - m.get_lastTime()) > debounceTimemicro1)
+  if ((currentmicros - lastmicros) > muDetectTime)
     {
-        if (analogRead(MUON_PIN) > 200)
+        int detect = analogRead(MUON_PIN);
+        if (detect > 117)
         {
-            float moyenne = m.calculMoyenne(currentmicros);
-            nmoyenne = String((int(moyenne / 100000000))) + String((int(moyenne) % 100000000) / 10000000) + String((int(moyenne) % 10000000) / 1000000) + String((int(moyenne) % 1000000) / 100000) + String((int(moyenne) % 100000) / 10000) + String((int(moyenne) % 10000) / 1000) + String((int(moyenne) % 1000) / 100) + String((int(moyenne) % 100) / 10) + String(int(moyenne) % 10);
+            Serial.println(detect);
+            long moyenne = m.calculMoyenne(currentmicros);
+            Serial.println(moyenne);
+            nmoyenne = String(long(moyenne / 100000000)) + String(long((moyenne % 100000000) / 10000000)) + String(long((moyenne % 10000000) / 1000000)) + String(long((moyenne % 1000000) / 100000)) + String(long((moyenne % 100000) / 10000)) + String(long((moyenne % 10000) / 1000)) + String(long((moyenne % 1000) / 100)) + String(long((moyenne % 100) / 10)) + String(long((moyenne) % 10));
+            Serial.println(nmoyenne);
             com.etatMuon = "W" + String(nmoyenne);
 
             lastmicros = currentmicros;
