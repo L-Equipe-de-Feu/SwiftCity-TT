@@ -28,19 +28,21 @@ long lastDebounceTime_S = 0;
 long lastDebounceTime_ARD = 0;
 long lastDebounceTime_ARG = 0;
 long lastDebounceTime_SEND = 0;
+long lastDebounceTime_SENDMUONS = 0;
 
-unsigned long debouceDelay = 20;
-unsigned long SendTime = 100;
+unsigned long debouceDelay = 5;
+unsigned long SendTime = 10;
+unsigned long SendTimeMuon = 1000;
 
-//unsigned long debounceTimemicro1 = 300;
-//unsigned long muDetectTime = 10;
+// unsigned long debounceTimemicro1 = 300;
+// unsigned long muDetectTime = 10;
 
 int Date_ref[4] = {1, 1, 1, 1};
 int Vitesse_ref = 1;
 
 // Appel des variables pour le compteur et le debounce
 unsigned long previousMillis = 0;
-//unsigned long lastmicros = 0;
+// unsigned long lastmicros = 0;
 
 Communication com;
 Muon m;
@@ -56,7 +58,7 @@ void setup()
 void loop()
 {
   unsigned long currentMillis = millis();
-  //unsigned long currentmicros = micros();
+  // unsigned long currentmicros = micros();
 
   com.readMsg();
 
@@ -126,7 +128,7 @@ void loop()
     if ((BOU_A == LOW) && (STATE_BOU_A < 0))
     {
       // Debounce
-      lastDebounceTime_A = millis();
+      lastDebounceTime_A = currentMillis;
       STATE_BOU_A = -STATE_BOU_A;
 
       // Action
@@ -135,7 +137,7 @@ void loop()
     else if ((BOU_A == HIGH) && (STATE_BOU_A > 0))
     {
       // Debounce
-      lastDebounceTime_A = millis();
+      lastDebounceTime_A = currentMillis;
       STATE_BOU_A = -STATE_BOU_A;
     }
   }
@@ -146,7 +148,7 @@ void loop()
     if ((BOU_B == LOW) && (STATE_BOU_B < 0))
     {
       // Debounce
-      lastDebounceTime_B = millis();
+      lastDebounceTime_B = currentMillis;
       STATE_BOU_B = -STATE_BOU_B;
 
       // Action
@@ -155,7 +157,7 @@ void loop()
     else if ((BOU_B == HIGH) && (STATE_BOU_B > 0))
     {
       // Debounce
-      lastDebounceTime_B = millis();
+      lastDebounceTime_B = currentMillis;
       STATE_BOU_B = -STATE_BOU_B;
     }
   }
@@ -166,7 +168,7 @@ void loop()
     if ((BOU_M == LOW) && (STATE_BOU_M < 0))
     {
       // Debounce
-      lastDebounceTime_M = millis();
+      lastDebounceTime_M = currentMillis;
       STATE_BOU_M = -STATE_BOU_M;
 
       // Action
@@ -175,7 +177,7 @@ void loop()
     else if ((BOU_M == HIGH) && (STATE_BOU_M > 0))
     {
       // Debounce
-      lastDebounceTime_M = millis();
+      lastDebounceTime_M = currentMillis;
       STATE_BOU_M = -STATE_BOU_M;
     }
   }
@@ -186,7 +188,7 @@ void loop()
     if ((BOU_S == LOW) && (STATE_BOU_S < 0))
     {
       // Debounce
-      lastDebounceTime_S = millis();
+      lastDebounceTime_S = currentMillis;
       STATE_BOU_S = -STATE_BOU_S;
 
       // Action
@@ -195,7 +197,7 @@ void loop()
     else if ((BOU_S == HIGH) && (STATE_BOU_S > 0))
     {
       // Debounce
-      lastDebounceTime_S = millis();
+      lastDebounceTime_S = currentMillis;
       STATE_BOU_S = -STATE_BOU_S;
     }
   }
@@ -206,7 +208,7 @@ void loop()
     if ((BOU_ARD == LOW) && (STATE_BOU_ARD < 0))
     {
       // Debounce
-      lastDebounceTime_ARD = millis();
+      lastDebounceTime_ARD = currentMillis;
       STATE_BOU_ARD = -STATE_BOU_ARD;
 
       // Action
@@ -215,7 +217,7 @@ void loop()
     else if ((BOU_ARD == HIGH) && (STATE_BOU_ARD > 0))
     {
       // Debounce
-      lastDebounceTime_ARD = millis();
+      lastDebounceTime_ARD = currentMillis;
       STATE_BOU_ARD = -STATE_BOU_ARD;
     }
   }
@@ -226,7 +228,7 @@ void loop()
     if ((BOU_ARG == LOW) && (STATE_BOU_ARG < 0))
     {
       // Debounce
-      lastDebounceTime_ARG = millis();
+      lastDebounceTime_ARG = currentMillis;
       STATE_BOU_ARG = -STATE_BOU_ARG;
 
       // Action
@@ -235,7 +237,7 @@ void loop()
     else if ((BOU_ARG == HIGH) && (STATE_BOU_ARG > 0))
     {
       // Debounce
-      lastDebounceTime_ARG = millis();
+      lastDebounceTime_ARG = currentMillis;
       STATE_BOU_ARG = -STATE_BOU_ARG;
     }
   }
@@ -317,36 +319,29 @@ void loop()
     com.etatAcc = "Cx999y999z999";
   }
 
-  /*
-  //Code pour MUON
-  String nmoyenne;
-  if ((currentmicros - lastmicros) > muDetectTime)
-    {
-        int detect = analogRead(MUON_PIN);
-        if (detect > 117)
-        {
-            //Serial.println(detect);
-            long moyenne = m.calculMoyenne(currentmicros);
-            //Serial.println(moyenne);
-            nmoyenne = String(long(moyenne / 100000000)) + String(long((moyenne % 100000000) / 10000000)) + String(long((moyenne % 10000000) / 1000000)) + String(long((moyenne % 1000000) / 100000)) + String(long((moyenne % 100000) / 10000)) + String(long((moyenne % 10000) / 1000)) + String(long((moyenne % 1000) / 100)) + String(long((moyenne % 100) / 10)) + String(long((moyenne) % 10));
-            //Serial.println(nmoyenne);
-            com.etatMuon = "W" + String(nmoyenne);
-
-            lastmicros = currentmicros;
-        }
-    }
-  */
-
   if ((currentMillis - lastDebounceTime_SEND) > SendTime)
   {
     if (com.shouldSend_)
     {
-      lastDebounceTime_SEND = millis();
+      lastDebounceTime_SEND = currentMillis;
       com.sendMsg();
     }
     else
     {
-      lastDebounceTime_SEND = millis();
+      lastDebounceTime_SEND = currentMillis;
+    }
+  }
+
+  if ((currentMillis - lastDebounceTime_SENDMUONS) > SendTimeMuon)
+  {
+    if (com.shouldSend_)
+    {
+      lastDebounceTime_SENDMUONS = currentMillis;
+      com.sendMsgMuon();
+    }
+    else
+    {
+      lastDebounceTime_SENDMUONS = currentMillis;
     }
   }
 }

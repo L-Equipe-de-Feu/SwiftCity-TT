@@ -29,6 +29,7 @@ public:
 
 
   void sendMsg();
+  void sendMsgMuon();
   void readMsg();
   void serialSendReady();
   void serialReadReady();

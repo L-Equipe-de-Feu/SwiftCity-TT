@@ -16,24 +16,28 @@ void Communication::sendMsg()
   // Length (with one extra character for the null terminator)
   int Taille_Joystick = etatJoystick.length() + 1;
   int Taille_Acc = etatAcc.length() + 1;
-  //int Taille_Muon = etatMuon.length() + 1;
+  // int Taille_Muon = etatMuon.length() + 1;
 
   char JOY[Taille_Joystick];
   char ACC[Taille_Acc];
-  //char MUON[Taille_Muon];
+  // char MUON[Taille_Muon];
 
   // Copy it over
   etatJoystick.toCharArray(JOY, Taille_Joystick);
   etatAcc.toCharArray(ACC, Taille_Acc);
-  //etatMuon.toCharArray(MUON, Taille_Muon);
+  // etatMuon.toCharArray(MUON, Taille_Muon);
 
   // JOY[Taille_Joystick - 1] = '\0';
   // ACC[Taille_Acc - 1] = '\0';
 
   Serial.write(JOY);
   Serial.write(ACC);
+  //Serial.write('\n');
+}
+void Communication::sendMsgMuon()
+{
   Serial.write(Muon);
-  // Serial.write('\n');
+  //Serial.write('\n');
 }
 
 void Communication::readMsg()
@@ -73,11 +77,10 @@ void Communication::readMsg()
       {
         Muon[i] = char(Serial2.read());
       }
-      //etatMuon = Muon;
+      // etatMuon = Muon;
     }
   }
 }
-
 
 int Communication::cTi(char c)
 {
